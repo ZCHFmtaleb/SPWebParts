@@ -41,18 +41,38 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.SharePoint" />
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientInfoWP\ClientInfo.cs" />
+    <Compile Include="ClientInfoWP\ClientInfoWP.ascx.cs">
+      <DependentUpon>ClientInfoWP.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ClientInfoWP\ClientInfoWP.ascx.g.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientInfoWP.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClientInfoWP\ClientInfoWP.webpart" />
+    <None Include="ClientInfoWP\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{0bf63b51-376d-4d80-891a-26624af0556a}</SharePointProjectItemId>
+    </None>
+    <None Include="Features\Feature1\Feature1.feature">
+      <FeatureId>{8a476203-7f93-432b-aaa7-e62d6a3afafb}</FeatureId>
+    </None>
     <None Include="key.snk" />
     <None Include="Package\Package.package">
       <PackageId>{62ba20cd-cd97-4aec-b60c-be33083d760c}</PackageId>
@@ -61,8 +81,16 @@
       <DependentUpon>Package.package</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Features\" />
+    <Content Include="ClientInfoWP\ClientInfoWP.ascx">
+      <Generator>SharePointWebPartCodeGenerator</Generator>
+      <LastGenOutput>ClientInfoWP.ascx.g.cs</LastGenOutput>
+    </Content>
+    <Content Include="ClientInfoWP\Elements.xml" />
+    <Content Include="Features\Feature1\Feature1.Template.xml">
+      <DependentUpon>Feature1.feature</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
