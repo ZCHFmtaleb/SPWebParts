@@ -120,6 +120,12 @@ namespace SPWebParts.ClientInfoWP {
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl(@"
 
 <style type=""text/css"">
+     .ms-webpartPage-root {
+         border-spacing: 0px !important;
+     }
+       .ms-webpartzone-cell {
+         margin: 0px !important;
+     }
     .auto-style1 {
         width: 70%;
         border:2px solid;

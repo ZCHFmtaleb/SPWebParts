@@ -8,6 +8,12 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ClientInfoWP.ascx.cs" Inherits="SPWebParts.ClientInfoWP.ClientInfoWP" %>
 
 <style type="text/css">
+     .ms-webpartPage-root {
+         border-spacing: 0px !important;
+     }
+       .ms-webpartzone-cell {
+         margin: 0px !important;
+     }
     .auto-style1 {
         width: 70%;
         border:2px solid;
