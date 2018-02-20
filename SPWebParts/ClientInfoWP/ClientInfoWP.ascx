@@ -8,6 +8,11 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ClientInfoWP.ascx.cs" Inherits="SPWebParts.ClientInfoWP.ClientInfoWP" %>
 
 <style type="text/css">
+    
+     .s4-breadcrumb ul {
+        display: none !important;
+    } 
+
      .ms-webpartPage-root {
          border-spacing: 0px !important;
      }
@@ -16,17 +21,24 @@
      }
     .auto-style1 {
         width: 70%;
-        border:2px solid;
+        border:1px solid;
         margin-right:15%;
         margin-left:15%;
         margin-top:0px;
         margin-bottom:0px;
     }
+     .auto-style1 td{
+    padding-right:5% !important;    
+    }
+
     .auto-style2 {
         width: 20%;
     }
     .auto-style3 {
         width: 40%;
+    }
+    .txtPhoneStyle {
+        direction:ltr;
     }
 </style>
 <table align="right" class="auto-style1" dir="rtl">
@@ -40,15 +52,16 @@
         </td>
     </tr>
     <tr>
-        <td class="auto-style2">الاسم الانجليزى : </td>
-        <td class="auto-style3">
-            <asp:Label ID="lblEngName" runat="server" Text="EngName"></asp:Label>
-        </td>
-    </tr>
-    <tr>
         <td class="auto-style2">رقم الهوية : </td>
         <td class="auto-style3">
             <asp:Label ID="lblIDNumber" runat="server" Text="IDNumber"></asp:Label>
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style2">رقم الجوال  : </td>
+        <td class="auto-style3">
+            <asp:TextBox ID="txtPhone" runat="server" CssClass="txtPhoneStyle" Columns="15" MaxLength="15"></asp:TextBox>
+            <asp:Button ID="btnPhoneUpdate" runat="server" Text="تحديث" Visible="False" />
         </td>
     </tr>
 </table>

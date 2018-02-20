@@ -22,27 +22,18 @@ namespace SPWebParts.ClientInfoWP
             PopulateControls(cInfo);
         }
 
-        private void PopulateControls(ClientInfo cInfo)
-        {
-            lblArabicFullName.Text = cInfo.ArabicFullName;
-            lblIDNumber.Text = cInfo.IDNumber;
-            lblEngName.Text = cInfo.EngName;
-            imgPhotography.ImageUrl = cInfo.Photography;
-
-        }
-
         private ClientInfo getClientInfo_by_ClientID(string clientID)
         {
             ClientInfo c1 = new ClientInfo();
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                using (SPSite site = new SPSite(SPContext.Current.Site.Url))
+                using (SPSite site = new SPSite(SPContext.Current.Web.Url))
                 {
                     using (SPWeb spWeb = site.OpenWeb())
                     {
                         try
                         {
-                            SPList spList = spWeb.Lists.TryGetList("TestForClientsListInstance1");
+                            SPList spList = spWeb.Lists.TryGetList("Clients");
                             if (spList != null)
                             {
                                 SPQuery qry = new SPQuery();
@@ -53,22 +44,29 @@ namespace SPWebParts.ClientInfoWP
                                              <Value Type='Counter'>" + clientID + @"</Value>
                                           </Eq>
                                        </Where>";
-                                qry.ViewFields = @"<FieldRef Name='ArabicFullName' /><FieldRef Name='FullName' /><FieldRef Name='IDNumber' /><FieldRef Name='Photography' />";
+                                qry.ViewFields = @"<FieldRef Name='ArabicFullName' /><FieldRef Name='MobilePhoneNumber' /><FieldRef Name='IDNumber' /><FieldRef Name='Photography' />";
                                 SPListItemCollection listItems = spList.GetItems(qry);
                                 c1.ArabicFullName = listItems[0]["ArabicFullName"].ToString();
-                                c1.EngName = listItems[0]["FullName"].ToString();
+                                c1.Phone = listItems[0]["MobilePhoneNumber"].ToString();
                                 c1.IDNumber = listItems[0]["IDNumber"].ToString();
                                 c1.Photography = listItems[0]["Photography"].ToString().Split(',')[0];
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-
                         }
                     }
                 }
             });
             return c1;
+        }
+
+        private void PopulateControls(ClientInfo cInfo)
+        {
+            lblArabicFullName.Text = cInfo.ArabicFullName;
+            lblIDNumber.Text = cInfo.IDNumber;
+            txtPhone.Text = cInfo.Phone;
+            imgPhotography.ImageUrl = cInfo.Photography;
         }
     }
 }

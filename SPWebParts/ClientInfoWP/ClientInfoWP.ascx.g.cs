@@ -49,11 +49,15 @@ namespace SPWebParts.ClientInfoWP {
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        protected global::System.Web.UI.WebControls.Label lblEngName;
+        protected global::System.Web.UI.WebControls.Label lblIDNumber;
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        protected global::System.Web.UI.WebControls.Label lblIDNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtPhone;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Button btnPhoneUpdate;
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebPartCodeGenerator", "15.0.0.0")]
         public static implicit operator global::System.Web.UI.TemplateControl(ClientInfoWP target) 
@@ -89,19 +93,6 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        private global::System.Web.UI.WebControls.Label @__BuildControllblEngName() {
-            global::System.Web.UI.WebControls.Label @__ctrl;
-            @__ctrl = new global::System.Web.UI.WebControls.Label();
-            this.lblEngName = @__ctrl;
-            @__ctrl.ApplyStyleSheetSkin(this.Page);
-            @__ctrl.ID = "lblEngName";
-            @__ctrl.Text = "EngName";
-            return @__ctrl;
-        }
-        
-        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
-        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
-            "artCodeGenerator", "15.0.0.0")]
         private global::System.Web.UI.WebControls.Label @__BuildControllblIDNumber() {
             global::System.Web.UI.WebControls.Label @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.Label();
@@ -115,11 +106,45 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtPhone() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtPhone = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtPhone";
+            @__ctrl.CssClass = "txtPhoneStyle";
+            @__ctrl.Columns = 15;
+            @__ctrl.MaxLength = 15;
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Button @__BuildControlbtnPhoneUpdate() {
+            global::System.Web.UI.WebControls.Button @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Button();
+            this.btnPhoneUpdate = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "btnPhoneUpdate";
+            @__ctrl.Text = "تحديث";
+            @__ctrl.Visible = false;
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
         private void @__BuildControlTree(global::SPWebParts.ClientInfoWP.ClientInfoWP @__ctrl) {
             System.Web.UI.IParserAccessor @__parser = ((System.Web.UI.IParserAccessor)(@__ctrl));
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl(@"
 
 <style type=""text/css"">
+    
+     .s4-breadcrumb ul {
+        display: none !important;
+    } 
+
      .ms-webpartPage-root {
          border-spacing: 0px !important;
      }
@@ -128,17 +153,24 @@ namespace SPWebParts.ClientInfoWP {
      }
     .auto-style1 {
         width: 70%;
-        border:2px solid;
+        border:1px solid;
         margin-right:15%;
         margin-left:15%;
         margin-top:0px;
         margin-bottom:0px;
     }
+     .auto-style1 td{
+    padding-right:5% !important;    
+    }
+
     .auto-style2 {
         width: 20%;
     }
     .auto-style3 {
         width: 40%;
+    }
+    .txtPhoneStyle {
+        direction:ltr;
     }
 </style>
 <table align=""right"" class=""auto-style1"" dir=""rtl"">
@@ -153,16 +185,20 @@ namespace SPWebParts.ClientInfoWP {
             global::System.Web.UI.WebControls.Image @__ctrl2;
             @__ctrl2 = this.@__BuildControlimgPhotography();
             @__parser.AddParsedSubObject(@__ctrl2);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td class=\"auto-style2\">الاسم الانج" +
-                        "ليزى : </td>\r\n        <td class=\"auto-style3\">\r\n            "));
-            global::System.Web.UI.WebControls.Label @__ctrl3;
-            @__ctrl3 = this.@__BuildControllblEngName();
-            @__parser.AddParsedSubObject(@__ctrl3);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td class=\"auto-style2\">رقم الهوية " +
                         ": </td>\r\n        <td class=\"auto-style3\">\r\n            "));
-            global::System.Web.UI.WebControls.Label @__ctrl4;
-            @__ctrl4 = this.@__BuildControllblIDNumber();
+            global::System.Web.UI.WebControls.Label @__ctrl3;
+            @__ctrl3 = this.@__BuildControllblIDNumber();
+            @__parser.AddParsedSubObject(@__ctrl3);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td class=\"auto-style2\">رقم الجوال " +
+                        " : </td>\r\n        <td class=\"auto-style3\">\r\n            "));
+            global::System.Web.UI.WebControls.TextBox @__ctrl4;
+            @__ctrl4 = this.@__BuildControltxtPhone();
             @__parser.AddParsedSubObject(@__ctrl4);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n            "));
+            global::System.Web.UI.WebControls.Button @__ctrl5;
+            @__ctrl5 = this.@__BuildControlbtnPhoneUpdate();
+            @__parser.AddParsedSubObject(@__ctrl5);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n    </tr>\r\n</table>\r\n\r\n"));
         }
         
