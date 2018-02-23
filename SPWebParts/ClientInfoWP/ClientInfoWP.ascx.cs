@@ -19,7 +19,10 @@ namespace SPWebParts.ClientInfoWP
         {
             string ClientID = HttpContext.Current.Request.QueryString["cid"];
             ClientInfo cInfo = getClientInfo_by_ClientID(ClientID);
-            PopulateControls(cInfo);
+            if (!Page.IsPostBack)
+            {
+                PopulateControls(cInfo);
+            }
         }
 
         private ClientInfo getClientInfo_by_ClientID(string clientID)
@@ -67,6 +70,59 @@ namespace SPWebParts.ClientInfoWP
             lblIDNumber.Text = cInfo.IDNumber;
             txtPhone.Text = cInfo.Phone;
             imgPhotography.ImageUrl = cInfo.Photography;
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                //try
+                //{
+                using (SPSite site = new SPSite(SPContext.Current.Web.Url))
+                {
+                    using (SPWeb web = site.OpenWeb())
+                    {
+                        SPList list = web.Lists.TryGetList("AidRequests");
+                        if (list != null)
+                        {
+                            SPListItem NewItem = list.Items.Add();
+                            {
+                                web.AllowUnsafeUpdates = true;
+
+                                NewItem["ClientID"] = HttpContext.Current.Request.QueryString["cid"];
+                                NewItem["_x0627__x0644__x0625__x0633__x06"] = lblArabicFullName.Text;
+                                NewItem["EIDCardNumber"] = lblIDNumber.Text;
+                                NewItem["Phone"] = txtPhone.Text;
+                                NewItem["_x0646__x0648__x0639__x0020__x06"] = ddlAidType.SelectedItem.Text;
+                                NewItem["_x062a__x0641__x0627__x0635__x06"] = txtAidRequestDetails.Text;
+                                NewItem["_x062a__x0627__x0631__x064a__x06"] = dtcDueDate.SelectedDate;
+
+                                NewItem["_x0642__x064a__x0645__x0629__x00"] = txtRequiredAmount.Text;
+                                NewItem["NewColumn1"] = ddlAidRequestStatus.SelectedItem.Text;
+                                NewItem["_x0645__x062f__x0629__x0020__x06"] = txtResidencyYears.Text;
+                                NewItem["_x062a__x0648__x0635__x064a__x06"] = txtPanelOpinion.Text;
+                                NewItem["_x0645__x0628__x0644__x063a__x00"] = txtApprovedAmount.Text;
+
+                                NewItem.Update();// means "Update Changes" , used for both Insert and Update. If ID is empty , it Inserts , otherwise if ID has value , it Updates
+
+                                web.AllowUnsafeUpdates = false;
+                                int AddedItemID = NewItem.ID;
+
+                                //Alert.Text = "Registration Successful";
+                            }
+                        }
+                        else
+                        {
+                            //Alert.Text = "List not found";
+                        }
+                    }
+                }
+                //}
+                //catch (Exception )
+                //{
+                //    //Alert.Text = ex.Message.ToString();
+                //}
+            });
         }
     }
 }

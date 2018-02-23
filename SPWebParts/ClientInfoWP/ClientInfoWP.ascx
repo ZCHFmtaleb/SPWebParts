@@ -21,14 +21,15 @@
      }
     .auto-style1 {
         width: 70%;
-        border:1px solid;
+        border: none;
         margin-right:15%;
         margin-left:15%;
         margin-top:0px;
         margin-bottom:0px;
     }
      .auto-style1 td{
-    padding-right:5% !important;    
+    padding-right:5% !important;   
+    padding-bottom : 10px !important;
     }
 
     .auto-style2 {
@@ -61,7 +62,82 @@
         <td class="auto-style2">رقم الجوال  : </td>
         <td class="auto-style3">
             <asp:TextBox ID="txtPhone" runat="server" CssClass="txtPhoneStyle" Columns="15" MaxLength="15"></asp:TextBox>
-            <asp:Button ID="btnPhoneUpdate" runat="server" Text="تحديث" Visible="False" />
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style2">نوع المساعدة : </td>
+        <!--   _x0646__x0648__x0639__x0020__x06  -->
+        <td class="auto-style3">
+            <asp:DropDownList ID="ddlAidType" runat="server" Width="150px">
+                <asp:ListItem Selected="True">متنوع</asp:ListItem>
+                <asp:ListItem>تعليم</asp:ListItem>
+                <asp:ListItem>صحة</asp:ListItem>
+            </asp:DropDownList>
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style2">تفاصيل المساعدة : </td>
+        <!-- _x062a__x0641__x0627__x0635__x06  -->
+        <td class="auto-style3">
+            <asp:TextBox ID="txtAidRequestDetails" runat="server" Rows="4" TextMode="MultiLine" Width="150%"></asp:TextBox>
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style2">تاريخ الاستحقاق :  </td>
+        <!--  _x062a__x0627__x0631__x064a__x06   -->
+        <td class="auto-style3" style="padding-right:0px;">
+            <SharePoint:DateTimeControl ID="dtcDueDate" runat="server" DateOnly="True" />
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style2">المبلغ المطلوب : </td>
+        <!--     _x0642__x064a__x0645__x0629__x00    -->
+        <td class="auto-style3">
+            <asp:TextBox ID="txtRequiredAmount" runat="server" Columns="10" MaxLength="10">5000</asp:TextBox>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="auto-style2">حالة الطلب : </td>
+        <!--   NewColumn1  -->
+        <td class="auto-style3">
+            <asp:DropDownList ID="ddlAidRequestStatus" runat="server" Width="150px">
+                <asp:ListItem Selected="True">غير مكتمل</asp:ListItem>
+                <asp:ListItem>مكتمل</asp:ListItem>
+                <asp:ListItem>مرفوض</asp:ListItem>
+                <asp:ListItem>موافقة اللجنة</asp:ListItem>
+                <asp:ListItem>الموافقة النهائية</asp:ListItem>
+                <asp:ListItem> مدفوع</asp:ListItem>
+            </asp:DropDownList>
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style2">مدة الإقامة بالسنوات : </td>
+        <!--    _x0645__x062f__x0629__x0020__x06    -->
+        <td class="auto-style3">
+            <asp:TextBox ID="txtResidencyYears" runat="server" Columns="10" MaxLength="10"></asp:TextBox>
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style2">توصية اللجنة : </td>
+        <!--     _x062a__x0648__x0635__x064a__x06    -->
+        <td class="auto-style3">
+            <asp:TextBox ID="txtPanelOpinion" runat="server" width="150%"></asp:TextBox>
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style2">مبلغ الموافقة : </td>
+        <!--     _x0645__x0628__x0644__x063a__x00    -->
+        <td class="auto-style3">
+            <asp:TextBox ID="txtApprovedAmount" runat="server" Columns="10" MaxLength="10"></asp:TextBox>
+        </td>
+    </tr>
+
+
+            
+    <tr>
+        <td colspan="2" align="center">
+            <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="حفظ" Width="150px" BackColor="#E1F0FF" BorderColor="#B9DCFF" />
         </td>
     </tr>
 </table>
