@@ -1,6 +1,7 @@
 ﻿using Microsoft.SharePoint;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Web;
 using System.Web.UI.WebControls.WebParts;
 
@@ -9,6 +10,9 @@ namespace SPWebParts.ClientInfoWP
     [ToolboxItemAttribute(false)]
     public partial class ClientInfoWP : WebPart
     {
+
+        public const string ListName = "AidRequests";
+
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -76,52 +80,53 @@ namespace SPWebParts.ClientInfoWP
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                //try
-                //{
-                using (SPSite site = new SPSite(SPContext.Current.Web.Url))
+                try
                 {
-                    using (SPWeb web = site.OpenWeb())
+                    using (SPSite site = new SPSite(SPContext.Current.Web.Url))
                     {
-                        SPList list = web.Lists.TryGetList("AidRequests");
-                        if (list != null)
+                        using (SPWeb web = site.OpenWeb())
                         {
-                            SPListItem NewItem = list.Items.Add();
+                            SPList list = web.Lists.TryGetList(ListName);
+                            if (list != null)
                             {
-                                web.AllowUnsafeUpdates = true;
+                                SPListItem NewItem = list.Items.Add();
+                                {
+                                    web.AllowUnsafeUpdates = true;
 
-                                NewItem["ClientID"] = HttpContext.Current.Request.QueryString["cid"];
-                                NewItem["_x0627__x0644__x0625__x0633__x06"] = lblArabicFullName.Text;
-                                NewItem["EIDCardNumber"] = lblIDNumber.Text;
-                                NewItem["Phone"] = txtPhone.Text;
-                                NewItem["_x0646__x0648__x0639__x0020__x06"] = ddlAidType.SelectedItem.Text;
-                                NewItem["_x062a__x0641__x0627__x0635__x06"] = txtAidRequestDetails.Text;
-                                NewItem["_x062a__x0627__x0631__x064a__x06"] = dtcDueDate.SelectedDate;
+                                    NewItem["ClientID"] = HttpContext.Current.Request.QueryString["cid"];
+                                    NewItem["_x0627__x0644__x0625__x0633__x06"] = lblArabicFullName.Text;
+                                    NewItem["EIDCardNumber"] = lblIDNumber.Text;
+                                    NewItem["Phone"] = txtPhone.Text;
+                                    NewItem["_x0646__x0648__x0639__x0020__x06"] = ddlAidType.SelectedItem.Text;
+                                    NewItem["_x062a__x0641__x0627__x0635__x06"] = txtAidRequestDetails.Text;
+                                    NewItem["_x062a__x0627__x0631__x064a__x06"] = dtcDueDate.SelectedDate;
 
-                                NewItem["_x0642__x064a__x0645__x0629__x00"] = txtRequiredAmount.Text;
-                                NewItem["NewColumn1"] = ddlAidRequestStatus.SelectedItem.Text;
-                                NewItem["_x0645__x062f__x0629__x0020__x06"] = txtResidencyYears.Text;
-                                NewItem["_x062a__x0648__x0635__x064a__x06"] = txtPanelOpinion.Text;
-                                NewItem["_x0645__x0628__x0644__x063a__x00"] = txtApprovedAmount.Text;
+                                    NewItem["_x0642__x064a__x0645__x0629__x00"] = txtRequiredAmount.Text;
+                                    NewItem["NewColumn1"] = ddlAidRequestStatus.SelectedItem.Text;
+                                    NewItem["_x0645__x062f__x0629__x0020__x06"] = txtResidencyYears.Text;
+                                    NewItem["_x062a__x0648__x0635__x064a__x06"] = txtPanelOpinion.Text;
+                                    NewItem["_x0645__x0628__x0644__x063a__x00"] = txtApprovedAmount.Text;
 
-                                NewItem.Update();// means "Update Changes" , used for both Insert and Update. If ID is empty , it Inserts , otherwise if ID has value , it Updates
+                                    NewItem.Update();// means "Update Changes" , used for both Insert and Update. If ID is empty , it Inserts , otherwise if ID has value , it Updates
 
-                                web.AllowUnsafeUpdates = false;
-                                int AddedItemID = NewItem.ID;
-
-                                //Alert.Text = "Registration Successful";
+                                    web.AllowUnsafeUpdates = false;
+                                    if (NewItem.ID != 0)
+                                    {
+                                        lblSuccess.Text = "تم تسجيل الطلب بنجاح.   ";
+                                        lnkRequestPage.Text = "رقم الطلب "+ NewItem.ID.ToString();
+                                        lnkRequestPage.NavigateUrl = SPContext.Current.Web.Url+"/Lists/" + ListName + "/Item/displayifs.aspx?ID=" + NewItem.ID.ToString(); 
+                                        lblSuccess.BackColor = ColorTranslator.FromHtml("#d0ffc6");
+                                    }
+                                }
                             }
-                        }
-                        else
-                        {
-                            //Alert.Text = "List not found";
                         }
                     }
                 }
-                //}
-                //catch (Exception )
-                //{
-                //    //Alert.Text = ex.Message.ToString();
-                //}
+                catch (Exception ex)
+                {
+                    lblSuccess.Text = "حدث الخطأ التالى اثناء محاولة إضافة الطلب : "+ex.Message;
+                    lblSuccess.BackColor = ColorTranslator.FromHtml("#ffbfbf");
+                }
             });
         }
     }

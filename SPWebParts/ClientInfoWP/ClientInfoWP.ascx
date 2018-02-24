@@ -7,6 +7,13 @@
 <%@ Register Tagprefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ClientInfoWP.ascx.cs" Inherits="SPWebParts.ClientInfoWP.ClientInfoWP" %>
 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('div.row').hide();
+    });
+</script>
+
 <style type="text/css">
     
      .s4-breadcrumb ul {
@@ -33,10 +40,11 @@
     }
 
     .auto-style2 {
-        width: 20%;
+        width: 14%;
     }
-    .auto-style3 {
-        width: 40%;
+    .auto-style3 td{
+       margin:0px 0px 0px 0px !important;
+       padding:0px 0px 0px 0px !important;
     }
     .txtPhoneStyle {
         direction:ltr;
@@ -48,14 +56,15 @@
         <td class="auto-style3">
             <asp:Label ID="lblArabicFullName" runat="server" Text="ArabicFullName"></asp:Label>
         </td>
-        <td rowspan="3">
-            <asp:Image ID="imgPhotography" runat="server" />
+      
+        <td class="auto-style3">
+            رقم الهوية : 
         </td>
-    </tr>
-    <tr>
-        <td class="auto-style2">رقم الهوية : </td>
         <td class="auto-style3">
             <asp:Label ID="lblIDNumber" runat="server" Text="IDNumber"></asp:Label>
+        </td>
+          <td rowspan="8" valign="top">
+            <asp:Image ID="imgPhotography" runat="server" />
         </td>
     </tr>
     <tr>
@@ -63,10 +72,9 @@
         <td class="auto-style3">
             <asp:TextBox ID="txtPhone" runat="server" CssClass="txtPhoneStyle" Columns="15" MaxLength="15"></asp:TextBox>
         </td>
-    </tr>
-    <tr>
-        <td class="auto-style2">نوع المساعدة : </td>
-        <!--   _x0646__x0648__x0639__x0020__x06  -->
+        <td class="auto-style3">
+            نوع المساعدة : 
+        </td>
         <td class="auto-style3">
             <asp:DropDownList ID="ddlAidType" runat="server" Width="150px">
                 <asp:ListItem Selected="True">متنوع</asp:ListItem>
@@ -78,22 +86,20 @@
     <tr>
         <td class="auto-style2">تفاصيل المساعدة : </td>
         <!-- _x062a__x0641__x0627__x0635__x06  -->
-        <td class="auto-style3">
-            <asp:TextBox ID="txtAidRequestDetails" runat="server" Rows="4" TextMode="MultiLine" Width="150%"></asp:TextBox>
+        <td class="auto-style3" colspan="3">
+            <asp:TextBox ID="txtAidRequestDetails" runat="server" Rows="4" TextMode="MultiLine" Width="100%"></asp:TextBox>
         </td>
     </tr>
     <tr>
-        <td class="auto-style2">تاريخ الاستحقاق :  </td>
+        <td class="auto-style2">المبلغ المطلوب :  </td>
         <!--  _x062a__x0627__x0631__x064a__x06   -->
         <td class="auto-style3" style="padding-right:0px;">
-            <SharePoint:DateTimeControl ID="dtcDueDate" runat="server" DateOnly="True" />
-        </td>
-    </tr>
-    <tr>
-        <td class="auto-style2">المبلغ المطلوب : </td>
-        <!--     _x0642__x064a__x0645__x0629__x00    -->
-        <td class="auto-style3">
             <asp:TextBox ID="txtRequiredAmount" runat="server" Columns="10" MaxLength="10">5000</asp:TextBox>
+        </td>
+        <td class="auto-style3" style="padding-right:0px;">
+            تاريخ الاستحقاق :  </td>
+        <td class="auto-style3" style="padding-right:0px;">
+            <SharePoint:DateTimeControl ID="dtcDueDate" runat="server" DateOnly="True" />
         </td>
     </tr>
 
@@ -110,35 +116,45 @@
                 <asp:ListItem> مدفوع</asp:ListItem>
             </asp:DropDownList>
         </td>
-    </tr>
-    <tr>
-        <td class="auto-style2">مدة الإقامة بالسنوات : </td>
-        <!--    _x0645__x062f__x0629__x0020__x06    -->
+        <td class="auto-style3">
+            مدة الإقامة بالسنوات : </td>
         <td class="auto-style3">
             <asp:TextBox ID="txtResidencyYears" runat="server" Columns="10" MaxLength="10"></asp:TextBox>
         </td>
     </tr>
     <tr>
         <td class="auto-style2">توصية اللجنة : </td>
-        <!--     _x062a__x0648__x0635__x064a__x06    -->
+        <!--    _x0645__x062f__x0629__x0020__x06    -->
         <td class="auto-style3">
-            <asp:TextBox ID="txtPanelOpinion" runat="server" width="150%"></asp:TextBox>
+            <asp:TextBox ID="txtPanelOpinion" runat="server" width="100%"></asp:TextBox>
         </td>
-    </tr>
-    <tr>
-        <td class="auto-style2">مبلغ الموافقة : </td>
-        <!--     _x0645__x0628__x0644__x063a__x00    -->
+        <td class="auto-style3">
+            مبلغ الموافقة : </td>
         <td class="auto-style3">
             <asp:TextBox ID="txtApprovedAmount" runat="server" Columns="10" MaxLength="10"></asp:TextBox>
         </td>
     </tr>
 
 
-            
+
     <tr>
-        <td colspan="2" align="center">
-            <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="حفظ" Width="150px" BackColor="#E1F0FF" BorderColor="#B9DCFF" />
+        <td colspan="4" align="center">
+            <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="حفظ" Width="150px" BackColor="#E1F0FF" BorderColor="#B9DCFF" Font-Size="Large" Height="50px" />
         </td>
     </tr>
+
+    <tr>
+        <td colspan="4" align="center">
+            <asp:UpdatePanel runat="server" ID="UpdatePanel1" UpdateMode="Conditional" ChildrenAsTriggers="False" RenderMode="Inline">
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="btnSave" EventName="Click" />
+                </Triggers>
+                <ContentTemplate>
+                    <asp:Label ID="lblSuccess" runat="server" Text=""></asp:Label><asp:HyperLink ID="lnkRequestPage" runat="server"></asp:HyperLink>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </td>
+    </tr>
+
 </table>
 
