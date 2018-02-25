@@ -41,11 +41,11 @@ namespace SPWebParts.ClientInfoWP {
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        protected global::System.Web.UI.WebControls.Label lblArabicFullName;
+        protected global::System.Web.UI.WebControls.TextBox txtArabicFullName;
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        protected global::System.Web.UI.WebControls.Label lblIDNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtIDNumber;
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
@@ -112,26 +112,24 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        private global::System.Web.UI.WebControls.Label @__BuildControllblArabicFullName() {
-            global::System.Web.UI.WebControls.Label @__ctrl;
-            @__ctrl = new global::System.Web.UI.WebControls.Label();
-            this.lblArabicFullName = @__ctrl;
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtArabicFullName() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtArabicFullName = @__ctrl;
             @__ctrl.ApplyStyleSheetSkin(this.Page);
-            @__ctrl.ID = "lblArabicFullName";
-            @__ctrl.Text = "ArabicFullName";
+            @__ctrl.ID = "txtArabicFullName";
             return @__ctrl;
         }
         
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        private global::System.Web.UI.WebControls.Label @__BuildControllblIDNumber() {
-            global::System.Web.UI.WebControls.Label @__ctrl;
-            @__ctrl = new global::System.Web.UI.WebControls.Label();
-            this.lblIDNumber = @__ctrl;
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtIDNumber() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtIDNumber = @__ctrl;
             @__ctrl.ApplyStyleSheetSkin(this.Page);
-            @__ctrl.ID = "lblIDNumber";
-            @__ctrl.Text = "IDNumber";
+            @__ctrl.ID = "txtIDNumber";
             return @__ctrl;
         }
         
@@ -557,13 +555,13 @@ namespace SPWebParts.ClientInfoWP {
         <td class=""auto-style2"">الاسم : </td>
         <td class=""auto-style3"">
             "));
-            global::System.Web.UI.WebControls.Label @__ctrl1;
-            @__ctrl1 = this.@__BuildControllblArabicFullName();
+            global::System.Web.UI.WebControls.TextBox @__ctrl1;
+            @__ctrl1 = this.@__BuildControltxtArabicFullName();
             @__parser.AddParsedSubObject(@__ctrl1);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n      \r\n        <td class=\"auto-style3\">\r\n            رقم الهوية" +
                         " : \r\n        </td>\r\n        <td class=\"auto-style3\">\r\n            "));
-            global::System.Web.UI.WebControls.Label @__ctrl2;
-            @__ctrl2 = this.@__BuildControllblIDNumber();
+            global::System.Web.UI.WebControls.TextBox @__ctrl2;
+            @__ctrl2 = this.@__BuildControltxtIDNumber();
             @__parser.AddParsedSubObject(@__ctrl2);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n          <td rowspan=\"8\" valign=\"top\">\r\n            "));
             global::System.Web.UI.WebControls.Image @__ctrl3;

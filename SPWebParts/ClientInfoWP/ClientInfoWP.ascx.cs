@@ -10,8 +10,8 @@ namespace SPWebParts.ClientInfoWP
     [ToolboxItemAttribute(false)]
     public partial class ClientInfoWP : WebPart
     {
-
         public const string ListName = "AidRequests";
+        public string cid;
 
         protected override void OnInit(EventArgs e)
         {
@@ -21,15 +21,31 @@ namespace SPWebParts.ClientInfoWP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string ClientID = HttpContext.Current.Request.QueryString["cid"];
-            ClientInfo cInfo = getClientInfo_by_ClientID(ClientID);
-            if (!Page.IsPostBack)
+            get_cid();
+
+            if (cid != "0")
             {
-                PopulateControls(cInfo);
+                ClientInfo cInfo = getClientInfo_by_ClientID(cid);
+                if (!Page.IsPostBack)
+                {
+                    PopulateControls(cInfo);
+                }
             }
         }
 
-        private ClientInfo getClientInfo_by_ClientID(string clientID)
+        private void get_cid()
+        {
+            if (HttpContext.Current.Request.QueryString["cid"] != null)
+            {
+                cid = HttpContext.Current.Request.QueryString["cid"];
+            }
+            else
+            {
+                cid = "0";
+            }
+        }
+
+        private ClientInfo getClientInfo_by_ClientID(string cid)
         {
             ClientInfo c1 = new ClientInfo();
             SPSecurity.RunWithElevatedPrivileges(delegate ()
@@ -48,7 +64,7 @@ namespace SPWebParts.ClientInfoWP
                                 @"   <Where>
                                           <Eq>
                                              <FieldRef Name='ID' />
-                                             <Value Type='Counter'>" + clientID + @"</Value>
+                                             <Value Type='Counter'>" + cid + @"</Value>
                                           </Eq>
                                        </Where>";
                                 qry.ViewFields = @"<FieldRef Name='ArabicFullName' /><FieldRef Name='MobilePhoneNumber' /><FieldRef Name='IDNumber' /><FieldRef Name='Photography' />";
@@ -70,8 +86,8 @@ namespace SPWebParts.ClientInfoWP
 
         private void PopulateControls(ClientInfo cInfo)
         {
-            lblArabicFullName.Text = cInfo.ArabicFullName;
-            lblIDNumber.Text = cInfo.IDNumber;
+            txtArabicFullName.Text = cInfo.ArabicFullName;
+            txtIDNumber.Text = cInfo.IDNumber;
             txtPhone.Text = cInfo.Phone;
             imgPhotography.ImageUrl = cInfo.Photography;
         }
@@ -93,9 +109,9 @@ namespace SPWebParts.ClientInfoWP
                                 {
                                     web.AllowUnsafeUpdates = true;
 
-                                    NewItem["ClientID"] = HttpContext.Current.Request.QueryString["cid"];
-                                    NewItem["_x0627__x0644__x0625__x0633__x06"] = lblArabicFullName.Text;
-                                    NewItem["EIDCardNumber"] = lblIDNumber.Text;
+                                    NewItem["ClientID"] = cid;
+                                    NewItem["_x0627__x0644__x0625__x0633__x06"] = txtArabicFullName.Text;
+                                    NewItem["EIDCardNumber"] = txtIDNumber.Text;
                                     NewItem["Phone"] = txtPhone.Text;
                                     NewItem["_x0646__x0648__x0639__x0020__x06"] = ddlAidType.SelectedItem.Text;
                                     NewItem["_x062a__x0641__x0627__x0635__x06"] = txtAidRequestDetails.Text;
@@ -113,8 +129,8 @@ namespace SPWebParts.ClientInfoWP
                                     if (NewItem.ID != 0)
                                     {
                                         lblSuccess.Text = "تم تسجيل الطلب بنجاح.   ";
-                                        lnkRequestPage.Text = "رقم الطلب "+ NewItem.ID.ToString();
-                                        lnkRequestPage.NavigateUrl = SPContext.Current.Web.Url+"/Lists/" + ListName + "/Item/displayifs.aspx?ID=" + NewItem.ID.ToString(); 
+                                        lnkRequestPage.Text = "رقم الطلب " + NewItem.ID.ToString();
+                                        lnkRequestPage.NavigateUrl = SPContext.Current.Web.Url + "/Lists/" + ListName + "/Item/displayifs.aspx?ID=" + NewItem.ID.ToString();
                                         lblSuccess.BackColor = ColorTranslator.FromHtml("#d0ffc6");
                                     }
                                 }
@@ -124,7 +140,7 @@ namespace SPWebParts.ClientInfoWP
                 }
                 catch (Exception ex)
                 {
-                    lblSuccess.Text = "حدث الخطأ التالى اثناء محاولة إضافة الطلب : "+ex.Message;
+                    lblSuccess.Text = "حدث الخطأ التالى اثناء محاولة إضافة الطلب : " + ex.Message;
                     lblSuccess.BackColor = ColorTranslator.FromHtml("#ffbfbf");
                 }
             });

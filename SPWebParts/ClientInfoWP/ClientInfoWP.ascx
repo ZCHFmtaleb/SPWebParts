@@ -54,14 +54,14 @@
     <tr>
         <td class="auto-style2">الاسم : </td>
         <td class="auto-style3">
-            <asp:Label ID="lblArabicFullName" runat="server" Text="ArabicFullName"></asp:Label>
+            <asp:TextBox ID="txtArabicFullName" runat="server"></asp:TextBox>
         </td>
       
         <td class="auto-style3">
             رقم الهوية : 
         </td>
         <td class="auto-style3">
-            <asp:Label ID="lblIDNumber" runat="server" Text="IDNumber"></asp:Label>
+            <asp:TextBox ID="txtIDNumber" runat="server"></asp:TextBox>
         </td>
           <td rowspan="8" valign="top">
             <asp:Image ID="imgPhotography" runat="server" />
