@@ -63,6 +63,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ClientInfoWP.ascx</DependentUpon>
     </Compile>
+    <Compile Include="PreviousRequestsWP\PreviousRequestsWP.ascx.cs">
+      <DependentUpon>PreviousRequestsWP.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="PreviousRequestsWP\PreviousRequestsWP.ascx.g.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PreviousRequestsWP.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,12 +81,19 @@
     <None Include="Features\Feature1\Feature1.feature">
       <FeatureId>{8a476203-7f93-432b-aaa7-e62d6a3afafb}</FeatureId>
     </None>
+    <None Include="Features\Feature2\Feature2.feature">
+      <FeatureId>{961a352a-dce8-4ecf-9fe2-59e125585df7}</FeatureId>
+    </None>
     <None Include="key.snk" />
     <None Include="Package\Package.package">
       <PackageId>{62ba20cd-cd97-4aec-b60c-be33083d760c}</PackageId>
     </None>
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="PreviousRequestsWP\PreviousRequestsWP.webpart" />
+    <None Include="PreviousRequestsWP\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{e6f811ae-9799-48bd-ad2d-c49dd20f8ef4}</SharePointProjectItemId>
     </None>
   </ItemGroup>
   <ItemGroup />
@@ -90,6 +105,14 @@
     <Content Include="ClientInfoWP\Elements.xml" />
     <Content Include="Features\Feature1\Feature1.Template.xml">
       <DependentUpon>Feature1.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature2\Feature2.Template.xml">
+      <DependentUpon>Feature2.feature</DependentUpon>
+    </Content>
+    <Content Include="PreviousRequestsWP\Elements.xml" />
+    <Content Include="PreviousRequestsWP\PreviousRequestsWP.ascx">
+      <Generator>SharePointWebPartCodeGenerator</Generator>
+      <LastGenOutput>PreviousRequestsWP.ascx.g.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
