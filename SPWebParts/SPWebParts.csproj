@@ -59,9 +59,9 @@
       <DependentUpon>ClientInfoWP.ascx</DependentUpon>
     </Compile>
     <Compile Include="ClientInfoWP\ClientInfoWP.ascx.g.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>ClientInfoWP.ascx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PreviousRequestsWP\PreviousRequestsWP.ascx.cs">
       <DependentUpon>PreviousRequestsWP.ascx</DependentUpon>
@@ -76,13 +76,13 @@
   <ItemGroup>
     <None Include="ClientInfoWP\ClientInfoWP.webpart" />
     <None Include="ClientInfoWP\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{0bf63b51-376d-4d80-891a-26624af0556a}</SharePointProjectItemId>
+      <SharePointProjectItemId>{39855e44-0235-4e5d-b156-dba123681584}</SharePointProjectItemId>
     </None>
     <None Include="Features\Feature1\Feature1.feature">
-      <FeatureId>{8a476203-7f93-432b-aaa7-e62d6a3afafb}</FeatureId>
+      <FeatureId>{4ef58e05-c1ef-4c2d-90cb-5ded75f19c72}</FeatureId>
     </None>
     <None Include="Features\Feature2\Feature2.feature">
-      <FeatureId>{961a352a-dce8-4ecf-9fe2-59e125585df7}</FeatureId>
+      <FeatureId>{a60d21e4-1b06-410f-8e3f-426b407f2ff4}</FeatureId>
     </None>
     <None Include="key.snk" />
     <None Include="Package\Package.package">
