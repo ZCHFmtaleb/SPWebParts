@@ -41,11 +41,19 @@ namespace SPWebParts.ClientInfoWP {
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblSuccess;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Button btnPrint;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
         protected global::System.Web.UI.WebControls.TextBox txtArabicFullName;
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        protected global::System.Web.UI.WebControls.TextBox txtIDNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtNationality;
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
@@ -53,7 +61,103 @@ namespace SPWebParts.ClientInfoWP {
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtMaritalStatus;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtAge;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtIDNumber;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtFamilySize;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtJob;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtResidencyYears;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtHomeAddress;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
         protected global::System.Web.UI.WebControls.TextBox txtPhone;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtHomePhone;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtNoOfStudyingSons;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtIncome;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.DropDownList ddlHouseType;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtRent;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtBills;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtBanks;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtLivingExpenses;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtEduExpenses;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtOtherExpenses;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.DropDownList ddlIsPreviousZayedAid;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtPreviousZayedAidYear;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtPreviousZayedAidAmount;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.DropDownList ddlIsPreviousOtherOrgAid;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtOtherOrgAidName;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtOtherOrgAidAmount;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtChequeOrgName;
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
@@ -77,10 +181,6 @@ namespace SPWebParts.ClientInfoWP {
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        protected global::System.Web.UI.WebControls.TextBox txtResidencyYears;
-        
-        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
-            "artCodeGenerator", "15.0.0.0")]
         protected global::System.Web.UI.WebControls.TextBox txtPanelOpinion;
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
@@ -93,20 +193,172 @@ namespace SPWebParts.ClientInfoWP {
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        protected global::System.Web.UI.WebControls.Label lblSuccess;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divContainer;
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        protected global::System.Web.UI.WebControls.HyperLink lnkRequestPage;
+        protected global::System.Web.UI.WebControls.Label lblRequestPage;
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.Image imgLogo;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Image Image1;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblName;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblNationality;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblMaritalStatus;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblAge;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblIDNumber;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblFamilySize;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblJob;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblResidencyYears;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblHomeAddress;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblPhone;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblHomePhone;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblNoOfStudyingSons;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblIncome;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblHouseType;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblRent;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblBills;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblBanks;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblLivingExpenses;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblEduExpenses;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblOtherExpenses;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblIsPreviousZayedAid;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblPreviousZayedAidYear;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblPreviousZayedAidAmount;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblIsPreviousOtherOrgAid;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblOtherOrgAidName;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblOtherOrgAidAmount;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblChequeOrgName;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvPrint;
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebPartCodeGenerator", "15.0.0.0")]
         public static implicit operator global::System.Web.UI.TemplateControl(ClientInfoWP target) 
         {
             return target == null ? null : target.TemplateControl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblSuccess() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblSuccess = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblSuccess";
+            @__ctrl.Visible = false;
+            @__ctrl.Font.Size = global::System.Web.UI.WebControls.FontUnit.Large;
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Button @__BuildControlbtnPrint() {
+            global::System.Web.UI.WebControls.Button @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Button();
+            this.btnPrint = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "btnPrint";
+            @__ctrl.Text = "طباعة";
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(150D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            @__ctrl.BackColor = ((System.Drawing.Color)(global::System.Drawing.Color.FromArgb(225, 240, 255)));
+            @__ctrl.BorderColor = ((System.Drawing.Color)(global::System.Drawing.Color.FromArgb(185, 220, 255)));
+            @__ctrl.Font.Size = global::System.Web.UI.WebControls.FontUnit.Large;
+            @__ctrl.Height = new System.Web.UI.WebControls.Unit(50D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            @__ctrl.Visible = false;
+            @__ctrl.UseSubmitBehavior = false;
+            @__ctrl.OnClientClick = "PrintdvPrint()";
+            @__ctrl.CausesValidation = false;
+            return @__ctrl;
         }
         
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
@@ -118,6 +370,54 @@ namespace SPWebParts.ClientInfoWP {
             this.txtArabicFullName = @__ctrl;
             @__ctrl.ApplyStyleSheetSkin(this.Page);
             @__ctrl.ID = "txtArabicFullName";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtNationality() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtNationality = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtNationality";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Image @__BuildControlimgPhotography() {
+            global::System.Web.UI.WebControls.Image @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Image();
+            this.imgPhotography = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "imgPhotography";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtMaritalStatus() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtMaritalStatus = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtMaritalStatus";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtAge() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtAge = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtAge";
             return @__ctrl;
         }
         
@@ -136,12 +436,50 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        private global::System.Web.UI.WebControls.Image @__BuildControlimgPhotography() {
-            global::System.Web.UI.WebControls.Image @__ctrl;
-            @__ctrl = new global::System.Web.UI.WebControls.Image();
-            this.imgPhotography = @__ctrl;
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtFamilySize() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtFamilySize = @__ctrl;
             @__ctrl.ApplyStyleSheetSkin(this.Page);
-            @__ctrl.ID = "imgPhotography";
+            @__ctrl.ID = "txtFamilySize";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtJob() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtJob = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtJob";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtResidencyYears() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtResidencyYears = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtResidencyYears";
+            @__ctrl.Columns = 10;
+            @__ctrl.MaxLength = 10;
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtHomeAddress() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtHomeAddress = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtHomeAddress";
             return @__ctrl;
         }
         
@@ -163,11 +501,47 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtHomePhone() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtHomePhone = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtHomePhone";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtNoOfStudyingSons() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtNoOfStudyingSons = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtNoOfStudyingSons";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtIncome() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtIncome = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtIncome";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
         private global::System.Web.UI.WebControls.ListItem @__BuildControl__control3() {
             global::System.Web.UI.WebControls.ListItem @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.ListItem();
             @__ctrl.Selected = true;
-            @__ctrl.Text = "متنوع";
+            @__ctrl.Text = "ايجار";
             return @__ctrl;
         }
         
@@ -177,7 +551,7 @@ namespace SPWebParts.ClientInfoWP {
         private global::System.Web.UI.WebControls.ListItem @__BuildControl__control4() {
             global::System.Web.UI.WebControls.ListItem @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.ListItem();
-            @__ctrl.Text = "تعليم";
+            @__ctrl.Text = "ملك";
             return @__ctrl;
         }
         
@@ -187,7 +561,7 @@ namespace SPWebParts.ClientInfoWP {
         private global::System.Web.UI.WebControls.ListItem @__BuildControl__control5() {
             global::System.Web.UI.WebControls.ListItem @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.ListItem();
-            @__ctrl.Text = "صحة";
+            @__ctrl.Text = "أخرى";
             return @__ctrl;
         }
         
@@ -209,6 +583,297 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.DropDownList @__BuildControlddlHouseType() {
+            global::System.Web.UI.WebControls.DropDownList @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.DropDownList();
+            this.ddlHouseType = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "ddlHouseType";
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(100D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            this.@__BuildControl__control2(@__ctrl.Items);
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtRent() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtRent = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtRent";
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(100D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtBills() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtBills = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtBills";
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(100D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtBanks() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtBanks = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtBanks";
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(100D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtLivingExpenses() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtLivingExpenses = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtLivingExpenses";
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(100D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtEduExpenses() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtEduExpenses = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtEduExpenses";
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(100D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtOtherExpenses() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtOtherExpenses = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtOtherExpenses";
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(100D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control7() {
+            global::System.Web.UI.WebControls.ListItem @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.ListItem();
+            @__ctrl.Selected = true;
+            @__ctrl.Text = "لا";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control8() {
+            global::System.Web.UI.WebControls.ListItem @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.ListItem();
+            @__ctrl.Text = "نعم";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private void @__BuildControl__control6(System.Web.UI.WebControls.ListItemCollection @__ctrl) {
+            global::System.Web.UI.WebControls.ListItem @__ctrl1;
+            @__ctrl1 = this.@__BuildControl__control7();
+            @__ctrl.Add(@__ctrl1);
+            global::System.Web.UI.WebControls.ListItem @__ctrl2;
+            @__ctrl2 = this.@__BuildControl__control8();
+            @__ctrl.Add(@__ctrl2);
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.DropDownList @__BuildControlddlIsPreviousZayedAid() {
+            global::System.Web.UI.WebControls.DropDownList @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.DropDownList();
+            this.ddlIsPreviousZayedAid = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "ddlIsPreviousZayedAid";
+            this.@__BuildControl__control6(@__ctrl.Items);
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtPreviousZayedAidYear() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtPreviousZayedAidYear = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtPreviousZayedAidYear";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtPreviousZayedAidAmount() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtPreviousZayedAidAmount = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtPreviousZayedAidAmount";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control10() {
+            global::System.Web.UI.WebControls.ListItem @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.ListItem();
+            @__ctrl.Selected = true;
+            @__ctrl.Text = "لا";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control11() {
+            global::System.Web.UI.WebControls.ListItem @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.ListItem();
+            @__ctrl.Text = "نعم";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private void @__BuildControl__control9(System.Web.UI.WebControls.ListItemCollection @__ctrl) {
+            global::System.Web.UI.WebControls.ListItem @__ctrl1;
+            @__ctrl1 = this.@__BuildControl__control10();
+            @__ctrl.Add(@__ctrl1);
+            global::System.Web.UI.WebControls.ListItem @__ctrl2;
+            @__ctrl2 = this.@__BuildControl__control11();
+            @__ctrl.Add(@__ctrl2);
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.DropDownList @__BuildControlddlIsPreviousOtherOrgAid() {
+            global::System.Web.UI.WebControls.DropDownList @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.DropDownList();
+            this.ddlIsPreviousOtherOrgAid = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "ddlIsPreviousOtherOrgAid";
+            this.@__BuildControl__control9(@__ctrl.Items);
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtOtherOrgAidName() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtOtherOrgAidName = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtOtherOrgAidName";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtOtherOrgAidAmount() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtOtherOrgAidAmount = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtOtherOrgAidAmount";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtChequeOrgName() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtChequeOrgName = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtChequeOrgName";
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(360D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control13() {
+            global::System.Web.UI.WebControls.ListItem @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.ListItem();
+            @__ctrl.Selected = true;
+            @__ctrl.Text = "متنوع";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control14() {
+            global::System.Web.UI.WebControls.ListItem @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.ListItem();
+            @__ctrl.Text = "تعليم";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control15() {
+            global::System.Web.UI.WebControls.ListItem @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.ListItem();
+            @__ctrl.Text = "صحة";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private void @__BuildControl__control12(System.Web.UI.WebControls.ListItemCollection @__ctrl) {
+            global::System.Web.UI.WebControls.ListItem @__ctrl1;
+            @__ctrl1 = this.@__BuildControl__control13();
+            @__ctrl.Add(@__ctrl1);
+            global::System.Web.UI.WebControls.ListItem @__ctrl2;
+            @__ctrl2 = this.@__BuildControl__control14();
+            @__ctrl.Add(@__ctrl2);
+            global::System.Web.UI.WebControls.ListItem @__ctrl3;
+            @__ctrl3 = this.@__BuildControl__control15();
+            @__ctrl.Add(@__ctrl3);
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
         private global::System.Web.UI.WebControls.DropDownList @__BuildControlddlAidType() {
             global::System.Web.UI.WebControls.DropDownList @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.DropDownList();
@@ -216,7 +881,7 @@ namespace SPWebParts.ClientInfoWP {
             @__ctrl.ApplyStyleSheetSkin(this.Page);
             @__ctrl.ID = "ddlAidType";
             @__ctrl.Width = new System.Web.UI.WebControls.Unit(150D, global::System.Web.UI.WebControls.UnitType.Pixel);
-            this.@__BuildControl__control2(@__ctrl.Items);
+            this.@__BuildControl__control12(@__ctrl.Items);
             return @__ctrl;
         }
         
@@ -265,7 +930,7 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control7() {
+        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control17() {
             global::System.Web.UI.WebControls.ListItem @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.ListItem();
             @__ctrl.Selected = true;
@@ -276,7 +941,7 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control8() {
+        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control18() {
             global::System.Web.UI.WebControls.ListItem @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.ListItem();
             @__ctrl.Text = "مكتمل";
@@ -286,7 +951,7 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control9() {
+        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control19() {
             global::System.Web.UI.WebControls.ListItem @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.ListItem();
             @__ctrl.Text = "مرفوض";
@@ -296,7 +961,7 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control10() {
+        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control20() {
             global::System.Web.UI.WebControls.ListItem @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.ListItem();
             @__ctrl.Text = "موافقة اللجنة";
@@ -306,7 +971,7 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control11() {
+        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control21() {
             global::System.Web.UI.WebControls.ListItem @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.ListItem();
             @__ctrl.Text = "الموافقة النهائية";
@@ -316,7 +981,7 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control12() {
+        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control22() {
             global::System.Web.UI.WebControls.ListItem @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.ListItem();
             @__ctrl.Text = " مدفوع";
@@ -326,24 +991,24 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        private void @__BuildControl__control6(System.Web.UI.WebControls.ListItemCollection @__ctrl) {
+        private void @__BuildControl__control16(System.Web.UI.WebControls.ListItemCollection @__ctrl) {
             global::System.Web.UI.WebControls.ListItem @__ctrl1;
-            @__ctrl1 = this.@__BuildControl__control7();
+            @__ctrl1 = this.@__BuildControl__control17();
             @__ctrl.Add(@__ctrl1);
             global::System.Web.UI.WebControls.ListItem @__ctrl2;
-            @__ctrl2 = this.@__BuildControl__control8();
+            @__ctrl2 = this.@__BuildControl__control18();
             @__ctrl.Add(@__ctrl2);
             global::System.Web.UI.WebControls.ListItem @__ctrl3;
-            @__ctrl3 = this.@__BuildControl__control9();
+            @__ctrl3 = this.@__BuildControl__control19();
             @__ctrl.Add(@__ctrl3);
             global::System.Web.UI.WebControls.ListItem @__ctrl4;
-            @__ctrl4 = this.@__BuildControl__control10();
+            @__ctrl4 = this.@__BuildControl__control20();
             @__ctrl.Add(@__ctrl4);
             global::System.Web.UI.WebControls.ListItem @__ctrl5;
-            @__ctrl5 = this.@__BuildControl__control11();
+            @__ctrl5 = this.@__BuildControl__control21();
             @__ctrl.Add(@__ctrl5);
             global::System.Web.UI.WebControls.ListItem @__ctrl6;
-            @__ctrl6 = this.@__BuildControl__control12();
+            @__ctrl6 = this.@__BuildControl__control22();
             @__ctrl.Add(@__ctrl6);
         }
         
@@ -357,21 +1022,7 @@ namespace SPWebParts.ClientInfoWP {
             @__ctrl.ApplyStyleSheetSkin(this.Page);
             @__ctrl.ID = "ddlAidRequestStatus";
             @__ctrl.Width = new System.Web.UI.WebControls.Unit(150D, global::System.Web.UI.WebControls.UnitType.Pixel);
-            this.@__BuildControl__control6(@__ctrl.Items);
-            return @__ctrl;
-        }
-        
-        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
-        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
-            "artCodeGenerator", "15.0.0.0")]
-        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtResidencyYears() {
-            global::System.Web.UI.WebControls.TextBox @__ctrl;
-            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
-            this.txtResidencyYears = @__ctrl;
-            @__ctrl.ApplyStyleSheetSkin(this.Page);
-            @__ctrl.ID = "txtResidencyYears";
-            @__ctrl.Columns = 10;
-            @__ctrl.MaxLength = 10;
+            this.@__BuildControl__control16(@__ctrl.Items);
             return @__ctrl;
         }
         
@@ -384,7 +1035,7 @@ namespace SPWebParts.ClientInfoWP {
             this.txtPanelOpinion = @__ctrl;
             @__ctrl.ApplyStyleSheetSkin(this.Page);
             @__ctrl.ID = "txtPanelOpinion";
-            @__ctrl.Width = new System.Web.UI.WebControls.Unit(100D, global::System.Web.UI.WebControls.UnitType.Percentage);
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(250D, global::System.Web.UI.WebControls.UnitType.Pixel);
             return @__ctrl;
         }
         
@@ -425,78 +1076,805 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        private global::System.Web.UI.WebControls.Label @__BuildControllblSuccess() {
+        private global::System.Web.UI.HtmlControls.HtmlGenericControl @__BuildControldivContainer() {
+            global::System.Web.UI.HtmlControls.HtmlGenericControl @__ctrl;
+            @__ctrl = new global::System.Web.UI.HtmlControls.HtmlGenericControl("div");
+            this.divContainer = @__ctrl;
+            @__ctrl.ID = "divContainer";
+            System.Web.UI.IParserAccessor @__parser = ((System.Web.UI.IParserAccessor)(@__ctrl));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n<table align=\"right\" class=\"auto-style1\" dir=\"rtl\">\r\n\t<tr>\r\n\t\t<td class=\"auto-s" +
+                        "tyle2\">الاسم : </td>\r\n\t\t<td class=\"auto-style6\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl1;
+            @__ctrl1 = this.@__BuildControltxtArabicFullName();
+            @__parser.AddParsedSubObject(@__ctrl1);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t  \r\n\t\t<td class=\"auto-style5\">\r\n\t\t\tالجنسية :</td>\r\n\t\t<td class=\"auto-" +
+                        "style3\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl2;
+            @__ctrl2 = this.@__BuildControltxtNationality();
+            @__parser.AddParsedSubObject(@__ctrl2);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t  <td rowspan=\"21\" valign=\"top\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.Image @__ctrl3;
+            @__ctrl3 = this.@__BuildControlimgPhotography();
+            @__parser.AddParsedSubObject(@__ctrl3);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">الحالة الاجتماعية :</td>\r\n\t\t<" +
+                        "td class=\"auto-style6\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl4;
+            @__ctrl4 = this.@__BuildControltxtMaritalStatus();
+            @__parser.AddParsedSubObject(@__ctrl4);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t  \r\n\t\t<td class=\"auto-style5\">\r\n\t\t\tالعمر :</td>\r\n\t\t<td class=\"auto-st" +
+                        "yle3\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl5;
+            @__ctrl5 = this.@__BuildControltxtAge();
+            @__parser.AddParsedSubObject(@__ctrl5);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\tسنة</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">رقم الهوية : \r\n\t\t</td>\r\n\t" +
+                        "\t<td class=\"auto-style3\" colspan=\"3\" >\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl6;
+            @__ctrl6 = this.@__BuildControltxtIDNumber();
+            @__parser.AddParsedSubObject(@__ctrl6);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t  \r\n\t</tr>\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">عدد افراد الأسرة :</td>\r" +
+                        "\n\t\t<td class=\"auto-style6\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl7;
+            @__ctrl7 = this.@__BuildControltxtFamilySize();
+            @__parser.AddParsedSubObject(@__ctrl7);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t  \r\n\t\t<td class=\"auto-style5\">\r\n\t\t\tالوظيفة :</td>\r\n\t\t<td class=\"auto-" +
+                        "style3\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl8;
+            @__ctrl8 = this.@__BuildControltxtJob();
+            @__parser.AddParsedSubObject(@__ctrl8);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">مدة الإقامة بالدولة : </td>\r\n" +
+                        "\t\t<td class=\"auto-style6\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl9;
+            @__ctrl9 = this.@__BuildControltxtResidencyYears();
+            @__parser.AddParsedSubObject(@__ctrl9);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t&nbsp;سنة</td>\r\n\t  \r\n\t\t<td class=\"auto-style5\">\r\n\t\t\tعنوان السكن :</td>\r\n\t\t<td" +
+                        " class=\"auto-style3\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl10;
+            @__ctrl10 = this.@__BuildControltxtHomeAddress();
+            @__parser.AddParsedSubObject(@__ctrl10);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">رقم الجوال  : </td>\r\n\t\t<td cl" +
+                        "ass=\"auto-style6\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl11;
+            @__ctrl11 = this.@__BuildControltxtPhone();
+            @__parser.AddParsedSubObject(@__ctrl11);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t  \r\n\t\t<td class=\"auto-style5\">\r\n\t\t\tهاتف المنزل:</td>\r\n\t\t<td class=\"au" +
+                        "to-style3\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl12;
+            @__ctrl12 = this.@__BuildControltxtHomePhone();
+            @__parser.AddParsedSubObject(@__ctrl12);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">عدد الابناء فى الدراسة :</td>" +
+                        "\r\n\t\t<td class=\"auto-style6\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl13;
+            @__ctrl13 = this.@__BuildControltxtNoOfStudyingSons();
+            @__parser.AddParsedSubObject(@__ctrl13);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t  \r\n\t\t<td class=\"auto-style5\">\r\n\t\t\tاجمالى الدخل :</td>\r\n\t\t<td class=\"" +
+                        "auto-style3\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl14;
+            @__ctrl14 = this.@__BuildControltxtIncome();
+            @__parser.AddParsedSubObject(@__ctrl14);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\tدرهم\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">نوع السكن :</td>\r\n\t\t" +
+                        "<td class=\"auto-style6\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.DropDownList @__ctrl15;
+            @__ctrl15 = this.@__BuildControlddlHouseType();
+            @__parser.AddParsedSubObject(@__ctrl15);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl(@"
+		</td>
+	  
+		<td class=""auto-style5"">
+			&nbsp;</td>
+		<td class=""auto-style3"">
+			&nbsp;</td>
+	</tr>
+	<tr>
+		<td class=""auto-style2"">المصروفات الشهرية :</td>
+		<td class=""auto-style3"" colspan=""3"">
+			<table class=""auto-style3"">
+				<tr>
+					<td align=""center"" width=""100"">ايجار السكن </td>
+					<td align=""center"" width=""100"">فواتير</td>
+					<td align=""center"" width=""100"">استقطاعات بنوك</td>
+					<td align=""center"" width=""100"">مصاريف الإعاشة</td>
+					<td align=""center"" width=""100"">مدارس / جامعات </td>
+					<td align=""center"" width=""100"">أخرى </td>
+				</tr>
+				<tr>
+					<td align=""center"">
+						"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl16;
+            @__ctrl16 = this.@__BuildControltxtRent();
+            @__parser.AddParsedSubObject(@__ctrl16);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"center\">\r\n\t\t\t\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl17;
+            @__ctrl17 = this.@__BuildControltxtBills();
+            @__parser.AddParsedSubObject(@__ctrl17);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"center\">\r\n\t\t\t\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl18;
+            @__ctrl18 = this.@__BuildControltxtBanks();
+            @__parser.AddParsedSubObject(@__ctrl18);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"center\">\r\n\t\t\t\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl19;
+            @__ctrl19 = this.@__BuildControltxtLivingExpenses();
+            @__parser.AddParsedSubObject(@__ctrl19);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t   <td align=\"center\">\r\n\t\t\t\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl20;
+            @__ctrl20 = this.@__BuildControltxtEduExpenses();
+            @__parser.AddParsedSubObject(@__ctrl20);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"center\">\r\n\t\t\t\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl21;
+            @__ctrl21 = this.@__BuildControltxtOtherExpenses();
+            @__parser.AddParsedSubObject(@__ctrl21);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t  \r\n\t</tr>\r\n\t<tr>\r\n\t\t<td align=\"r" +
+                        "ight\" colspan=\"2\" >هل سبق وأن حصلت على مساعدة من مؤسسة زايد للأعمال الخيرية ؟&nb" +
+                        "sp;&nbsp;\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.DropDownList @__ctrl22;
+            @__ctrl22 = this.@__BuildControlddlIsPreviousZayedAid();
+            @__parser.AddParsedSubObject(@__ctrl22);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t<td colspan=\"2\">\r\n\t\t\t&nbsp;</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td class=\"auto-s" +
+                        "tyle2\">إذا كانت الإجابة بنعــم ففــي أي عــام </td>\r\n\t\t<td class=\"auto-style6\">\r" +
+                        "\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl23;
+            @__ctrl23 = this.@__BuildControltxtPreviousZayedAidYear();
+            @__parser.AddParsedSubObject(@__ctrl23);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t<td class=\"auto-style5\">\r\n\t\t\tوكـم بلغت قيمــة المساعــدة </td>\r\n\t\t<t" +
+                        "d class=\"auto-style3\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl24;
+            @__ctrl24 = this.@__BuildControltxtPreviousZayedAidAmount();
+            @__parser.AddParsedSubObject(@__ctrl24);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\t\r\n\t<tr>\r\n\t\t<td colspan=\"2\">\tهل سبق وأن حصلت على مساعدة من  جه" +
+                        "ة أخرى  ؟ &nbsp;&nbsp;\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.DropDownList @__ctrl25;
+            @__ctrl25 = this.@__BuildControlddlIsPreviousOtherOrgAid();
+            @__parser.AddParsedSubObject(@__ctrl25);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t<td class=\"auto-style5\">\r\n\t\t\t&nbsp;</td>\r\n\t\t<td class=\"auto-style3\">" +
+                        "\r\n\t\t\t&nbsp;</td>\r\n\t</tr>\r\n\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">إذا كانت الإجابة بن" +
+                        "عــم فاذكر اسم الجهة  </td>\r\n\t\t<td class=\"auto-style6\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl26;
+            @__ctrl26 = this.@__BuildControltxtOtherOrgAidName();
+            @__parser.AddParsedSubObject(@__ctrl26);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t<td class=\"auto-style5\">\r\n\t\t\tوكـم بلغت قيمــة المساعــدة </td>\r\n\t\t<t" +
+                        "d class=\"auto-style3\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl27;
+            @__ctrl27 = this.@__BuildControltxtOtherOrgAidAmount();
+            @__parser.AddParsedSubObject(@__ctrl27);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\r\n\t<tr>\r\n\t\t<td colspan=\"2\">\tفي حال الموافقة اذكر اسم الجهة الت" +
+                        "ي تود أن يصدر شيك المساعدة باسمها : \r\n\t\t\t</td>\r\n\t\t<td class=\"auto-style5\" colspa" +
+                        "n=\"2\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl28;
+            @__ctrl28 = this.@__BuildControltxtChequeOrgName();
+            @__parser.AddParsedSubObject(@__ctrl28);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">نوع المساعدة : \r\n\t\t</td>\r\n\t" +
+                        "\t<td class=\"auto-style6\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.DropDownList @__ctrl29;
+            @__ctrl29 = this.@__BuildControlddlAidType();
+            @__parser.AddParsedSubObject(@__ctrl29);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t<td class=\"auto-style5\">\r\n\t\t\t&nbsp;</td>\r\n\t\t<td class=\"auto-style3\">" +
+                        "\r\n\t\t\t&nbsp;</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">تفاصيل المساعدة : </t" +
+                        "d>\r\n\t\t<!-- _x062a__x0641__x0627__x0635__x06  -->\r\n\t\t<td class=\"auto-style3\" cols" +
+                        "pan=\"3\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl30;
+            @__ctrl30 = this.@__BuildControltxtAidRequestDetails();
+            @__parser.AddParsedSubObject(@__ctrl30);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">المبلغ المطلوب :  </td>\r\n\t\t<!" +
+                        "--  _x062a__x0627__x0631__x064a__x06   -->\r\n\t\t<td class=\"auto-style6\" style=\"pad" +
+                        "ding-right:0px;\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl31;
+            @__ctrl31 = this.@__BuildControltxtRequiredAmount();
+            @__parser.AddParsedSubObject(@__ctrl31);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t<td class=\"auto-style5\" style=\"padding-right:0px;\">\r\n\t\t\tتاريخ الاستح" +
+                        "قاق :  </td>\r\n\t\t<td class=\"auto-style3\" style=\"padding-right:0px;\">\r\n\t\t\t"));
+            global::Microsoft.SharePoint.WebControls.DateTimeControl @__ctrl32;
+            @__ctrl32 = this.@__BuildControldtcDueDate();
+            @__parser.AddParsedSubObject(@__ctrl32);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">حالة الطلب : </td>\r\n\t\t<!-- " +
+                        "  NewColumn1  -->\r\n\t\t<td class=\"auto-style6\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.DropDownList @__ctrl33;
+            @__ctrl33 = this.@__BuildControlddlAidRequestStatus();
+            @__parser.AddParsedSubObject(@__ctrl33);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t<td class=\"auto-style5\">\r\n\t\t\t&nbsp;</td>\r\n\t\t<td class=\"auto-style3\">" +
+                        "\r\n\t\t\t&nbsp;</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">توصية اللجنة : </td>\r" +
+                        "\n\t\t<!--    _x0645__x062f__x0629__x0020__x06    -->\r\n\t\t<td class=\"auto-style6\">\r\n" +
+                        "\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl34;
+            @__ctrl34 = this.@__BuildControltxtPanelOpinion();
+            @__parser.AddParsedSubObject(@__ctrl34);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t<td class=\"auto-style5\">\r\n\t\t\tمبلغ الموافقة : </td>\r\n\t\t<td class=\"aut" +
+                        "o-style3\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl35;
+            @__ctrl35 = this.@__BuildControltxtApprovedAmount();
+            @__parser.AddParsedSubObject(@__ctrl35);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\r\n\t<tr>\r\n\t\t<td colspan=\"4\" align=\"center\">\r\n\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.Button @__ctrl36;
+            @__ctrl36 = this.@__BuildControlbtnSave();
+            @__parser.AddParsedSubObject(@__ctrl36);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\r\n\t\t\t\r\n\t\t</td>\r\n\t</tr>\r\n\t\r\n</table>\r\n "));
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblRequestPage() {
             global::System.Web.UI.WebControls.Label @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.Label();
-            this.lblSuccess = @__ctrl;
-            @__ctrl.TemplateControl = this;
+            this.lblRequestPage = @__ctrl;
             @__ctrl.ApplyStyleSheetSkin(this.Page);
-            @__ctrl.ID = "lblSuccess";
-            @__ctrl.Text = "";
+            @__ctrl.ID = "lblRequestPage";
+            @__ctrl.Visible = false;
+            @__ctrl.Font.Size = global::System.Web.UI.WebControls.FontUnit.Large;
+            ((System.Web.UI.IAttributeAccessor)(@__ctrl)).SetAttribute("style", "float:right;");
+            @__ctrl.ForeColor = global::System.Drawing.Color.Blue;
             return @__ctrl;
         }
         
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        private global::System.Web.UI.WebControls.HyperLink @__BuildControllnkRequestPage() {
-            global::System.Web.UI.WebControls.HyperLink @__ctrl;
-            @__ctrl = new global::System.Web.UI.WebControls.HyperLink();
-            this.lnkRequestPage = @__ctrl;
-            @__ctrl.TemplateControl = this;
+        private global::System.Web.UI.WebControls.Image @__BuildControlimgLogo() {
+            global::System.Web.UI.WebControls.Image @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Image();
+            this.imgLogo = @__ctrl;
             @__ctrl.ApplyStyleSheetSkin(this.Page);
-            @__ctrl.ID = "lnkRequestPage";
+            @__ctrl.ID = "imgLogo";
+            @__ctrl.ImageUrl = "../_layouts/15/SPWebParts/logo.jpg";
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(75D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            ((System.Web.UI.IAttributeAccessor)(@__ctrl)).SetAttribute("style", "float:left;clear:left;");
             return @__ctrl;
         }
         
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
-        private void @__BuildControl__control13(System.Web.UI.Control @__ctrl) {
+        private global::System.Web.UI.WebControls.Image @__BuildControlImage1() {
+            global::System.Web.UI.WebControls.Image @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Image();
+            this.Image1 = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "Image1";
+            ((System.Web.UI.IAttributeAccessor)(@__ctrl)).SetAttribute("style", "float:left;");
+            @__ctrl.ImageUrl = "../_layouts/15/SPWebParts/FormNumber.gif";
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(100D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblName() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblName = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblName";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblNationality() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblNationality = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblNationality";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblMaritalStatus() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblMaritalStatus = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblMaritalStatus";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblAge() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblAge = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblAge";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblIDNumber() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblIDNumber = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblIDNumber";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblFamilySize() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblFamilySize = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblFamilySize";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblJob() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblJob = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblJob";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblResidencyYears() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblResidencyYears = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblResidencyYears";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblHomeAddress() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblHomeAddress = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblHomeAddress";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblPhone() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblPhone = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblPhone";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblHomePhone() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblHomePhone = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblHomePhone";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblNoOfStudyingSons() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblNoOfStudyingSons = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblNoOfStudyingSons";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblIncome() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblIncome = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblIncome";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblHouseType() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblHouseType = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblHouseType";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblRent() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblRent = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblRent";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblBills() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblBills = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblBills";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblBanks() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblBanks = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblBanks";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblLivingExpenses() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblLivingExpenses = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblLivingExpenses";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblEduExpenses() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblEduExpenses = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblEduExpenses";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblOtherExpenses() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblOtherExpenses = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblOtherExpenses";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblIsPreviousZayedAid() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblIsPreviousZayedAid = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblIsPreviousZayedAid";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblPreviousZayedAidYear() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblPreviousZayedAidYear = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblPreviousZayedAidYear";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblPreviousZayedAidAmount() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblPreviousZayedAidAmount = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblPreviousZayedAidAmount";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblIsPreviousOtherOrgAid() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblIsPreviousOtherOrgAid = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblIsPreviousOtherOrgAid";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblOtherOrgAidName() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblOtherOrgAidName = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblOtherOrgAidName";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblOtherOrgAidAmount() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblOtherOrgAidAmount = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblOtherOrgAidAmount";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblChequeOrgName() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblChequeOrgName = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblChequeOrgName";
+            @__ctrl.Text = "Label";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.HtmlControls.HtmlGenericControl @__BuildControldvPrint() {
+            global::System.Web.UI.HtmlControls.HtmlGenericControl @__ctrl;
+            @__ctrl = new global::System.Web.UI.HtmlControls.HtmlGenericControl("div");
+            this.dvPrint = @__ctrl;
+            @__ctrl.ID = "dvPrint";
+            ((System.Web.UI.IAttributeAccessor)(@__ctrl)).SetAttribute("style", "clear:both;");
+            @__ctrl.Visible = false;
             System.Web.UI.IParserAccessor @__parser = ((System.Web.UI.IParserAccessor)(@__ctrl));
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n                    "));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl(" \r\n\r\n\t<table align=\"right\" class=\"auto-style7\" dir=\"rtl\" style=\"border:1px solid " +
+                        "black;\">\r\n\t\t<tr>\r\n\t\t\t<td align=\"center\" colspan=\"4\">\r\n\t\t\t\t"));
             global::System.Web.UI.WebControls.Label @__ctrl1;
-            @__ctrl1 = this.@__BuildControllblSuccess();
+            @__ctrl1 = this.@__BuildControllblRequestPage();
             @__parser.AddParsedSubObject(@__ctrl1);
-            global::System.Web.UI.WebControls.HyperLink @__ctrl2;
-            @__ctrl2 = this.@__BuildControllnkRequestPage();
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl(@"
+				<span dir=""RTL"" lang=""AR-AE"" style=""font-size: 18.0pt; font-family: &quot;PT Bold Heading&quot;; mso-ascii-font-family: &quot;Times New Roman&quot;; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-hansi-font-family: &quot;Times New Roman&quot;; color: #006600; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-AE""><span class=""auto-style8"" style=""mso-spacerun: yes"">&nbsp;</span><span class=""auto-style8"">نمـوذج طلب مساعدة إنسانية </span></span>
+				"));
+            global::System.Web.UI.WebControls.Image @__ctrl2;
+            @__ctrl2 = this.@__BuildControlimgLogo();
             @__parser.AddParsedSubObject(@__ctrl2);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n                "));
-        }
-        
-        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
-        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
-            "artCodeGenerator", "15.0.0.0")]
-        private global::System.Web.UI.AsyncPostBackTrigger @__BuildControl__control15() {
-            global::System.Web.UI.AsyncPostBackTrigger @__ctrl;
-            @__ctrl = new global::System.Web.UI.AsyncPostBackTrigger();
-            @__ctrl.ControlID = "btnSave";
-            @__ctrl.EventName = "Click";
-            return @__ctrl;
-        }
-        
-        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
-        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
-            "artCodeGenerator", "15.0.0.0")]
-        private void @__BuildControl__control14(System.Web.UI.UpdatePanelTriggerCollection @__ctrl) {
-            global::System.Web.UI.AsyncPostBackTrigger @__ctrl1;
-            @__ctrl1 = this.@__BuildControl__control15();
-            @__ctrl.Add(@__ctrl1);
-        }
-        
-        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
-        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
-            "artCodeGenerator", "15.0.0.0")]
-        private global::System.Web.UI.UpdatePanel @__BuildControlUpdatePanel1() {
-            global::System.Web.UI.UpdatePanel @__ctrl;
-            @__ctrl = new global::System.Web.UI.UpdatePanel();
-            this.UpdatePanel1 = @__ctrl;
-            @__ctrl.ContentTemplate = new System.Web.UI.CompiledTemplateBuilder(new System.Web.UI.BuildTemplateMethod(this.@__BuildControl__control13));
-            @__ctrl.ID = "UpdatePanel1";
-            @__ctrl.UpdateMode = global::System.Web.UI.UpdatePanelUpdateMode.Conditional;
-            @__ctrl.ChildrenAsTriggers = false;
-            @__ctrl.RenderMode = global::System.Web.UI.UpdatePanelRenderMode.Inline;
-            this.@__BuildControl__control14(@__ctrl.Triggers);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Image @__ctrl3;
+            @__ctrl3 = this.@__BuildControlImage1();
+            @__parser.AddParsedSubObject(@__ctrl3);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"width:25%;\">الاسم :</td>\r\n\t\t\t<td>\r\n\t\t\t" +
+                        "\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl4;
+            @__ctrl4 = this.@__BuildControllblName();
+            @__parser.AddParsedSubObject(@__ctrl4);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td> الجنسية :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl5;
+            @__ctrl5 = this.@__BuildControllblNationality();
+            @__parser.AddParsedSubObject(@__ctrl5);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>الحالة الاجتماعية :</td>\r\n\t\t\t<td>"));
+            global::System.Web.UI.WebControls.Label @__ctrl6;
+            @__ctrl6 = this.@__BuildControllblMaritalStatus();
+            @__parser.AddParsedSubObject(@__ctrl6);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("</td>\r\n\t\t\t<td> العمر :</td>\r\n\t\t\t<td>"));
+            global::System.Web.UI.WebControls.Label @__ctrl7;
+            @__ctrl7 = this.@__BuildControllblAge();
+            @__parser.AddParsedSubObject(@__ctrl7);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>رقم الهوية : \r\n\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl8;
+            @__ctrl8 = this.@__BuildControllblIDNumber();
+            @__parser.AddParsedSubObject(@__ctrl8);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>عدد ا" +
+                        "فراد الأسرة :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl9;
+            @__ctrl9 = this.@__BuildControllblFamilySize();
+            @__parser.AddParsedSubObject(@__ctrl9);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>الوظيفة :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl10;
+            @__ctrl10 = this.@__BuildControllblJob();
+            @__parser.AddParsedSubObject(@__ctrl10);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>مدة الإقامة بالدولة : </td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl11;
+            @__ctrl11 = this.@__BuildControllblResidencyYears();
+            @__parser.AddParsedSubObject(@__ctrl11);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>عنوان السكن :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl12;
+            @__ctrl12 = this.@__BuildControllblHomeAddress();
+            @__parser.AddParsedSubObject(@__ctrl12);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>رقم الجوال  : </td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl13;
+            @__ctrl13 = this.@__BuildControllblPhone();
+            @__parser.AddParsedSubObject(@__ctrl13);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>هاتف المنزل:</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl14;
+            @__ctrl14 = this.@__BuildControllblHomePhone();
+            @__parser.AddParsedSubObject(@__ctrl14);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>عدد الابناء فى الدراسة :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl15;
+            @__ctrl15 = this.@__BuildControllblNoOfStudyingSons();
+            @__parser.AddParsedSubObject(@__ctrl15);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>اجمالى الدخل :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl16;
+            @__ctrl16 = this.@__BuildControllblIncome();
+            @__parser.AddParsedSubObject(@__ctrl16);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>نوع السكن :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl17;
+            @__ctrl17 = this.@__BuildControllblHouseType();
+            @__parser.AddParsedSubObject(@__ctrl17);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl(@"
+			</td>
+			<td>&nbsp;</td>
+			<td>
+				
+			</td>
+		</tr>
+		<tr>
+			<td>المصروفات الشهرية :</td>
+			<td colspan=""3"" align=""right"">
+			<table >
+				<tr>
+					<td align=""center"" width=""100"">ايجار السكن </td>
+					<td align=""center"" width=""100"">فواتير</td>
+					<td align=""center"" width=""100"">استقطاعات بنوك</td>
+					<td align=""center"" width=""100"">مصاريف الإعاشة</td>
+					<td align=""center"" width=""100"">مدارس / جامعات </td>
+					<td align=""center"" width=""100"">أخرى </td>
+				</tr>
+				<tr>
+					<td align=""center"">
+						"));
+            global::System.Web.UI.WebControls.Label @__ctrl18;
+            @__ctrl18 = this.@__BuildControllblRent();
+            @__parser.AddParsedSubObject(@__ctrl18);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"center\">\r\n\t\t\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl19;
+            @__ctrl19 = this.@__BuildControllblBills();
+            @__parser.AddParsedSubObject(@__ctrl19);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"center\">\r\n\t\t\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl20;
+            @__ctrl20 = this.@__BuildControllblBanks();
+            @__parser.AddParsedSubObject(@__ctrl20);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"center\">\r\n\t\t\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl21;
+            @__ctrl21 = this.@__BuildControllblLivingExpenses();
+            @__parser.AddParsedSubObject(@__ctrl21);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t   <td align=\"center\">\r\n\t\t\t\t\t   "));
+            global::System.Web.UI.WebControls.Label @__ctrl22;
+            @__ctrl22 = this.@__BuildControllblEduExpenses();
+            @__parser.AddParsedSubObject(@__ctrl22);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"center\">\r\n\t\t\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl23;
+            @__ctrl23 = this.@__BuildControllblOtherExpenses();
+            @__parser.AddParsedSubObject(@__ctrl23);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td colspan=\"" +
+                        "2\">هل سبق وأن حصلت على مساعدة من مؤسسة زايد للأعمال الخيرية ؟&nbsp;&nbsp;</td>\r\n" +
+                        "\t\t\t<td colspan=\"2\" align=\"right\">\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl24;
+            @__ctrl24 = this.@__BuildControllblIsPreviousZayedAid();
+            @__parser.AddParsedSubObject(@__ctrl24);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td >إذا كانت الإجابة بنعــم ففــي أي عــام </td>" +
+                        "\r\n\t\t\t <td>\r\n\t\t\t\t "));
+            global::System.Web.UI.WebControls.Label @__ctrl25;
+            @__ctrl25 = this.@__BuildControllblPreviousZayedAidYear();
+            @__parser.AddParsedSubObject(@__ctrl25);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>وكـم بلغت قيمــة المساعــدة </td>\r\n\t\t\t<td align=\"right\">\r\n\t\t\t\t" +
+                        ""));
+            global::System.Web.UI.WebControls.Label @__ctrl26;
+            @__ctrl26 = this.@__BuildControllblPreviousZayedAidAmount();
+            @__parser.AddParsedSubObject(@__ctrl26);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td colspan=\"2\" >هل سبق وأن حصلت على مساعدة من جه" +
+                        "ة أخرى ؟ </td>\r\n\t\t\t<td colspan=\"2\">\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl27;
+            @__ctrl27 = this.@__BuildControllblIsPreviousOtherOrgAid();
+            @__parser.AddParsedSubObject(@__ctrl27);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td >إذا كانت الإجابة بنعــم فاذكر اسم الجهة  </t" +
+                        "d>\r\n\t\t\t <td>\r\n\t\t\t\t "));
+            global::System.Web.UI.WebControls.Label @__ctrl28;
+            @__ctrl28 = this.@__BuildControllblOtherOrgAidName();
+            @__parser.AddParsedSubObject(@__ctrl28);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>وكـم بلغت قيمــة المساعــدة</td>\r\n\t\t\t<td align=\"right\">\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl29;
+            @__ctrl29 = this.@__BuildControllblOtherOrgAidAmount();
+            @__parser.AddParsedSubObject(@__ctrl29);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td colspan=\"2\" >في حال الموافقة اذكر اسم الجهة ا" +
+                        "لتي تود أن يصدر شيك المساعدة باسمها : \r\n\t\t\t</td>\r\n\t\t\t<td colspan=\"2\">\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl30;
+            @__ctrl30 = this.@__BuildControllblChequeOrgName();
+            @__parser.AddParsedSubObject(@__ctrl30);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td colspan=\"4\" >\r\n\r\n\t\t\t\t<h6 class=\"auto-style8\">" +
+                        "الوثائق المطلوبة  : </h6>\r\n\t\t\t\t<ul style=\"font-size: xx-small\">\r\n\t\t\t\t\t<li>رسالة " +
+                        "موجهه إلى مدير عام المؤسسة يشرح فيها الحالة .</li>\r\n\t\t\t\t\t<li>صورة من جوازات السف" +
+                        "ر ، وصورة الهوية ، وصورة الإقامة ،  وصورة من خلاصة القيد ( للمواطنين) .</li>\r\n\t\t" +
+                        "\t\t\t<li>صورة شخصية حديثة .</li>\r\n\t\t\t\t\t<li>شهادة إثبات حالة اجتماعية للأرامل والمط" +
+                        "لقـــات . </li>\r\n\t\t\t\t\t<li>شهادة راتب من جهة العمل .</li>\r\n\t\t\t\t\t<li>صورة من عقد إ" +
+                        "يجار السكن .</li>\r\n\t\t\t\t\t<li>أية مستندات أخرى يريد مقدم الطلب إرفاقها لتوضح حالته" +
+                        " .</li>\r\n\t\t\t\t</ul>\r\n\r\n\r\n\t\t\t\t<h6 class=\"auto-style8\">ملاحظات  :</h6>\r\n\t\t\t\t<ul sty" +
+                        "le=\"font-size: xx-small\">\r\n\t\t\t\t\t<li>\tالمؤسسة غير مسؤولة عن إعادة أوراق التقديـم " +
+                        "إلى مقــدم الطــــلب .</li>\r\n\t\t\t\t\t<li>\tتعبئة هذا النموذج لا يُشكل أي التزام من ط" +
+                        "رف المؤسسة بالموافقة على المساعدة .</li>\r\n\t\t\t\t\t<li>\tإذا لم يتم الإتصال بك خلال 3" +
+                        " أشهر من تاريخ تقديم الطلب فتقبل اعتذار المؤسسة .</li>\r\n\t\t\t\t</ul>\r\n\r\n\t\t\t</td>\r\n\t" +
+                        "\t</tr>\r\n\r\n\r\n\t\t <tr>\r\n\t\t\t<td colspan=\"4\" align=\"center\" >\r\n\t\t\t\t\r\n\t\t\t\t<h5><b>أتعهد" +
+                        " أنا الموقع أدناه بأن كافة المعلومات التي ذكرتها صحيحة</b></h5>\r\n\t\t\t\t\r\n\t\t\t</td>\r" +
+                        "\n\t\t</tr>\r\n\r\n\r\n\t\t <tr>\r\n\t\t\t<td colspan=\"4\" align=\"left\" >\r\n\t\t\t\t\r\n\t\t\t\t<table style" +
+                        "=\"width:50%;\" dir=\"rtl\">\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td style=\"width:30%; text-align:righ" +
+                        "t;\">اسم مقدم الطلب : </td>\r\n\t\t\t\t\t\t<td>&nbsp;</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t" +
+                        "<td style=\"width:30%; text-align:right;\">التوقيع:</td>\r\n\t\t\t\t\t\t<td>&nbsp;</td>\r\n\t" +
+                        "\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td style=\"width:30%; text-align:right;\">التاريخ:</t" +
+                        "d>\r\n\t\t\t\t\t\t<td>&nbsp;</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t</table>\r\n\t\t\t\t\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\r\n" +
+                        "\t\t<tr>\r\n\t\t\t<td colspan=\"4\" align=\"center\" >\r\n\t\t\t\t\r\nهاتف : 0097126577577\t     فاك" +
+                        "س : 0097126577570\tص.ب 41355   أبو ظبي – الإمارات العربية المتحدة\r\n\r\n\t\t\t</td>\r\n\t\t" +
+                        "\t\t</tr>\r\n\r\n\t\t<tr>\r\n\t\t\t<td colspan=\"4\" align=\"center\">\r\n\t\t\t\t<b>Web: </b>www.zayed" +
+                        ".org.ae\t <b>e-mail: </b>zadfou@zayed.org.ae\r\n\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\r\n\r\n\t</table>\r" +
+                        "\n\r\n"));
             return @__ctrl;
         }
         
@@ -504,130 +1882,120 @@ namespace SPWebParts.ClientInfoWP {
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
         private void @__BuildControlTree(global::SPWebParts.ClientInfoWP.ClientInfoWP @__ctrl) {
+            global::System.Web.UI.WebControls.Label @__ctrl1;
+            @__ctrl1 = this.@__BuildControllblSuccess();
             System.Web.UI.IParserAccessor @__parser = ((System.Web.UI.IParserAccessor)(@__ctrl));
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl(@"
+            @__parser.AddParsedSubObject(@__ctrl1);
+            global::System.Web.UI.WebControls.Button @__ctrl2;
+            @__ctrl2 = this.@__BuildControlbtnPrint();
+            @__parser.AddParsedSubObject(@__ctrl2);
+            global::System.Web.UI.HtmlControls.HtmlGenericControl @__ctrl3;
+            @__ctrl3 = this.@__BuildControldivContainer();
+            @__parser.AddParsedSubObject(@__ctrl3);
+            global::System.Web.UI.HtmlControls.HtmlGenericControl @__ctrl4;
+            @__ctrl4 = this.@__BuildControldvPrint();
+            @__parser.AddParsedSubObject(@__ctrl4);
+            @__ctrl.SetRenderMethodDelegate(new System.Web.UI.RenderMethod(this.@__Render__control1));
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private void @__Render__control1(System.Web.UI.HtmlTextWriter @__w, System.Web.UI.Control parameterContainer) {
+            @__w.Write("\r\n\r\n\r\n<script src=\"../_layouts/15/SPWebParts/jQuery.print.js\" type=\"text/javascri" +
+                    "pt\"></script>\r\n\r\n<script type=\"text/javascript\">\r\n\t$(document).ready(function ()" +
+                    " {\r\n\t\t$(\'div.row\').hide();\r\n\t});\r\n\r\n\tfunction PrintdvPrint() {\r\n\t\t$(\'#");
+@__w.Write( dvPrint.ClientID );
 
-
-<script type=""text/javascript"">
-    $(document).ready(function () {
-        $('div.row').hide();
-    });
+            @__w.Write(@"').print();
+	}
 </script>
 
+
+
+
+
 <style type=""text/css"">
-    
-     .s4-breadcrumb ul {
-        display: none !important;
-    } 
+	
+	 .s4-breadcrumb ul {
+		display: none !important;
+	} 
 
-     .ms-webpartPage-root {
-         border-spacing: 0px !important;
-     }
-       .ms-webpartzone-cell {
-         margin: 0px !important;
-     }
-    .auto-style1 {
-        width: 70%;
-        border: none;
-        margin-right:15%;
-        margin-left:15%;
-        margin-top:0px;
-        margin-bottom:0px;
-    }
-     .auto-style1 td{
-    padding-right:5% !important;   
-    padding-bottom : 10px !important;
-    }
+	 .ms-webpartPage-root {
+		 border-spacing: 0px !important;
+	 }
+	   .ms-webpartzone-cell {
+		 margin: 0px !important;
+	 }
+	.auto-style1 {
+		width: 70%;
+		border: none;
+		margin-right:15%;
+		margin-left:15%;
+		margin-top:0px;
+		margin-bottom:0px;
+	}
+	 .auto-style1 td{
+	padding-right:5% !important;   
+	padding-bottom : 10px !important;
+	}
 
-    .auto-style2 {
-        width: 14%;
-    }
-    .auto-style3 td{
-       margin:0px 0px 0px 0px !important;
-       padding:0px 0px 0px 0px !important;
-    }
-    .txtPhoneStyle {
-        direction:ltr;
-    }
-</style>
-<table align=""right"" class=""auto-style1"" dir=""rtl"">
-    <tr>
-        <td class=""auto-style2"">الاسم : </td>
-        <td class=""auto-style3"">
-            "));
-            global::System.Web.UI.WebControls.TextBox @__ctrl1;
-            @__ctrl1 = this.@__BuildControltxtArabicFullName();
-            @__parser.AddParsedSubObject(@__ctrl1);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n      \r\n        <td class=\"auto-style3\">\r\n            رقم الهوية" +
-                        " : \r\n        </td>\r\n        <td class=\"auto-style3\">\r\n            "));
-            global::System.Web.UI.WebControls.TextBox @__ctrl2;
-            @__ctrl2 = this.@__BuildControltxtIDNumber();
-            @__parser.AddParsedSubObject(@__ctrl2);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n          <td rowspan=\"8\" valign=\"top\">\r\n            "));
-            global::System.Web.UI.WebControls.Image @__ctrl3;
-            @__ctrl3 = this.@__BuildControlimgPhotography();
-            @__parser.AddParsedSubObject(@__ctrl3);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td class=\"auto-style2\">رقم الجوال " +
-                        " : </td>\r\n        <td class=\"auto-style3\">\r\n            "));
-            global::System.Web.UI.WebControls.TextBox @__ctrl4;
-            @__ctrl4 = this.@__BuildControltxtPhone();
-            @__parser.AddParsedSubObject(@__ctrl4);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n        <td class=\"auto-style3\">\r\n            نوع المساعدة : \r\n " +
-                        "       </td>\r\n        <td class=\"auto-style3\">\r\n            "));
-            global::System.Web.UI.WebControls.DropDownList @__ctrl5;
-            @__ctrl5 = this.@__BuildControlddlAidType();
-            @__parser.AddParsedSubObject(@__ctrl5);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td class=\"auto-style2\">تفاصيل المس" +
-                        "اعدة : </td>\r\n        <!-- _x062a__x0641__x0627__x0635__x06  -->\r\n        <td cl" +
-                        "ass=\"auto-style3\" colspan=\"3\">\r\n            "));
-            global::System.Web.UI.WebControls.TextBox @__ctrl6;
-            @__ctrl6 = this.@__BuildControltxtAidRequestDetails();
-            @__parser.AddParsedSubObject(@__ctrl6);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td class=\"auto-style2\">المبلغ المط" +
-                        "لوب :  </td>\r\n        <!--  _x062a__x0627__x0631__x064a__x06   -->\r\n        <td " +
-                        "class=\"auto-style3\" style=\"padding-right:0px;\">\r\n            "));
-            global::System.Web.UI.WebControls.TextBox @__ctrl7;
-            @__ctrl7 = this.@__BuildControltxtRequiredAmount();
-            @__parser.AddParsedSubObject(@__ctrl7);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n        <td class=\"auto-style3\" style=\"padding-right:0px;\">\r\n   " +
-                        "         تاريخ الاستحقاق :  </td>\r\n        <td class=\"auto-style3\" style=\"paddin" +
-                        "g-right:0px;\">\r\n            "));
-            global::Microsoft.SharePoint.WebControls.DateTimeControl @__ctrl8;
-            @__ctrl8 = this.@__BuildControldtcDueDate();
-            @__parser.AddParsedSubObject(@__ctrl8);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n    </tr>\r\n\r\n    <tr>\r\n        <td class=\"auto-style2\">حالة الطل" +
-                        "ب : </td>\r\n        <!--   NewColumn1  -->\r\n        <td class=\"auto-style3\">\r\n   " +
-                        "         "));
-            global::System.Web.UI.WebControls.DropDownList @__ctrl9;
-            @__ctrl9 = this.@__BuildControlddlAidRequestStatus();
-            @__parser.AddParsedSubObject(@__ctrl9);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n        <td class=\"auto-style3\">\r\n            مدة الإقامة بالسنو" +
-                        "ات : </td>\r\n        <td class=\"auto-style3\">\r\n            "));
-            global::System.Web.UI.WebControls.TextBox @__ctrl10;
-            @__ctrl10 = this.@__BuildControltxtResidencyYears();
-            @__parser.AddParsedSubObject(@__ctrl10);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td class=\"auto-style2\">توصية اللجن" +
-                        "ة : </td>\r\n        <!--    _x0645__x062f__x0629__x0020__x06    -->\r\n        <td " +
-                        "class=\"auto-style3\">\r\n            "));
-            global::System.Web.UI.WebControls.TextBox @__ctrl11;
-            @__ctrl11 = this.@__BuildControltxtPanelOpinion();
-            @__parser.AddParsedSubObject(@__ctrl11);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n        <td class=\"auto-style3\">\r\n            مبلغ الموافقة : </" +
-                        "td>\r\n        <td class=\"auto-style3\">\r\n            "));
-            global::System.Web.UI.WebControls.TextBox @__ctrl12;
-            @__ctrl12 = this.@__BuildControltxtApprovedAmount();
-            @__parser.AddParsedSubObject(@__ctrl12);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n    </tr>\r\n\r\n\r\n\r\n    <tr>\r\n        <td colspan=\"4\" align=\"center" +
-                        "\">\r\n            "));
-            global::System.Web.UI.WebControls.Button @__ctrl13;
-            @__ctrl13 = this.@__BuildControlbtnSave();
-            @__parser.AddParsedSubObject(@__ctrl13);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n    </tr>\r\n\r\n    <tr>\r\n        <td colspan=\"4\" align=\"center\">\r\n" +
-                        "            "));
-            global::System.Web.UI.UpdatePanel @__ctrl14;
-            @__ctrl14 = this.@__BuildControlUpdatePanel1();
-            @__parser.AddParsedSubObject(@__ctrl14);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        </td>\r\n    </tr>\r\n\r\n</table>\r\n\r\n"));
+	.auto-style2 {
+		/*width: 14%;*/
+	}
+	.auto-style3 td{
+	   margin:0px 0px 0px 0px !important;
+	   padding:0px 0px 0px 0px !important;
+	}
+	.txtPhoneStyle {
+		direction:ltr;
+	}
+	.auto-style3 {
+		/*width: 100%;*/
+	}
+	.auto-style5 {
+		/*width: 20%;*/
+	}
+	.auto-style6 {
+		/*width: 30%;*/
+	}
+	.auto-style7 {
+		width: 100%;
+		font-size:x-small;
+		border-spacing:0;     
+		border-collapse:collapse;
+
+	}
+
+	.auto-style7 td {
+	border: 1px solid black;
+	}
+
+	.auto-style8 {
+		text-decoration: underline;
+	}
+ p.MsoNormal
+	{margin-bottom:.0001pt;
+	text-align:right;
+	direction:rtl;
+	unicode-bidi:embed;
+	font-size:12.0pt;
+	font-family:""Times New Roman"",""serif"";
+		margin-left: 0in;
+		margin-right: 0in;
+		margin-top: 0in;
+	}
+	</style>
+
+");
+            parameterContainer.Controls[0].RenderControl(@__w);
+            @__w.Write("\r\n\r\n\r\n");
+            parameterContainer.Controls[1].RenderControl(@__w);
+            @__w.Write("\r\n\r\n");
+            parameterContainer.Controls[2].RenderControl(@__w);
+            @__w.Write("\r\n\r\n");
+            parameterContainer.Controls[3].RenderControl(@__w);
+            @__w.Write("\r\n\r\n");
         }
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +

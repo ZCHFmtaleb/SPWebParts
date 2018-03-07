@@ -123,15 +123,88 @@ namespace SPWebParts.ClientInfoWP
                                     NewItem["_x062a__x0648__x0635__x064a__x06"] = txtPanelOpinion.Text;
                                     NewItem["_x0645__x0628__x0644__x063a__x00"] = txtApprovedAmount.Text;
 
+
+                                    //==================================New Fields============================================
+                                    NewItem["Nationality"] = txtNationality.Text;
+                                    NewItem["MaritalStatus"] = txtMaritalStatus.Text;
+                                    NewItem["Age"] = txtAge.Text;
+                                    NewItem["FamilySize"] = txtFamilySize.Text;
+                                    NewItem["Job"] = txtJob.Text;
+                                    NewItem["HomeAddress"] = txtHomeAddress.Text;
+                                    NewItem["HomePhone"] = txtHomePhone.Text;
+                                    NewItem["NoOfStudyingSons"] = txtNoOfStudyingSons.Text;
+                                    NewItem["Income"] = txtIncome.Text;
+                                    NewItem["HouseType"] = ddlHouseType.SelectedItem.Text;
+
+                                    NewItem["Rent"] = txtRent.Text;
+                                    NewItem["Bills"] = txtBills.Text;
+                                    NewItem["Banks"] = txtBanks.Text;
+                                    NewItem["LivingExpenses"] = txtLivingExpenses.Text;
+                                    NewItem["EduExpenses"] = txtEduExpenses.Text;
+                                    NewItem["OtherExpenses"] = txtOtherExpenses.Text;
+
+                                    NewItem["IsPreviousZayedAid"] = ddlIsPreviousZayedAid.SelectedItem.Text;
+                                    NewItem["PreviousZayedAidYear"] = txtPreviousZayedAidYear.Text;
+                                    NewItem["PreviousZayedAidAmount"] = txtPreviousZayedAidAmount.Text;
+
+
+                                    NewItem["IsPreviousOtherOrgAid"] = ddlIsPreviousOtherOrgAid.SelectedItem.Text;
+                                    NewItem["OtherOrgAidName"] = txtOtherOrgAidName.Text;
+                                    NewItem["OtherOrgAidAmount"] = txtOtherOrgAidAmount.Text;
+
+                                    NewItem["ChequeOrgName"] = txtChequeOrgName.Text;
+
+                                    //==============================================================================
                                     NewItem.Update();// means "Update Changes" , used for both Insert and Update. If ID is empty , it Inserts , otherwise if ID has value , it Updates
 
                                     web.AllowUnsafeUpdates = false;
                                     if (NewItem.ID != 0)
                                     {
+
+                                        divContainer.Visible = false;
+
+                                        lblSuccess.Visible = true;
+                                        lblRequestPage.Visible = true;
+
                                         lblSuccess.Text = "تم تسجيل الطلب بنجاح.   ";
-                                        lnkRequestPage.Text = "رقم الطلب " + NewItem.ID.ToString();
-                                        lnkRequestPage.NavigateUrl = SPContext.Current.Web.Url + "/Lists/" + ListName + "/Item/displayifs.aspx?ID=" + NewItem.ID.ToString();
+                                        lblRequestPage.Text = "رقم الطلب " + NewItem.ID.ToString();
+                                        //lnkRequestPage.NavigateUrl = SPContext.Current.Web.Url + "/Lists/" + ListName + "/Item/displayifs.aspx?ID=" + NewItem.ID.ToString();
                                         lblSuccess.BackColor = ColorTranslator.FromHtml("#d0ffc6");
+
+                                        btnPrint.Visible = true;
+                                        dvPrint.Visible = true;
+
+                                        lblName.Text = txtArabicFullName.Text;
+                                        lblNationality.Text = txtNationality.Text;
+                                        lblMaritalStatus.Text = txtMaritalStatus.Text;
+                                        lblAge.Text = txtAge.Text;
+                                        lblIDNumber.Text = txtIDNumber.Text;
+                                        lblFamilySize.Text = txtFamilySize.Text;
+                                        lblJob.Text = txtJob.Text;
+                                        lblResidencyYears.Text = txtResidencyYears.Text;
+                                        lblHomeAddress.Text = txtHomeAddress.Text;
+                                        lblPhone.Text = txtPhone.Text;
+                                        lblHomePhone.Text = txtHomePhone.Text;
+                                        lblNoOfStudyingSons.Text = txtNoOfStudyingSons.Text;
+                                        lblIncome.Text = txtIncome.Text;
+                                        lblHouseType.Text = ddlHouseType.SelectedItem.Text;
+
+                                        lblRent.Text = txtRent.Text;
+                                        lblBills.Text = txtBills.Text;
+                                        lblBanks.Text = txtBanks.Text;
+                                        lblLivingExpenses.Text = txtLivingExpenses.Text;
+                                        lblEduExpenses.Text = txtEduExpenses.Text;
+                                        lblOtherExpenses.Text = txtOtherExpenses.Text;
+
+                                        lblIsPreviousZayedAid.Text = ddlIsPreviousZayedAid.SelectedItem.Text;
+                                        lblPreviousZayedAidYear.Text = txtPreviousZayedAidYear.Text;
+                                        lblPreviousZayedAidAmount.Text = txtPreviousZayedAidAmount.Text;
+
+                                        lblIsPreviousOtherOrgAid.Text = ddlIsPreviousOtherOrgAid.SelectedItem.Text;
+                                        lblOtherOrgAidName.Text = txtOtherOrgAidName.Text;
+                                        lblOtherOrgAidAmount.Text = txtOtherOrgAidAmount.Text;
+                                        lblChequeOrgName.Text = txtChequeOrgName.Text;
+
                                     }
                                 }
                             }
@@ -140,10 +213,12 @@ namespace SPWebParts.ClientInfoWP
                 }
                 catch (Exception ex)
                 {
+                    lblSuccess.Visible = true;
                     lblSuccess.Text = "حدث الخطأ التالى اثناء محاولة إضافة الطلب : " + ex.Message;
                     lblSuccess.BackColor = ColorTranslator.FromHtml("#ffbfbf");
                 }
             });
         }
+       
     }
 }
