@@ -201,11 +201,19 @@ namespace SPWebParts.ClientInfoWP {
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Image imgClientPhoto;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
         protected global::System.Web.UI.WebControls.Image imgLogo;
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
         protected global::System.Web.UI.WebControls.Image Image1;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.Label lblAidType;
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
@@ -1308,6 +1316,19 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Image @__BuildControlimgClientPhoto() {
+            global::System.Web.UI.WebControls.Image @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Image();
+            this.imgClientPhoto = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "imgClientPhoto";
+            ((System.Web.UI.IAttributeAccessor)(@__ctrl)).SetAttribute("style", "float:right;clear:right;");
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
         private global::System.Web.UI.WebControls.Image @__BuildControlimgLogo() {
             global::System.Web.UI.WebControls.Image @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.Image();
@@ -1332,6 +1353,20 @@ namespace SPWebParts.ClientInfoWP {
             ((System.Web.UI.IAttributeAccessor)(@__ctrl)).SetAttribute("style", "float:left;");
             @__ctrl.ImageUrl = "../_layouts/15/SPWebParts/FormNumber.gif";
             @__ctrl.Width = new System.Web.UI.WebControls.Unit(100D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.Label @__BuildControllblAidType() {
+            global::System.Web.UI.WebControls.Label @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.Label();
+            this.lblAidType = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "lblAidType";
+            @__ctrl.Font.Size = global::System.Web.UI.WebControls.FontUnit.Large;
+            @__ctrl.ForeColor = global::System.Drawing.Color.Black;
             return @__ctrl;
         }
         
@@ -1702,74 +1737,83 @@ namespace SPWebParts.ClientInfoWP {
             global::System.Web.UI.WebControls.Label @__ctrl1;
             @__ctrl1 = this.@__BuildControllblRequestPage();
             @__parser.AddParsedSubObject(@__ctrl1);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl(@"
-				<span dir=""RTL"" lang=""AR-AE"" style=""font-size: 18.0pt; font-family: &quot;PT Bold Heading&quot;; mso-ascii-font-family: &quot;Times New Roman&quot;; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-hansi-font-family: &quot;Times New Roman&quot;; color: #006600; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-AE""><span class=""auto-style8"" style=""mso-spacerun: yes"">&nbsp;</span><span class=""auto-style8"">نمـوذج طلب مساعدة إنسانية </span></span>
-				"));
-            global::System.Web.UI.WebControls.Image @__ctrl2;
-            @__ctrl2 = this.@__BuildControlimgLogo();
-            @__parser.AddParsedSubObject(@__ctrl2);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Image @__ctrl2;
+            @__ctrl2 = this.@__BuildControlimgClientPhoto();
+            @__parser.AddParsedSubObject(@__ctrl2);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl(" \r\n                "));
             global::System.Web.UI.WebControls.Image @__ctrl3;
-            @__ctrl3 = this.@__BuildControlImage1();
+            @__ctrl3 = this.@__BuildControlimgLogo();
             @__parser.AddParsedSubObject(@__ctrl3);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"width:25%;\">الاسم :</td>\r\n\t\t\t<td>\r\n\t\t\t" +
-                        "\t"));
-            global::System.Web.UI.WebControls.Label @__ctrl4;
-            @__ctrl4 = this.@__BuildControllblName();
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Image @__ctrl4;
+            @__ctrl4 = this.@__BuildControlImage1();
             @__parser.AddParsedSubObject(@__ctrl4);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td> الجنسية :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl(@"
+                <span dir=""RTL"" lang=""AR-AE"" style=""font-size: 18.0pt; font-family: &quot;PT Bold Heading&quot;; mso-ascii-font-family: &quot;Times New Roman&quot;; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-hansi-font-family: &quot;Times New Roman&quot;; color: #006600; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-AE""><span class=""auto-style8"" style=""mso-spacerun: yes"">&nbsp;</span><span class=""auto-style8"">نمـوذج طلب مساعدة إنسانية </span></span>
+				<br />"));
             global::System.Web.UI.WebControls.Label @__ctrl5;
-            @__ctrl5 = this.@__BuildControllblNationality();
+            @__ctrl5 = this.@__BuildControllblAidType();
             @__parser.AddParsedSubObject(@__ctrl5);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>الحالة الاجتماعية :</td>\r\n\t\t\t<td>"));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n               \r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"width:25%;\">الاسم :</" +
+                        "td>\r\n\t\t\t<td style=\"width:25%;\">\r\n\t\t\t\t"));
             global::System.Web.UI.WebControls.Label @__ctrl6;
-            @__ctrl6 = this.@__BuildControllblMaritalStatus();
+            @__ctrl6 = this.@__BuildControllblName();
             @__parser.AddParsedSubObject(@__ctrl6);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("</td>\r\n\t\t\t<td> العمر :</td>\r\n\t\t\t<td>"));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td style=\"width:25%;\"> الجنسية :</td>\r\n\t\t\t<td style=\"width:25%;\">" +
+                        "\r\n\t\t\t\t"));
             global::System.Web.UI.WebControls.Label @__ctrl7;
-            @__ctrl7 = this.@__BuildControllblAge();
+            @__ctrl7 = this.@__BuildControllblNationality();
             @__parser.AddParsedSubObject(@__ctrl7);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>رقم الهوية : \r\n\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>الحالة الاجتماعية :</td>\r\n\t\t\t<td>"));
             global::System.Web.UI.WebControls.Label @__ctrl8;
-            @__ctrl8 = this.@__BuildControllblIDNumber();
+            @__ctrl8 = this.@__BuildControllblMaritalStatus();
             @__parser.AddParsedSubObject(@__ctrl8);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("</td>\r\n\t\t\t<td> العمر :</td>\r\n\t\t\t<td>"));
+            global::System.Web.UI.WebControls.Label @__ctrl9;
+            @__ctrl9 = this.@__BuildControllblAge();
+            @__parser.AddParsedSubObject(@__ctrl9);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>رقم الهوية : \r\n\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl10;
+            @__ctrl10 = this.@__BuildControllblIDNumber();
+            @__parser.AddParsedSubObject(@__ctrl10);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>عدد ا" +
                         "فراد الأسرة :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
-            global::System.Web.UI.WebControls.Label @__ctrl9;
-            @__ctrl9 = this.@__BuildControllblFamilySize();
-            @__parser.AddParsedSubObject(@__ctrl9);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>الوظيفة :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
-            global::System.Web.UI.WebControls.Label @__ctrl10;
-            @__ctrl10 = this.@__BuildControllblJob();
-            @__parser.AddParsedSubObject(@__ctrl10);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>مدة الإقامة بالدولة : </td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
             global::System.Web.UI.WebControls.Label @__ctrl11;
-            @__ctrl11 = this.@__BuildControllblResidencyYears();
+            @__ctrl11 = this.@__BuildControllblFamilySize();
             @__parser.AddParsedSubObject(@__ctrl11);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>عنوان السكن :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>الوظيفة :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
             global::System.Web.UI.WebControls.Label @__ctrl12;
-            @__ctrl12 = this.@__BuildControllblHomeAddress();
+            @__ctrl12 = this.@__BuildControllblJob();
             @__parser.AddParsedSubObject(@__ctrl12);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>رقم الجوال  : </td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>مدة الإقامة بالدولة : </td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
             global::System.Web.UI.WebControls.Label @__ctrl13;
-            @__ctrl13 = this.@__BuildControllblPhone();
+            @__ctrl13 = this.@__BuildControllblResidencyYears();
             @__parser.AddParsedSubObject(@__ctrl13);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>هاتف المنزل:</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>عنوان السكن :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
             global::System.Web.UI.WebControls.Label @__ctrl14;
-            @__ctrl14 = this.@__BuildControllblHomePhone();
+            @__ctrl14 = this.@__BuildControllblHomeAddress();
             @__parser.AddParsedSubObject(@__ctrl14);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>عدد الابناء فى الدراسة :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>رقم الجوال  : </td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
             global::System.Web.UI.WebControls.Label @__ctrl15;
-            @__ctrl15 = this.@__BuildControllblNoOfStudyingSons();
+            @__ctrl15 = this.@__BuildControllblPhone();
             @__parser.AddParsedSubObject(@__ctrl15);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>اجمالى الدخل :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>هاتف المنزل:</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
             global::System.Web.UI.WebControls.Label @__ctrl16;
-            @__ctrl16 = this.@__BuildControllblIncome();
+            @__ctrl16 = this.@__BuildControllblHomePhone();
             @__parser.AddParsedSubObject(@__ctrl16);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>نوع السكن :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>عدد الابناء فى الدراسة :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
             global::System.Web.UI.WebControls.Label @__ctrl17;
-            @__ctrl17 = this.@__BuildControllblHouseType();
+            @__ctrl17 = this.@__BuildControllblNoOfStudyingSons();
             @__parser.AddParsedSubObject(@__ctrl17);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>اجمالى الدخل :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl18;
+            @__ctrl18 = this.@__BuildControllblIncome();
+            @__parser.AddParsedSubObject(@__ctrl18);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>نوع السكن :</td>\r\n\t\t\t<td>\r\n\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl19;
+            @__ctrl19 = this.@__BuildControllblHouseType();
+            @__parser.AddParsedSubObject(@__ctrl19);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl(@"
 			</td>
 			<td>&nbsp;</td>
@@ -1792,64 +1836,64 @@ namespace SPWebParts.ClientInfoWP {
 				<tr>
 					<td align=""center"">
 						"));
-            global::System.Web.UI.WebControls.Label @__ctrl18;
-            @__ctrl18 = this.@__BuildControllblRent();
-            @__parser.AddParsedSubObject(@__ctrl18);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"center\">\r\n\t\t\t\t\t\t"));
-            global::System.Web.UI.WebControls.Label @__ctrl19;
-            @__ctrl19 = this.@__BuildControllblBills();
-            @__parser.AddParsedSubObject(@__ctrl19);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"center\">\r\n\t\t\t\t\t\t"));
             global::System.Web.UI.WebControls.Label @__ctrl20;
-            @__ctrl20 = this.@__BuildControllblBanks();
+            @__ctrl20 = this.@__BuildControllblRent();
             @__parser.AddParsedSubObject(@__ctrl20);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"center\">\r\n\t\t\t\t\t\t"));
             global::System.Web.UI.WebControls.Label @__ctrl21;
-            @__ctrl21 = this.@__BuildControllblLivingExpenses();
+            @__ctrl21 = this.@__BuildControllblBills();
             @__parser.AddParsedSubObject(@__ctrl21);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t   <td align=\"center\">\r\n\t\t\t\t\t   "));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"center\">\r\n\t\t\t\t\t\t"));
             global::System.Web.UI.WebControls.Label @__ctrl22;
-            @__ctrl22 = this.@__BuildControllblEduExpenses();
+            @__ctrl22 = this.@__BuildControllblBanks();
             @__parser.AddParsedSubObject(@__ctrl22);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"center\">\r\n\t\t\t\t\t\t"));
             global::System.Web.UI.WebControls.Label @__ctrl23;
-            @__ctrl23 = this.@__BuildControllblOtherExpenses();
+            @__ctrl23 = this.@__BuildControllblLivingExpenses();
             @__parser.AddParsedSubObject(@__ctrl23);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t   <td align=\"center\">\r\n\t\t\t\t\t   "));
+            global::System.Web.UI.WebControls.Label @__ctrl24;
+            @__ctrl24 = this.@__BuildControllblEduExpenses();
+            @__parser.AddParsedSubObject(@__ctrl24);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"center\">\r\n\t\t\t\t\t\t"));
+            global::System.Web.UI.WebControls.Label @__ctrl25;
+            @__ctrl25 = this.@__BuildControllblOtherExpenses();
+            @__parser.AddParsedSubObject(@__ctrl25);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td colspan=\"" +
                         "2\">هل سبق وأن حصلت على مساعدة من مؤسسة زايد للأعمال الخيرية ؟&nbsp;&nbsp;</td>\r\n" +
                         "\t\t\t<td colspan=\"2\" align=\"right\">\r\n\t\t\t\t"));
-            global::System.Web.UI.WebControls.Label @__ctrl24;
-            @__ctrl24 = this.@__BuildControllblIsPreviousZayedAid();
-            @__parser.AddParsedSubObject(@__ctrl24);
+            global::System.Web.UI.WebControls.Label @__ctrl26;
+            @__ctrl26 = this.@__BuildControllblIsPreviousZayedAid();
+            @__parser.AddParsedSubObject(@__ctrl26);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td >إذا كانت الإجابة بنعــم ففــي أي عــام </td>" +
                         "\r\n\t\t\t <td>\r\n\t\t\t\t "));
-            global::System.Web.UI.WebControls.Label @__ctrl25;
-            @__ctrl25 = this.@__BuildControllblPreviousZayedAidYear();
-            @__parser.AddParsedSubObject(@__ctrl25);
+            global::System.Web.UI.WebControls.Label @__ctrl27;
+            @__ctrl27 = this.@__BuildControllblPreviousZayedAidYear();
+            @__parser.AddParsedSubObject(@__ctrl27);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>وكـم بلغت قيمــة المساعــدة </td>\r\n\t\t\t<td align=\"right\">\r\n\t\t\t\t" +
                         ""));
-            global::System.Web.UI.WebControls.Label @__ctrl26;
-            @__ctrl26 = this.@__BuildControllblPreviousZayedAidAmount();
-            @__parser.AddParsedSubObject(@__ctrl26);
+            global::System.Web.UI.WebControls.Label @__ctrl28;
+            @__ctrl28 = this.@__BuildControllblPreviousZayedAidAmount();
+            @__parser.AddParsedSubObject(@__ctrl28);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td colspan=\"2\" >هل سبق وأن حصلت على مساعدة من جه" +
                         "ة أخرى ؟ </td>\r\n\t\t\t<td colspan=\"2\">\r\n\t\t\t\t"));
-            global::System.Web.UI.WebControls.Label @__ctrl27;
-            @__ctrl27 = this.@__BuildControllblIsPreviousOtherOrgAid();
-            @__parser.AddParsedSubObject(@__ctrl27);
+            global::System.Web.UI.WebControls.Label @__ctrl29;
+            @__ctrl29 = this.@__BuildControllblIsPreviousOtherOrgAid();
+            @__parser.AddParsedSubObject(@__ctrl29);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td >إذا كانت الإجابة بنعــم فاذكر اسم الجهة  </t" +
                         "d>\r\n\t\t\t <td>\r\n\t\t\t\t "));
-            global::System.Web.UI.WebControls.Label @__ctrl28;
-            @__ctrl28 = this.@__BuildControllblOtherOrgAidName();
-            @__parser.AddParsedSubObject(@__ctrl28);
+            global::System.Web.UI.WebControls.Label @__ctrl30;
+            @__ctrl30 = this.@__BuildControllblOtherOrgAidName();
+            @__parser.AddParsedSubObject(@__ctrl30);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t\t<td>وكـم بلغت قيمــة المساعــدة</td>\r\n\t\t\t<td align=\"right\">\r\n\t\t\t\t"));
-            global::System.Web.UI.WebControls.Label @__ctrl29;
-            @__ctrl29 = this.@__BuildControllblOtherOrgAidAmount();
-            @__parser.AddParsedSubObject(@__ctrl29);
+            global::System.Web.UI.WebControls.Label @__ctrl31;
+            @__ctrl31 = this.@__BuildControllblOtherOrgAidAmount();
+            @__parser.AddParsedSubObject(@__ctrl31);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td colspan=\"2\" >في حال الموافقة اذكر اسم الجهة ا" +
                         "لتي تود أن يصدر شيك المساعدة باسمها : \r\n\t\t\t</td>\r\n\t\t\t<td colspan=\"2\">\r\n\t\t\t\t"));
-            global::System.Web.UI.WebControls.Label @__ctrl30;
-            @__ctrl30 = this.@__BuildControllblChequeOrgName();
-            @__parser.AddParsedSubObject(@__ctrl30);
+            global::System.Web.UI.WebControls.Label @__ctrl32;
+            @__ctrl32 = this.@__BuildControllblChequeOrgName();
+            @__parser.AddParsedSubObject(@__ctrl32);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td colspan=\"4\" >\r\n\r\n\t\t\t\t<h6 class=\"auto-style8\">" +
                         "الوثائق المطلوبة  : </h6>\r\n\t\t\t\t<ul style=\"font-size: xx-small\">\r\n\t\t\t\t\t<li>رسالة " +
                         "موجهه إلى مدير عام المؤسسة يشرح فيها الحالة .</li>\r\n\t\t\t\t\t<li>صورة من جوازات السف" +

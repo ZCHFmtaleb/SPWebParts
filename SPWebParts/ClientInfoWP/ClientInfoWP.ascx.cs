@@ -174,6 +174,8 @@ namespace SPWebParts.ClientInfoWP
                                         btnPrint.Visible = true;
                                         dvPrint.Visible = true;
 
+                                        imgClientPhoto.ImageUrl = "/orgchart/ProgramsDepartment//ClientsImages/" + txtIDNumber.Text + ".jpg";
+                                        lblAidType.Text = ddlAidType.SelectedItem.Text;
                                         lblName.Text = txtArabicFullName.Text;
                                         lblNationality.Text = txtNationality.Text;
                                         lblMaritalStatus.Text = txtMaritalStatus.Text;

@@ -383,18 +383,21 @@
 		<tr>
 			<td align="center" colspan="4">
 				<asp:Label ID="lblRequestPage" runat="server" Visible="False" Font-Size="Large" style="float:right;" ForeColor="Blue"></asp:Label>
-				<span dir="RTL" lang="AR-AE" style="font-size: 18.0pt; font-family: &quot;PT Bold Heading&quot;; mso-ascii-font-family: &quot;Times New Roman&quot;; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-hansi-font-family: &quot;Times New Roman&quot;; color: #006600; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-AE"><span class="auto-style8" style="mso-spacerun: yes">&nbsp;</span><span class="auto-style8">نمـوذج طلب مساعدة إنسانية </span></span>
-				<asp:Image ID="imgLogo" runat="server" ImageUrl="../_layouts/15/SPWebParts/logo.jpg" Width="75px" style="float:left;clear:left;"/>
+				<asp:Image ID="imgClientPhoto" runat="server" style="float:right;clear:right;"/> 
+                <asp:Image ID="imgLogo" runat="server" ImageUrl="../_layouts/15/SPWebParts/logo.jpg" Width="75px" style="float:left;clear:left;"/>
 				<asp:Image ID="Image1" runat="server" style="float:left;" ImageUrl="../_layouts/15/SPWebParts/FormNumber.gif" Width="100px"/>
+                <span dir="RTL" lang="AR-AE" style="font-size: 18.0pt; font-family: &quot;PT Bold Heading&quot;; mso-ascii-font-family: &quot;Times New Roman&quot;; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-hansi-font-family: &quot;Times New Roman&quot;; color: #006600; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-AE"><span class="auto-style8" style="mso-spacerun: yes">&nbsp;</span><span class="auto-style8">نمـوذج طلب مساعدة إنسانية </span></span>
+				<br /><asp:Label ID="lblAidType" runat="server" Font-Size="Large" ForeColor="Black"></asp:Label>
+               
 			</td>
 		</tr>
 		<tr>
 			<td style="width:25%;">الاسم :</td>
-			<td>
+			<td style="width:25%;">
 				<asp:Label ID="lblName" runat="server" Text="Label"></asp:Label>
 			</td>
-			<td> الجنسية :</td>
-			<td>
+			<td style="width:25%;"> الجنسية :</td>
+			<td style="width:25%;">
 				<asp:Label ID="lblNationality" runat="server" Text="Label"></asp:Label>
 			</td>
 		</tr>
