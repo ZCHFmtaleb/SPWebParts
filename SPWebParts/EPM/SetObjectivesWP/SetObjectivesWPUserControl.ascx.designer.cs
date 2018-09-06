@@ -13,6 +13,78 @@ namespace SPWebParts.EPM.SetObjectivesWP {
     public partial class SetObjectivesWPUserControl {
         
         /// <summary>
+        /// slblEmpName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label slblEmpName;
+        
+        /// <summary>
+        /// lblEmpName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmpName;
+        
+        /// <summary>
+        /// slblEmpJob control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label slblEmpJob;
+        
+        /// <summary>
+        /// lblEmpJob control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmpJob;
+        
+        /// <summary>
+        /// slblEmpDept control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label slblEmpDept;
+        
+        /// <summary>
+        /// lblEmpDept control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmpDept;
+        
+        /// <summary>
+        /// slblEmpDM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label slblEmpDM;
+        
+        /// <summary>
+        /// lblEmpDM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmpDM;
+        
+        /// <summary>
         /// btnAddObjective control.
         /// </summary>
         /// <remarks>
@@ -47,6 +119,15 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlObjQ;
+        
+        /// <summary>
+        /// lbl_PercentageTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_PercentageTotal;
         
         /// <summary>
         /// gvwSetObjectives control.

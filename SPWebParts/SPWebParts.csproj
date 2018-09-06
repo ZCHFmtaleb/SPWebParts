@@ -40,6 +40,8 @@
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Server, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Server.UserProfiles, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -132,9 +134,11 @@
     <Content Include="Features\SetObjectivesWP Feature\SetObjectivesWP Feature.Template.xml">
       <DependentUpon>SetObjectivesWP Feature.feature</DependentUpon>
     </Content>
+    <Content Include="Layouts\SPWebParts\EPMStyle.css" />
     <Content Include="Layouts\SPWebParts\FormNumber.gif" />
     <Content Include="Layouts\SPWebParts\jQuery.print.js" />
     <Content Include="Layouts\SPWebParts\logo.jpg" />
+    <Content Include="Layouts\SPWebParts\SetObjectives.js" />
     <Content Include="PreviousRequestsWP\Elements.xml" />
     <Content Include="PreviousRequestsWP\PreviousRequestsWP.ascx">
       <Generator>SharePointWebPartCodeGenerator</Generator>

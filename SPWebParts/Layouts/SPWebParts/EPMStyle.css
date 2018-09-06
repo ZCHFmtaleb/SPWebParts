@@ -1,0 +1,46 @@
+﻿#container {
+    border: 2px solid black;
+    padding-right:20px;
+}
+
+#page_head {
+    margin-bottom: 2em;
+}
+
+.divEmpInfo {
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+.tbl_EmpInfo {
+    width: 50%;
+    border: 1px solid black;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.tbl_EmpInfo td {
+    width: 50%;
+    font-size:medium ;
+    color: black;
+    font-weight: bold;
+    border: 1px solid black;
+    padding-right: 5%;
+}
+
+.divAddGoal {
+    margin-bottom: 2em;
+}
+
+.Form_Table_css {
+    width: 50%;
+}
+
+.div_gvwSetObjectives th {
+    text-align: center;
+}
+
+.div_btnSubmit {
+    margin-top: 2em;
+    text-align: center;
+}
