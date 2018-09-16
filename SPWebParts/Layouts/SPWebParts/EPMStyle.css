@@ -33,7 +33,11 @@
 }
 
 .Form_Table_css {
-    width: 50%;
+    width: 70%;
+}
+
+.btnAddObjective_css{
+    margin-right:50px;
 }
 
 .div_gvwSetObjectives th {
@@ -43,4 +47,8 @@
 .div_btnSubmit {
     margin-top: 2em;
     text-align: center;
+}
+
+.divSuccess_css{
+    background-color:aquamarine;
 }

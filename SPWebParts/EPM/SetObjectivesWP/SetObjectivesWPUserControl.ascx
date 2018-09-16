@@ -7,6 +7,12 @@
 <%@ Register Tagprefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SetObjectivesWPUserControl.ascx.cs" Inherits="SPWebParts.EPM.SetObjectivesWP.SetObjectivesWPUserControl" %>
 
+<style type="text/css">
+    .auto-style1 {
+        height: 45px;
+    }
+</style>
+
 <SharePoint:CssRegistration runat="server" Name="/_layouts/15/SPWebParts/EPMStyle.css" After="/Style%20Library/css/ShareBoot.css" />
 <script type="text/javascript" src="/_layouts/15/SPWebParts/SetObjectives.js"></script>
 
@@ -55,40 +61,45 @@
 <div class="divAddGoal">
 <table class="Form_Table_css">
     <tr>
-        <td>اسم الهدف</td>
-        <td>وزن الهدف</td>
-        <td>تاريخ تحقيق الهدف</td>
-        <td rowspan="2" valign="bottom">
-
-<asp:Button ID="btnAddObjective" runat="server" Text="إضافة هدف" OnClick="btnAddObjective_Click" />
-
+        <td class="auto-style1">اسم الهدف</td>
+        <td class="auto-style1"><asp:TextBox ID="txtObjName" runat="server" MaxLength="255" Width="500px" ValidationGroup="vg1"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="rfv_txtObjName" runat="server" ControlToValidate="txtObjName" Display="Dynamic" ErrorMessage="اسم الهدف مطلوب" ForeColor="Red" ValidationGroup="vg1">*</asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
         <td>
-            <asp:TextBox ID="txtObjName" runat="server"></asp:TextBox>
-        </td>
+            وزن الهدف</td>
         <td>
-            <asp:TextBox ID="txtObjWeight" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtObjWeight" runat="server" MaxLength="3" Width="50px" ValidationGroup="vg1"></asp:TextBox>
+            % 
+            <asp:RequiredFieldValidator ID="rfv_txtObjWeight" runat="server" ControlToValidate="txtObjWeight" Display="Dynamic" ErrorMessage="وزن الهدف مطلوب" ForeColor="Red" ValidationGroup="vg1">*</asp:RequiredFieldValidator>
         </td>
+    </tr>
+    <tr>
+        <td>تاريخ تحقيق الهدف</td>
         <td>
-            <asp:DropDownList ID="ddlObjQ" runat="server">
+            <asp:DropDownList ID="ddlObjQ" runat="server" Width="55px">
                 <asp:ListItem Selected="True">Q1</asp:ListItem>
                 <asp:ListItem>Q2</asp:ListItem>
                 <asp:ListItem>Q3</asp:ListItem>
                 <asp:ListItem>Q4</asp:ListItem>
             </asp:DropDownList>
+
+<asp:Button ID="btnAddObjective" runat="server" Text="إضافة هدف" OnClick="btnAddObjective_Click" CssClass="btnAddObjective_css" ValidationGroup="vg1" />
+
         </td>
     </tr>
 </table>
 </div>
 
 <div id="divPercentageTotal" style="font-family: 'Times New Roman', Times, serif !important;">
-    <h3>مجموع اوزان الأهداف  :   <asp:Label ID="lbl_PercentageTotal" runat="server" Text="0" BackColor="Pink"></asp:Label> % </h3>
+    <h3>مجموع اوزان الأهداف  :   <asp:Label ID="lbl_PercentageTotal" runat="server" Text="0" BackColor="Pink"></asp:Label> %   
+                 <asp:CustomValidator ID="cvld_PercentageTotal" runat="server" ErrorMessage="لابد أن يكون مجموع اوزان الأهداف 100" Display="Dynamic" ForeColor="Red" OnServerValidate="cvld_PercentageTotal_ServerValidate" ValidationGroup="vg2">*</asp:CustomValidator>
+    </h3>
 </div>
 
 <div class="div_gvwSetObjectives">
-<asp:GridView ID="gvwSetObjectives" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False" ShowHeaderWhenEmpty="True" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" OnRowDeleting="gvwSetObjectives_RowDeleting" >
+<asp:GridView ID="gvwSetObjectives" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False" ShowHeaderWhenEmpty="True" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" OnRowDeleting="gvwSetObjectives_RowDeleting" OnRowEditing="gvwSetObjectives_RowEditing" OnRowCancelingEdit="gvwSetObjectives_RowCancelingEdit" OnRowUpdating="gvwSetObjectives_RowUpdating" ValidateRequestMode="Disabled" >
     <AlternatingRowStyle BackColor="White" />
     <Columns>
         <asp:BoundField DataField="ObjName" HeaderText="اسم الهدف" HeaderStyle-Width="35%" >
@@ -97,10 +108,21 @@
         <asp:BoundField DataField="ObjWeight" HeaderText="وزن الهدف" >
         <HeaderStyle  Width="15%" />
         </asp:BoundField>
-        <asp:BoundField DataField="ObjQ" HeaderText="تاريخ تحقيق الهدف" >
-        <HeaderStyle Width="15%" />
-        </asp:BoundField>
-        <asp:CommandField ButtonType="Button" CancelText="الغاء" DeleteText="حذف" EditText="تعديل" ShowEditButton="True" UpdateText="تحديث" HeaderText="تعديل" ShowHeader="True" >
+        <asp:TemplateField HeaderText="تاريخ تحقيق الهدف">
+            <EditItemTemplate>
+                <asp:DropDownList ID="ddlObjQ_gv" runat="server">
+                    <asp:ListItem>Q1</asp:ListItem>
+                    <asp:ListItem>Q2</asp:ListItem>
+                    <asp:ListItem>Q3</asp:ListItem>
+                    <asp:ListItem>Q4</asp:ListItem>
+                </asp:DropDownList>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="Label1" runat="server" Text='<%# Bind("ObjQ") %>'></asp:Label>
+            </ItemTemplate>
+            <HeaderStyle Width="15%" />
+        </asp:TemplateField>
+        <asp:CommandField ButtonType="Button" CancelText="تراجع" DeleteText="حذف" EditText="تعديل" ShowEditButton="True" UpdateText="تحديث" HeaderText="تعديل" ShowHeader="True" >
         <HeaderStyle Width="15%" />
         </asp:CommandField>
         <asp:CommandField ButtonType="Button" CancelText="الغاء" DeleteText="حذف" EditText="حذف" ShowDeleteButton="True" UpdateText="تحديث" HeaderText="حذف" ShowHeader="True" >
@@ -124,6 +146,15 @@
 
 
 <div class="div_btnSubmit" >
-<asp:Button ID="btnSubmit" runat="server" Text="إرسال" Font-Size="Large" Height="50px" Width="100px" />
+<asp:Button ID="btnSubmit" runat="server" Text="إرسال" Font-Size="Large" Height="50px" Width="100px" OnClick="btnSubmit_Click" ValidationGroup="vg2" />
+</div>
+
+<div class="div_val">
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ValidationGroup="vg1" />
+    <asp:ValidationSummary ID="ValidationSummary2" runat="server" ForeColor="Red" ValidationGroup="vg2" />
+</div>
+
+<div id="divSuccess" runat="server" visible="false" class="divSuccess_css">
+<h3>تم حفظ الأهداف بنجاح</h3>
 </div>
 </div>

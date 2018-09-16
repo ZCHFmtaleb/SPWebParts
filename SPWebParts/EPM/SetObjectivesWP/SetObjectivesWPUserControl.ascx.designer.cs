@@ -85,15 +85,6 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         protected global::System.Web.UI.WebControls.Label lblEmpDM;
         
         /// <summary>
-        /// btnAddObjective control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddObjective;
-        
-        /// <summary>
         /// txtObjName control.
         /// </summary>
         /// <remarks>
@@ -101,6 +92,15 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtObjName;
+        
+        /// <summary>
+        /// rfv_txtObjName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_txtObjName;
         
         /// <summary>
         /// txtObjWeight control.
@@ -112,6 +112,15 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         protected global::System.Web.UI.WebControls.TextBox txtObjWeight;
         
         /// <summary>
+        /// rfv_txtObjWeight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_txtObjWeight;
+        
+        /// <summary>
         /// ddlObjQ control.
         /// </summary>
         /// <remarks>
@@ -121,6 +130,15 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         protected global::System.Web.UI.WebControls.DropDownList ddlObjQ;
         
         /// <summary>
+        /// btnAddObjective control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddObjective;
+        
+        /// <summary>
         /// lbl_PercentageTotal control.
         /// </summary>
         /// <remarks>
@@ -128,6 +146,15 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_PercentageTotal;
+        
+        /// <summary>
+        /// cvld_PercentageTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvld_PercentageTotal;
         
         /// <summary>
         /// gvwSetObjectives control.
@@ -146,5 +173,32 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
+        
+        /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        
+        /// <summary>
+        /// ValidationSummary2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
+        
+        /// <summary>
+        /// divSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSuccess;
     }
 }
