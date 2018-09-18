@@ -13,6 +13,15 @@ namespace SPWebParts.EPM.SetObjectivesWP {
     public partial class SetObjectivesWPUserControl {
         
         /// <summary>
+        /// lblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatus;
+        
+        /// <summary>
         /// slblEmpName control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEmpDM;
+        
+        /// <summary>
+        /// ddlStrDir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlStrDir;
         
         /// <summary>
         /// txtObjName control.
