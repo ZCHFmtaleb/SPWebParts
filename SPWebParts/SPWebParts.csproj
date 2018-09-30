@@ -66,6 +66,23 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="EPM\Emp.cs" />
+    <Compile Include="EPM\RateObjectivesEmpWP\RateObjectivesEmpWP.cs" />
+    <Compile Include="EPM\RateObjectivesEmpWP\RateObjectivesEmpWPUserControl.ascx.cs">
+      <DependentUpon>RateObjectivesEmpWPUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EPM\RateObjectivesEmpWP\RateObjectivesEmpWPUserControl.ascx.designer.cs">
+      <DependentUpon>RateObjectivesEmpWPUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EPM\SelectEmp\SelectEmp.cs" />
+    <Compile Include="EPM\SelectEmp\SelectEmpUserControl.ascx.cs">
+      <DependentUpon>SelectEmpUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EPM\SelectEmp\SelectEmpUserControl.ascx.designer.cs">
+      <DependentUpon>SelectEmpUserControl.ascx.cs</DependentUpon>
+    </Compile>
     <Compile Include="EPM\SetObjectivesWP\SetObjectivesWP.cs" />
     <Compile Include="EPM\SetObjectivesWP\SetObjectivesWPUserControl.ascx.cs">
       <DependentUpon>SetObjectivesWPUserControl.ascx</DependentUpon>
@@ -73,6 +90,14 @@
     </Compile>
     <Compile Include="EPM\SetObjectivesWP\SetObjectivesWPUserControl.ascx.designer.cs">
       <DependentUpon>SetObjectivesWPUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EPM\SetProgress\SetProgress.cs" />
+    <Compile Include="EPM\SetProgress\SetProgressUserControl.ascx.cs">
+      <DependentUpon>SetProgressUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EPM\SetProgress\SetProgressUserControl.ascx.designer.cs">
+      <DependentUpon>SetProgressUserControl.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="PreviousRequestsWP\PreviousRequestsWP.ascx.cs">
       <DependentUpon>PreviousRequestsWP.ascx</DependentUpon>
@@ -89,9 +114,21 @@
     <None Include="ClientInfoWP\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{39855e44-0235-4e5d-b156-dba123681584}</SharePointProjectItemId>
     </None>
+    <None Include="EPM\RateObjectivesEmpWP\RateObjectivesEmpWP.webpart" />
+    <None Include="EPM\RateObjectivesEmpWP\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{5e692580-b19c-492b-83b1-6fe95c53b6bc}</SharePointProjectItemId>
+    </None>
+    <None Include="EPM\SelectEmp\SelectEmp.webpart" />
+    <None Include="EPM\SelectEmp\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{4e4515b4-cd7d-48c1-b703-dc82ef254f17}</SharePointProjectItemId>
+    </None>
     <None Include="EPM\SetObjectivesWP\SetObjectivesWP.webpart" />
     <None Include="EPM\SetObjectivesWP\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{03f23927-96b6-40eb-aade-167720141c38}</SharePointProjectItemId>
+    </None>
+    <None Include="EPM\SetProgress\SetProgress.webpart" />
+    <None Include="EPM\SetProgress\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d571a573-7d22-42ab-ad66-e11f067984e9}</SharePointProjectItemId>
     </None>
     <None Include="Features\Feature1\Feature1.feature">
       <FeatureId>{4ef58e05-c1ef-4c2d-90cb-5ded75f19c72}</FeatureId>
@@ -124,8 +161,14 @@
       <LastGenOutput>ClientInfoWP.ascx.g.cs</LastGenOutput>
     </Content>
     <Content Include="ClientInfoWP\Elements.xml" />
+    <Content Include="EPM\RateObjectivesEmpWP\Elements.xml" />
+    <Content Include="EPM\RateObjectivesEmpWP\RateObjectivesEmpWPUserControl.ascx" />
+    <Content Include="EPM\SelectEmp\Elements.xml" />
+    <Content Include="EPM\SelectEmp\SelectEmpUserControl.ascx" />
     <Content Include="EPM\SetObjectivesWP\Elements.xml" />
     <Content Include="EPM\SetObjectivesWP\SetObjectivesWPUserControl.ascx" />
+    <Content Include="EPM\SetProgress\Elements.xml" />
+    <Content Include="EPM\SetProgress\SetProgressUserControl.ascx" />
     <Content Include="Features\Feature1\Feature1.Template.xml">
       <DependentUpon>Feature1.feature</DependentUpon>
     </Content>

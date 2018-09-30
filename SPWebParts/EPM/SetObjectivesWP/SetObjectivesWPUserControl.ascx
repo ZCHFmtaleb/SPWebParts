@@ -150,6 +150,7 @@
 
 <div class="div_btnSubmit" >
 <asp:Button ID="btnSubmit" runat="server" Text="إرسال" Font-Size="Large" Height="50px" Width="100px" OnClick="btnSubmit_Click" ValidationGroup="vg2" />
+<asp:Button ID="btnApprove" runat="server" Text="اعتماد" Font-Size="Large" Height="50px" Width="100px" Visible="False" OnClick="btnApprove_Click" />
 </div>
 
 <div class="div_val">
@@ -160,4 +161,9 @@
 <div id="divSuccess" runat="server" visible="false" class="divSuccess_css">
 <h3>تم حفظ الأهداف بنجاح</h3>
 </div>
+
+<div id="divApprovalSuccess" runat="server" visible="false" class="divSuccess_css">
+<h3>تم اعتماد الأهداف بنجاح</h3>
+</div>
+
 </div>
