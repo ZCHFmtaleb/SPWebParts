@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace SPWebParts.EPM.SelectEmp
 {
@@ -71,17 +72,23 @@ namespace SPWebParts.EPM.SelectEmp
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            try
             {
-                strEmpDisplayName = SPContext.Current.Web.CurrentUser.Name;
+                SPSecurity.RunWithElevatedPrivileges(delegate ()
+                 {
+                     strEmpDisplayName = SPContext.Current.Web.CurrentUser.Name;
 
-                if (!IsPostBack)
-                {
-                    getEmps();
+                     if (!IsPostBack)
+                     {
+                         getEmps();
 
-                    Bind_Data_To_Controls();
-                }
-            });
+                         Bind_Data_To_Controls();
+                     }
+                 });
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void getEmps()
@@ -161,6 +168,18 @@ namespace SPWebParts.EPM.SelectEmp
                 gvwSelectEmp.DataSource = tblEmps;
                 gvwSelectEmp.DataBind();
             });
+        }
+
+        protected void gvwSelectEmp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow row = gvwSelectEmp.SelectedRow;
+                Response.Redirect(SPContext.Current.Web.Url + "/Pages/نموذج%20تقييم%20الأهداف%20الفردية%20والكفاءات.aspx?empid=" + row.Cells[0].Text);
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

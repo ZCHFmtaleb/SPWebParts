@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Web;
 using System.Web.UI.WebControls.WebParts;
 
@@ -123,7 +124,6 @@ namespace SPWebParts.ClientInfoWP
                                     NewItem["_x062a__x0648__x0635__x064a__x06"] = txtPanelOpinion.Text;
                                     NewItem["_x0645__x0628__x0644__x063a__x00"] = txtApprovedAmount.Text;
 
-
                                     //==================================New Fields============================================
                                     NewItem["Nationality"] = txtNationality.Text;
                                     NewItem["MaritalStatus"] = txtMaritalStatus.Text;
@@ -147,12 +147,15 @@ namespace SPWebParts.ClientInfoWP
                                     NewItem["PreviousZayedAidYear"] = txtPreviousZayedAidYear.Text;
                                     NewItem["PreviousZayedAidAmount"] = txtPreviousZayedAidAmount.Text;
 
-
                                     NewItem["IsPreviousOtherOrgAid"] = ddlIsPreviousOtherOrgAid.SelectedItem.Text;
                                     NewItem["OtherOrgAidName"] = txtOtherOrgAidName.Text;
                                     NewItem["OtherOrgAidAmount"] = txtOtherOrgAidAmount.Text;
 
                                     NewItem["ChequeOrgName"] = txtChequeOrgName.Text;
+                                    if (FileUpload1.HasFile)
+                                    {
+                                        NewItem.Attachments.Add(FileUpload1.FileName, FileUpload1.FileBytes);
+                                    }
 
                                     //==============================================================================
                                     NewItem.Update();// means "Update Changes" , used for both Insert and Update. If ID is empty , it Inserts , otherwise if ID has value , it Updates
@@ -160,7 +163,6 @@ namespace SPWebParts.ClientInfoWP
                                     web.AllowUnsafeUpdates = false;
                                     if (NewItem.ID != 0)
                                     {
-
                                         divContainer.Visible = false;
 
                                         lblSuccess.Visible = true;
@@ -206,7 +208,6 @@ namespace SPWebParts.ClientInfoWP
                                         lblOtherOrgAidName.Text = txtOtherOrgAidName.Text;
                                         lblOtherOrgAidAmount.Text = txtOtherOrgAidAmount.Text;
                                         lblChequeOrgName.Text = txtChequeOrgName.Text;
-
                                     }
                                 }
                             }
@@ -221,6 +222,5 @@ namespace SPWebParts.ClientInfoWP
                 }
             });
         }
-       
     }
 }

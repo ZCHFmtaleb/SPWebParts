@@ -57,3 +57,23 @@
 .divSuccess_css{
     background-color:aquamarine;
 }
+
+/* Table borders style (cross-browser) */
+
+.BorderedTable {
+    border: 1px solid black !important;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+}
+
+    .BorderedTable th td {
+        border: 1px solid black !important;
+        text-align: center !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        font-size:xx-large;
+    }
+.PaddingStyle{
+    padding-left:5%;
+    padding-right:5%;
+}

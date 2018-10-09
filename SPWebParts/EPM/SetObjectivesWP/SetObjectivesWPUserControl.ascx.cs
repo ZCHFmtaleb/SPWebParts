@@ -122,54 +122,66 @@ namespace SPWebParts.EPM.SetObjectivesWP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            try
             {
-                divSuccess.Visible = false;
-                divApprovalSuccess.Visible = false;
+                SPSecurity.RunWithElevatedPrivileges(delegate ()
+                   {
+                       divSuccess.Visible = false;
+                       divApprovalSuccess.Visible = false;
 
-                getEmp_from_QueryString_or_currentUser();
+                       getEmp_from_QueryString_or_currentUser();
 
-                Fill_Emp_Info();
+                       Fill_Emp_Info();
 
-                if (SPContext.Current.Web.CurrentUser.Email == intended_Emp.Emp_DM_email)
-                {
-                    btnSubmit.Visible = false;
-                    btnApprove.Visible = true;
-                }
-                else if (SPContext.Current.Web.CurrentUser.Email == intended_Emp.Emp_email)
-                {
-                    btnSubmit.Visible = true;
-                    btnApprove.Visible = false;
-                }
-                else
-                {
-                    btnSubmit.Visible = false;
-                    btnApprove.Visible = false;
-                }
+                       if (SPContext.Current.Web.CurrentUser.Email == intended_Emp.Emp_DM_email)
+                       {
+                           btnSubmit.Visible = false;
+                           btnApprove.Visible = true;
+                       }
+                       else if (SPContext.Current.Web.CurrentUser.Email == intended_Emp.Emp_email)
+                       {
+                           btnSubmit.Visible = true;
+                           btnApprove.Visible = false;
+                       }
+                       else
+                       {
+                           btnSubmit.Visible = false;
+                           btnApprove.Visible = false;
+                       }
 
-                if (!IsPostBack)
-                {
-                    fill_ddlStrDir();
+                       if (!IsPostBack)
+                       {
+                           fill_ddlStrDir();
 
-                    getPreviouslySavedObjectives();
+                           getPreviouslySavedObjectives();
 
-                    Bind_Data_To_Controls();
-                }
-            });
+                           Bind_Data_To_Controls();
+                       }
+                   });
+            }
+            catch (Exception)
+            {
+            }
         }
 
         protected void btnAddObjective_Click(object sender, EventArgs e)
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                DataRow NewRow = tblObjectives.NewRow();
-                NewRow["ObjName"] = txtObjName.Text; ;
-                NewRow["ObjWeight"] = txtObjWeight.Text;
-                NewRow["ObjQ"] = ddlObjQ.SelectedItem.Text;
-                NewRow["StrDir_x003a_Title"] = ddlStrDir.SelectedItem.Text;
-                NewRow["StrDir"] = ddlStrDir.SelectedItem.Value;
-                tblObjectives.Rows.Add(NewRow);
-                Bind_Data_To_Controls();
+                try
+                {
+                    DataRow NewRow = tblObjectives.NewRow();
+                    NewRow["ObjName"] = txtObjName.Text; ;
+                    NewRow["ObjWeight"] = txtObjWeight.Text;
+                    NewRow["ObjQ"] = ddlObjQ.SelectedItem.Text;
+                    NewRow["StrDir_x003a_Title"] = ddlStrDir.SelectedItem.Text;
+                    NewRow["StrDir"] = ddlStrDir.SelectedItem.Value;
+                    tblObjectives.Rows.Add(NewRow);
+                    Bind_Data_To_Controls();
+                }
+                catch (Exception)
+                {
+                }
             });
         }
 
@@ -198,9 +210,9 @@ namespace SPWebParts.EPM.SetObjectivesWP
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
                 GridViewRow row = (GridViewRow)gvwSetObjectives.Rows[e.RowIndex];
-                tblObjectives.Rows[e.RowIndex][0] = e.NewValues[0].ToString(); //((TextBox)row.Cells[0].Controls[0]).Text;
-                tblObjectives.Rows[e.RowIndex][1] = e.NewValues[1].ToString();
-                tblObjectives.Rows[e.RowIndex][2] = ((DropDownList)row.Cells[2].FindControl("ddlObjQ_gv")).SelectedValue;
+                tblObjectives.Rows[e.RowIndex][1] = e.NewValues[1].ToString(); //((TextBox)row.Cells[0].Controls[0]).Text;
+                tblObjectives.Rows[e.RowIndex][7] = int.Parse(e.NewValues[2].ToString());
+                tblObjectives.Rows[e.RowIndex][4] = ((DropDownList)row.Cells[3].FindControl("ddlObjQ_gv")).SelectedValue;
                 gvwSetObjectives.EditIndex = -1;
                 Bind_Data_To_Controls();
             });
@@ -217,53 +229,65 @@ namespace SPWebParts.EPM.SetObjectivesWP
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            try
             {
-                if (Page.IsValid)
-                {
-                    SaveToSP();
-                }
-            });
+                SPSecurity.RunWithElevatedPrivileges(delegate ()
+                 {
+                     if (Page.IsValid)
+                     {
+                         SaveToSP();
+                     }
+                 });
+            }
+            catch (Exception)
+            {
+            }
         }
 
         protected void btnApprove_Click(object sender, EventArgs e)
         {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            try
             {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb oWeb = oSite.OpenWeb())
-                    {
-                        oWeb.AllowUnsafeUpdates = true;
-                        SPList oList = oWeb.Lists["الأهداف"];
+                SPSecurity.RunWithElevatedPrivileges(delegate ()
+                   {
+                       using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
+                       {
+                           using (SPWeb oWeb = oSite.OpenWeb())
+                           {
+                               oWeb.AllowUnsafeUpdates = true;
+                               SPList oList = oWeb.Lists["الأهداف"];
 
-                        SPQuery qry = new SPQuery();
-                        qry.Query =
-                        @"   <Where>
+                               SPQuery qry = new SPQuery();
+                               qry.Query =
+                               @"   <Where>
                                         <Eq>
                                             <FieldRef Name='Emp' />
                                             <Value Type='User'>" + strEmpDisplayName + @"</Value>
                                         </Eq>
                                     </Where>";
-                        qry.ViewFieldsOnly = true;
-                        qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='Status' /><FieldRef Name='Emp' /><FieldRef Name='ObjQ' /><FieldRef Name='ObjYear' /><FieldRef Name='ObjType' /><FieldRef Name='ObjWeight' />";
-                        SPListItemCollection listItems = oList.GetItems(qry);
+                               qry.ViewFieldsOnly = true;
+                               qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='Status' /><FieldRef Name='Emp' /><FieldRef Name='ObjQ' /><FieldRef Name='ObjYear' /><FieldRef Name='ObjType' /><FieldRef Name='ObjWeight' />";
+                               SPListItemCollection listItems = oList.GetItems(qry);
 
-                        foreach (SPListItem item in listItems)
-                        {
-                            SPListItem c = oList.GetItemById(item.ID);
-                            c["Status"] = "معتمدة";
-                            c.Update();
-                        }
+                               foreach (SPListItem item in listItems)
+                               {
+                                   SPListItem c = oList.GetItemById(item.ID);
+                                   c["Status"] = "معتمدة";
+                                   c.Update();
+                               }
 
-                        oWeb.AllowUnsafeUpdates = false;
+                               oWeb.AllowUnsafeUpdates = false;
 
-                        lblStatus.Text = "تم اعتماد الأهداف";
-                        divApprovalSuccess.Visible = true;
-                        Notify_Emp_that_Goals_got_Approved();
-                    }
-                }
-            });
+                               lblStatus.Text = "تم اعتماد الأهداف";
+                               divApprovalSuccess.Visible = true;
+                               Notify_Emp_that_Goals_got_Approved();
+                           }
+                       }
+                   });
+            }
+            catch (Exception)
+            {
+            }
         }
 
         #endregion Event Handlers
@@ -507,7 +531,7 @@ namespace SPWebParts.EPM.SetObjectivesWP
             {
                 StringDictionary headers = new StringDictionary();
                 headers.Add("to", intended_Emp.Emp_DM_email);
-                headers.Add("cc", intended_Emp.Emp_email);
+                //headers.Add("cc", intended_Emp.Emp_email);
                 headers.Add("subject", " قام " + intended_Emp.Emp_DisplayName + " بوضع الأهداف الفردية لعام " + (DateTime.Now.Year + 1));
                 headers.Add("content-type", "text/html");
                 StringBuilder bodyText = new StringBuilder();

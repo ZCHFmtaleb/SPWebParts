@@ -12,7 +12,7 @@
 
 <div id="container" dir="rtl" align="right" >
 <div id="page_head">
-    <h1>نسب إنجاز الأهداف الفردية لعام  <span class="Next_Year"></span> </h1>
+    <h1>نسب إنجاز الأهداف الفردية لعام 2018  <%--<span class="Next_Year"></span>--%> </h1>
     <h2>الحالة : <asp:Label ID="lblStatus" runat="server" Text="لم يتم وضع نسب الإنجاز" ForeColor="Blue"></asp:Label> </h2>
 </div>
 
@@ -131,7 +131,7 @@
     <h2><asp:Label ID="Label6" runat="server" Text="أية أعمال إضافية قمت بها : (فريق أو لجنة - اية مشاركات اخرى)"></asp:Label></h2>
     <asp:TextBox ID="TextBox2" runat="server" TextMode="MultiLine" Rows="6" Width="50%"></asp:TextBox>
 </div>
-<div class="div_btnSubmit" >
+<div class="div_btnSubmit" style="margin-bottom:30px;">
 <asp:Button ID="btnSubmit" runat="server" Text="إرسال" Font-Size="Large" Height="50px" Width="100px" OnClick="btnSubmit_Click" ValidationGroup="vg2" />
 </div>
 

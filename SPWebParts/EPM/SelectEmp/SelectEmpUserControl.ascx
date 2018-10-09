@@ -11,7 +11,7 @@
 <SharePoint:CssRegistration runat="server" Name="/_layouts/15/SPWebParts/EPMStyle.css" After="/Style%20Library/css/ShareBoot.css" />
 <script type="text/javascript" src="/_layouts/15/SPWebParts/SetObjectives.js"></script>
 
-<style>
+<style type="text/css">
 th{
       text-align:center !important; 
     }
@@ -19,12 +19,12 @@ th{
 
 <div id="container" dir="rtl" align="right" >
 <div id="page_head">
-    <h1>التقييم السنوى للموظفين لعام  <span class="Next_Year"></span> </h1>
+    <h1>التقييم السنوى للموظفين لعام 2018  <%--<span class="Next_Year"></span>--%> </h1>
 </div>
 
 <asp:GridView ID="gvwSelectEmp" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False" 
     BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" 
-    ValidateRequestMode="Disabled" >
+    ValidateRequestMode="Disabled" OnSelectedIndexChanged="gvwSelectEmp_SelectedIndexChanged" >
     <AlternatingRowStyle BackColor="White" />
     <Columns>
         <asp:BoundField HeaderText="اسم الموظف" DataField="EmpName" >

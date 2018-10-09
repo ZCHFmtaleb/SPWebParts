@@ -189,6 +189,10 @@ namespace SPWebParts.ClientInfoWP {
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
         protected global::System.Web.UI.WebControls.Button btnSave;
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
@@ -1064,6 +1068,19 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.FileUpload @__BuildControlFileUpload1() {
+            global::System.Web.UI.WebControls.FileUpload @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.FileUpload();
+            this.FileUpload1 = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "FileUpload1";
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(400D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
         private global::System.Web.UI.WebControls.Button @__BuildControlbtnSave() {
             global::System.Web.UI.WebControls.Button @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.Button();
@@ -1289,10 +1306,15 @@ namespace SPWebParts.ClientInfoWP {
             global::System.Web.UI.WebControls.TextBox @__ctrl35;
             @__ctrl35 = this.@__BuildControltxtApprovedAmount();
             @__parser.AddParsedSubObject(@__ctrl35);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\r\n\t<tr>\r\n\t\t<td colspan=\"4\" align=\"center\">\r\n\r\n\t\t\t"));
-            global::System.Web.UI.WebControls.Button @__ctrl36;
-            @__ctrl36 = this.@__BuildControlbtnSave();
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t<td style=\"background-color:#EFFAF0\">إرفاق ملف :</td>\r" +
+                        "\n\t<td colspan=\"3\">\r\n\t\t"));
+            global::System.Web.UI.WebControls.FileUpload @__ctrl36;
+            @__ctrl36 = this.@__BuildControlFileUpload1();
             @__parser.AddParsedSubObject(@__ctrl36);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>  \r\n\t</tr>\r\n\t<tr>\r\n\t\t<td colspan=\"4\" align=\"center\">\r\n\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.Button @__ctrl37;
+            @__ctrl37 = this.@__BuildControlbtnSave();
+            @__parser.AddParsedSubObject(@__ctrl37);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\r\n\t\t\t\r\n\t\t</td>\r\n\t</tr>\r\n\t\r\n</table>\r\n "));
             return @__ctrl;
         }
@@ -1741,7 +1763,7 @@ namespace SPWebParts.ClientInfoWP {
             global::System.Web.UI.WebControls.Image @__ctrl2;
             @__ctrl2 = this.@__BuildControlimgClientPhoto();
             @__parser.AddParsedSubObject(@__ctrl2);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl(" \r\n                "));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl(" \r\n\t\t\t\t"));
             global::System.Web.UI.WebControls.Image @__ctrl3;
             @__ctrl3 = this.@__BuildControlimgLogo();
             @__parser.AddParsedSubObject(@__ctrl3);
@@ -1750,13 +1772,13 @@ namespace SPWebParts.ClientInfoWP {
             @__ctrl4 = this.@__BuildControlImage1();
             @__parser.AddParsedSubObject(@__ctrl4);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl(@"
-                <span dir=""RTL"" lang=""AR-AE"" style=""font-size: 18.0pt; font-family: &quot;PT Bold Heading&quot;; mso-ascii-font-family: &quot;Times New Roman&quot;; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-hansi-font-family: &quot;Times New Roman&quot;; color: #006600; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-AE""><span class=""auto-style8"" style=""mso-spacerun: yes"">&nbsp;</span><span class=""auto-style8"">نمـوذج طلب مساعدة إنسانية </span></span>
+				<span dir=""RTL"" lang=""AR-AE"" style=""font-size: 18.0pt; font-family: &quot;PT Bold Heading&quot;; mso-ascii-font-family: &quot;Times New Roman&quot;; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-hansi-font-family: &quot;Times New Roman&quot;; color: #006600; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-AE""><span class=""auto-style8"" style=""mso-spacerun: yes"">&nbsp;</span><span class=""auto-style8"">نمـوذج طلب مساعدة إنسانية </span></span>
 				<br />"));
             global::System.Web.UI.WebControls.Label @__ctrl5;
             @__ctrl5 = this.@__BuildControllblAidType();
             @__parser.AddParsedSubObject(@__ctrl5);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n               \r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"width:25%;\">الاسم :</" +
-                        "td>\r\n\t\t\t<td style=\"width:25%;\">\r\n\t\t\t\t"));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t\t   \r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"width:25%;\">الاسم :</td>\r\n\t\t\t<" +
+                        "td style=\"width:25%;\">\r\n\t\t\t\t"));
             global::System.Web.UI.WebControls.Label @__ctrl6;
             @__ctrl6 = this.@__BuildControllblName();
             @__parser.AddParsedSubObject(@__ctrl6);

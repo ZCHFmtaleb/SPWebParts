@@ -4,6 +4,7 @@ using Microsoft.SharePoint.Utilities;
 using System;
 using System.Data;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace SPWebParts.EPM.SetProgress
 {
@@ -74,31 +75,88 @@ namespace SPWebParts.EPM.SetProgress
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            try
             {
-                divSuccess.Visible = false;
+                SPSecurity.RunWithElevatedPrivileges(delegate ()
+                 {
+                     divSuccess.Visible = false;
 
-                getEmp_from_QueryString_or_currentUser();
+                     getEmp_from_QueryString_or_currentUser();
 
-                Fill_Emp_Info();
+                     Fill_Emp_Info();
 
-                if (!IsPostBack)
-                {
-                    getPreviouslySavedObjectives();
+                     if (!IsPostBack)
+                     {
+                         getPreviouslySavedObjectives();
 
-                    Bind_Data_To_Controls();
-                }
-            });
+                         Bind_Data_To_Controls();
+                     }
+                 });
+            }
+            catch (Exception)
+            {
+            }
         }
 
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            try
+            {
+                SPSecurity.RunWithElevatedPrivileges(delegate ()
+                  {
+                      if (Page.IsValid)
+                      {
+                          SaveToSP();
+                      }
+                  });
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+
+        private void SaveToSP()
+        {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                if (Page.IsValid)
+                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
                 {
-                    //SaveToSP();
+                    using (SPWeb oWeb = oSite.OpenWeb())
+                    {
+                        oWeb.AllowUnsafeUpdates = true;
+                        SPList oList = oWeb.Lists["الأهداف"];
+
+                        #region Add the new (or updated) objectives
+
+                        if (tblObjectives != null)
+                        {
+                            foreach (DataRow row in tblObjectives.Rows)
+                            {
+                                SPListItem oListItem = oList.GetItemById(int.Parse(row["ID"].ToString()));
+                                
+                                oListItem["AccPercent"] = row["AccPercent"].ToString();
+                                //oListItem["Status"] = "";
+                                //oListItem["Emp"] = SPContext.Current.Web.CurrentUser;
+                                //oListItem["ObjWeight"] = row["ObjWeight"].ToString();
+                                //oListItem["ObjQ"] = row["ObjQ"].ToString();
+                                //oListItem["ObjYear"] = DateTime.Now.Year + 1;
+                                //oListItem["StrDir_x003a_Title"] = row["StrDir_x003a_Title"].ToString();
+                                //oListItem["StrDir"] = int.Parse(row["StrDir"].ToString());
+
+                                oListItem.Update();
+                            }
+                            divSuccess.Visible = true;
+                        }
+                        else
+                        {
+                        }
+                        #endregion Add the new (or updated) objectives
+
+                        oWeb.AllowUnsafeUpdates = false;
+
+                    }
                 }
             });
         }
@@ -197,7 +255,11 @@ namespace SPWebParts.EPM.SetProgress
 
         protected void gvwProgress_RowEditing(object sender, System.Web.UI.WebControls.GridViewEditEventArgs e)
         {
-
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                gvwProgress.EditIndex = e.NewEditIndex;
+                Bind_Data_To_Controls();
+            });
         }
 
         protected void gvwProgress_RowCancelingEdit(object sender, System.Web.UI.WebControls.GridViewCancelEditEventArgs e)
@@ -211,7 +273,13 @@ namespace SPWebParts.EPM.SetProgress
 
         protected void gvwProgress_RowUpdating(object sender, System.Web.UI.WebControls.GridViewUpdateEventArgs e)
         {
-
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                GridViewRow row = (GridViewRow)gvwProgress.Rows[e.RowIndex];
+                tblObjectives.Rows[e.RowIndex][4] = e.NewValues[3].ToString(); //((TextBox)row.Cells[0].Controls[0]).Text;
+                gvwProgress.EditIndex = -1;
+                Bind_Data_To_Controls();
+            });
         }
     }
 }

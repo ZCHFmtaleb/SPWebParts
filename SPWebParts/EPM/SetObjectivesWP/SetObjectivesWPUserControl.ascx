@@ -148,7 +148,7 @@
 
 
 
-<div class="div_btnSubmit" >
+<div class="div_btnSubmit" style="margin-bottom:30px;">
 <asp:Button ID="btnSubmit" runat="server" Text="إرسال" Font-Size="Large" Height="50px" Width="100px" OnClick="btnSubmit_Click" ValidationGroup="vg2" />
 <asp:Button ID="btnApprove" runat="server" Text="اعتماد" Font-Size="Large" Height="50px" Width="100px" Visible="False" OnClick="btnApprove_Click" />
 </div>
