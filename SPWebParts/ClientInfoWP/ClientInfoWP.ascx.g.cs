@@ -976,7 +976,7 @@ namespace SPWebParts.ClientInfoWP {
         private global::System.Web.UI.WebControls.ListItem @__BuildControl__control20() {
             global::System.Web.UI.WebControls.ListItem @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.ListItem();
-            @__ctrl.Text = "موافقة اللجنة";
+            @__ctrl.Text = " للعرض على اللجنة";
             return @__ctrl;
         }
         
@@ -986,7 +986,7 @@ namespace SPWebParts.ClientInfoWP {
         private global::System.Web.UI.WebControls.ListItem @__BuildControl__control21() {
             global::System.Web.UI.WebControls.ListItem @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.ListItem();
-            @__ctrl.Text = "الموافقة النهائية";
+            @__ctrl.Text = "للعرض على المستشار الطبي ";
             return @__ctrl;
         }
         
@@ -994,6 +994,26 @@ namespace SPWebParts.ClientInfoWP {
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
         private global::System.Web.UI.WebControls.ListItem @__BuildControl__control22() {
+            global::System.Web.UI.WebControls.ListItem @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.ListItem();
+            @__ctrl.Text = "موافقة اللجنة";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control23() {
+            global::System.Web.UI.WebControls.ListItem @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.ListItem();
+            @__ctrl.Text = "الموافقة النهائية";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.ListItem @__BuildControl__control24() {
             global::System.Web.UI.WebControls.ListItem @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.ListItem();
             @__ctrl.Text = " مدفوع";
@@ -1022,6 +1042,12 @@ namespace SPWebParts.ClientInfoWP {
             global::System.Web.UI.WebControls.ListItem @__ctrl6;
             @__ctrl6 = this.@__BuildControl__control22();
             @__ctrl.Add(@__ctrl6);
+            global::System.Web.UI.WebControls.ListItem @__ctrl7;
+            @__ctrl7 = this.@__BuildControl__control23();
+            @__ctrl.Add(@__ctrl7);
+            global::System.Web.UI.WebControls.ListItem @__ctrl8;
+            @__ctrl8 = this.@__BuildControl__control24();
+            @__ctrl.Add(@__ctrl8);
         }
         
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]

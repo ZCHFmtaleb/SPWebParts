@@ -336,6 +336,8 @@
 				<asp:ListItem Selected="True">غير مكتمل</asp:ListItem>
 				<asp:ListItem>مكتمل</asp:ListItem>
 				<asp:ListItem>مرفوض</asp:ListItem>
+				<asp:ListItem> للعرض على اللجنة</asp:ListItem>
+				<asp:ListItem>للعرض على المستشار الطبي </asp:ListItem>
 				<asp:ListItem>موافقة اللجنة</asp:ListItem>
 				<asp:ListItem>الموافقة النهائية</asp:ListItem>
 				<asp:ListItem> مدفوع</asp:ListItem>
