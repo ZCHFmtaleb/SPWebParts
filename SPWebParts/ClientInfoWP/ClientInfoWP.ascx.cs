@@ -1,8 +1,10 @@
 ﻿using Microsoft.SharePoint;
+using Microsoft.SharePoint.Utilities;
 using System;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Drawing;
-using System.IO;
+using System.Text;
 using System.Web;
 using System.Web.UI.WebControls.WebParts;
 
@@ -22,6 +24,12 @@ namespace SPWebParts.ClientInfoWP
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (HttpContext.Current.Request.QueryString["reprint"] != null)
+            {
+                string reprintReqID = HttpContext.Current.Request.QueryString["reprint"];
+                Prepare_Printing(reprintReqID);
+            }
+
             get_cid();
 
             if (cid != "0")
@@ -108,6 +116,8 @@ namespace SPWebParts.ClientInfoWP
                             {
                                 SPListItem NewItem = list.Items.Add();
                                 {
+                                    #region Save to SP
+
                                     web.AllowUnsafeUpdates = true;
 
                                     NewItem["ClientID"] = cid;
@@ -124,7 +134,7 @@ namespace SPWebParts.ClientInfoWP
                                     NewItem["_x062a__x0648__x0635__x064a__x06"] = txtPanelOpinion.Text;
                                     NewItem["_x0645__x0628__x0644__x063a__x00"] = txtApprovedAmount.Text;
 
-                                    //==================================New Fields============================================
+                                    //================================== New Fields ============================================
                                     NewItem["Nationality"] = txtNationality.Text;
                                     NewItem["MaritalStatus"] = txtMaritalStatus.Text;
                                     NewItem["Age"] = txtAge.Text;
@@ -152,19 +162,25 @@ namespace SPWebParts.ClientInfoWP
                                     NewItem["OtherOrgAidAmount"] = txtOtherOrgAidAmount.Text;
 
                                     NewItem["ChequeOrgName"] = txtChequeOrgName.Text;
+                                    //============================= Medical Aid Request Fields ============================================
+
+                                    NewItem["IllnessDesc"] = txtIllnessDesc.Text;
+                                    NewItem["Hospital"] = txtHospital.Text;
+                                    NewItem["MedCost"] = txtMedCost.Text;
+
+                                    //===============================================================================================
                                     if (FileUpload1.HasFile)
                                     {
                                         NewItem.Attachments.Add(FileUpload1.FileName, FileUpload1.FileBytes);
                                     }
 
-                                    //==============================================================================
                                     NewItem.Update();// means "Update Changes" , used for both Insert and Update. If ID is empty , it Inserts , otherwise if ID has value , it Updates
-
                                     web.AllowUnsafeUpdates = false;
+
+                                    #endregion Save to SP
+
                                     if (NewItem.ID != 0)
                                     {
-                                        divContainer.Visible = false;
-
                                         lblSuccess.Visible = true;
                                         lblRequestPage.Visible = true;
 
@@ -173,41 +189,15 @@ namespace SPWebParts.ClientInfoWP
                                         //lnkRequestPage.NavigateUrl = SPContext.Current.Web.Url + "/Lists/" + ListName + "/Item/displayifs.aspx?ID=" + NewItem.ID.ToString();
                                         lblSuccess.BackColor = ColorTranslator.FromHtml("#d0ffc6");
 
-                                        btnPrint.Visible = true;
-                                        dvPrint.Visible = true;
+                                        if (ddlAidRequestStatus.SelectedItem.Text.Trim() == "للعرض على المستشار الطبي")
+                                        {
+                                            string Request_Details_URL = SPContext.Current.Web.Url + "/Lists/" + ListName + "/Item/displayifs.aspx?ID=" + NewItem.ID.ToString();
+                                            string Request_Number = NewItem.ID.ToString();
+                                            string Med_Email = get_Med_Email();
+                                            Send_Email_To_Medical_Consultant(Request_Details_URL, Request_Number, Med_Email);
+                                        }
 
-                                        imgClientPhoto.ImageUrl = "/orgchart/ProgramsDepartment//ClientsImages/" + txtIDNumber.Text + ".jpg";
-                                        lblAidType.Text = ddlAidType.SelectedItem.Text;
-                                        lblName.Text = txtArabicFullName.Text;
-                                        lblNationality.Text = txtNationality.Text;
-                                        lblMaritalStatus.Text = txtMaritalStatus.Text;
-                                        lblAge.Text = txtAge.Text;
-                                        lblIDNumber.Text = txtIDNumber.Text;
-                                        lblFamilySize.Text = txtFamilySize.Text;
-                                        lblJob.Text = txtJob.Text;
-                                        lblResidencyYears.Text = txtResidencyYears.Text;
-                                        lblHomeAddress.Text = txtHomeAddress.Text;
-                                        lblPhone.Text = txtPhone.Text;
-                                        lblHomePhone.Text = txtHomePhone.Text;
-                                        lblNoOfStudyingSons.Text = txtNoOfStudyingSons.Text;
-                                        lblIncome.Text = txtIncome.Text;
-                                        lblHouseType.Text = ddlHouseType.SelectedItem.Text;
-
-                                        lblRent.Text = txtRent.Text;
-                                        lblBills.Text = txtBills.Text;
-                                        lblBanks.Text = txtBanks.Text;
-                                        lblLivingExpenses.Text = txtLivingExpenses.Text;
-                                        lblEduExpenses.Text = txtEduExpenses.Text;
-                                        lblOtherExpenses.Text = txtOtherExpenses.Text;
-
-                                        lblIsPreviousZayedAid.Text = ddlIsPreviousZayedAid.SelectedItem.Text;
-                                        lblPreviousZayedAidYear.Text = txtPreviousZayedAidYear.Text;
-                                        lblPreviousZayedAidAmount.Text = txtPreviousZayedAidAmount.Text;
-
-                                        lblIsPreviousOtherOrgAid.Text = ddlIsPreviousOtherOrgAid.SelectedItem.Text;
-                                        lblOtherOrgAidName.Text = txtOtherOrgAidName.Text;
-                                        lblOtherOrgAidAmount.Text = txtOtherOrgAidAmount.Text;
-                                        lblChequeOrgName.Text = txtChequeOrgName.Text;
+                                        Prepare_Printing(NewItem.ID.ToString());
                                     }
                                 }
                             }
@@ -220,6 +210,95 @@ namespace SPWebParts.ClientInfoWP
                     lblSuccess.Text = "حدث الخطأ التالى اثناء محاولة إضافة الطلب : " + ex.Message;
                     lblSuccess.BackColor = ColorTranslator.FromHtml("#ffbfbf");
                 }
+            });
+        }
+
+        private void Prepare_Printing(string pReqID)
+        {
+            divContainer.Visible = false;
+            btnPrint.Visible = true;
+            dvPrint.Visible = true;
+
+            AidRequest r1= AidRequest_DAL. get_Request_Details_by_ID(pReqID);
+
+            imgClientPhoto.ImageUrl = "/orgchart/ProgramsDepartment//ClientsImages/" + r1.EIDCardNumber + ".jpg";
+            lblAidType.Text = r1.AidType;                
+            lblName.Text = r1.ArabicFullName;
+            lblNationality.Text = r1.Nationality;
+            lblMaritalStatus.Text = r1.MaritalStatus;
+            lblAge.Text = r1.Age;
+            lblIDNumber.Text = r1.EIDCardNumber;
+            lblFamilySize.Text = r1.FamilySize;
+            lblJob.Text = r1.Job;
+            lblResidencyYears.Text = r1.ResidencyYears;
+            lblHomeAddress.Text = r1.HomeAddress;
+            lblPhone.Text = r1.Phone;
+            lblHomePhone.Text = r1.HomePhone;
+            lblNoOfStudyingSons.Text = r1.NoOfStudyingSons;
+            lblIncome.Text = r1.Income;
+            lblHouseType.Text = r1.HouseType;
+
+            lblRent.Text = r1.Rent;
+            lblBills.Text = r1.Bills;
+            lblBanks.Text = r1.Banks;
+            lblLivingExpenses.Text = r1.LivingExpenses;
+            lblEduExpenses.Text = r1.EduExpenses;
+            lblOtherExpenses.Text = r1.OtherExpenses;
+
+            lblIsPreviousZayedAid.Text = r1.PreviousZayedAid;
+            lblPreviousZayedAidYear.Text = r1.PreviousZayedAidYear;
+            lblPreviousZayedAidAmount.Text = r1.PreviousZayedAidAmount;
+
+            lblIsPreviousOtherOrgAid.Text = r1.IsPreviousOtherOrgAid;
+            lblOtherOrgAidName.Text = r1.OtherOrgAidName;
+            lblOtherOrgAidAmount.Text = r1.OtherOrgAidAmount;
+            lblChequeOrgName.Text = r1.ChequeOrgName;
+        }
+
+        private string get_Med_Email()
+        {
+            string Med_Email = string.Empty;
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
+                {
+                    using (SPWeb spWeb = oSite.OpenWeb())
+                    {
+                        SPList spList = spWeb.Lists.TryGetList("المستشار الطبى");
+                        if (spList != null)
+                        {
+                            SPQuery qry = new SPQuery();
+                            qry.ViewFieldsOnly = true;
+                            qry.ViewFields = @"<FieldRef Name='Title' />";
+                            SPListItemCollection listItems = spList.GetItems(qry);
+                            Med_Email = listItems[0]["Title"].ToString();
+                        }
+                    }
+                }
+            });
+            return Med_Email;
+        }
+
+        private void Send_Email_To_Medical_Consultant(string Request_Details_URL, string Request_Number, string Med_Email)
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                StringDictionary headers = new StringDictionary();
+                headers.Add("to", Med_Email);
+                headers.Add("subject", "طلب علاج طبى جديد - رقم " + Request_Number);
+                headers.Add("content-type", "text/html");
+
+                StringBuilder bodyText = new StringBuilder();
+
+                bodyText.Append("<p dir=rtl >");
+                bodyText.Append("تم تقديم طلب مساعدة (علاج طبى) جديد ، الرجاء الإطلاع على تفاصيل الطلب ومعاينة الملفات المرفقة من خلال الرابط ادناه. ");
+                bodyText.Append("<br />");
+                bodyText.Append("ثم القيام بتحرير العنصر لاضافة رأى سيادتكم وذلك من خلال حقل \"تعليق المستشار الطبى\" ");
+                bodyText.Append("<br />");
+                bodyText.Append("<a href=" + Request_Details_URL + "  >" + "عرض تفاصيل الطلب" + "</a>");
+                bodyText.Append("</p>");
+
+                SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
             });
         }
     }

@@ -12,7 +12,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function () {
-		$('div.row').hide();
+		//$('div.row').hide();
 	});
 
 	function PrintdvPrint() {
@@ -79,10 +79,7 @@
 	.auto-style7 td {
 	border: 1px solid black;
 	}
-
-	.auto-style8 {
-		text-decoration: underline;
-	}
+	
  p.MsoNormal
 	{margin-bottom:.0001pt;
 	text-align:right;
@@ -114,7 +111,7 @@
 		<td class="auto-style3">
 			<asp:TextBox ID="txtNationality" runat="server"></asp:TextBox>
 		</td>
-		  <td rowspan="21" valign="top">
+		  <td rowspan="24" valign="top">
 			<asp:Image ID="imgPhotography" runat="server" />
 		</td>
 	</tr>
@@ -308,6 +305,37 @@
 		<td class="auto-style3">
 			&nbsp;</td>
 	</tr>
+
+	<tr>
+		<td colspan="2" style="text-align:right;padding:0px 0px 0px 0px;"><strong>بيانات خاصة بطلبات العلاج الطبى :</strong></td>
+		<td class="auto-style5">
+			&nbsp;</td>
+		<td class="auto-style3">
+			&nbsp;</td>
+	</tr>
+
+	<tr>
+		<td class="auto-style2">نوع المرض :</td>
+		<td>
+			<asp:TextBox ID="txtIllnessDesc" runat="server" Width="400px"></asp:TextBox>
+		</td>
+		<td class="auto-style5">
+			التكلفة :</td>
+		<td class="auto-style3">
+			<asp:TextBox ID="txtMedCost" runat="server"></asp:TextBox>
+		</td>
+	</tr>
+
+	<tr>
+		<td class="auto-style2">مكان العلاج :</td>
+		<td>
+			<asp:TextBox ID="txtHospital" runat="server" Width="400px"></asp:TextBox>
+		</td>
+		<td class="auto-style5">
+			&nbsp;</td>
+		<td class="auto-style3">
+			&nbsp;</td>
+	</tr>
 	<tr>
 		<td class="auto-style2">تفاصيل المساعدة : </td>
 		<!-- _x062a__x0641__x0627__x0635__x06  -->
@@ -319,7 +347,7 @@
 		<td class="auto-style2">المبلغ المطلوب :  </td>
 		<!--  _x062a__x0627__x0631__x064a__x06   -->
 		<td class="auto-style6" style="padding-right:0px;">
-			<asp:TextBox ID="txtRequiredAmount" runat="server" Columns="10" MaxLength="10">5000</asp:TextBox>
+			<asp:TextBox ID="txtRequiredAmount" runat="server" Columns="10" MaxLength="10">0</asp:TextBox>
 		</td>
 		<td class="auto-style5" style="padding-right:0px;">
 			تاريخ الاستحقاق :  </td>
@@ -332,12 +360,12 @@
 		<td class="auto-style2">حالة الطلب : </td>
 		<!--   NewColumn1  -->
 		<td class="auto-style6">
-			<asp:DropDownList ID="ddlAidRequestStatus" runat="server" Width="150px">
+			<asp:DropDownList ID="ddlAidRequestStatus" runat="server" Width="300px">
 				<asp:ListItem Selected="True">غير مكتمل</asp:ListItem>
 				<asp:ListItem>مكتمل</asp:ListItem>
 				<asp:ListItem>مرفوض</asp:ListItem>
 				<asp:ListItem> للعرض على اللجنة</asp:ListItem>
-				<asp:ListItem>للعرض على المستشار الطبي </asp:ListItem>
+				<asp:ListItem>للعرض على المستشار الطبي</asp:ListItem>
 				<asp:ListItem>موافقة اللجنة</asp:ListItem>
 				<asp:ListItem>الموافقة النهائية</asp:ListItem>
 				<asp:ListItem> مدفوع</asp:ListItem>

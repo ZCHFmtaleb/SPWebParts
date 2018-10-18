@@ -165,6 +165,18 @@ namespace SPWebParts.ClientInfoWP {
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtIllnessDesc;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtMedCost;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        protected global::System.Web.UI.WebControls.TextBox txtHospital;
+        
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
         protected global::System.Web.UI.WebControls.TextBox txtAidRequestDetails;
         
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
@@ -900,6 +912,44 @@ namespace SPWebParts.ClientInfoWP {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
             "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtIllnessDesc() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtIllnessDesc = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtIllnessDesc";
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(400D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtMedCost() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtMedCost = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtMedCost";
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
+        private global::System.Web.UI.WebControls.TextBox @__BuildControltxtHospital() {
+            global::System.Web.UI.WebControls.TextBox @__ctrl;
+            @__ctrl = new global::System.Web.UI.WebControls.TextBox();
+            this.txtHospital = @__ctrl;
+            @__ctrl.ApplyStyleSheetSkin(this.Page);
+            @__ctrl.ID = "txtHospital";
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(400D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            return @__ctrl;
+        }
+        
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
+        [GeneratedCodeAttribute("Microsoft.VisualStudio.SharePoint.ProjectExtensions.CodeGenerators.SharePointWebP" +
+            "artCodeGenerator", "15.0.0.0")]
         private global::System.Web.UI.WebControls.TextBox @__BuildControltxtAidRequestDetails() {
             global::System.Web.UI.WebControls.TextBox @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.TextBox();
@@ -923,7 +973,7 @@ namespace SPWebParts.ClientInfoWP {
             @__ctrl.ID = "txtRequiredAmount";
             @__ctrl.Columns = 10;
             @__ctrl.MaxLength = 10;
-            @__ctrl.Text = "5000";
+            @__ctrl.Text = "0";
             return @__ctrl;
         }
         
@@ -986,7 +1036,7 @@ namespace SPWebParts.ClientInfoWP {
         private global::System.Web.UI.WebControls.ListItem @__BuildControl__control21() {
             global::System.Web.UI.WebControls.ListItem @__ctrl;
             @__ctrl = new global::System.Web.UI.WebControls.ListItem();
-            @__ctrl.Text = "للعرض على المستشار الطبي ";
+            @__ctrl.Text = "للعرض على المستشار الطبي";
             return @__ctrl;
         }
         
@@ -1059,7 +1109,7 @@ namespace SPWebParts.ClientInfoWP {
             this.ddlAidRequestStatus = @__ctrl;
             @__ctrl.ApplyStyleSheetSkin(this.Page);
             @__ctrl.ID = "ddlAidRequestStatus";
-            @__ctrl.Width = new System.Web.UI.WebControls.Unit(150D, global::System.Web.UI.WebControls.UnitType.Pixel);
+            @__ctrl.Width = new System.Web.UI.WebControls.Unit(300D, global::System.Web.UI.WebControls.UnitType.Pixel);
             this.@__BuildControl__control16(@__ctrl.Items);
             return @__ctrl;
         }
@@ -1143,7 +1193,7 @@ namespace SPWebParts.ClientInfoWP {
             global::System.Web.UI.WebControls.TextBox @__ctrl2;
             @__ctrl2 = this.@__BuildControltxtNationality();
             @__parser.AddParsedSubObject(@__ctrl2);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t  <td rowspan=\"21\" valign=\"top\">\r\n\t\t\t"));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t  <td rowspan=\"24\" valign=\"top\">\r\n\t\t\t"));
             global::System.Web.UI.WebControls.Image @__ctrl3;
             @__ctrl3 = this.@__BuildControlimgPhotography();
             @__parser.AddParsedSubObject(@__ctrl3);
@@ -1297,50 +1347,83 @@ namespace SPWebParts.ClientInfoWP {
             global::System.Web.UI.WebControls.DropDownList @__ctrl29;
             @__ctrl29 = this.@__BuildControlddlAidType();
             @__parser.AddParsedSubObject(@__ctrl29);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl(@"
+		</td>
+		<td class=""auto-style5"">
+			&nbsp;</td>
+		<td class=""auto-style3"">
+			&nbsp;</td>
+	</tr>
+
+	<tr>
+		<td colspan=""2"" style=""text-align:right;padding:0px 0px 0px 0px;""><strong>بيانات خاصة بطلبات العلاج الطبى :</strong></td>
+		<td class=""auto-style5"">
+			&nbsp;</td>
+		<td class=""auto-style3"">
+			&nbsp;</td>
+	</tr>
+
+	<tr>
+		<td class=""auto-style2"">نوع المرض :</td>
+		<td>
+			"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl30;
+            @__ctrl30 = this.@__BuildControltxtIllnessDesc();
+            @__parser.AddParsedSubObject(@__ctrl30);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t<td class=\"auto-style5\">\r\n\t\t\tالتكلفة :</td>\r\n\t\t<td class=\"auto-style" +
+                        "3\">\r\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl31;
+            @__ctrl31 = this.@__BuildControltxtMedCost();
+            @__parser.AddParsedSubObject(@__ctrl31);
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">مكان العلاج :</td>\r\n\t\t<td>\r" +
+                        "\n\t\t\t"));
+            global::System.Web.UI.WebControls.TextBox @__ctrl32;
+            @__ctrl32 = this.@__BuildControltxtHospital();
+            @__parser.AddParsedSubObject(@__ctrl32);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t<td class=\"auto-style5\">\r\n\t\t\t&nbsp;</td>\r\n\t\t<td class=\"auto-style3\">" +
                         "\r\n\t\t\t&nbsp;</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">تفاصيل المساعدة : </t" +
                         "d>\r\n\t\t<!-- _x062a__x0641__x0627__x0635__x06  -->\r\n\t\t<td class=\"auto-style3\" cols" +
                         "pan=\"3\">\r\n\t\t\t"));
-            global::System.Web.UI.WebControls.TextBox @__ctrl30;
-            @__ctrl30 = this.@__BuildControltxtAidRequestDetails();
-            @__parser.AddParsedSubObject(@__ctrl30);
+            global::System.Web.UI.WebControls.TextBox @__ctrl33;
+            @__ctrl33 = this.@__BuildControltxtAidRequestDetails();
+            @__parser.AddParsedSubObject(@__ctrl33);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">المبلغ المطلوب :  </td>\r\n\t\t<!" +
                         "--  _x062a__x0627__x0631__x064a__x06   -->\r\n\t\t<td class=\"auto-style6\" style=\"pad" +
                         "ding-right:0px;\">\r\n\t\t\t"));
-            global::System.Web.UI.WebControls.TextBox @__ctrl31;
-            @__ctrl31 = this.@__BuildControltxtRequiredAmount();
-            @__parser.AddParsedSubObject(@__ctrl31);
+            global::System.Web.UI.WebControls.TextBox @__ctrl34;
+            @__ctrl34 = this.@__BuildControltxtRequiredAmount();
+            @__parser.AddParsedSubObject(@__ctrl34);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t<td class=\"auto-style5\" style=\"padding-right:0px;\">\r\n\t\t\tتاريخ الاستح" +
                         "قاق :  </td>\r\n\t\t<td class=\"auto-style3\" style=\"padding-right:0px;\">\r\n\t\t\t"));
-            global::Microsoft.SharePoint.WebControls.DateTimeControl @__ctrl32;
-            @__ctrl32 = this.@__BuildControldtcDueDate();
-            @__parser.AddParsedSubObject(@__ctrl32);
+            global::Microsoft.SharePoint.WebControls.DateTimeControl @__ctrl35;
+            @__ctrl35 = this.@__BuildControldtcDueDate();
+            @__parser.AddParsedSubObject(@__ctrl35);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">حالة الطلب : </td>\r\n\t\t<!-- " +
                         "  NewColumn1  -->\r\n\t\t<td class=\"auto-style6\">\r\n\t\t\t"));
-            global::System.Web.UI.WebControls.DropDownList @__ctrl33;
-            @__ctrl33 = this.@__BuildControlddlAidRequestStatus();
-            @__parser.AddParsedSubObject(@__ctrl33);
+            global::System.Web.UI.WebControls.DropDownList @__ctrl36;
+            @__ctrl36 = this.@__BuildControlddlAidRequestStatus();
+            @__parser.AddParsedSubObject(@__ctrl36);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t<td class=\"auto-style5\">\r\n\t\t\t&nbsp;</td>\r\n\t\t<td class=\"auto-style3\">" +
                         "\r\n\t\t\t&nbsp;</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td class=\"auto-style2\">توصية اللجنة : </td>\r" +
                         "\n\t\t<!--    _x0645__x062f__x0629__x0020__x06    -->\r\n\t\t<td class=\"auto-style6\">\r\n" +
                         "\t\t\t"));
-            global::System.Web.UI.WebControls.TextBox @__ctrl34;
-            @__ctrl34 = this.@__BuildControltxtPanelOpinion();
-            @__parser.AddParsedSubObject(@__ctrl34);
+            global::System.Web.UI.WebControls.TextBox @__ctrl37;
+            @__ctrl37 = this.@__BuildControltxtPanelOpinion();
+            @__parser.AddParsedSubObject(@__ctrl37);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t\t<td class=\"auto-style5\">\r\n\t\t\tمبلغ الموافقة : </td>\r\n\t\t<td class=\"aut" +
                         "o-style3\">\r\n\t\t\t"));
-            global::System.Web.UI.WebControls.TextBox @__ctrl35;
-            @__ctrl35 = this.@__BuildControltxtApprovedAmount();
-            @__parser.AddParsedSubObject(@__ctrl35);
+            global::System.Web.UI.WebControls.TextBox @__ctrl38;
+            @__ctrl38 = this.@__BuildControltxtApprovedAmount();
+            @__parser.AddParsedSubObject(@__ctrl38);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t<td style=\"background-color:#EFFAF0\">إرفاق ملف :</td>\r" +
                         "\n\t<td colspan=\"3\">\r\n\t\t"));
-            global::System.Web.UI.WebControls.FileUpload @__ctrl36;
-            @__ctrl36 = this.@__BuildControlFileUpload1();
-            @__parser.AddParsedSubObject(@__ctrl36);
+            global::System.Web.UI.WebControls.FileUpload @__ctrl39;
+            @__ctrl39 = this.@__BuildControlFileUpload1();
+            @__parser.AddParsedSubObject(@__ctrl39);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\t\t</td>  \r\n\t</tr>\r\n\t<tr>\r\n\t\t<td colspan=\"4\" align=\"center\">\r\n\r\n\t\t\t"));
-            global::System.Web.UI.WebControls.Button @__ctrl37;
-            @__ctrl37 = this.@__BuildControlbtnSave();
-            @__parser.AddParsedSubObject(@__ctrl37);
+            global::System.Web.UI.WebControls.Button @__ctrl40;
+            @__ctrl40 = this.@__BuildControlbtnSave();
+            @__parser.AddParsedSubObject(@__ctrl40);
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\r\n\t\t\t\r\n\t\t</td>\r\n\t</tr>\r\n\t\r\n</table>\r\n "));
             return @__ctrl;
         }
@@ -1996,7 +2079,7 @@ namespace SPWebParts.ClientInfoWP {
         private void @__Render__control1(System.Web.UI.HtmlTextWriter @__w, System.Web.UI.Control parameterContainer) {
             @__w.Write("\r\n\r\n\r\n<script src=\"../_layouts/15/SPWebParts/jQuery.print.js\" type=\"text/javascri" +
                     "pt\"></script>\r\n\r\n<script type=\"text/javascript\">\r\n\t$(document).ready(function ()" +
-                    " {\r\n\t\t$(\'div.row\').hide();\r\n\t});\r\n\r\n\tfunction PrintdvPrint() {\r\n\t\t$(\'#");
+                    " {\r\n\t\t//$(\'div.row\').hide();\r\n\t});\r\n\r\n\tfunction PrintdvPrint() {\r\n\t\t$(\'#");
 @__w.Write( dvPrint.ClientID );
 
             @__w.Write(@"').print();
@@ -2062,10 +2145,7 @@ namespace SPWebParts.ClientInfoWP {
 	.auto-style7 td {
 	border: 1px solid black;
 	}
-
-	.auto-style8 {
-		text-decoration: underline;
-	}
+	
  p.MsoNormal
 	{margin-bottom:.0001pt;
 	text-align:right;

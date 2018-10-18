@@ -58,6 +58,8 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientInfoWP\AidRequest.cs" />
+    <Compile Include="ClientInfoWP\AidRequest_DAL.cs" />
     <Compile Include="ClientInfoWP\ClientInfo.cs" />
     <Compile Include="ClientInfoWP\ClientInfoWP.ascx.cs">
       <DependentUpon>ClientInfoWP.ascx</DependentUpon>
