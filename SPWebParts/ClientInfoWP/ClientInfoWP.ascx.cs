@@ -182,11 +182,7 @@ namespace SPWebParts.ClientInfoWP
                                     if (NewItem.ID != 0)
                                     {
                                         lblSuccess.Visible = true;
-                                        lblRequestPage.Visible = true;
-
                                         lblSuccess.Text = "تم تسجيل الطلب بنجاح.   ";
-                                        lblRequestPage.Text = "رقم الطلب " + NewItem.ID.ToString();
-                                        //lnkRequestPage.NavigateUrl = SPContext.Current.Web.Url + "/Lists/" + ListName + "/Item/displayifs.aspx?ID=" + NewItem.ID.ToString();
                                         lblSuccess.BackColor = ColorTranslator.FromHtml("#d0ffc6");
 
                                         if (ddlAidRequestStatus.SelectedItem.Text.Trim() == "للعرض على المستشار الطبي")
@@ -219,6 +215,8 @@ namespace SPWebParts.ClientInfoWP
             btnPrint.Visible = true;
             dvPrint.Visible = true;
 
+            lblRequestPage.Visible = true;
+            lblRequestPage.Text = "رقم الطلب " + pReqID;
             AidRequest r1= AidRequest_DAL. get_Request_Details_by_ID(pReqID);
 
             imgClientPhoto.ImageUrl = "/orgchart/ProgramsDepartment//ClientsImages/" + r1.EIDCardNumber + ".jpg";

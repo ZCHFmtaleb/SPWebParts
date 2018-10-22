@@ -78,7 +78,7 @@
 
 	.auto-style7 td {
 	border: 1px solid black;
-    padding-right: 5px;
+	padding-right: 5px;
 	}
 	
  p.MsoNormal
