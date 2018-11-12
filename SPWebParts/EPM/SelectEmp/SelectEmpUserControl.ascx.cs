@@ -1,6 +1,7 @@
 ﻿using Microsoft.Office.Server.UserProfiles;
 using Microsoft.SharePoint;
 using Microsoft.SharePoint.Utilities;
+using SPWebParts.EPM.EL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -58,7 +59,6 @@ namespace SPWebParts.EPM.SelectEmp
                     tblEmps = new DataTable();
                     tblEmps.Columns.Add("EmpName");
                     tblEmps.Columns.Add("EmpJob");
-                    tblEmps.Columns.Add("EmpEvalStatus");
                     return tblEmps;
                 }
             }
@@ -99,63 +99,19 @@ namespace SPWebParts.EPM.SelectEmp
                 {
                     using (SPWeb spWeb = oSite.OpenWeb())
                     {
-
                         SPPrincipalInfo pinfo = SPUtility.ResolvePrincipal(spWeb, strEmpDisplayName, SPPrincipalType.User, SPPrincipalSource.All, null, false);
-                        //SPUser emp = web.Users[pinfo.LoginName];
-
-                        //lblEmpName.Text = pinfo.DisplayName;
-                        //intended_Emp.Emp_DisplayName = pinfo.DisplayName;
-                        //lblEmpName.Text = emp.Name;
-
-                        //intended_Emp.Emp_email = pinfo.Email;
-
-                        //lblEmpJob.Text = pinfo.JobTitle;
-                        //intended_Emp.Emp_JobTitle = pinfo.JobTitle;
-                        //lblEmpJob.Text = cUserProfile.GetProfileValueCollection("Title")[0].ToString();
-
-                        //lblEmpDept.Text = pinfo.Department;
-                        //intended_Emp.Emp_Department = pinfo.Department;
-                        //lblEmpDept.Text = cUserProfile.GetProfileValueCollection("Department")[0].ToString();
-
                         SPServiceContext serviceContext = SPServiceContext.GetContext(oSite);
                         UserProfileManager userProfileMgr = new UserProfileManager(serviceContext);
                         UserProfile cUserProfile = userProfileMgr.GetUserProfile(pinfo.LoginName);
-                        //UserProfile DM_UserProfile = userProfileMgr.GetUserProfile(cUserProfile.GetProfileValueCollection("Manager")[0].ToString());
-                        //intended_Emp.Emp_DM_email = DM_UserProfile["WorkEmail"].ToString(); ;
-                        //lblEmpDM.Text = DM_UserProfile.DisplayName;
-                        //intended_Emp.Emp_DM_name = DM_UserProfile.DisplayName;
-
 
                         List<UserProfile> directReports = new List<UserProfile>(cUserProfile.GetDirectReports());
-
                         foreach (UserProfile up in directReports)
                         {
                             DataRow row = tblEmps.NewRow();
                             row["EmpName"] = up.DisplayName;
-                            row["EmpJob"]=up.GetProfileValueCollection("Title")[0].ToString();
-                            row["EmpEvalStatus"] = "لم يتم التقييم";
+                            row["EmpJob"] = up.GetProfileValueCollection("Title")[0].ToString();
                             tblEmps.Rows.Add(row);
                         }
-
-                        //================================================================================================================
-
-                        //SPList spList = spWeb.Lists.TryGetList("الأهداف");
-                        //if (spList != null)
-                        //{
-                        //    SPQuery qry = new SPQuery();
-                        //    qry.Query =
-                        //    @"   <Where>
-                        //                <Eq>
-                        //                    <FieldRef Name='Emp' />
-                        //                    <Value Type='User'>" + strEmpDisplayName + @"</Value>
-                        //                </Eq>
-                        //            </Where>";
-                        //    qry.ViewFieldsOnly = true;
-                        //    qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='Status' /><FieldRef Name='Emp' /><FieldRef Name='ObjQ' /><FieldRef Name='ObjYear' /><FieldRef Name='ObjType' />
-                        //                                    <FieldRef Name='ObjWeight' /><FieldRef Name='StrDir' /><FieldRef Name='StrDir_x003a_Title' />";
-                        //    SPListItemCollection listItems = spList.GetItems(qry);
-                        //    tblEmps = listItems.GetDataTable();
-                        //}
                     }
                 }
             });

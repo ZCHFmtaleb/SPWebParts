@@ -76,6 +76,24 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP {
         protected global::System.Web.UI.WebControls.Label lblEmpDept;
         
         /// <summary>
+        /// slblEmpRank control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label slblEmpRank;
+        
+        /// <summary>
+        /// lblEmpRank control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmpRank;
+        
+        /// <summary>
         /// slblEmpDM control.
         /// </summary>
         /// <remarks>
@@ -103,6 +121,15 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP {
         protected global::System.Web.UI.WebControls.GridView gvwRate;
         
         /// <summary>
+        /// lbl_invalid_rank control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_invalid_rank;
+        
+        /// <summary>
         /// gvw_Std_Skills control.
         /// </summary>
         /// <remarks>
@@ -110,15 +137,6 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvw_Std_Skills;
-        
-        /// <summary>
-        /// gvw_Lead_Skills control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvw_Lead_Skills;
         
         /// <summary>
         /// txt_Reasons_for_vh_or_vl control.

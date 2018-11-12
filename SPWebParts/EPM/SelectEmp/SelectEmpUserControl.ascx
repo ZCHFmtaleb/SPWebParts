@@ -34,9 +34,6 @@ th{
         <asp:BoundField HeaderText="الوظيفة" DataField="EmpJob" >
         <HeaderStyle Width="30%" />
         </asp:BoundField>
-        <asp:BoundField HeaderText="حالة التقييم" DataField="EmpEvalStatus" >
-        <HeaderStyle Width="20%" />
-        </asp:BoundField>
         <asp:CommandField ButtonType="Button" HeaderStyle-Width="10%" SelectText="اضف التقييم" ShowSelectButton="True" ShowHeader="True" >
 <HeaderStyle Width="10%"></HeaderStyle>
         </asp:CommandField>

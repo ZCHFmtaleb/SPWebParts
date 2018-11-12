@@ -1,6 +1,7 @@
-﻿using Microsoft.Office.Server.UserProfiles;
-using Microsoft.SharePoint;
+﻿using Microsoft.SharePoint;
 using Microsoft.SharePoint.Utilities;
+using SPWebParts.EPM.DAL;
+using SPWebParts.EPM.EL;
 using System;
 using System.Collections.Specialized;
 using System.Data;
@@ -84,6 +85,50 @@ namespace SPWebParts.EPM.SetObjectivesWP
             }
         }
 
+        public DataTable tblPrimaryGoal
+        {
+            get
+            {
+                if (ViewState["tblPrimaryGoal"] != null)
+                {
+                    return (DataTable)ViewState["tblPrimaryGoal"];
+                }
+                else
+                {
+                    tblPrimaryGoal = new DataTable();
+                    tblPrimaryGoal.Columns.Add("ID");
+                    tblPrimaryGoal.Columns.Add("Title");
+                    return tblPrimaryGoal;
+                }
+            }
+            set
+            {
+                ViewState["tblPrimaryGoal"] = value;
+            }
+        }
+
+        public DataTable tblSecondaryGoal
+        {
+            get
+            {
+                if (ViewState["tblSecondaryGoal"] != null)
+                {
+                    return (DataTable)ViewState["tblSecondaryGoal"];
+                }
+                else
+                {
+                    tblSecondaryGoal = new DataTable();
+                    tblSecondaryGoal.Columns.Add("ID");
+                    tblSecondaryGoal.Columns.Add("Title");
+                    return tblSecondaryGoal;
+                }
+            }
+            set
+            {
+                ViewState["tblSecondaryGoal"] = value;
+            }
+        }
+
         public string strEmpDisplayName
         {
             get
@@ -131,7 +176,8 @@ namespace SPWebParts.EPM.SetObjectivesWP
 
                        getEmp_from_QueryString_or_currentUser();
 
-                       Fill_Emp_Info();
+                       intended_Emp = Emp_DAL.get_Emp_Info(intended_Emp, strEmpDisplayName);
+                       bind_Emp_Info();
 
                        if (SPContext.Current.Web.CurrentUser.Email == intended_Emp.Emp_DM_email)
                        {
@@ -210,9 +256,10 @@ namespace SPWebParts.EPM.SetObjectivesWP
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
                 GridViewRow row = (GridViewRow)gvwSetObjectives.Rows[e.RowIndex];
-                tblObjectives.Rows[e.RowIndex][1] = e.NewValues[1].ToString(); //((TextBox)row.Cells[0].Controls[0]).Text;
-                tblObjectives.Rows[e.RowIndex][7] = int.Parse(e.NewValues[2].ToString());
-                tblObjectives.Rows[e.RowIndex][4] = ((DropDownList)row.Cells[3].FindControl("ddlObjQ_gv")).SelectedValue;
+                tblObjectives.Rows[e.RowIndex]["ObjName"] = e.NewValues[0].ToString();
+                string newObjWeight = e.NewValues[1].ToString().Replace("%", "");
+                tblObjectives.Rows[e.RowIndex]["ObjWeight"] = int.Parse(newObjWeight);
+                tblObjectives.Rows[e.RowIndex]["ObjQ"] = ((DropDownList)row.Cells[3].FindControl("ddlObjQ_gv")).SelectedValue;
                 gvwSetObjectives.EditIndex = -1;
                 Bind_Data_To_Controls();
             });
@@ -309,38 +356,22 @@ namespace SPWebParts.EPM.SetObjectivesWP
             }
         }
 
-        private void Fill_Emp_Info()
+        private void bind_Emp_Info()
         {
-            using (SPSite site = SPContext.Current.Site)
+            if (intended_Emp.Emp_ArabicName != null && intended_Emp.Emp_ArabicName != string.Empty)
             {
-                using (SPWeb web = site.OpenWeb())
-                {
-                    SPPrincipalInfo pinfo = SPUtility.ResolvePrincipal(web, strEmpDisplayName, SPPrincipalType.User, SPPrincipalSource.All, null, false);
-                    //SPUser emp = web.Users[pinfo.LoginName];
-
-                    lblEmpName.Text = pinfo.DisplayName;
-                    intended_Emp.Emp_DisplayName = pinfo.DisplayName;
-                    //lblEmpName.Text = emp.Name;
-
-                    intended_Emp.Emp_email = pinfo.Email;
-
-                    lblEmpJob.Text = pinfo.JobTitle;
-                    intended_Emp.Emp_JobTitle = pinfo.JobTitle;
-                    //lblEmpJob.Text = cUserProfile.GetProfileValueCollection("Title")[0].ToString();
-
-                    lblEmpDept.Text = pinfo.Department;
-                    intended_Emp.Emp_Department = pinfo.Department;
-                    //lblEmpDept.Text = cUserProfile.GetProfileValueCollection("Department")[0].ToString();
-
-                    SPServiceContext serviceContext = SPServiceContext.GetContext(site);
-                    UserProfileManager userProfileMgr = new UserProfileManager(serviceContext);
-                    UserProfile cUserProfile = userProfileMgr.GetUserProfile(pinfo.LoginName);
-                    UserProfile DM_UserProfile = userProfileMgr.GetUserProfile(cUserProfile.GetProfileValueCollection("Manager")[0].ToString());
-                    intended_Emp.Emp_DM_email = DM_UserProfile["WorkEmail"].ToString(); ;
-                    lblEmpDM.Text = DM_UserProfile.DisplayName;
-                    intended_Emp.Emp_DM_name = DM_UserProfile.DisplayName;
-                }
+                lblEmpName.Text = intended_Emp.Emp_ArabicName;
             }
+            else
+            {
+                lblEmpName.Text = intended_Emp.Emp_DisplayName;
+            }
+
+            lblEmpDept.Text = intended_Emp.Emp_Department;
+            lblEmpJob.Text = intended_Emp.Emp_JobTitle;
+            lblEmpRank.Text = intended_Emp.Emp_Rank;
+            lblEmpDM.Text = intended_Emp.Emp_DM_name;
+            lblYear.Text = ((DateTime.Today.Year) + 1).ToString();
         }
 
         private void fill_ddlStrDir()
@@ -359,6 +390,69 @@ namespace SPWebParts.EPM.SetObjectivesWP
                             qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='Title' />";
                             SPListItemCollection listItems = spList.GetItems(qry);
                             tblStrDir = listItems.GetDataTable();
+
+                            ddlStrDir.DataSource = tblStrDir;
+                            ddlStrDir.DataValueField = "ID";
+                            ddlStrDir.DataTextField = "Title";
+                            ddlStrDir.DataBind();
+                        }
+                    }
+                }
+            });
+        }
+
+        private void fill_ddlPrimaryGoal()
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
+                {
+                    using (SPWeb spWeb = oSite.OpenWeb())
+                    {
+                        SPList spList = spWeb.Lists.TryGetList("الأهداف الرئيسية");
+                        if (spList != null)
+                        {
+                            SPQuery qry = new SPQuery();
+                            qry.Query =
+                            @"   <Where>
+                                        <Eq>
+                                            <FieldRef Name='_x0627__x0644__x062a__x0648__x060' />
+                                            <Value Type='Integer'>" + ddlStrDir.SelectedValue.ToString() + @"</Value>
+                                        </Eq>
+                                    </Where>";
+                            qry.ViewFieldsOnly = true;
+                            qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='Title' />";
+                            SPListItemCollection listItems = spList.GetItems(qry);
+                            tblPrimaryGoal = listItems.GetDataTable();
+                        }
+                    }
+                }
+            });
+        }
+
+        private void fill_ddlSecondaryGoal()
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
+                {
+                    using (SPWeb spWeb = oSite.OpenWeb())
+                    {
+                        SPList spList = spWeb.Lists.TryGetList("الأهداف الفرعية");
+                        if (spList != null)
+                        {
+                            SPQuery qry = new SPQuery();
+                            qry.Query =
+                           @"   <Where>
+                                        <Eq>
+                                            <FieldRef Name='_x0627__x0644__x0647__x062f__x060' />
+                                            <Value Type='Integer'>" + ddlPrimaryGoal.SelectedValue.ToString() + @"</Value>
+                                        </Eq>
+                                    </Where>";
+                            qry.ViewFieldsOnly = true;
+                            qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='Title' />";
+                            SPListItemCollection listItems = spList.GetItems(qry);
+                            tblSecondaryGoal = listItems.GetDataTable();
                         }
                     }
                 }
@@ -433,10 +527,10 @@ namespace SPWebParts.EPM.SetObjectivesWP
             {
                 gvwSetObjectives.DataSource = tblObjectives;
                 gvwSetObjectives.DataBind();
-                ddlStrDir.DataSource = tblStrDir;
-                ddlStrDir.DataValueField = "ID";
-                ddlStrDir.DataTextField = "Title";
-                ddlStrDir.DataBind();
+                //ddlStrDir.DataSource = tblStrDir;
+                //ddlStrDir.DataValueField = "ID";
+                //ddlStrDir.DataTextField = "Title";
+                //ddlStrDir.DataBind();
                 Refresh_GoalsTotal();
             });
         }
@@ -450,6 +544,17 @@ namespace SPWebParts.EPM.SetObjectivesWP
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
                 if (PercentageTotal == 100)
+                    e.IsValid = true;
+                else
+                    e.IsValid = false;
+            });
+        }
+
+        protected void cvld_Number_of_Objs_ServerValidate(object source, ServerValidateEventArgs e)
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                if (gvwSetObjectives.Rows.Count >= 3 && gvwSetObjectives.Rows.Count <= 7)
                     e.IsValid = true;
                 else
                     e.IsValid = false;
@@ -565,5 +670,27 @@ namespace SPWebParts.EPM.SetObjectivesWP
         #endregion Related to Email
 
         #endregion Helper Methods
+
+        protected void ddlStrDir_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlPrimaryGoal.Items.Clear();
+            ddlPrimaryGoal.Items.Add(new ListItem("اختر الهدف الرئيسى", "0"));
+            fill_ddlPrimaryGoal();
+            ddlPrimaryGoal.DataSource = tblPrimaryGoal;
+            ddlPrimaryGoal.DataValueField = "ID";
+            ddlPrimaryGoal.DataTextField = "Title";
+            ddlPrimaryGoal.DataBind();
+        }
+
+        //protected void ddlPrimaryGoal_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    ddlSecondaryGoal.Items.Clear();
+        //    ddlSecondaryGoal.Items.Add(new ListItem("اختر الهدف الفرعى", "0"));
+        //    fill_ddlSecondaryGoal();
+        //    ddlSecondaryGoal.DataSource = tblSecondaryGoal;
+        //    ddlSecondaryGoal.DataValueField = "ID";
+        //    ddlSecondaryGoal.DataTextField = "Title";
+        //    ddlSecondaryGoal.DataBind();
+        //}
     }
 }

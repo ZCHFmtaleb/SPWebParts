@@ -76,6 +76,24 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         protected global::System.Web.UI.WebControls.Label lblEmpDept;
         
         /// <summary>
+        /// slblEmpRank control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label slblEmpRank;
+        
+        /// <summary>
+        /// lblEmpRank control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmpRank;
+        
+        /// <summary>
         /// slblEmpDM control.
         /// </summary>
         /// <remarks>
@@ -94,6 +112,33 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         protected global::System.Web.UI.WebControls.Label lblEmpDM;
         
         /// <summary>
+        /// slblYear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label slblYear;
+        
+        /// <summary>
+        /// lblYear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblYear;
+        
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// ddlStrDir control.
         /// </summary>
         /// <remarks>
@@ -101,6 +146,42 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlStrDir;
+        
+        /// <summary>
+        /// rfv_ddlStrDir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_ddlStrDir;
+        
+        /// <summary>
+        /// UpdateProgress1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdateProgress UpdateProgress1;
+        
+        /// <summary>
+        /// ddlPrimaryGoal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPrimaryGoal;
+        
+        /// <summary>
+        /// rfv_ddlPrimaryGoal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_ddlPrimaryGoal;
         
         /// <summary>
         /// txtObjName control.
@@ -173,6 +254,15 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator cvld_PercentageTotal;
+        
+        /// <summary>
+        /// cvld_Number_of_Objs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvld_Number_of_Objs;
         
         /// <summary>
         /// gvwSetObjectives control.

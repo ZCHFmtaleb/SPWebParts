@@ -1,11 +1,13 @@
 ﻿using System;
 
-namespace SPWebParts.EPM
+namespace SPWebParts.EPM.EL
 {
     [Serializable]
     public class Emp
     {
         public string Emp_DisplayName;
+        public string Emp_ArabicName;
+        public string Emp_Rank;
         public string Emp_JobTitle;
         public string Emp_email;
         public string Emp_Department;

@@ -69,7 +69,8 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="EPM\Emp.cs" />
+    <Compile Include="EPM\DAL\Emp_DAL.cs" />
+    <Compile Include="EPM\EL\Emp.cs" />
     <Compile Include="EPM\EnableYear\EnableYear.cs" />
     <Compile Include="EPM\EnableYear\EnableYearUserControl.ascx.cs">
       <DependentUpon>EnableYearUserControl.ascx</DependentUpon>
@@ -200,6 +201,7 @@
     <Content Include="Layouts\SPWebParts\jQuery.print.js" />
     <Content Include="Layouts\SPWebParts\logo.jpg" />
     <Content Include="Layouts\SPWebParts\SetObjectives.js" />
+    <Content Include="Layouts\SPWebParts\spinner.gif" />
     <Content Include="PreviousRequestsWP\Elements.xml" />
     <Content Include="PreviousRequestsWP\PreviousRequestsWP.ascx">
       <Generator>SharePointWebPartCodeGenerator</Generator>

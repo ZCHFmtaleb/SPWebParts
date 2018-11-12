@@ -43,6 +43,15 @@
                 <asp:Label ID="lblEmpDept" runat="server" Text=""></asp:Label>
             </td>
         </tr>
+        <tr>
+            <td>
+                <asp:Label ID="slblEmpRank" runat="server" Text="الدرجة الوظيفية"></asp:Label>
+            </td>
+            <td>
+                <asp:Label ID="lblEmpRank" runat="server" Text=""></asp:Label>
+            </td>
+        </tr>
+
          <tr>
             <td>
                 <asp:Label ID="slblEmpDM" runat="server" Text="المدير المباشر"></asp:Label>
@@ -51,18 +60,69 @@
                 <asp:Label ID="lblEmpDM" runat="server" Text=""></asp:Label>
             </td>
         </tr>
+        <tr>
+            <td>
+                <asp:Label ID="slblYear" runat="server" Text="العام"></asp:Label>
+            </td>
+            <td>
+                <asp:Label ID="lblYear" runat="server" Text=""></asp:Label>
+            </td>
+        </tr>
+        
     </table>
 </div>
 
 <div class="divAddGoal">
-<table class="Form_Table_css">
+
+<div class="Form_Table_css">
+    
+<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" >
+    <ContentTemplate >
+<table>
     <tr>
-        <td>التوجه الاستراتيجى</td>
-        <td>
-            <asp:DropDownList ID="ddlStrDir" runat="server"></asp:DropDownList></td>
+    <td style="width:36% !important;">التوجه الاستراتيجى</td>
+    <td>
+        <asp:DropDownList ID="ddlStrDir" runat="server" OnSelectedIndexChanged="ddlStrDir_SelectedIndexChanged" AutoPostBack="True" Width="300px" AppendDataBoundItems="True">
+            <asp:ListItem Selected="True" Value="0">اختر التوجه الاستراتيجى</asp:ListItem>
+        </asp:DropDownList>
+        <asp:RequiredFieldValidator ID="rfv_ddlStrDir" runat="server" Display="Dynamic" ErrorMessage="الرجاء اختيار التوجه الاستراتيجى" ControlToValidate="ddlStrDir" ForeColor="Red" ValidationGroup="vg1"
+            InitialValue="0">*</asp:RequiredFieldValidator>
+    </td>
+        <td colspan="3">
+            <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1" DisplayAfter="100" DynamicLayout="False">
+                <ProgressTemplate>
+                    <img src="../_layouts/15/SPWebParts/spinner.gif" alt="جارى التحميل" width="40" height="40" />
+                </ProgressTemplate>
+            </asp:UpdateProgress>
+        </td>
     </tr>
     <tr>
-        <td >اسم الهدف</td>
+        <td>الهدف الرئيسى</td>
+        <td>
+            <asp:DropDownList ID="ddlPrimaryGoal" runat="server" Width="300px" AppendDataBoundItems="True">
+                <asp:ListItem Selected="True" Value="0">اختر الهدف الرئيسى</asp:ListItem>
+            </asp:DropDownList>
+            <asp:RequiredFieldValidator ID="rfv_ddlPrimaryGoal" runat="server" Display="Dynamic" ErrorMessage="الرجاء اختيار الهدف الرئيسى" ControlToValidate="ddlPrimaryGoal" ForeColor="Red" ValidationGroup="vg1"
+            InitialValue="0">*</asp:RequiredFieldValidator>
+        </td>
+    </tr>
+    <%--<tr>
+        <td>الهدف الفرعى</td>
+        <td>
+            <asp:DropDownList ID="ddlSecondaryGoal" runat="server" Width="300px" AppendDataBoundItems="True">
+                <asp:ListItem Selected="True" Value="0">اختر الهدف الفرعى</asp:ListItem>
+            </asp:DropDownList></td>
+    </tr>--%>
+</table>
+    </ContentTemplate>
+    <Triggers>
+        <asp:AsyncPostBackTrigger ControlID="ddlStrDir" EventName="SelectedIndexChanged" />
+    </Triggers>
+</asp:UpdatePanel>
+</div>
+<table class="Form_Table_css">
+    <tr>
+        <td >اسم الهدف الفرعى</td>
         <td ><asp:TextBox ID="txtObjName" runat="server" MaxLength="255" Width="500px" ValidationGroup="vg1"></asp:TextBox>
             <asp:RequiredFieldValidator ID="rfv_txtObjName" runat="server" ControlToValidate="txtObjName" Display="Dynamic" ErrorMessage="اسم الهدف مطلوب" ForeColor="Red" ValidationGroup="vg1">*</asp:RequiredFieldValidator>
         </td>
@@ -90,12 +150,16 @@
 
         </td>
     </tr>
+    <tr>
+        <td colspan="2">* الرجاء تعبئة من 3 الى 7 اهداف فقط</td>
+    </tr>
 </table>
 </div>
 
 <div id="divPercentageTotal" style="font-family: 'Times New Roman', Times, serif !important;">
     <h3>مجموع اوزان الأهداف  :   <asp:Label ID="lbl_PercentageTotal" runat="server" Text="0" BackColor="Pink"></asp:Label> %   
                  <asp:CustomValidator ID="cvld_PercentageTotal" runat="server" ErrorMessage="لابد أن يكون مجموع اوزان الأهداف 100" Display="Dynamic" ForeColor="Red" OnServerValidate="cvld_PercentageTotal_ServerValidate" ValidationGroup="vg2">*</asp:CustomValidator>
+                 <asp:CustomValidator ID="cvld_Number_of_Objs" runat="server" ErrorMessage="لابد أن يكون عدد الأهداف من 3 الى 7" Display="Dynamic" ForeColor="Red" OnServerValidate="cvld_Number_of_Objs_ServerValidate" ValidationGroup="vg2">*</asp:CustomValidator>
     </h3>
 </div>
 
@@ -104,10 +168,24 @@
     <AlternatingRowStyle BackColor="White" />
     <Columns>
         <asp:BoundField DataField="StrDir" HeaderText="StrDir" Visible="False" />
-        <asp:BoundField DataField="StrDir_x003a_Title" HeaderText="التوجه الاستراتيجى" HeaderStyle-Width="25%" />
-        <asp:BoundField DataField="ObjName" HeaderText="اسم الهدف" HeaderStyle-Width="35%" >
-<HeaderStyle Width="35%" ></HeaderStyle>
-        </asp:BoundField>
+        <asp:TemplateField HeaderText="التوجه الاستراتيجى">
+            <EditItemTemplate>
+                <asp:Label ID="Label1" runat="server" Text='<%# Eval("StrDir_x003a_Title") %>'></asp:Label>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="Label2" runat="server" Text='<%# Bind("StrDir_x003a_Title") %>'></asp:Label>
+            </ItemTemplate>
+            <HeaderStyle Width="25%" />
+        </asp:TemplateField>
+        <asp:TemplateField HeaderText="اسم الهدف">
+            <EditItemTemplate>
+                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("ObjName") %>' Width="400px"></asp:TextBox>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="Label3" runat="server" Text='<%# Bind("ObjName") %>'></asp:Label>
+            </ItemTemplate>
+            <HeaderStyle Width="35%" />
+        </asp:TemplateField>
         <asp:BoundField DataField="ObjWeight" HeaderText="وزن الهدف" >
         <HeaderStyle  Width="8%" />
         </asp:BoundField>
@@ -132,7 +210,7 @@
         <HeaderStyle Width="8%" />
         </asp:CommandField>
     </Columns>
-    <EditRowStyle BackColor="#2461BF" />
+    <EditRowStyle BackColor="White" />
     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"  />
     <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />

@@ -8,7 +8,6 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RateObjectivesEmpWPUserControl.ascx.cs" Inherits="SPWebParts.EPM.RateObjectivesEmpWP.RateObjectivesEmpWPUserControl" %>
 
 <SharePoint:CssRegistration runat="server" Name="/_layouts/15/SPWebParts/EPMStyle.css" After="/Style%20Library/css/ShareBoot.css" />
-<script type="text/javascript" src="/_layouts/15/SPWebParts/SetObjectives.js"></script>
 
 <div id="container" dir="rtl" align="right" >
 
@@ -43,7 +42,15 @@
 			<asp:Label ID="lblEmpDept" runat="server" Text=""></asp:Label>
 		</td>
 	</tr>
-		<tr>
+	<tr>
+		<td>
+			<asp:Label ID="slblEmpRank" runat="server" Text="الدرجة الوظيفية"></asp:Label>
+		</td>
+		<td>
+			<asp:Label ID="lblEmpRank" runat="server" Text=""></asp:Label>
+		</td>
+	</tr>
+	<tr>
 		<td>
 			<asp:Label ID="slblEmpDM" runat="server" Text="المدير المباشر"></asp:Label>
 		</td>
@@ -105,7 +112,7 @@
 				<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
 			</EditItemTemplate>
 			<ItemTemplate>
-				<asp:DropDownList ID="ddlObjRating" runat="server" Width="60px">
+				<asp:DropDownList ID="ddlObjRating" runat="server" Width="60px" CssClass="ObjRate">
 					<asp:ListItem>1</asp:ListItem>
 					<asp:ListItem>2</asp:ListItem>
 					<asp:ListItem>3</asp:ListItem>
@@ -135,12 +142,13 @@
 </div>
 
 
-<h2>الكفاءات الاساسية</h2>
+<h2>الكفاءات </h2>
 <div class="div_gvwSetObjectives" style="width:60% !important;">
+<asp:Label ID="lbl_invalid_rank" runat="server" Text="تعذر تحميل الكفاءات المناسبة نظرا لعدم وجود الدرجة الوظيفية فى سجل الموظف" Visible="False"></asp:Label>
 <asp:GridView ID="gvw_Std_Skills" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False"  BorderStyle="Solid" BorderWidth="1px" >
 		<AlternatingRowStyle BackColor="White" />
 		<Columns>
-			<asp:BoundField DataField="Title" HeaderText="الكفاءات الاساسية">
+			<asp:BoundField DataField="Title" HeaderText="مسمى الكفاءة">
 			<HeaderStyle Width="88%" />
 			<ItemStyle Width="88%" />
 			</asp:BoundField>
@@ -149,12 +157,11 @@
 					<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 				</EditItemTemplate>
 				<ItemTemplate>
-					<asp:DropDownList ID="ddl_Std_Skill_Rating" runat="server" Width="60px">
+					<asp:DropDownList ID="ddl_Std_Skill_Rating" runat="server" Width="60px" CssClass="SkillRate" >
 					<asp:ListItem>1</asp:ListItem>
 					<asp:ListItem>2</asp:ListItem>
-					<asp:ListItem>3</asp:ListItem>
-					<asp:ListItem Selected="True">4</asp:ListItem>
-					<asp:ListItem>5</asp:ListItem>
+					<asp:ListItem Selected="True">3</asp:ListItem>
+					<asp:ListItem>4</asp:ListItem>
 				</asp:DropDownList>
 				</ItemTemplate>
 			</asp:TemplateField>
@@ -172,8 +179,8 @@
  </asp:GridView>
 
 
-<h2>الكفاءات القيادية</h2>
-<asp:GridView ID="gvw_Lead_Skills" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False"  BorderStyle="Solid" BorderWidth="1px" >
+<%--<h2>الكفاءات القيادية</h2>--%>
+<%--<asp:GridView ID="gvw_Lead_Skills" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False"  BorderStyle="Solid" BorderWidth="1px" >
 		<AlternatingRowStyle BackColor="White" />
 		<Columns>
 			<asp:BoundField DataField="Title" HeaderText="الكفاءات القيادية">
@@ -185,7 +192,7 @@
 					<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 				</EditItemTemplate>
 				<ItemTemplate>
-					<asp:DropDownList ID="ddl_Lead_Skill_Rating" runat="server" Width="60px">
+					<asp:DropDownList ID="ddl_Lead_Skill_Rating" runat="server" Width="60px" CssClass="SkillRate">
 					<asp:ListItem>1</asp:ListItem>
 					<asp:ListItem>2</asp:ListItem>
 					<asp:ListItem>3</asp:ListItem>
@@ -205,7 +212,7 @@
 		<SortedAscendingHeaderStyle BackColor="#6D95E1" />
 		<SortedDescendingCellStyle BackColor="#E9EBEF" />
 		<SortedDescendingHeaderStyle BackColor="#4870BE" />
- </asp:GridView>
+ </asp:GridView>--%>
 </div>
 
 <h2 style="color:blue !important;text-decoration:underline;">نتيجة التقييم :</h2>
@@ -215,16 +222,16 @@
 <h2>
 <table class="BorderedTable" style="border-style: solid; border-width: thin; text-align:center;" width="100%">
 		<tr style="background-color:#507CD1; Color:White;">
-			<th style="border:1px solid black !important;">مجموع نتيجة الاهداف</th>
-			<th style="border:1px solid black !important;">مجموع  تقدير الكفاءات</th>
+			<th style="border:1px solid black !important;">متوسط تقدير الاهداف</th>
+			<th style="border:1px solid black !important;">متوسط تقدير الكفاءات</th>
 			<th style="border:1px solid black !important;">النتيجة النهائية </th>
-			<th style="border:1px solid black !important;">درجة التقييم</th>
+			<th style="border:1px solid black !important;">مسمى الدرجة</th>
 		</tr>
 		<tr>
-			<td style="border:1px solid black !important;">4</td>
-			<td style="border:1px solid black !important;">4</td>
-			<td style="border:1px solid black !important;">4</td>
-			<td style="border:1px solid black !important;">أداء عالي الكفــاءة / يفوق التوقعات</td>
+			<td style="border:1px solid black !important;" id="Avg_of_ObjRates">4</td>
+			<td style="border:1px solid black !important;" id="Avg_of_SkillRates" >4</td>
+			<td style="border:1px solid black !important;" id="Final_Result">4</td>
+			<td style="border:1px solid black !important;" id="Commentary" >أداء عالي الكفــاءة / يفوق التوقعات</td>
 		</tr>
  </table>
 </h2>
@@ -250,3 +257,5 @@
 </div>
 
 </div>
+
+<script type="text/javascript" src="/_layouts/15/SPWebParts/SetObjectives.js"></script>

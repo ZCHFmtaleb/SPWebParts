@@ -5,6 +5,8 @@ using System;
 using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SPWebParts.EPM.EL;
+using SPWebParts.EPM.DAL;
 
 namespace SPWebParts.EPM.SetProgress
 {
@@ -59,7 +61,7 @@ namespace SPWebParts.EPM.SetProgress
                     tblObjectives.Columns.Add("ObjYear");
                     tblObjectives.Columns.Add("ObjName");
                     tblObjectives.Columns.Add("ObjWeight");
-                    tblObjectives.Columns.Add("AccPercent");
+                    tblObjectives.Columns.Add("AccPercent",typeof(string));
                     return tblObjectives;
                 }
             }
@@ -83,7 +85,8 @@ namespace SPWebParts.EPM.SetProgress
 
                      getEmp_from_QueryString_or_currentUser();
 
-                     Fill_Emp_Info();
+                     intended_Emp = Emp_DAL.get_Emp_Info(intended_Emp, strEmpDisplayName);
+                     bind_Emp_Info();
 
                      if (!IsPostBack)
                      {
@@ -180,38 +183,22 @@ namespace SPWebParts.EPM.SetProgress
             }
         }
 
-        private void Fill_Emp_Info()
+        private void bind_Emp_Info()
         {
-            using (SPSite site = SPContext.Current.Site)
+
+            if (intended_Emp.Emp_ArabicName != null && intended_Emp.Emp_ArabicName != string.Empty)
             {
-                using (SPWeb web = site.OpenWeb())
-                {
-                    SPPrincipalInfo pinfo = SPUtility.ResolvePrincipal(web, strEmpDisplayName, SPPrincipalType.User, SPPrincipalSource.All, null, false);
-                    //SPUser emp = web.Users[pinfo.LoginName];
-
-                    lblEmpName.Text = pinfo.DisplayName;
-                    intended_Emp.Emp_DisplayName = pinfo.DisplayName;
-                    //lblEmpName.Text = emp.Name;
-
-                    intended_Emp.Emp_email = pinfo.Email;
-
-                    lblEmpJob.Text = pinfo.JobTitle;
-                    intended_Emp.Emp_JobTitle = pinfo.JobTitle;
-                    //lblEmpJob.Text = cUserProfile.GetProfileValueCollection("Title")[0].ToString();
-
-                    lblEmpDept.Text = pinfo.Department;
-                    intended_Emp.Emp_Department = pinfo.Department;
-                    //lblEmpDept.Text = cUserProfile.GetProfileValueCollection("Department")[0].ToString();
-
-                    SPServiceContext serviceContext = SPServiceContext.GetContext(site);
-                    UserProfileManager userProfileMgr = new UserProfileManager(serviceContext);
-                    UserProfile cUserProfile = userProfileMgr.GetUserProfile(pinfo.LoginName);
-                    UserProfile DM_UserProfile = userProfileMgr.GetUserProfile(cUserProfile.GetProfileValueCollection("Manager")[0].ToString());
-                    intended_Emp.Emp_DM_email = DM_UserProfile["WorkEmail"].ToString(); ;
-                    lblEmpDM.Text = DM_UserProfile.DisplayName;
-                    intended_Emp.Emp_DM_name = DM_UserProfile.DisplayName;
-                }
+                lblEmpName.Text = intended_Emp.Emp_ArabicName;
             }
+            else
+            {
+                lblEmpName.Text = intended_Emp.Emp_DisplayName;
+            }
+
+            lblEmpDept.Text = intended_Emp.Emp_Department;
+            lblEmpJob.Text = intended_Emp.Emp_JobTitle;
+            lblEmpRank.Text = intended_Emp.Emp_Rank;
+            lblEmpDM.Text = intended_Emp.Emp_DM_name;
         }
 
         private void getPreviouslySavedObjectives()
@@ -276,7 +263,7 @@ namespace SPWebParts.EPM.SetProgress
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
                 GridViewRow row = (GridViewRow)gvwProgress.Rows[e.RowIndex];
-                tblObjectives.Rows[e.RowIndex][4] = e.NewValues[3].ToString(); //((TextBox)row.Cells[0].Controls[0]).Text;
+                tblObjectives.Rows[e.RowIndex][4] = e.NewValues[3].ToString().Replace("%",""); 
                 gvwProgress.EditIndex = -1;
                 Bind_Data_To_Controls();
             });
