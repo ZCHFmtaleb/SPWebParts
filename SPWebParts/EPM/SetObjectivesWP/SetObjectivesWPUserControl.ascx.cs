@@ -53,6 +53,8 @@ namespace SPWebParts.EPM.SetObjectivesWP
                     tblObjectives.Columns.Add("ObjQ");
                     tblObjectives.Columns.Add("StrDir_x003a_Title");
                     tblObjectives.Columns.Add("StrDir");
+                    tblObjectives.Columns.Add("PrimaryGoal_x003a__x0627__x0633_");
+                    tblObjectives.Columns.Add("PrimaryGoal");
                     tblObjectives.Columns.Add("Status");
                     return tblObjectives;
                 }
@@ -222,6 +224,8 @@ namespace SPWebParts.EPM.SetObjectivesWP
                     NewRow["ObjQ"] = ddlObjQ.SelectedItem.Text;
                     NewRow["StrDir_x003a_Title"] = ddlStrDir.SelectedItem.Text;
                     NewRow["StrDir"] = ddlStrDir.SelectedItem.Value;
+                    NewRow["PrimaryGoal_x003a__x0627__x0633_"] = ddlPrimaryGoal.SelectedItem.Text;
+                    NewRow["PrimaryGoal"] = ddlPrimaryGoal.SelectedItem.Value;
                     tblObjectives.Rows.Add(NewRow);
                     Bind_Data_To_Controls();
                 }
@@ -480,7 +484,7 @@ namespace SPWebParts.EPM.SetObjectivesWP
                                     </Where>";
                             qry.ViewFieldsOnly = true;
                             qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='Status' /><FieldRef Name='Emp' /><FieldRef Name='ObjQ' /><FieldRef Name='ObjYear' /><FieldRef Name='ObjType' />
-                                                            <FieldRef Name='ObjWeight' /><FieldRef Name='StrDir' /><FieldRef Name='StrDir_x003a_Title' />";
+                                                            <FieldRef Name='ObjWeight' /><FieldRef Name='StrDir' /><FieldRef Name='StrDir_x003a_Title' /><FieldRef Name='PrimaryGoal' /><FieldRef Name='PrimaryGoal_x003a__x0627__x0633_' />";
                             SPListItemCollection listItems = spList.GetItems(qry);
                             tblObjectives = listItems.GetDataTable();
                         }
@@ -606,8 +610,8 @@ namespace SPWebParts.EPM.SetObjectivesWP
                                 oListItem["ObjWeight"] = row["ObjWeight"].ToString();
                                 oListItem["ObjQ"] = row["ObjQ"].ToString();
                                 oListItem["ObjYear"] = DateTime.Now.Year + 1;
-                                //oListItem["StrDir_x003a_Title"] = row["StrDir_x003a_Title"].ToString();
                                 oListItem["StrDir"] = int.Parse(row["StrDir"].ToString());
+                                oListItem["PrimaryGoal"] = int.Parse(row["PrimaryGoal"].ToString());
                                 oListItem.Update();
                             }
                             divSuccess.Visible = true;

@@ -134,6 +134,7 @@
             <asp:TextBox ID="txtObjWeight" runat="server" MaxLength="3" Width="50px" ValidationGroup="vg1"></asp:TextBox>
             % 
             <asp:RequiredFieldValidator ID="rfv_txtObjWeight" runat="server" ControlToValidate="txtObjWeight" Display="Dynamic" ErrorMessage="وزن الهدف مطلوب" ForeColor="Red" ValidationGroup="vg1">*</asp:RequiredFieldValidator>
+            <asp:RangeValidator ID="rgv_txtObjWeight" runat="server" ControlToValidate="txtObjWeight" Display="Dynamic" ErrorMessage="لابد ان تكون القيمة المدخلة رقم من 1 الى 100" ForeColor="Red" ValidationGroup="vg1" MaximumValue="100" MinimumValue="1" Type="Integer">*</asp:RangeValidator>
         </td>
     </tr>
     <tr>
@@ -168,6 +169,7 @@
     <AlternatingRowStyle BackColor="White" />
     <Columns>
         <asp:BoundField DataField="StrDir" HeaderText="StrDir" Visible="False" />
+        <asp:BoundField DataField="PrimaryGoal" HeaderText="PrimaryGoal" Visible="False" />
         <asp:TemplateField HeaderText="التوجه الاستراتيجى">
             <EditItemTemplate>
                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("StrDir_x003a_Title") %>'></asp:Label>
@@ -175,7 +177,16 @@
             <ItemTemplate>
                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("StrDir_x003a_Title") %>'></asp:Label>
             </ItemTemplate>
-            <HeaderStyle Width="25%" />
+            <HeaderStyle Width="12%" />
+        </asp:TemplateField>
+        <asp:TemplateField HeaderText="الهدف الرئيسى">
+            <EditItemTemplate>
+                <asp:Label ID="Label3" runat="server" Text='<%# Eval("PrimaryGoal_x003a__x0627__x0633_") %>'></asp:Label>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="Label4" runat="server" Text='<%# Bind("PrimaryGoal_x003a__x0627__x0633_") %>'></asp:Label>
+            </ItemTemplate>
+            <HeaderStyle Width="15%" />
         </asp:TemplateField>
         <asp:TemplateField HeaderText="اسم الهدف">
             <EditItemTemplate>
@@ -186,9 +197,17 @@
             </ItemTemplate>
             <HeaderStyle Width="35%" />
         </asp:TemplateField>
-        <asp:BoundField DataField="ObjWeight" HeaderText="وزن الهدف" >
-        <HeaderStyle  Width="8%" />
-        </asp:BoundField>
+        <asp:TemplateField HeaderText="وزن الهدف">
+            <EditItemTemplate>
+                <asp:TextBox ID="txt_gv_ObjWeight" runat="server" Text='<%# Bind("ObjWeight") %>' ValidationGroup="vg3" MaxLength="3" Width="50px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfv_gv_txtObjWeight" runat="server" ControlToValidate="txt_gv_ObjWeight" Display="Dynamic" ErrorMessage="" ForeColor="Red" ValidationGroup="vg3">وزن الهدف مطلوب</asp:RequiredFieldValidator>
+                <asp:RangeValidator ID="rgv_gv_txtObjWeight" runat="server" ControlToValidate="txt_gv_ObjWeight" Display="Dynamic" ErrorMessage="" ForeColor="Red" ValidationGroup="vg3" MaximumValue="100" MinimumValue="1" Type="Integer">رقم من 1 الى 100 فقط</asp:RangeValidator>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="Label5" runat="server" Text='<%# Bind("ObjWeight") %>'></asp:Label>
+            </ItemTemplate>
+            <HeaderStyle Width="5%" />
+        </asp:TemplateField>
         <asp:TemplateField HeaderText="تاريخ تحقيق الهدف">
             <EditItemTemplate>
                 <asp:DropDownList ID="ddlObjQ_gv" runat="server">
@@ -201,13 +220,20 @@
             <ItemTemplate>
                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("ObjQ") %>'></asp:Label>
             </ItemTemplate>
-            <HeaderStyle Width="10%" />
+            <HeaderStyle Width="5%" />
         </asp:TemplateField>
-        <asp:CommandField ButtonType="Button" CancelText="تراجع" DeleteText="حذف" EditText="تعديل" ShowEditButton="True" UpdateText="تحديث" HeaderText="تعديل" ShowHeader="True" >
-        <HeaderStyle Width="14%" />
-        </asp:CommandField>
+        <asp:TemplateField HeaderText="تعديل">
+            <EditItemTemplate>
+                <asp:Button ID="Button1" runat="server" CausesValidation="True" CommandName="Update" Text="تحديث" ValidationGroup="vg3" />
+                &nbsp;<asp:Button ID="Button2" runat="server" CausesValidation="False" CommandName="Cancel" Text="تراجع" />
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Edit" Text="تعديل" />
+            </ItemTemplate>
+            <HeaderStyle Width="14%" />
+        </asp:TemplateField>
         <asp:CommandField ButtonType="Button" CancelText="الغاء" DeleteText="حذف" EditText="حذف" ShowDeleteButton="True" UpdateText="تحديث" HeaderText="حذف" ShowHeader="True" >
-        <HeaderStyle Width="8%" />
+        <HeaderStyle Width="6%" />
         </asp:CommandField>
     </Columns>
     <EditRowStyle BackColor="White" />

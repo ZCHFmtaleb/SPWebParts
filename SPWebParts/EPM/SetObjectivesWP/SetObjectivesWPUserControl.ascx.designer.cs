@@ -220,6 +220,15 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_txtObjWeight;
         
         /// <summary>
+        /// rgv_txtObjWeight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rgv_txtObjWeight;
+        
+        /// <summary>
         /// ddlObjQ control.
         /// </summary>
         /// <remarks>
