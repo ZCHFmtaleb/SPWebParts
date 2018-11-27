@@ -13,8 +13,8 @@
 
 <div id="container" dir="rtl" align="right" >
 <div id="page_head">
-    <h1>نموذج وضع الأهداف الفردية لعام  <span class="Next_Year"></span> </h1>
-    <h2>الحالة : <asp:Label ID="lblStatus" runat="server" Text="لم يتم وضع الأهداف" ForeColor="Blue"></asp:Label> </h2>
+    <h1 runat="server" id="PageTitle">نموذج وضع الأهداف الفردية لعام   <asp:Label ID="lblActiveYear" runat="server" Text=""></asp:Label></h1>
+    <%--<h2>الحالة : <asp:Label ID="lblStatus" runat="server" Text="لم يتم وضع الأهداف" ForeColor="Blue"></asp:Label> </h2>--%>
 </div>
 
 <div id="divEmpInfo" class="divEmpInfo">
@@ -65,14 +65,14 @@
                 <asp:Label ID="slblYear" runat="server" Text="العام"></asp:Label>
             </td>
             <td>
-                <asp:Label ID="lblYear" runat="server" Text=""></asp:Label>
+                <asp:Label ID="lblActiveYear2" runat="server" Text=""></asp:Label>
             </td>
         </tr>
         
     </table>
 </div>
 
-<div class="divAddGoal">
+<div class="divAddGoal" runat="server" id="div_of_AddingGoal">
 
 <div class="Form_Table_css">
     
@@ -248,26 +248,30 @@
     <SortedDescendingHeaderStyle BackColor="#4870BE" />
 </asp:GridView>
 </div>
+<div runat="server" id ="div_Mods"> 
+<div id="div_Required_Mods">
+<asp:Label ID="lblRequired_Mods" runat="server" Text="فى حالة عدم الموافقة على الأهداف المذكورة (طلب تعديلات) ، يرجى ذكر الملاحظات/التعديلات المطلوبة :" Visible="false"></asp:Label>
+</div>
+<div>
+    <asp:TextBox ID="txtRequired_Mods" runat="server" Rows="8" TextMode="MultiLine" Width="50%" ValidationGroup="vgMod" Visible="false"></asp:TextBox>
+    <asp:RequiredFieldValidator ID="rfv_txtRequired_Mods" runat="server" ControlToValidate="txtRequired_Mods" Display="Dynamic" ErrorMessage="" ForeColor="Red" ValidationGroup="vgMod">الرجاء ذكر التعديلات المطلوبة</asp:RequiredFieldValidator>
+</div>
+</div>
 
-
-
-
-<div class="div_btnSubmit" style="margin-bottom:30px;">
+<div class="div_btnSubmit" style="margin-bottom:30px;" runat ="server" id="divButtons">
 <asp:Button ID="btnSubmit" runat="server" Text="إرسال" Font-Size="Large" Height="50px" Width="100px" OnClick="btnSubmit_Click" ValidationGroup="vg2" />
 <asp:Button ID="btnApprove" runat="server" Text="اعتماد" Font-Size="Large" Height="50px" Width="100px" Visible="False" OnClick="btnApprove_Click" />
+<asp:Button ID="btnReject" runat="server" Text="طلب تعديلات" Height="50px" Width="100px" Visible="False" OnClick="btnReject_Click" ValidationGroup="vgMod" style="margin-right:75px !important;font-size:small !important;" Font-Bold="True"/>
 </div>
 
 <div class="div_val">
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ValidationGroup="vg1" />
     <asp:ValidationSummary ID="ValidationSummary2" runat="server" ForeColor="Red" ValidationGroup="vg2" />
+    <asp:ValidationSummary ID="ValidationSummary3" runat="server" ForeColor="Red" ValidationGroup="vgMod" />
 </div>
 
-<div id="divSuccess" runat="server" visible="false" class="divSuccess_css">
-<h3>تم حفظ الأهداف بنجاح</h3>
-</div>
-
-<div id="divApprovalSuccess" runat="server" visible="false" class="divSuccess_css">
-<h3>تم اعتماد الأهداف بنجاح</h3>
+<div runat="server" id="divSuccess"  style="width:50%; background-color: rgb(0, 222, 149) !important; font-size:large; font-weight:bold;" visible ="false">
+<asp:Label ID="lblSuccess" runat="server" Text="" ></asp:Label>
 </div>
 
 </div>

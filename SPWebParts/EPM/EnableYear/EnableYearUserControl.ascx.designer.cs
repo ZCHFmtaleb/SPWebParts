@@ -13,58 +13,58 @@ namespace SPWebParts.EPM.EnableYear {
     public partial class EnableYearUserControl {
         
         /// <summary>
-        /// ddlYear control.
+        /// ddl_Eval_Year control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlYear;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Eval_Year;
         
         /// <summary>
-        /// btnActivate control.
+        /// btnActivate_Eval_Year control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActivate;
+        protected global::System.Web.UI.WebControls.Button btnActivate_Eval_Year;
         
         /// <summary>
-        /// btnClose control.
+        /// ddl_Set_Goals_Year control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClose;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Set_Goals_Year;
         
         /// <summary>
-        /// ddlYear_Set_Goals control.
+        /// btnActivate_Set_Goals_Year control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlYear_Set_Goals;
+        protected global::System.Web.UI.WebControls.Button btnActivate_Set_Goals_Year;
         
         /// <summary>
-        /// btnActivate_Set_Goals control.
+        /// ddl_Year_to_display_if_none_active control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActivate_Set_Goals;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Year_to_display_if_none_active;
         
         /// <summary>
-        /// btnClose_Set_Goals control.
+        /// btn_Year_to_display_if_none_active control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClose_Set_Goals;
+        protected global::System.Web.UI.WebControls.Button btn_Year_to_display_if_none_active;
         
         /// <summary>
         /// gvw_EPM_Years control.

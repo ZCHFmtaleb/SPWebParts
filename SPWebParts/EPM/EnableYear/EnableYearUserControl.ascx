@@ -18,32 +18,50 @@
 
 <table>
     <tr>
-        <td style="padding-left:20px;"><h4>  البدء بتفعيل التقييم السنوى للعام </h4></td>
-        <td> <asp:DropDownList ID="ddlYear" runat="server" Font-Bold="True"></asp:DropDownList> </td>
+        <td style="padding-left:20px;"><h4>  البدء بتفعيل التقييم السنوى لسنة </h4></td>
+        <td> <asp:DropDownList ID="ddl_Eval_Year" runat="server" Font-Bold="True"></asp:DropDownList> </td>
         <td style="padding-right:20px;" > 
-         <asp:Button ID="btnActivate" runat="server" Text="تفعيل" Font-Size="Large" Height="50px" Width="100px" />&nbsp;&nbsp;&nbsp; 
-         <asp:Button ID="btnClose" runat="server" Text="إغلاق" Font-Size="Large" Height="50px" Width="100px" />  
-        </td>
+         <asp:Button ID="btnActivate_Eval_Year" runat="server" Text="تفعيل" Height="25px" Width="50px" OnClick="btnActivate_Eval_Year_Click" Style="padding:0px 0px 0px 0px; font-weight:bold;"/>&nbsp;&nbsp;&nbsp; 
+         </td>
     </tr>
 </table>
 <br />
 <table>
     <tr>
-        <td style="padding-left:20px;"><h4>  البدء بتفعيل وضع الأهداف للعام </h4></td>
-        <td> <asp:DropDownList ID="ddlYear_Set_Goals" runat="server" Font-Bold="True"></asp:DropDownList> </td>
-        <td style="padding-right:20px;" > <asp:Button ID="btnActivate_Set_Goals" runat="server" Text="تفعيل" Font-Size="Large" Height="50px" Width="100px" /> &nbsp;&nbsp;&nbsp; 
-         <asp:Button ID="btnClose_Set_Goals" runat="server" Text="إغلاق" Font-Size="Large" Height="50px" Width="100px" />     
-        </td>
+        <td style="padding-left:20px;"><h4>  البدء بتفعيل وضع الأهداف لسنة </h4></td>
+        <td> <asp:DropDownList ID="ddl_Set_Goals_Year" runat="server" Font-Bold="True"></asp:DropDownList> </td>
+        <td style="padding-right:20px;" > <asp:Button ID="btnActivate_Set_Goals_Year" runat="server" Text="تفعيل" Height="25px" Width="50px" OnClick="btnActivate_Set_Goals_Year_Click" Style="padding:0px 0px 0px 0px; font-weight:bold;" /> &nbsp;&nbsp;&nbsp; 
+         </td>
+    </tr>
+</table>
+<br />
+<table>
+    <tr>
+        <td style="padding-left:20px;"><h4>  سنة عرض الأهداف (فى حالة عدم وجود عام مفعل): </h4></td>
+        <td> <asp:DropDownList ID="ddl_Year_to_display_if_none_active" runat="server" Font-Bold="True"></asp:DropDownList> </td>
+        <td style="padding-right:20px;" > <asp:Button ID="btn_Year_to_display_if_none_active" runat="server" Text="حفظ" Height="25px" Width="50px" Style="padding:0px 0px 0px 0px; font-weight:bold;" OnClick="btn_Year_to_display_if_none_active_Click" /> &nbsp;&nbsp;&nbsp; 
+         </td>
     </tr>
 </table>
 <br />
 <br />
+<h3>الأعوام المفعلة حاليا :</h3>
 <div class="div_gvwSetObjectives" style="width:50% !important;">
-    <asp:GridView ID="gvw_EPM_Years" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="Both" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Width="400px" >
+    <asp:GridView ID="gvw_EPM_Years" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Width="100%" OnRowCommand="gvw_EPM_Years_RowCommand" >
         <AlternatingRowStyle BackColor="White" />
         <Columns>
-            <asp:BoundField DataField="year" HeaderText="السنة" />
-            <asp:BoundField DataField="status" HeaderText="المرحلة" />
+            <asp:BoundField DataField="Title" HeaderText="المرحلة" >
+            <HeaderStyle Width="50%" />
+            </asp:BoundField>
+            <asp:BoundField DataField="Year" HeaderText="السنة" >
+            <HeaderStyle Width="25%" />
+            </asp:BoundField>
+            <asp:TemplateField ShowHeader="False">
+                <ItemTemplate>
+                    <asp:Button ID="btnYearClosure" runat="server" CausesValidation="false" CommandName="YearClosure" Text="إغلاق" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                </ItemTemplate>
+                <HeaderStyle Width="25%" />
+            </asp:TemplateField>
         </Columns>
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

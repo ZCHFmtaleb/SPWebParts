@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="EPM\DAL\Emp_DAL.cs" />
     <Compile Include="EPM\EL\Emp.cs" />
+    <Compile Include="EPM\EL\WF_States.cs" />
     <Compile Include="EPM\EnableYear\EnableYear.cs" />
     <Compile Include="EPM\EnableYear\EnableYearUserControl.ascx.cs">
       <DependentUpon>EnableYearUserControl.ascx</DependentUpon>

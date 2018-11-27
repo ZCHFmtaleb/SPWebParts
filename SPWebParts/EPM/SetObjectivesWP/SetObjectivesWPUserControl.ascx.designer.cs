@@ -13,13 +13,22 @@ namespace SPWebParts.EPM.SetObjectivesWP {
     public partial class SetObjectivesWPUserControl {
         
         /// <summary>
-        /// lblStatus control.
+        /// PageTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblStatus;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PageTitle;
+        
+        /// <summary>
+        /// lblActiveYear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblActiveYear;
         
         /// <summary>
         /// slblEmpName control.
@@ -121,13 +130,22 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         protected global::System.Web.UI.WebControls.Label slblYear;
         
         /// <summary>
-        /// lblYear control.
+        /// lblActiveYear2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblYear;
+        protected global::System.Web.UI.WebControls.Label lblActiveYear2;
+        
+        /// <summary>
+        /// div_of_AddingGoal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_of_AddingGoal;
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -283,6 +301,51 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         protected global::System.Web.UI.WebControls.GridView gvwSetObjectives;
         
         /// <summary>
+        /// div_Mods control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_Mods;
+        
+        /// <summary>
+        /// lblRequired_Mods control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRequired_Mods;
+        
+        /// <summary>
+        /// txtRequired_Mods control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRequired_Mods;
+        
+        /// <summary>
+        /// rfv_txtRequired_Mods control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_txtRequired_Mods;
+        
+        /// <summary>
+        /// divButtons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divButtons;
+        
+        /// <summary>
         /// btnSubmit control.
         /// </summary>
         /// <remarks>
@@ -299,6 +362,15 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnApprove;
+        
+        /// <summary>
+        /// btnReject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReject;
         
         /// <summary>
         /// ValidationSummary1 control.
@@ -319,6 +391,15 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
         
         /// <summary>
+        /// ValidationSummary3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary3;
+        
+        /// <summary>
         /// divSuccess control.
         /// </summary>
         /// <remarks>
@@ -328,12 +409,12 @@ namespace SPWebParts.EPM.SetObjectivesWP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSuccess;
         
         /// <summary>
-        /// divApprovalSuccess control.
+        /// lblSuccess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divApprovalSuccess;
+        protected global::System.Web.UI.WebControls.Label lblSuccess;
     }
 }

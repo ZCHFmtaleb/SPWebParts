@@ -28,6 +28,13 @@
     padding-right: 5%;
 }
 
+#div_Required_Mods {
+    font-size: medium;
+    color: black;
+    font-weight: bold;
+    margin-top: 2em;
+}
+
 .divAddGoal {
     margin-bottom: 2em;
 }
@@ -52,10 +59,6 @@
 .div_btnSubmit {
     margin-top: 2em;
     text-align: center;
-}
-
-.divSuccess_css{
-    background-color:aquamarine;
 }
 
 /* Table borders style (cross-browser) */
