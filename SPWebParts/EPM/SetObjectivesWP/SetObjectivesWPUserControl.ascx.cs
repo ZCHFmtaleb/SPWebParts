@@ -227,41 +227,48 @@ namespace SPWebParts.EPM.SetObjectivesWP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-               {
-                   divSuccess.Visible = false;
+            try
+            {
+                SPSecurity.RunWithElevatedPrivileges(delegate ()
+                      {
+                          divSuccess.Visible = false;
 
-                   if (!IsPostBack)
-                   {
-                       Active_Set_Goals_Year = read_Active_Set_Goals_Year();
-                       if (Active_Set_Goals_Year == "NoSetGoalsActiveYear")
-                       {
-                           Active_Set_Goals_Year = read_Year_to_display_if_none_active();
-                           Make_InActive_Mode();
-                       }
-                   }
+                          if (!IsPostBack)
+                          {
+                              Active_Set_Goals_Year = read_Active_Set_Goals_Year();
+                              if (Active_Set_Goals_Year == "NoSetGoalsActiveYear")
+                              {
+                                  Active_Set_Goals_Year = read_Year_to_display_if_none_active();
+                                  Make_InActive_Mode();
+                              }
+                          }
 
-                   lblActiveYear.Text = Active_Set_Goals_Year;
-                   lblActiveYear2.Text = Active_Set_Goals_Year;
+                          lblActiveYear.Text = Active_Set_Goals_Year;
+                          lblActiveYear2.Text = Active_Set_Goals_Year;
 
-                   getEmp_from_QueryString_or_currentUser();
+                          getEmp_from_QueryString_or_currentUser();
 
-                   intended_Emp = Emp_DAL.get_Emp_Info(intended_Emp, strEmpDisplayName);
-                   bind_Emp_Info();
+                          intended_Emp = Emp_DAL.get_Emp_Info(intended_Emp, strEmpDisplayName);
+                          bind_Emp_Info();
 
-                   if (!IsPostBack)
-                   {
-                       fill_ddlStrDir();
+                          if (!IsPostBack)
+                          {
+                              fill_ddlStrDir();
 
-                       getPreviouslySavedObjectives();
+                              getPreviouslySavedObjectives();
 
-                       Bind_Data_To_Controls();
+                              Bind_Data_To_Controls();
 
-                       Planning_Consultant_Email = Emp_DAL.get_Planning_Consultant_Email();
+                              Planning_Consultant_Email = Emp_DAL.get_Planning_Consultant_Email();
 
-                       Check_Current_WF_State_and_Actor();
-                   }
-               });
+                              Check_Current_WF_State_and_Actor();
+                          }
+                      });
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         protected void ddlStrDir_SelectedIndexChanged(object sender, EventArgs e)
