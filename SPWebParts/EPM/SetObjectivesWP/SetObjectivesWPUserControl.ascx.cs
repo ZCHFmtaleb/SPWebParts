@@ -89,7 +89,7 @@ namespace SPWebParts.EPM.SetObjectivesWP
                     tblObjectives.Columns.Add("ObjName");
                     tblObjectives.Columns.Add("ObjWeight", typeof(Int32));
                     tblObjectives.Columns.Add("ObjQ");
-                    tblObjectives.Columns.Add("StrDir_x003a_Title");
+                    tblObjectives.Columns.Add("_x0645__x0639__x0631__x0641__x00");
                     tblObjectives.Columns.Add("StrDir");
                     tblObjectives.Columns.Add("PrimaryGoal_x003a__x0627__x0633_");
                     tblObjectives.Columns.Add("PrimaryGoal");
@@ -264,104 +264,124 @@ namespace SPWebParts.EPM.SetObjectivesWP
                });
         }
 
-        private string read_Year_to_display_if_none_active()
+        protected void ddlStrDir_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string pActiveYear = DateTime.Today.Year.ToString();
+            ddlPrimaryGoal.Items.Clear();
+            ddlPrimaryGoal.Items.Add(new ListItem("اختر الهدف الرئيسى", "0"));
+            fill_ddlPrimaryGoal();
+            ddlPrimaryGoal.DataSource = tblPrimaryGoal;
+            ddlPrimaryGoal.DataValueField = "ID";
+            ddlPrimaryGoal.DataTextField = "Title";
+            ddlPrimaryGoal.DataBind();
+        }
+
+        protected void btnAddObjective_Click(object sender, EventArgs e)
+        {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb spWeb = oSite.OpenWeb())
-                    {
-                        SPList spList = spWeb.Lists.TryGetList("سنة التقييم");
-                        if (spList != null)
-                        {
-                            SPQuery qry = new SPQuery();
-                            qry.Query =
-                                          @"   <Where>
-                                              <Eq>
-                                                 <FieldRef Name='State' />
-                                                 <Value Type='Choice'>عرض فقط</Value>
-                                              </Eq>
-                                           </Where>";
-                            qry.ViewFieldsOnly = true;
-                            qry.ViewFields = @"<FieldRef Name='Title' /><FieldRef Name='Year' /><FieldRef Name='State' />";
-                            SPListItemCollection listItems = spList.GetItems(qry);
+                DataRow NewRow = tblObjectives.NewRow();
+                NewRow["ObjName"] = txtObjName.Text; ;
+                NewRow["ObjWeight"] = txtObjWeight.Text;
+                NewRow["ObjQ"] = ddlObjQ.SelectedItem.Text;
+                NewRow["_x0645__x0639__x0631__x0641__x00"] = ddlStrDir.SelectedItem.Text;
+                NewRow["StrDir"] = ddlStrDir.SelectedItem.Value;
+                NewRow["PrimaryGoal_x003a__x0627__x0633_"] = ddlPrimaryGoal.SelectedItem.Text;
+                NewRow["PrimaryGoal"] = ddlPrimaryGoal.SelectedItem.Value;
+                NewRow["ObjYear"] = Active_Set_Goals_Year.ToString();
+                tblObjectives.Rows.Add(NewRow);
+                Bind_Data_To_Controls();
+            });
+        }
 
-                            if (listItems.Count > 0)
-                            {
-                                foreach (SPListItem item in listItems)
-                                {
-                                    if (item["State"].ToString() == "عرض فقط" && item["Title"].ToString() == "سنة عرض الأهداف (فى حالة عدم وجود عام مفعل)")
-                                    {
-                                        pActiveYear = item["Year"].ToString();
-                                    }
-                                }
-                            }
-                        }
+        protected void gvwSetObjectives_RowEditing(object sender, System.Web.UI.WebControls.GridViewEditEventArgs e)
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                gvwSetObjectives.EditIndex = e.NewEditIndex;
+                Bind_Data_To_Controls();
+                GridViewRow row = (GridViewRow)gvwSetObjectives.Rows[e.NewEditIndex];
+                ((DropDownList)row.Cells[2].FindControl("ddlObjQ_gv")).SelectedValue = tblObjectives.Rows[e.NewEditIndex][2].ToString();
+            });
+        }
+
+        protected void gvwSetObjectives_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                gvwSetObjectives.EditIndex = -1;
+                Bind_Data_To_Controls();
+            });
+        }
+
+        protected void gvwSetObjectives_RowUpdating(object sender, System.Web.UI.WebControls.GridViewUpdateEventArgs e)
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                GridViewRow row = (GridViewRow)gvwSetObjectives.Rows[e.RowIndex];
+                tblObjectives.Rows[e.RowIndex]["ObjName"] = e.NewValues[0].ToString();
+                string newObjWeight = e.NewValues[1].ToString().Replace("%", "");
+                tblObjectives.Rows[e.RowIndex]["ObjWeight"] = int.Parse(newObjWeight);
+                tblObjectives.Rows[e.RowIndex]["ObjQ"] = ((DropDownList)row.Cells[3].FindControl("ddlObjQ_gv")).SelectedValue;
+                gvwSetObjectives.EditIndex = -1;
+                Bind_Data_To_Controls();
+            });
+        }
+
+        protected void gvwSetObjectives_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                tblObjectives.Rows.RemoveAt(e.RowIndex);
+                Bind_Data_To_Controls();
+            });
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+             {
+                 if (Page.IsValid)
+                 {
+                     SaveToSP();
+                     Change_State_to(WF_States.Objectives_set_by_Emp);
+                     Show_Success_Message("تم حفظ الأهداف بنجاح");
+                     Send_Objs_Added_Email_to_Planning_Consultant();
+                 }
+             });
+        }
+
+        protected void btnApprove_Click(object sender, EventArgs e)
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                if (Page.IsValid)
+                {
+                    SaveToSP();
+                    Show_Success_Message("تم اعتماد الأهداف بنجاح");
+                    if (SPContext.Current.Web.CurrentUser.Email == Planning_Consultant_Email)
+                    {
+                        Change_State_to(WF_States.Objectives_approved_by_Planning_Consultant);
+                        Send_Objs_Added_Email_to_DM();
+                    }
+                    else
+                    {
+                        Change_State_to(WF_States.Objectives_approved_by_DM);
+                        Notify_Emp_that_Objs_finally_approved();
                     }
                 }
             });
-
-            return pActiveYear;
         }
 
-        private string read_Active_Set_Goals_Year()
+        protected void btnReject_Click(object sender, EventArgs e)
         {
-            string pActiveYear = "NoSetGoalsActiveYear";
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb spWeb = oSite.OpenWeb())
-                    {
-                        SPList spList = spWeb.Lists.TryGetList("سنة التقييم");
-                        if (spList != null)
-                        {
-                            SPQuery qry = new SPQuery();
-                            qry.Query =
-                                          @"   <Where>
-                                              <Eq>
-                                                 <FieldRef Name='State' />
-                                                 <Value Type='Choice'>مفعل</Value>
-                                              </Eq>
-                                           </Where>";
-                            qry.ViewFieldsOnly = true;
-                            qry.ViewFields = @"<FieldRef Name='Title' /><FieldRef Name='Year' /><FieldRef Name='State' />";
-                            SPListItemCollection listItems = spList.GetItems(qry);
-
-                            if (listItems.Count > 0)
-                            {
-                                foreach (SPListItem item in listItems)
-                                {
-                                    if (item["State"].ToString() == "مفعل" && item["Title"].ToString() == "البدء بتفعيل وضع الأهداف لسنة")
-                                    {
-                                        pActiveYear = item["Year"].ToString();
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-
-            return pActiveYear;
+            Send_Rej_Email_to_Emp();
+            Change_State_to(WF_States.Objectives_rejected_by_Planning_Consultant);
+            Show_Success_Message("تم ارسال بريد الكترونى بالتعديلات المطلوبة");
         }
 
-        private void Make_InActive_Mode()
-        {
-            PageTitle.InnerText = " عرض الاهداف الفردية لعام " + Active_Set_Goals_Year;
-            div_of_AddingGoal.Visible = false;
-            div_Mods.Visible = false;
-            divButtons.Visible = false;
-            foreach (DataControlField d in gvwSetObjectives.Columns)
-            {
-                if (d.HeaderText == "تعديل" || d.HeaderText == "حذف")
-                {
-                    d.Visible = false;
-                }
-            }
-        }
+        #endregion Event Handlers
+
+        #region Related to Load
 
         private void Check_Current_WF_State_and_Actor()
         {
@@ -441,150 +461,6 @@ namespace SPWebParts.EPM.SetObjectivesWP
             }
         }
 
-        protected void btnAddObjective_Click(object sender, EventArgs e)
-        {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-                DataRow NewRow = tblObjectives.NewRow();
-                NewRow["ObjName"] = txtObjName.Text; ;
-                NewRow["ObjWeight"] = txtObjWeight.Text;
-                NewRow["ObjQ"] = ddlObjQ.SelectedItem.Text;
-                NewRow["StrDir_x003a_Title"] = ddlStrDir.SelectedItem.Text;
-                NewRow["StrDir"] = ddlStrDir.SelectedItem.Value;
-                NewRow["PrimaryGoal_x003a__x0627__x0633_"] = ddlPrimaryGoal.SelectedItem.Text;
-                NewRow["PrimaryGoal"] = ddlPrimaryGoal.SelectedItem.Value;
-                NewRow["ObjYear"] = Active_Set_Goals_Year.ToString();
-                tblObjectives.Rows.Add(NewRow);
-                Bind_Data_To_Controls();
-            });
-        }
-
-        protected void gvwSetObjectives_RowEditing(object sender, System.Web.UI.WebControls.GridViewEditEventArgs e)
-        {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-                gvwSetObjectives.EditIndex = e.NewEditIndex;
-                Bind_Data_To_Controls();
-                GridViewRow row = (GridViewRow)gvwSetObjectives.Rows[e.NewEditIndex];
-                ((DropDownList)row.Cells[2].FindControl("ddlObjQ_gv")).SelectedValue = tblObjectives.Rows[e.NewEditIndex][2].ToString();
-            });
-        }
-
-        protected void gvwSetObjectives_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-                gvwSetObjectives.EditIndex = -1;
-                Bind_Data_To_Controls();
-            });
-        }
-
-        protected void gvwSetObjectives_RowUpdating(object sender, System.Web.UI.WebControls.GridViewUpdateEventArgs e)
-        {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-                GridViewRow row = (GridViewRow)gvwSetObjectives.Rows[e.RowIndex];
-                tblObjectives.Rows[e.RowIndex]["ObjName"] = e.NewValues[0].ToString();
-                string newObjWeight = e.NewValues[1].ToString().Replace("%", "");
-                tblObjectives.Rows[e.RowIndex]["ObjWeight"] = int.Parse(newObjWeight);
-                tblObjectives.Rows[e.RowIndex]["ObjQ"] = ((DropDownList)row.Cells[3].FindControl("ddlObjQ_gv")).SelectedValue;
-                gvwSetObjectives.EditIndex = -1;
-                Bind_Data_To_Controls();
-            });
-        }
-
-        protected void gvwSetObjectives_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
-        {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-                tblObjectives.Rows.RemoveAt(e.RowIndex);
-                Bind_Data_To_Controls();
-            });
-        }
-
-        protected void btnSubmit_Click(object sender, EventArgs e)
-        {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-             {
-                 if (Page.IsValid)
-                 {
-                     SaveToSP();
-                     Change_State_to(WF_States.Objectives_set_by_Emp);
-                     Show_Success_Message("تم حفظ الأهداف بنجاح");
-                     Send_Objs_Added_Email_to_Planning_Consultant();
-                 }
-             });
-        }
-
-        private void Show_Success_Message(string m)
-        {
-            divSuccess.Visible = true;
-            lblSuccess.Text = m;
-        }
-
-        protected void btnApprove_Click(object sender, EventArgs e)
-        {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-                if (Page.IsValid)
-                {
-                    SaveToSP();
-                    Show_Success_Message("تم اعتماد الأهداف بنجاح");
-                    if (SPContext.Current.Web.CurrentUser.Email == Planning_Consultant_Email)
-                    {
-                        Change_State_to(WF_States.Objectives_approved_by_Planning_Consultant);
-                        Send_Objs_Added_Email_to_DM();
-                    }
-                    else
-                    {
-                        Change_State_to(WF_States.Objectives_approved_by_DM);
-                        Notify_Emp_that_Objs_finally_approved();
-                    }
-                }
-            });
-        }
-
-        private void Notify_Emp_that_Objs_finally_approved()
-        {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-                string n = string.Empty;
-                if (intended_Emp.Emp_ArabicName != null && intended_Emp.Emp_ArabicName != string.Empty)
-                {
-                    n = intended_Emp.Emp_ArabicName;
-                }
-                else
-                {
-                    n = intended_Emp.Emp_DisplayName;
-                }
-
-                StringDictionary headers = new StringDictionary();
-                headers.Add("to", intended_Emp.Emp_email);
-                headers.Add("subject", "تم اعتماد الأهداف الخاصة بك لعام " + Active_Set_Goals_Year);
-                headers.Add("content-type", "text/html");
-                StringBuilder bodyText = new StringBuilder();
-                bodyText.Append("<p dir=rtl >");
-                bodyText.Append("السلام عليكم ورحمة الله"); bodyText.Append("<br />");
-                bodyText.Append("تحية طيبة وبعد:"); bodyText.Append("<br />");
-                bodyText.Append("تهانينا. لقد تم اعتماد الأهداف الخاصة بك بشكل نهائى");
-                bodyText.Append("<br />");
-                bodyText.Append("يمكنك مراجعة الأهداف الخاصة بك فى أى وقت وذلك من خلال الرابط التالى:");
-                bodyText.Append("<br />");
-                bodyText.Append("<a href=\"" + SPContext.Current.Web.Url + "/Pages/نموذج%20وضع%20الأهداف.aspx\" >" + "نموذج وضع الأهداف" + " </a>");
-                bodyText.Append("<br />");
-                bodyText.Append("<br />");
-                bodyText.Append("وشكرا جزيلا لحسن تعاونكم");
-                bodyText.Append("</p>");
-                SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
-            });
-        }
-
-        #endregion Event Handlers
-
-        #region Helper Methods
-
-        #region Related to Load
-
         private void getEmp_from_QueryString_or_currentUser()
         {
             if (Request.QueryString["empid"] != null)
@@ -594,7 +470,7 @@ namespace SPWebParts.EPM.SetObjectivesWP
             }
             else
             {
-                strEmpDisplayName = SPContext.Current.Web.CurrentUser.Name;          //"Test spuser_1"; //"sherif abdellatif";
+                strEmpDisplayName = SPContext.Current.Web.CurrentUser.Name;
             }
         }
 
@@ -671,33 +547,103 @@ namespace SPWebParts.EPM.SetObjectivesWP
             });
         }
 
-        private void fill_ddlSecondaryGoal()
+        private string read_Active_Set_Goals_Year()
         {
+            string pActiveYear = "NoSetGoalsActiveYear";
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
                 using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
                 {
                     using (SPWeb spWeb = oSite.OpenWeb())
                     {
-                        SPList spList = spWeb.Lists.TryGetList("الأهداف الفرعية");
+                        SPList spList = spWeb.Lists.TryGetList("سنة التقييم");
                         if (spList != null)
                         {
                             SPQuery qry = new SPQuery();
                             qry.Query =
-                           @"   <Where>
-                                        <Eq>
-                                            <FieldRef Name='_x0627__x0644__x0647__x062f__x060' />
-                                            <Value Type='Integer'>" + ddlPrimaryGoal.SelectedValue.ToString() + @"</Value>
-                                        </Eq>
-                                    </Where>";
+                                          @"   <Where>
+                                              <Eq>
+                                                 <FieldRef Name='State' />
+                                                 <Value Type='Choice'>مفعل</Value>
+                                              </Eq>
+                                           </Where>";
                             qry.ViewFieldsOnly = true;
-                            qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='Title' />";
+                            qry.ViewFields = @"<FieldRef Name='Title' /><FieldRef Name='Year' /><FieldRef Name='State' />";
                             SPListItemCollection listItems = spList.GetItems(qry);
-                            tblSecondaryGoal = listItems.GetDataTable();
+
+                            if (listItems.Count > 0)
+                            {
+                                foreach (SPListItem item in listItems)
+                                {
+                                    if (item["State"].ToString() == "مفعل" && item["Title"].ToString() == "البدء بتفعيل وضع الأهداف لسنة")
+                                    {
+                                        pActiveYear = item["Year"].ToString();
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             });
+
+            return pActiveYear;
+        }
+
+        private string read_Year_to_display_if_none_active()
+        {
+            string pActiveYear = DateTime.Today.Year.ToString();
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
+                {
+                    using (SPWeb spWeb = oSite.OpenWeb())
+                    {
+                        SPList spList = spWeb.Lists.TryGetList("سنة التقييم");
+                        if (spList != null)
+                        {
+                            SPQuery qry = new SPQuery();
+                            qry.Query =
+                                          @"   <Where>
+                                              <Eq>
+                                                 <FieldRef Name='State' />
+                                                 <Value Type='Choice'>عرض فقط</Value>
+                                              </Eq>
+                                           </Where>";
+                            qry.ViewFieldsOnly = true;
+                            qry.ViewFields = @"<FieldRef Name='Title' /><FieldRef Name='Year' /><FieldRef Name='State' />";
+                            SPListItemCollection listItems = spList.GetItems(qry);
+
+                            if (listItems.Count > 0)
+                            {
+                                foreach (SPListItem item in listItems)
+                                {
+                                    if (item["State"].ToString() == "عرض فقط" && item["Title"].ToString() == "سنة عرض الأهداف (فى حالة عدم وجود عام مفعل)")
+                                    {
+                                        pActiveYear = item["Year"].ToString();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            return pActiveYear;
+        }
+
+        private void Make_InActive_Mode()
+        {
+            PageTitle.InnerText = " عرض الاهداف الفردية لعام " + Active_Set_Goals_Year;
+            div_of_AddingGoal.Visible = false;
+            div_Mods.Visible = false;
+            divButtons.Visible = false;
+            foreach (DataControlField d in gvwSetObjectives.Columns)
+            {
+                if (d.HeaderText == "تعديل" || d.HeaderText == "حذف")
+                {
+                    d.Visible = false;
+                }
+            }
         }
 
         private void getPreviouslySavedObjectives()
@@ -727,7 +673,7 @@ namespace SPWebParts.EPM.SetObjectivesWP
                                        </Where>";
                             qry.ViewFieldsOnly = true;
                             qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='Status' /><FieldRef Name='Emp' /><FieldRef Name='ObjQ' /><FieldRef Name='ObjYear' /><FieldRef Name='ObjType' />
-                                                            <FieldRef Name='ObjWeight' /><FieldRef Name='StrDir' /><FieldRef Name='StrDir_x003a_Title' /><FieldRef Name='PrimaryGoal' /><FieldRef Name='PrimaryGoal_x003a__x0627__x0633_' />";
+                                                            <FieldRef Name='ObjWeight' /><FieldRef Name='StrDir' /><FieldRef Name='_x0645__x0639__x0631__x0641__x00' /><FieldRef Name='PrimaryGoal' /><FieldRef Name='PrimaryGoal_x003a__x0627__x0633_' />";
                             SPListItemCollection listItems = spList.GetItems(qry);
 
                             if (listItems.Count > 0)
@@ -749,8 +695,6 @@ namespace SPWebParts.EPM.SetObjectivesWP
             {
                 if (tblObjectives != null && tblObjectives.Rows.Count > 0)
                 {
-                    // lblStatus.Text = "تحت المراجعة";
-
                     PercentageTotal = int.Parse(tblObjectives.Compute("Sum(ObjWeight)", string.Empty).ToString());
                     lbl_PercentageTotal.Text = PercentageTotal.ToString();
                     if (PercentageTotal == 100)
@@ -764,13 +708,11 @@ namespace SPWebParts.EPM.SetObjectivesWP
 
                     if (tblObjectives.Rows[0]["Status"].ToString() == "معتمدة")
                     {
-                        // lblStatus.Text = "تم اعتماد الأهداف";
                     }
                 }
                 else
                 {
                     lbl_PercentageTotal.Text = "0";
-                    // lblStatus.Text = "لم يتم وضع الأهداف";
                 }
             });
         }
@@ -781,10 +723,6 @@ namespace SPWebParts.EPM.SetObjectivesWP
             {
                 gvwSetObjectives.DataSource = tblObjectives;
                 gvwSetObjectives.DataBind();
-                //ddlStrDir.DataSource = tblStrDir;
-                //ddlStrDir.DataValueField = "ID";
-                //ddlStrDir.DataTextField = "Title";
-                //ddlStrDir.DataBind();
                 Refresh_GoalsTotal();
             });
         }
@@ -793,22 +731,22 @@ namespace SPWebParts.EPM.SetObjectivesWP
 
         #region Related to Save
 
-        protected void cvld_PercentageTotal_ServerValidate(object source, ServerValidateEventArgs e)
+        protected void cvld_Number_of_Objs_ServerValidate(object source, ServerValidateEventArgs e)
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                if (PercentageTotal == 100)
+                if (gvwSetObjectives.Rows.Count >= 3 && gvwSetObjectives.Rows.Count <= 7)
                     e.IsValid = true;
                 else
                     e.IsValid = false;
             });
         }
 
-        protected void cvld_Number_of_Objs_ServerValidate(object source, ServerValidateEventArgs e)
+        protected void cvld_PercentageTotal_ServerValidate(object source, ServerValidateEventArgs e)
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                if (gvwSetObjectives.Rows.Count >= 3 && gvwSetObjectives.Rows.Count <= 7)
+                if (PercentageTotal == 100)
                     e.IsValid = true;
                 else
                     e.IsValid = false;
@@ -826,18 +764,25 @@ namespace SPWebParts.EPM.SetObjectivesWP
                         oWeb.AllowUnsafeUpdates = true;
                         SPList oList = oWeb.Lists["الأهداف"];
 
-                        #region Remove any previous objectives of same Emp
+                        #region Remove any previous objectives of same Emp and same year
 
                         SPQuery qry = new SPQuery();
                         qry.Query =
                         @"   <Where>
-                                        <Eq>
-                                            <FieldRef Name='Emp' />
-                                            <Value Type='User'>" + strEmpDisplayName + @"</Value>
-                                        </Eq>
-                                    </Where>";
+                                          <And>
+                                             <Eq>
+                                                <FieldRef Name='Emp' />
+                                                <Value Type='User'>" + strEmpDisplayName + @"</Value>
+                                             </Eq>
+                                             <Eq>
+                                                <FieldRef Name='ObjYear' />
+                                                <Value Type='Text'>" + Active_Set_Goals_Year + @"</Value>
+                                             </Eq>
+                                          </And>
+                                       </Where>";
                         qry.ViewFieldsOnly = true;
-                        qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='Status' /><FieldRef Name='Emp' /><FieldRef Name='ObjQ' /><FieldRef Name='ObjYear' /><FieldRef Name='ObjType' /><FieldRef Name='ObjWeight' />";
+                        qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='Status' /><FieldRef Name='Emp' />
+                                                       <FieldRef Name='ObjQ' /><FieldRef Name='ObjYear' /><FieldRef Name='ObjType' /><FieldRef Name='ObjWeight' />";
                         SPListItemCollection listItems = oList.GetItems(qry);
 
                         foreach (SPListItem item in listItems)
@@ -845,7 +790,7 @@ namespace SPWebParts.EPM.SetObjectivesWP
                             oList.GetItemById(item.ID).Delete();
                         }
 
-                        #endregion Remove any previous objectives of same Emp
+                        #endregion Remove any previous objectives of same Emp and same year
 
                         #region Add the new (or updated) objectives
 
@@ -859,7 +804,7 @@ namespace SPWebParts.EPM.SetObjectivesWP
                                 oListItem["Emp"] = SPContext.Current.Web.EnsureUser(intended_Emp.login_name_to_convert_to_SPUser);
                                 oListItem["ObjWeight"] = row["ObjWeight"].ToString();
                                 oListItem["ObjQ"] = row["ObjQ"].ToString();
-                                oListItem["ObjYear"] = DateTime.Now.Year + 1;
+                                oListItem["ObjYear"] = Active_Set_Goals_Year;
                                 oListItem["StrDir"] = int.Parse(row["StrDir"].ToString());
                                 oListItem["PrimaryGoal"] = int.Parse(row["PrimaryGoal"].ToString());
                                 oListItem.Update();
@@ -876,6 +821,51 @@ namespace SPWebParts.EPM.SetObjectivesWP
                 }
             });
         }
+
+        private void Change_State_to(WF_States pNew_state)
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
+                {
+                    using (SPWeb oWeb = oSite.OpenWeb())
+                    {
+                        oWeb.AllowUnsafeUpdates = true;
+                        SPList oList = oWeb.Lists["الأهداف"];
+                        SPQuery qry = new SPQuery();
+                        qry.Query =
+                        @"   <Where>
+                                        <Eq>
+                                            <FieldRef Name='Emp' />
+                                            <Value Type='User'>" + strEmpDisplayName + @"</Value>
+                                        </Eq>
+                                    </Where>";
+                        qry.ViewFieldsOnly = true;
+                        qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='Status' /><FieldRef Name='Emp' /><FieldRef Name='ObjQ' /><FieldRef Name='ObjYear' /><FieldRef Name='ObjType' /><FieldRef Name='ObjWeight' />";
+                        SPListItemCollection listItems = oList.GetItems(qry);
+
+                        foreach (SPListItem item in listItems)
+                        {
+                            SPListItem itemToUpdate = oList.GetItemById(item.ID);
+                            itemToUpdate["Status"] = pNew_state.ToString();
+                            itemToUpdate.Update();
+                        }
+
+                        oWeb.AllowUnsafeUpdates = false;
+                    }
+                }
+            });
+        }
+
+        private void Show_Success_Message(string m)
+        {
+            divSuccess.Visible = true;
+            lblSuccess.Text = m;
+        }
+
+        #endregion Related to Save
+
+        #region Related to Email
 
         private void Send_Objs_Added_Email_to_Planning_Consultant()
         {
@@ -908,10 +898,6 @@ namespace SPWebParts.EPM.SetObjectivesWP
                 SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
             });
         }
-
-        #endregion Related to Save
-
-        #region Related to Email
 
         private void Send_Objs_Added_Email_to_DM()
         {
@@ -966,72 +952,41 @@ namespace SPWebParts.EPM.SetObjectivesWP
             });
         }
 
-        #endregion Related to Email
-
-        #endregion Helper Methods
-
-        protected void ddlStrDir_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ddlPrimaryGoal.Items.Clear();
-            ddlPrimaryGoal.Items.Add(new ListItem("اختر الهدف الرئيسى", "0"));
-            fill_ddlPrimaryGoal();
-            ddlPrimaryGoal.DataSource = tblPrimaryGoal;
-            ddlPrimaryGoal.DataValueField = "ID";
-            ddlPrimaryGoal.DataTextField = "Title";
-            ddlPrimaryGoal.DataBind();
-        }
-
-        protected void btnReject_Click(object sender, EventArgs e)
-        {
-            Send_Rej_Email_to_Emp();
-            Change_State_to(WF_States.Objectives_rejected_by_Planning_Consultant);
-            Show_Success_Message("تم ارسال بريد الكترونى بالتعديلات المطلوبة");
-        }
-
-        private void Change_State_to(WF_States pNew_state)
+        private void Notify_Emp_that_Objs_finally_approved()
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
+                string n = string.Empty;
+                if (intended_Emp.Emp_ArabicName != null && intended_Emp.Emp_ArabicName != string.Empty)
                 {
-                    using (SPWeb oWeb = oSite.OpenWeb())
-                    {
-                        oWeb.AllowUnsafeUpdates = true;
-                        SPList oList = oWeb.Lists["الأهداف"];
-                        SPQuery qry = new SPQuery();
-                        qry.Query =
-                        @"   <Where>
-                                        <Eq>
-                                            <FieldRef Name='Emp' />
-                                            <Value Type='User'>" + strEmpDisplayName + @"</Value>
-                                        </Eq>
-                                    </Where>";
-                        qry.ViewFieldsOnly = true;
-                        qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='Status' /><FieldRef Name='Emp' /><FieldRef Name='ObjQ' /><FieldRef Name='ObjYear' /><FieldRef Name='ObjType' /><FieldRef Name='ObjWeight' />";
-                        SPListItemCollection listItems = oList.GetItems(qry);
-
-                        foreach (SPListItem item in listItems)
-                        {
-                            SPListItem itemToUpdate = oList.GetItemById(item.ID);
-                            itemToUpdate["Status"] = pNew_state.ToString();
-                            itemToUpdate.Update();
-                        }
-
-                        oWeb.AllowUnsafeUpdates = false;
-                    }
+                    n = intended_Emp.Emp_ArabicName;
                 }
+                else
+                {
+                    n = intended_Emp.Emp_DisplayName;
+                }
+
+                StringDictionary headers = new StringDictionary();
+                headers.Add("to", intended_Emp.Emp_email);
+                headers.Add("subject", "تم اعتماد الأهداف الخاصة بك لعام " + Active_Set_Goals_Year);
+                headers.Add("content-type", "text/html");
+                StringBuilder bodyText = new StringBuilder();
+                bodyText.Append("<p dir=rtl >");
+                bodyText.Append("السلام عليكم ورحمة الله"); bodyText.Append("<br />");
+                bodyText.Append("تحية طيبة وبعد:"); bodyText.Append("<br />");
+                bodyText.Append("تهانينا. لقد تم اعتماد الأهداف الخاصة بك بشكل نهائى");
+                bodyText.Append("<br />");
+                bodyText.Append("يمكنك مراجعة الأهداف الخاصة بك فى أى وقت وذلك من خلال الرابط التالى:");
+                bodyText.Append("<br />");
+                bodyText.Append("<a href=\"" + SPContext.Current.Web.Url + "/Pages/نموذج%20وضع%20الأهداف.aspx\" >" + "نموذج وضع الأهداف" + " </a>");
+                bodyText.Append("<br />");
+                bodyText.Append("<br />");
+                bodyText.Append("وشكرا جزيلا لحسن تعاونكم");
+                bodyText.Append("</p>");
+                SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
             });
         }
 
-        //protected void ddlPrimaryGoal_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    ddlSecondaryGoal.Items.Clear();
-        //    ddlSecondaryGoal.Items.Add(new ListItem("اختر الهدف الفرعى", "0"));
-        //    fill_ddlSecondaryGoal();
-        //    ddlSecondaryGoal.DataSource = tblSecondaryGoal;
-        //    ddlSecondaryGoal.DataValueField = "ID";
-        //    ddlSecondaryGoal.DataTextField = "Title";
-        //    ddlSecondaryGoal.DataBind();
-        //}
+        #endregion Related to Email
     }
 }

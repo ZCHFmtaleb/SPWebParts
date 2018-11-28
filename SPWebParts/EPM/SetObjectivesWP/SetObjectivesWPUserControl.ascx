@@ -172,10 +172,10 @@
         <asp:BoundField DataField="PrimaryGoal" HeaderText="PrimaryGoal" Visible="False" />
         <asp:TemplateField HeaderText="التوجه الاستراتيجى">
             <EditItemTemplate>
-                <asp:Label ID="Label1" runat="server" Text='<%# Eval("StrDir_x003a_Title") %>'></asp:Label>
+                <asp:Label ID="Label1" runat="server" Text='<%# Eval("_x0645__x0639__x0631__x0641__x00") %>'></asp:Label>
             </EditItemTemplate>
             <ItemTemplate>
-                <asp:Label ID="Label2" runat="server" Text='<%# Bind("StrDir_x003a_Title") %>'></asp:Label>
+                <asp:Label ID="Label2" runat="server" Text='<%# Bind("_x0645__x0639__x0631__x0641__x00") %>'></asp:Label>
             </ItemTemplate>
             <HeaderStyle Width="12%" />
         </asp:TemplateField>

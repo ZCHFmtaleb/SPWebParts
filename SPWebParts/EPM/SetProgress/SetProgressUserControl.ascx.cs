@@ -140,14 +140,6 @@ namespace SPWebParts.EPM.SetProgress
                                 SPListItem oListItem = oList.GetItemById(int.Parse(row["ID"].ToString()));
                                 
                                 oListItem["AccPercent"] = row["AccPercent"].ToString();
-                                //oListItem["Status"] = "";
-                                //oListItem["Emp"] = SPContext.Current.Web.CurrentUser;
-                                //oListItem["ObjWeight"] = row["ObjWeight"].ToString();
-                                //oListItem["ObjQ"] = row["ObjQ"].ToString();
-                                //oListItem["ObjYear"] = DateTime.Now.Year + 1;
-                                //oListItem["StrDir_x003a_Title"] = row["StrDir_x003a_Title"].ToString();
-                                //oListItem["StrDir"] = int.Parse(row["StrDir"].ToString());
-
                                 oListItem.Update();
                             }
                             divSuccess.Visible = true;
