@@ -10,6 +10,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
 
 namespace SPWebParts.EPM.SetObjectivesWP
 {
@@ -231,6 +232,19 @@ namespace SPWebParts.EPM.SetObjectivesWP
             {
                 SPSecurity.RunWithElevatedPrivileges(delegate ()
                       {
+                          //if we are not in display mode disable all the validation controls to make sure saving the page the webpart is on works.
+                          WebPartManager wpm = WebPartManager.GetCurrentWebPartManager(Page);
+                          if (wpm.DisplayMode != WebPartManager.BrowseDisplayMode)
+                          {
+                              foreach (var validator in Controls)
+                              {
+                                  if (validator is BaseValidator)
+                                  {
+                                      ((BaseValidator)validator).Enabled = false;
+                                  }
+                              }
+                          }
+
                           divSuccess.Visible = false;
 
                           if (!IsPostBack)
@@ -267,7 +281,6 @@ namespace SPWebParts.EPM.SetObjectivesWP
             }
             catch (Exception)
             {
-
             }
         }
 
