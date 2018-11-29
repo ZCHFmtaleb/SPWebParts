@@ -9,6 +9,7 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP
 {
     public partial class RateObjectivesEmpWPUserControl : UserControl
     {
+
         #region Properties
 
         public Emp intended_Emp
@@ -77,28 +78,6 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP
             }
         }
 
-        //public DataTable tbl_Lead_Skills
-        //{
-        //    get
-        //    {
-        //        if (ViewState["tbl_Lead_Skills"] != null)
-        //        {
-        //            return (DataTable)ViewState["tbl_Lead_Skills"];
-        //        }
-        //        else
-        //        {
-        //            tblObjectives = new DataTable();
-        //            tblObjectives.Columns.Add("ID");
-        //            tblObjectives.Columns.Add("Title");
-        //            return tbl_Lead_Skills;
-        //        }
-        //    }
-        //    set
-        //    {
-        //        ViewState["tbl_Lead_Skills"] = value;
-        //    }
-        //}
-
         public string strEmpDisplayName
         {
             get
@@ -132,8 +111,6 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP
 
                          getStandardSkills();
 
-                         //getLeadSkills();
-
                          Bind_Data_To_Controls();
                      }
                  });
@@ -142,35 +119,6 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP
             {
             }
         }
-
-        //private void getLeadSkills()
-        //{
-        //    SPSecurity.RunWithElevatedPrivileges(delegate ()
-        //    {
-        //        using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-        //        {
-        //            using (SPWeb spWeb = oSite.OpenWeb())
-        //            {
-        //                SPList spList = spWeb.Lists.TryGetList("الكفاءات");
-        //                if (spList != null)
-        //                {
-        //                    SPQuery qry = new SPQuery();
-        //                    qry.Query =
-        //                    @"   <Where>
-        //                              <Eq>
-        //                                 <FieldRef Name='CompType' />
-        //                                 <Value Type='Choice'>كفاءة قيادية</Value>
-        //                              </Eq>
-        //                           </Where>";
-        //                    qry.ViewFieldsOnly = true;
-        //                    qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='Title' />";
-        //                    SPListItemCollection listItems = spList.GetItems(qry);
-        //                    tbl_Lead_Skills = listItems.GetDataTable();
-        //                }
-        //            }
-        //        }
-        //    });
-        //}
 
         private void getStandardSkills()
         {
@@ -256,44 +204,60 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP
 
         private void getPreviouslySavedObjectives()
         {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            try
             {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb spWeb = oSite.OpenWeb())
-                    {
-                        SPList spList = spWeb.Lists.TryGetList("الأهداف");
-                        if (spList != null)
-                        {
-                            SPQuery qry = new SPQuery();
-                            qry.Query =
-                            @"   <Where>
+                SPSecurity.RunWithElevatedPrivileges(delegate ()
+                  {
+                      using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
+                      {
+                          using (SPWeb spWeb = oSite.OpenWeb())
+                          {
+                              SPList spList = spWeb.Lists.TryGetList("الأهداف");
+                              if (spList != null)
+                              {
+                                  SPQuery qry = new SPQuery();
+                                  qry.Query =
+                                  @"   <Where>
                                         <Eq>
                                             <FieldRef Name='Emp' />
                                             <Value Type='User'>" + strEmpDisplayName + @"</Value>
                                         </Eq>
                                     </Where>";
-                            qry.ViewFieldsOnly = true;
-                            qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='ObjWeight' /><FieldRef Name='AccPercent' />";
-                            SPListItemCollection listItems = spList.GetItems(qry);
-                            tblObjectives = listItems.GetDataTable();
-                        }
-                    }
-                }
-            });
+                                  qry.ViewFieldsOnly = true;
+                                  qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='ObjWeight' /><FieldRef Name='AccPercent' />";
+                                  SPListItemCollection listItems = spList.GetItems(qry);
+                                  tblObjectives = listItems.GetDataTable();
+                              }
+                          }
+                      }
+                  });
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         protected void Bind_Data_To_Controls()
         {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            try
             {
-                gvwRate.DataSource = tblObjectives;
-                gvw_Std_Skills.DataSource = tbl_Std_Skills;
-                //gvw_Lead_Skills.DataSource = tbl_Lead_Skills;
-                gvwRate.DataBind();
-                gvw_Std_Skills.DataBind();
-                //gvw_Lead_Skills.DataBind();
-            });
+                SPSecurity.RunWithElevatedPrivileges(delegate ()
+                   {
+                       gvwRate.DataSource = tblObjectives;
+                       gvw_Std_Skills.DataSource = tbl_Std_Skills;
+                       //gvw_Lead_Skills.DataSource = tbl_Lead_Skills;
+                       gvwRate.DataBind();
+                       gvw_Std_Skills.DataBind();
+                       //gvw_Lead_Skills.DataBind();
+                   });
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)

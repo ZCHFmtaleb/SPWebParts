@@ -14,7 +14,6 @@
 <div id="container" dir="rtl" align="right" >
 <div id="page_head">
     <h1 runat="server" id="PageTitle">نموذج وضع الأهداف الفردية لعام   <asp:Label ID="lblActiveYear" runat="server" Text=""></asp:Label></h1>
-    <%--<h2>الحالة : <asp:Label ID="lblStatus" runat="server" Text="لم يتم وضع الأهداف" ForeColor="Blue"></asp:Label> </h2>--%>
 </div>
 
 <div id="divEmpInfo" class="divEmpInfo">
@@ -106,13 +105,6 @@
             InitialValue="0">*</asp:RequiredFieldValidator>
         </td>
     </tr>
-    <%--<tr>
-        <td>الهدف الفرعى</td>
-        <td>
-            <asp:DropDownList ID="ddlSecondaryGoal" runat="server" Width="300px" AppendDataBoundItems="True">
-                <asp:ListItem Selected="True" Value="0">اختر الهدف الفرعى</asp:ListItem>
-            </asp:DropDownList></td>
-    </tr>--%>
 </table>
     </ContentTemplate>
     <Triggers>

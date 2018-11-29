@@ -232,19 +232,6 @@ namespace SPWebParts.EPM.SetObjectivesWP
             {
                 SPSecurity.RunWithElevatedPrivileges(delegate ()
                       {
-                          //if we are not in display mode disable all the validation controls to make sure saving the page the webpart is on works.
-                          WebPartManager wpm = WebPartManager.GetCurrentWebPartManager(Page);
-                          if (wpm.DisplayMode != WebPartManager.BrowseDisplayMode)
-                          {
-                              foreach (var validator in Controls)
-                              {
-                                  if (validator is BaseValidator)
-                                  {
-                                      ((BaseValidator)validator).Enabled = false;
-                                  }
-                              }
-                          }
-
                           divSuccess.Visible = false;
 
                           if (!IsPostBack)
@@ -515,10 +502,8 @@ namespace SPWebParts.EPM.SetObjectivesWP
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb spWeb = oSite.OpenWeb())
-                    {
+                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                    SPWeb spWeb = oSite.OpenWeb();
                         SPList spList = spWeb.Lists.TryGetList("التوجهات الاستراتيجية");
                         if (spList != null)
                         {
@@ -533,8 +518,6 @@ namespace SPWebParts.EPM.SetObjectivesWP
                             ddlStrDir.DataTextField = "Title";
                             ddlStrDir.DataBind();
                         }
-                    }
-                }
             });
         }
 
@@ -542,10 +525,8 @@ namespace SPWebParts.EPM.SetObjectivesWP
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb spWeb = oSite.OpenWeb())
-                    {
+                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                SPWeb spWeb = oSite.OpenWeb();
                         SPList spList = spWeb.Lists.TryGetList("الأهداف الرئيسية");
                         if (spList != null)
                         {
@@ -562,8 +543,6 @@ namespace SPWebParts.EPM.SetObjectivesWP
                             SPListItemCollection listItems = spList.GetItems(qry);
                             tblPrimaryGoal = listItems.GetDataTable();
                         }
-                    }
-                }
             });
         }
 
@@ -572,10 +551,8 @@ namespace SPWebParts.EPM.SetObjectivesWP
             string pActiveYear = "NoSetGoalsActiveYear";
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb spWeb = oSite.OpenWeb())
-                    {
+            SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                SPWeb spWeb = oSite.OpenWeb();
                         SPList spList = spWeb.Lists.TryGetList("سنة التقييم");
                         if (spList != null)
                         {
@@ -600,8 +577,6 @@ namespace SPWebParts.EPM.SetObjectivesWP
                                         pActiveYear = item["Year"].ToString();
                                     }
                                 }
-                            }
-                        }
                     }
                 }
             });
@@ -614,10 +589,8 @@ namespace SPWebParts.EPM.SetObjectivesWP
             string pActiveYear = DateTime.Today.Year.ToString();
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb spWeb = oSite.OpenWeb())
-                    {
+            SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                SPWeb spWeb = oSite.OpenWeb();
                         SPList spList = spWeb.Lists.TryGetList("سنة التقييم");
                         if (spList != null)
                         {
@@ -643,8 +616,6 @@ namespace SPWebParts.EPM.SetObjectivesWP
                                     }
                                 }
                             }
-                        }
-                    }
                 }
             });
 
@@ -670,10 +641,8 @@ namespace SPWebParts.EPM.SetObjectivesWP
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb spWeb = oSite.OpenWeb())
-                    {
+            SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                SPWeb spWeb = oSite.OpenWeb();
                         SPList spList = spWeb.Lists.TryGetList("الأهداف");
                         if (spList != null)
                         {
@@ -704,8 +673,6 @@ namespace SPWebParts.EPM.SetObjectivesWP
                                 current_state = p_current_state;
                             }
                         }
-                    }
-                }
             });
         }
 
@@ -913,7 +880,7 @@ namespace SPWebParts.EPM.SetObjectivesWP
                 bodyText.Append("<br />");
                 bodyText.Append("الرجاء القيام بمراجعة الأهداف من خلال هذا الرابط واعتمادها");
                 bodyText.Append("<br />");
-                bodyText.Append("<a href=" + SPContext.Current.Web.Url + "/Pages/نموذج%20وضع%20الأهداف.aspx?empid=" + HttpUtility.UrlEncode(intended_Emp.Emp_DisplayName) + "  >" + n + "</a>");
+                bodyText.Append("<a href=" + SPContext.Current.Web.Url + "/Pages/SetObjectives.aspx?empid=" + HttpUtility.UrlEncode(intended_Emp.Emp_DisplayName) + "  >" + n + "</a>");
                 bodyText.Append("</p>");
                 SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
             });
@@ -947,7 +914,7 @@ namespace SPWebParts.EPM.SetObjectivesWP
                 bodyText.Append("<br />");
                 bodyText.Append("الرجاء القيام بمراجعة الأهداف من خلال هذا الرابط واعتمادها نهائيا");
                 bodyText.Append("<br />");
-                bodyText.Append("<a href=" + SPContext.Current.Web.Url + "/Pages/نموذج%20وضع%20الأهداف.aspx?empid=" + HttpUtility.UrlEncode(intended_Emp.Emp_DisplayName) + "  >" + n + "</a>");
+                bodyText.Append("<a href=" + SPContext.Current.Web.Url + "/Pages/SetObjectives.aspx?empid=" + HttpUtility.UrlEncode(intended_Emp.Emp_DisplayName) + "  >" + n + "</a>");
                 bodyText.Append("</p>");
                 SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
             });
@@ -998,7 +965,7 @@ namespace SPWebParts.EPM.SetObjectivesWP
                 bodyText.Append("<br />");
                 bodyText.Append("يمكنك مراجعة الأهداف الخاصة بك فى أى وقت وذلك من خلال الرابط التالى:");
                 bodyText.Append("<br />");
-                bodyText.Append("<a href=\"" + SPContext.Current.Web.Url + "/Pages/نموذج%20وضع%20الأهداف.aspx\" >" + "نموذج وضع الأهداف" + " </a>");
+                bodyText.Append("<a href=\"" + SPContext.Current.Web.Url + "/Pages/SetObjectives.aspx\" >" + "نموذج وضع الأهداف" + " </a>");
                 bodyText.Append("<br />");
                 bodyText.Append("<br />");
                 bodyText.Append("وشكرا جزيلا لحسن تعاونكم");

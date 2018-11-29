@@ -93,28 +93,30 @@ namespace SPWebParts.EPM.SelectEmp
 
         private void getEmps()
         {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            try
             {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb spWeb = oSite.OpenWeb())
-                    {
-                        SPPrincipalInfo pinfo = SPUtility.ResolvePrincipal(spWeb, strEmpDisplayName, SPPrincipalType.User, SPPrincipalSource.All, null, false);
-                        SPServiceContext serviceContext = SPServiceContext.GetContext(oSite);
-                        UserProfileManager userProfileMgr = new UserProfileManager(serviceContext);
-                        UserProfile cUserProfile = userProfileMgr.GetUserProfile(pinfo.LoginName);
+                SPSecurity.RunWithElevatedPrivileges(delegate ()
+                   {
+                       SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                       SPWeb spWeb = oSite.OpenWeb();
+                       SPPrincipalInfo pinfo = SPUtility.ResolvePrincipal(spWeb, strEmpDisplayName, SPPrincipalType.User, SPPrincipalSource.All, null, false);
+                       SPServiceContext serviceContext = SPServiceContext.GetContext(oSite);
+                       UserProfileManager userProfileMgr = new UserProfileManager(serviceContext);
+                       UserProfile cUserProfile = userProfileMgr.GetUserProfile(pinfo.LoginName);
 
-                        List<UserProfile> directReports = new List<UserProfile>(cUserProfile.GetDirectReports());
-                        foreach (UserProfile up in directReports)
-                        {
-                            DataRow row = tblEmps.NewRow();
-                            row["EmpName"] = up.DisplayName;
-                            row["EmpJob"] = up.GetProfileValueCollection("Title")[0].ToString();
-                            tblEmps.Rows.Add(row);
-                        }
-                    }
-                }
-            });
+                       List<UserProfile> directReports = new List<UserProfile>(cUserProfile.GetDirectReports());
+                       foreach (UserProfile up in directReports)
+                       {
+                           DataRow row = tblEmps.NewRow();
+                           row["EmpName"] = up.DisplayName;
+                           row["EmpJob"] = up.GetProfileValueCollection("Title")[0].ToString();
+                           tblEmps.Rows.Add(row);
+                       }
+                   });
+            }
+            catch (Exception)
+            {
+            }
         }
 
         protected void Bind_Data_To_Controls()
@@ -131,7 +133,7 @@ namespace SPWebParts.EPM.SelectEmp
             try
             {
                 GridViewRow row = gvwSelectEmp.SelectedRow;
-                Response.Redirect(SPContext.Current.Web.Url + "/Pages/نموذج%20تقييم%20الأهداف%20الفردية%20والكفاءات.aspx?empid=" + row.Cells[0].Text);
+                Response.Redirect(SPContext.Current.Web.Url + "/Pages/RateObjectivesEmp.aspx?empid=" + row.Cells[0].Text);
             }
             catch (Exception)
             {
