@@ -33,10 +33,17 @@ namespace SPWebParts.EPM.EnableYear
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                Fill_Year();
-                get_Active_Years();
+                if (!IsPostBack)
+                {
+                    Fill_Year();
+                    get_Active_Years();
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
 
@@ -63,10 +70,8 @@ namespace SPWebParts.EPM.EnableYear
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb spWeb = oSite.OpenWeb())
-                    {
+                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                SPWeb spWeb = oSite.OpenWeb();
                         SPList spList = spWeb.Lists.TryGetList("سنة التقييم");
                         if (spList != null)
                         {
@@ -101,31 +106,40 @@ namespace SPWebParts.EPM.EnableYear
                             gvw_EPM_Years.DataSource = tblActiveYears;
                             gvw_EPM_Years.DataBind();
                         }
-                    }
-                }
             });
         }
 
         protected void btnActivate_Eval_Year_Click(object sender, EventArgs e)
         {
-            Update_Year("البدء بتفعيل التقييم السنوى لسنة", ddl_Eval_Year.SelectedItem.Text, "مفعل");
-            get_Active_Years();
+            try
+            {
+                Update_Year("البدء بتفعيل التقييم السنوى لسنة", ddl_Eval_Year.SelectedItem.Text, "مفعل");
+                get_Active_Years();
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         protected void btnActivate_Set_Goals_Year_Click(object sender, EventArgs e)
         {
-            Update_Year("البدء بتفعيل وضع الأهداف لسنة", ddl_Set_Goals_Year.SelectedItem.Text, "مفعل");
-            get_Active_Years();
+            try
+            {
+                Update_Year("البدء بتفعيل وضع الأهداف لسنة", ddl_Set_Goals_Year.SelectedItem.Text, "مفعل");
+                get_Active_Years();
+            }
+            catch (Exception)
+            {
+            }
         }
 
         public void Update_Year(string mode, string year, string new_state)
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb oWeb = oSite.OpenWeb())
-                    {
+                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                    SPWeb oWeb = oSite.OpenWeb();
                         oWeb.AllowUnsafeUpdates = true;
 
                         SPList oList = oWeb.Lists["سنة التقييم"];
@@ -145,26 +159,37 @@ namespace SPWebParts.EPM.EnableYear
                         itemToUpdate.Update();
 
                         oWeb.AllowUnsafeUpdates = false;
-                    }
-                }
             });
         }
 
         protected void gvw_EPM_Years_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "YearClosure")
+            try
             {
-                int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = gvw_EPM_Years.Rows[index];
+                if (e.CommandName == "YearClosure")
+                {
+                    int index = Convert.ToInt32(e.CommandArgument);
+                    GridViewRow row = gvw_EPM_Years.Rows[index];
 
-                Update_Year(row.Cells[0].Text, string.Empty, "مغلق");
-                get_Active_Years();
+                    Update_Year(row.Cells[0].Text, string.Empty, "مغلق");
+                    get_Active_Years();
+                }
+            }
+            catch (Exception)
+            {
             }
         }
 
         protected void btn_Year_to_display_if_none_active_Click(object sender, EventArgs e)
         {
-            Update_Year("سنة عرض الأهداف (فى حالة عدم وجود عام مفعل)", ddl_Year_to_display_if_none_active.SelectedItem.Text, "عرض فقط");
+            try
+            {
+                Update_Year("سنة عرض الأهداف (فى حالة عدم وجود عام مفعل)", ddl_Year_to_display_if_none_active.SelectedItem.Text, "عرض فقط");
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

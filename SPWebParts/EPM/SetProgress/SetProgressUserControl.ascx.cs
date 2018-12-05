@@ -124,10 +124,8 @@ namespace SPWebParts.EPM.SetProgress
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb oWeb = oSite.OpenWeb())
-                    {
+                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                    SPWeb oWeb = oSite.OpenWeb();
                         oWeb.AllowUnsafeUpdates = true;
                         SPList oList = oWeb.Lists["الأهداف"];
 
@@ -151,8 +149,6 @@ namespace SPWebParts.EPM.SetProgress
 
                         oWeb.AllowUnsafeUpdates = false;
 
-                    }
-                }
             });
         }
 
@@ -197,10 +193,8 @@ namespace SPWebParts.EPM.SetProgress
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb spWeb = oSite.OpenWeb())
-                    {
+                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                    SPWeb spWeb = oSite.OpenWeb();
                         SPList spList = spWeb.Lists.TryGetList("الأهداف");
                         SPQuery qry = new SPQuery();
                         qry.Query =
@@ -214,8 +208,6 @@ namespace SPWebParts.EPM.SetProgress
                         qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='ObjYear' /><FieldRef Name='ObjWeight' /><FieldRef Name='AccPercent' />";
                         SPListItemCollection listItems = spList.GetItems(qry);
                         tblObjectives = listItems.GetDataTable();
-                    }
-                }
             });
         }
 

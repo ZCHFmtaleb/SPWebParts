@@ -124,10 +124,8 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb spWeb = oSite.OpenWeb())
-                    {
+            SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                SPWeb spWeb = oSite.OpenWeb();
                         SPList spList = spWeb.Lists.TryGetList("الكفاءات");
                         if (spList != null)
                         {
@@ -168,8 +166,6 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP
                             SPListItemCollection listItems = spList.GetItems(qry);
                             tbl_Std_Skills = listItems.GetDataTable();
                         }
-                    }
-                }
             });
         }
 
@@ -208,10 +204,8 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP
             {
                 SPSecurity.RunWithElevatedPrivileges(delegate ()
                   {
-                      using (SPSite oSite = new SPSite(SPContext.Current.Web.Url))
-                      {
-                          using (SPWeb spWeb = oSite.OpenWeb())
-                          {
+                      SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                          SPWeb spWeb = oSite.OpenWeb();
                               SPList spList = spWeb.Lists.TryGetList("الأهداف");
                               if (spList != null)
                               {
@@ -227,8 +221,6 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP
                                   qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='ObjWeight' /><FieldRef Name='AccPercent' />";
                                   SPListItemCollection listItems = spList.GetItems(qry);
                                   tblObjectives = listItems.GetDataTable();
-                              }
-                          }
                       }
                   });
             }

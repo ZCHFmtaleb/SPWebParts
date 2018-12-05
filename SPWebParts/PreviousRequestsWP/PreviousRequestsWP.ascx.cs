@@ -36,10 +36,8 @@ namespace SPWebParts.PreviousRequestsWP
 
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                using (SPSite site = new SPSite(SPContext.Current.Web.Url))
-                {
-                    using (SPWeb spWeb = site.OpenWeb())
-                    {
+            SPSite site = new SPSite(SPContext.Current.Web.Url);
+                SPWeb spWeb = site.OpenWeb();
                         SPList spList = spWeb.Lists.TryGetList("AidRequests");
                         if (spList != null)
                         {
@@ -53,8 +51,6 @@ namespace SPWebParts.PreviousRequestsWP
                                    </Where>";
                             SPListItemCollection listItems = spList.GetItems(qry);
                             results = listItems.GetDataTable();
-                        }
-                    }
                 }
             });
 

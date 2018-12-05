@@ -108,7 +108,8 @@ namespace SPWebParts.EPM.SelectEmp
                        foreach (UserProfile up in directReports)
                        {
                            DataRow row = tblEmps.NewRow();
-                           row["EmpName"] = up.DisplayName;
+                           //row["EmpName"] = up.DisplayName;
+                           row["EmpName"] = up.GetProfileValueCollection("AboutMe")[0].ToString();
                            row["EmpJob"] = up.GetProfileValueCollection("Title")[0].ToString();
                            tblEmps.Rows.Add(row);
                        }
