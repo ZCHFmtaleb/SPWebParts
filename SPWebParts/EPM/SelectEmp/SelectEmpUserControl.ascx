@@ -31,6 +31,7 @@ th{
         <HeaderStyle HorizontalAlign="Center" Width="40%" />
         <ItemStyle HorizontalAlign="Center" />
         </asp:BoundField>
+        <asp:BoundField DataField="EnglishName" HeaderText="الاسم الانجليزى" />
         <asp:BoundField HeaderText="الوظيفة" DataField="EmpJob" >
         <HeaderStyle Width="30%" />
         </asp:BoundField>

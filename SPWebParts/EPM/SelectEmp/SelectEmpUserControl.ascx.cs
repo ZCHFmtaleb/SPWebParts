@@ -58,6 +58,7 @@ namespace SPWebParts.EPM.SelectEmp
                 {
                     tblEmps = new DataTable();
                     tblEmps.Columns.Add("EmpName");
+                    tblEmps.Columns.Add("EnglishName");
                     tblEmps.Columns.Add("EmpJob");
                     return tblEmps;
                 }
@@ -108,8 +109,19 @@ namespace SPWebParts.EPM.SelectEmp
                        foreach (UserProfile up in directReports)
                        {
                            DataRow row = tblEmps.NewRow();
-                           //row["EmpName"] = up.DisplayName;
-                           row["EmpName"] = up.GetProfileValueCollection("AboutMe")[0].ToString();
+
+                           if (up.GetProfileValueCollection("AboutMe")[0]!= null && up.GetProfileValueCollection("AboutMe")[0].ToString() != string.Empty)
+                           {
+                               row["EmpName"] = up.GetProfileValueCollection("AboutMe")[0].ToString();
+                           }
+                           else
+                           {
+                               row["EmpName"] = up.DisplayName;
+                           }
+
+                           row["EnglishName"] = up.DisplayName;
+                           
+
                            row["EmpJob"] = up.GetProfileValueCollection("Title")[0].ToString();
                            tblEmps.Rows.Add(row);
                        }
@@ -134,7 +146,7 @@ namespace SPWebParts.EPM.SelectEmp
             try
             {
                 GridViewRow row = gvwSelectEmp.SelectedRow;
-                Response.Redirect(SPContext.Current.Web.Url + "/Pages/RateObjectivesEmp.aspx?empid=" + row.Cells[0].Text);
+                Response.Redirect(SPContext.Current.Web.Url + "/Pages/RateObjectivesEmp.aspx?empid=" + row.Cells[1].Text);
             }
             catch (Exception)
             {

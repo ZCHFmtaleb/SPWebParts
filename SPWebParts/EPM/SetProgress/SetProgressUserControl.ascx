@@ -13,7 +13,6 @@
 <div id="container" dir="rtl" align="right" >
 <div id="page_head">
     <h1>نسب إنجاز الأهداف الفردية لعام 2018  <%--<span class="Next_Year"></span>--%> </h1>
-    <h2>الحالة : <asp:Label ID="lblStatus" runat="server" Text="لم يتم وضع نسب الإنجاز" ForeColor="Blue"></asp:Label> </h2>
 </div>
 
 <div id="divEmpInfo" class="divEmpInfo">

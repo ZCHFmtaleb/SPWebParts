@@ -432,8 +432,16 @@ namespace SPWebParts.EPM.SetObjectivesWP
             try
             {
                 Send_Rej_Email_to_Emp();
-                Change_State_to(WF_States.Objectives_rejected_by_Planning_Consultant);
                 Show_Success_Message("تم ارسال بريد الكترونى بالتعديلات المطلوبة");
+                if (SPContext.Current.Web.CurrentUser.Email == Planning_Consultant_Email)
+                {
+                    Change_State_to(WF_States.Objectives_rejected_by_Planning_Consultant);
+                }
+                else
+                {
+                    Change_State_to(WF_States.Objectives_rejected_by_DM);
+                }
+             
             }
             catch (Exception)
             {
@@ -476,21 +484,11 @@ namespace SPWebParts.EPM.SetObjectivesWP
                     Make_Read_Only_Mode();
                 }
             }
-            else if (current_state == WF_States.Objectives_rejected_by_Planning_Consultant)
-            {
-                if (SPContext.Current.Web.CurrentUser.Email == intended_Emp.Emp_email)
-                {
-                }
-                else
-                {
-                    Make_Read_Only_Mode();
-                }
-            }
             else if (current_state == WF_States.Objectives_approved_by_DM)
             {
                 Make_Read_Only_Mode();
             }
-            else if (current_state == WF_States.Objectives_rejected_by_DM)
+            else if (current_state == WF_States.Objectives_rejected_by_Planning_Consultant || current_state == WF_States.Objectives_rejected_by_DM)
             {
                 if (SPContext.Current.Web.CurrentUser.Email == intended_Emp.Emp_email)
                 {
