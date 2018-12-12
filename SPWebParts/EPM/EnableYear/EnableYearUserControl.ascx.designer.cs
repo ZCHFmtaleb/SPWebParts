@@ -67,6 +67,24 @@ namespace SPWebParts.EPM.EnableYear {
         protected global::System.Web.UI.WebControls.Button btn_Year_to_display_if_none_active;
         
         /// <summary>
+        /// ddl_Rating_to_display_if_none_active control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Rating_to_display_if_none_active;
+        
+        /// <summary>
+        /// btn_Rating_to_display_if_none_active control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_Rating_to_display_if_none_active;
+        
+        /// <summary>
         /// gvw_EPM_Years control.
         /// </summary>
         /// <remarks>

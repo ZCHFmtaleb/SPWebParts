@@ -111,6 +111,7 @@ namespace SPWebParts.EPM.SetProgress
                       if (Page.IsValid)
                       {
                           SaveToSP();
+                          Show_Success_Message("تم حفظ الأهداف بنجاح");
                       }
                   });
             }
@@ -251,6 +252,12 @@ namespace SPWebParts.EPM.SetProgress
                 gvwProgress.EditIndex = -1;
                 Bind_Data_To_Controls();
             });
+        }
+
+        private void Show_Success_Message(string m)
+        {
+            divSuccess.Visible = true;
+            lblSuccess.Text = m;
         }
     }
 }

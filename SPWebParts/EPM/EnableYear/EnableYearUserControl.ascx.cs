@@ -58,12 +58,21 @@ namespace SPWebParts.EPM.EnableYear
             LC[2] = new ListItem((Curr_Year + 1).ToString());
             LC[3] = new ListItem((Curr_Year + 2).ToString());
 
+            ListItem[] LC_Rating = new ListItem[4];
+
+            LC_Rating[0] = new ListItem(Prev_Year.ToString());
+            LC_Rating[1] = new ListItem(Curr_Year.ToString());
+            LC_Rating[2] = new ListItem((Curr_Year + 1).ToString());
+            LC_Rating[3] = new ListItem((Curr_Year + 2).ToString());
+
             ddl_Eval_Year.Items.AddRange(LC);
             ddl_Eval_Year.Items[1].Selected = true;
             ddl_Set_Goals_Year.Items.AddRange(LC);
             ddl_Set_Goals_Year.Items[1].Selected = true;
             ddl_Year_to_display_if_none_active.Items.AddRange(LC);
             ddl_Year_to_display_if_none_active.Items[1].Selected = true;
+            ddl_Rating_to_display_if_none_active.Items.AddRange(LC_Rating);
+            ddl_Rating_to_display_if_none_active.Items[0].Selected = true;
         }
 
         private void get_Active_Years()
@@ -185,6 +194,18 @@ namespace SPWebParts.EPM.EnableYear
             try
             {
                 Update_Year("سنة عرض الأهداف (فى حالة عدم وجود عام مفعل)", ddl_Year_to_display_if_none_active.SelectedItem.Text, "عرض فقط");
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        protected void btn_Rating_to_display_if_none_active_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Update_Year("سنة عرض التقييم (فى حالة عدم وجود عام مفعل)", ddl_Rating_to_display_if_none_active.SelectedItem.Text, "عرض فقط");
             }
             catch (Exception)
             {

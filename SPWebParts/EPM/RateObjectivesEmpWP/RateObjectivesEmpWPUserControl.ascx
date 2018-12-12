@@ -12,7 +12,7 @@
 <div id="container" dir="rtl" align="right" >
 
 <div id="page_head">
-	<h1> نموذج تقييم الأهداف الفردية والكفاءات لعام 2018 <%--<span class="Next_Year"></span>--%> </h1>
+<h1 runat="server" id="PageTitle">نموذج وضع الأهداف الفردية لعام   <asp:Label ID="lblActiveYear" runat="server" Text=""></asp:Label></h1>
 </div>
 
 <div id="divEmpInfo" class="divEmpInfo">
@@ -57,6 +57,15 @@
 			<asp:Label ID="lblEmpDM" runat="server" Text=""></asp:Label>
 		</td>
 	</tr>
+
+	<tr>
+			<td>
+				<asp:Label ID="slblYear" runat="server" Text="العام"></asp:Label>
+			</td>
+			<td>
+				<asp:Label ID="lblActiveYear2" runat="server" Text=""></asp:Label>
+			</td>
+		</tr>
 </table>
 </div>
 
@@ -144,7 +153,7 @@
 <h2>الكفاءات </h2>
 <div class="div_gvwSetObjectives" style="width:60% !important;">
 <asp:Label ID="lbl_invalid_rank" runat="server" Text="تعذر تحميل الكفاءات المناسبة نظرا لعدم وجود الدرجة الوظيفية فى سجل الموظف" Visible="False"></asp:Label>
-<asp:GridView ID="gvw_Std_Skills" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False"  BorderStyle="Solid" BorderWidth="1px" >
+<asp:GridView ID="gvw_Std_Skills" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False"  BorderStyle="Solid" BorderWidth="1px" OnRowDataBound="gvw_Std_Skills_RowDataBound"   >
 		<AlternatingRowStyle BackColor="White" />
 		<Columns>
 			<asp:BoundField DataField="Title" HeaderText="مسمى الكفاءة">
@@ -153,13 +162,12 @@
 			</asp:BoundField>
 			<asp:TemplateField HeaderText="التقدير">
 				<EditItemTemplate>
-					<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 				</EditItemTemplate>
 				<ItemTemplate>
-					<asp:DropDownList ID="ddl_Std_Skill_Rating" runat="server" Width="60px" CssClass="SkillRate" >
+					<asp:DropDownList ID="ddl_Std_Skill_Rating" runat="server" Width="60px" CssClass="SkillRate">
 					<asp:ListItem>1</asp:ListItem>
 					<asp:ListItem>2</asp:ListItem>
-					<asp:ListItem Selected="True">3</asp:ListItem>
+					<asp:ListItem>3</asp:ListItem>
 					<asp:ListItem>4</asp:ListItem>
 				</asp:DropDownList>
 				</ItemTemplate>
@@ -176,42 +184,6 @@
 		<SortedDescendingCellStyle BackColor="#E9EBEF" />
 		<SortedDescendingHeaderStyle BackColor="#4870BE" />
  </asp:GridView>
-
-
-<%--<h2>الكفاءات القيادية</h2>--%>
-<%--<asp:GridView ID="gvw_Lead_Skills" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False"  BorderStyle="Solid" BorderWidth="1px" >
-		<AlternatingRowStyle BackColor="White" />
-		<Columns>
-			<asp:BoundField DataField="Title" HeaderText="الكفاءات القيادية">
-			<HeaderStyle Width="88%" />
-			<ItemStyle Width="88%" />
-			</asp:BoundField>
-			<asp:TemplateField HeaderText="التقدير">
-				<EditItemTemplate>
-					<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-				</EditItemTemplate>
-				<ItemTemplate>
-					<asp:DropDownList ID="ddl_Lead_Skill_Rating" runat="server" Width="60px" CssClass="SkillRate">
-					<asp:ListItem>1</asp:ListItem>
-					<asp:ListItem>2</asp:ListItem>
-					<asp:ListItem>3</asp:ListItem>
-					<asp:ListItem Selected="True">4</asp:ListItem>
-					<asp:ListItem>5</asp:ListItem>
-				</asp:DropDownList>
-				</ItemTemplate>
-			</asp:TemplateField>
-		</Columns>
-		<EditRowStyle BackColor="#2461BF" />
-		<FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-		<HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-		<PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-		<RowStyle BackColor="#EFF3FB" CssClass="PaddingStyle" />
-		<SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-		<SortedAscendingCellStyle BackColor="#F5F7FB" />
-		<SortedAscendingHeaderStyle BackColor="#6D95E1" />
-		<SortedDescendingCellStyle BackColor="#E9EBEF" />
-		<SortedDescendingHeaderStyle BackColor="#4870BE" />
- </asp:GridView>--%>
 </div>
 
 <h2 style="color:blue !important;text-decoration:underline;">نتيجة التقييم :</h2>
@@ -251,8 +223,8 @@
 <asp:Button ID="btnSubmit" runat="server" Text="إرسال" Font-Size="Large" Height="50px" Width="100px" OnClick="btnSubmit_Click"  />
 </div>
 
-<div id="divSuccess" runat="server" visible="false" class="divSuccess_css">
-<h3>تم حفظ التقييم بنجاح</h3>
+<div runat="server" id="divSuccess"  style="width:50%; background-color: rgb(0, 222, 149) !important; font-size:large; font-weight:bold;" visible ="false">
+<asp:Label ID="lblSuccess" runat="server" Text="" ></asp:Label>
 </div>
 
 </div>

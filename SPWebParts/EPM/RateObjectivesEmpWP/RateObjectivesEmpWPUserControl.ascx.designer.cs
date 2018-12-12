@@ -13,6 +13,24 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP {
     public partial class RateObjectivesEmpWPUserControl {
         
         /// <summary>
+        /// PageTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PageTitle;
+        
+        /// <summary>
+        /// lblActiveYear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblActiveYear;
+        
+        /// <summary>
         /// slblEmpName control.
         /// </summary>
         /// <remarks>
@@ -103,6 +121,24 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP {
         protected global::System.Web.UI.WebControls.Label lblEmpDM;
         
         /// <summary>
+        /// slblYear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label slblYear;
+        
+        /// <summary>
+        /// lblActiveYear2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblActiveYear2;
+        
+        /// <summary>
         /// gvwRate control.
         /// </summary>
         /// <remarks>
@@ -164,5 +200,14 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSuccess;
+        
+        /// <summary>
+        /// lblSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuccess;
     }
 }

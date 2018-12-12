@@ -37,9 +37,17 @@
 <br />
 <table>
     <tr>
-        <td style="padding-left:20px;"><h4>  سنة عرض الأهداف (فى حالة عدم وجود عام مفعل): </h4></td>
+        <td style="padding-left:20px;"><h4>سنة عرض الأهداف (فى حالة عدم وجود عام مفعل - للقراءة فقط):</h4></td>
         <td> <asp:DropDownList ID="ddl_Year_to_display_if_none_active" runat="server" Font-Bold="True"></asp:DropDownList> </td>
         <td style="padding-right:20px;" > <asp:Button ID="btn_Year_to_display_if_none_active" runat="server" Text="حفظ" Height="25px" Width="50px" Style="padding:0px 0px 0px 0px; font-weight:bold;" OnClick="btn_Year_to_display_if_none_active_Click" /> &nbsp;&nbsp;&nbsp; 
+         </td>
+    </tr>
+</table>
+ <table>
+    <tr>
+        <td style="padding-left:22px;"><h4>سنة عرض التقييم (فى حالة عدم وجود عام مفعل - للقراءة فقط):&nbsp; </h4></td>
+        <td> <asp:DropDownList ID="ddl_Rating_to_display_if_none_active" runat="server" Font-Bold="True"></asp:DropDownList> </td>
+        <td style="padding-right:20px;" > <asp:Button ID="btn_Rating_to_display_if_none_active" runat="server" Text="حفظ" Height="25px" Width="50px" Style="padding:0px 0px 0px 0px; font-weight:bold;" OnClick="btn_Rating_to_display_if_none_active_Click"  /> &nbsp;&nbsp;&nbsp; 
          </td>
     </tr>
 </table>

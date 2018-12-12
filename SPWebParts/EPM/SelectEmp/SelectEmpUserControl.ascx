@@ -19,7 +19,6 @@ th{
 
 <div id="container" dir="rtl" align="right" >
 <div id="page_head">
-    <h1>التقييم السنوى للموظفين لعام 2018  <%--<span class="Next_Year"></span>--%> </h1>
 </div>
 
 <asp:GridView ID="gvwSelectEmp" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False" 

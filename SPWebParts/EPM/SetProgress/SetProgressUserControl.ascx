@@ -142,8 +142,8 @@
 <asp:Button ID="btnSubmit" runat="server" Text="إرسال" Font-Size="Large" Height="50px" Width="100px" OnClick="btnSubmit_Click" ValidationGroup="vg2" />
 </div>
 
-<div id="divSuccess" runat="server" visible="false" class="divSuccess_css">
-<h3>تم حفظ الأهداف بنجاح</h3>
+<div runat="server" id="divSuccess"  style="width:50%; background-color: rgb(0, 222, 149) !important; font-size:large; font-weight:bold;" visible ="false">
+<asp:Label ID="lblSuccess" runat="server" Text="" ></asp:Label>
 </div>
 
 </div>
