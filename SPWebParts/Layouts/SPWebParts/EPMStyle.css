@@ -56,6 +56,11 @@
     text-align: center;
 }
 
+.div_gvwSetObjectives td {
+    padding-right: 5px !important;
+}
+
+
 .div_btnSubmit {
     margin-top: 2em;
     text-align: center;

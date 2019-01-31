@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.VisualWebPart" DefaultFile="StoresPurchaseRequestUserControl.ascx" SupportedTrustLevels="FullTrust" SupportedDeploymentScopes="Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="StoresPurchaseRequest\" Type="ElementManifest" />
+    <ProjectItemFile Source="StoresPurchaseRequest.webpart" Target="StoresPurchaseRequest\" Type="ElementFile" />
+    <ProjectItemFile Source="StoresPurchaseRequestUserControl.ascx" Target="CONTROLTEMPLATES\ServicesDept\StoresPurchaseRequest\" Type="TemplateFile" />
+  </Files>
+  <SafeControls>
+    <SafeControl Name="SafeControlEntry1" Assembly="$SharePoint.Project.AssemblyFullName$" Namespace="ServicesDept.StoresPurchaseRequest" TypeName="*" IsSafe="true" IsSafeAgainstScript="false" />
+  </SafeControls>
+</ProjectItem>
