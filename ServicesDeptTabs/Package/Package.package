@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="9c0052f9-169d-440b-b010-13ac8c406942" solutionId="9c0052f9-169d-440b-b010-13ac8c406942" resetWebServer="false" sharePointProductVersion="15.0" name="ServicesDeptTabs" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="28961be3-c318-443c-8bef-970e689058f1" />
+  </features>
+</package>

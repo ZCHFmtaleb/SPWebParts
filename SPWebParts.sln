@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPWebParts", "SPWebParts\SPWebParts.csproj", "{D501C13E-DF0C-4F94-962E-E1F98B078B07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesDept", "ServicesDept\ServicesDept.csproj", "{96047F0C-8E71-4A38-9D8B-CCA8BC82F983}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesDeptTabs", "ServicesDeptTabs\ServicesDeptTabs.csproj", "{27ACDA13-1540-465E-84CD-6C9E08325A9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,12 +19,12 @@ Global
 		{D501C13E-DF0C-4F94-962E-E1F98B078B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D501C13E-DF0C-4F94-962E-E1F98B078B07}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D501C13E-DF0C-4F94-962E-E1F98B078B07}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{96047F0C-8E71-4A38-9D8B-CCA8BC82F983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96047F0C-8E71-4A38-9D8B-CCA8BC82F983}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96047F0C-8E71-4A38-9D8B-CCA8BC82F983}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{96047F0C-8E71-4A38-9D8B-CCA8BC82F983}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96047F0C-8E71-4A38-9D8B-CCA8BC82F983}.Release|Any CPU.Build.0 = Release|Any CPU
-		{96047F0C-8E71-4A38-9D8B-CCA8BC82F983}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{27ACDA13-1540-465E-84CD-6C9E08325A9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27ACDA13-1540-465E-84CD-6C9E08325A9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27ACDA13-1540-465E-84CD-6C9E08325A9D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{27ACDA13-1540-465E-84CD-6C9E08325A9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27ACDA13-1540-465E-84CD-6C9E08325A9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27ACDA13-1540-465E-84CD-6C9E08325A9D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
