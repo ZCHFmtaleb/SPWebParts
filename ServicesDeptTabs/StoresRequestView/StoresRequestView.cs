@@ -7,13 +7,13 @@ using System.Web.UI.WebControls.WebParts;
 using Microsoft.SharePoint;
 using Microsoft.SharePoint.WebControls;
 
-namespace ServicesDept.StoresPurchaseRequest
+namespace ServicesDeptTabs.StoresRequestView
 {
     [ToolboxItemAttribute(false)]
-    public class StoresPurchaseRequest : WebPart
+    public class StoresRequestView : WebPart
     {
         // Visual Studio might automatically update this path when you change the Visual Web Part project item.
-        private const string _ascxPath = @"~/_CONTROLTEMPLATES/15/ServicesDept/StoresPurchaseRequest/StoresPurchaseRequestUserControl.ascx";
+        private const string _ascxPath = @"~/_CONTROLTEMPLATES/15/ServicesDeptTabs/StoresRequestView/StoresRequestViewUserControl.ascx";
 
         protected override void CreateChildControls()
         {

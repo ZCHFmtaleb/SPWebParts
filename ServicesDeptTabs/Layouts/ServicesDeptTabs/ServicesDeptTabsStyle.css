@@ -1,0 +1,51 @@
+﻿#container {
+    border: none;
+    padding: 10px 10px 10px 10px;
+}
+
+#contentBox{
+    border:none;
+}
+
+.tbl_EmpInfo {
+    width: 60%;
+    border: 1px solid black;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom:20px;
+}
+
+    .tbl_EmpInfo td {
+        font-size: medium;
+        color: black;
+        font-weight: bold;
+        border: 1px solid black;
+        padding-right: 5%;
+    }
+
+.gvw_Items {
+    border: 1px solid black !important;
+    width: 60%;
+}
+
+.gvw_Items th {
+    text-align: right;
+    padding-right: 2%;
+}
+
+.gvw_Items td {
+    text-align: right;
+    padding-right: 2%;
+}
+
+
+
+.c1 {
+    width: 15%;
+}
+.c3 {
+    width: 20%;
+}
+.c4 {
+    width: 15%;
+}

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Web AccessModifier="Internal"
+     xmlns="http://schemas.microsoft.com/SharePoint/2009/spmetal">
+  <ExcludeList Name="مسؤولى طلبات الخدمات" />
+  <ExcludeList Name="مستشار التخطيط" />
+  <ExcludeList Name="سنة التقييم" />
+  <ExcludeList Name="تقدير الكفاءات" />
+  <ExcludeList Name="المستشار الطبى" />
+  <ExcludeList Name="الكفاءات" />
+  <ExcludeList Name="التوجهات الاستراتيجية" />
+  <ExcludeList Name="الأهداف" />
+  <ExcludeList Name="الأهداف الرئيسية" />
+  <ExcludeList Name="أصناف المخازن" />
+  <ExcludeList Name="Workflow Tasks" />
+  <ExcludeList Name="Travel Request Form" />
+  <ExcludeList Name="TEST for Nintex WF" />
+  <ExcludeList Name="Style Library" />
+  <ExcludeList Name="Site Pages" />
+  <ExcludeList Name="Site Collection Images" />
+  <ExcludeList Name="Site Collection Documents" />
+  <ExcludeList Name="Site Assets" />
+  <ExcludeList Name="Reusable Content" />
+  <!--<ExcludeList Name="PurchasingStoresRequests" />-->
+  <ExcludeList Name="Pages" />
+  <ExcludeList Name="Images" />
+  <ExcludeList Name="Form Templates" />
+  <ExcludeList Name="Documents" />
+  <ExcludeList Name="Departments" />
+  <ExcludeList Name="Cost Centers" />
+  <ExcludeList Name="Content and Structure Reports" />
+  <ExcludeList Name="ClientsImages" />
+  <ExcludeList Name="Clients" />
+  <ExcludeList Name="AidRequests" />
+</Web>

@@ -1,11 +1,13 @@
-﻿using Microsoft.SharePoint;
+﻿using Microsoft.Office.Server.UserProfiles;
+using Microsoft.SharePoint;
 using Microsoft.SharePoint.Utilities;
+using ServicesDeptTabs.EL;
+using SPWebParts.EPM.EL;
 using System;
 using System.Collections.Specialized;
 using System.Data;
 using System.IO;
 using System.Text;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -13,59 +15,27 @@ namespace ServicesDeptTabs.ServicesRequestsAll
 {
     public partial class ServicesRequestsAllUserControl : UserControl
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                SPSecurity.RunWithElevatedPrivileges(delegate ()
-                {
-                    divSuccess.Visible = false;
-
-                    getEmp_from_QueryString_or_currentUser();
-
-                    //  intended_Emp = Emp_DAL.get_Emp_Info(intended_Emp, strEmpDisplayName);
-                    bind_Emp_Info();
-
-                    if (!IsPostBack)
-                    {
-                        fill_ddlCat();
-
-                        Bind_Data_To_Controls();
-
-                        ddlCat_SelectedIndexChanged(new object(), new EventArgs());
-
-                        //  Planning_Consultant_Email = Emp_DAL.get_Planning_Consultant_Email();
-                    }
-                });
-            }
-            catch (Exception ex)
-            {
-                string error = ex.Message;
-            }
-        }
-
-
         #region Properties
 
-        //public Emp intended_Emp
-        //{
-        //    get
-        //    {
-        //        if (ViewState["intended_Emp"] != null)
-        //        {
-        //            return (Emp)ViewState["intended_Emp"];
-        //        }
-        //        else
-        //        {
-        //            intended_Emp = new Emp();
-        //            return intended_Emp;
-        //        }
-        //    }
-        //    set
-        //    {
-        //        ViewState["intended_Emp"] = value;
-        //    }
-        //}
+        public Emp intended_Emp
+        {
+            get
+            {
+                if (ViewState["intended_Emp"] != null)
+                {
+                    return (Emp)ViewState["intended_Emp"];
+                }
+                else
+                {
+                    intended_Emp = new Emp();
+                    return intended_Emp;
+                }
+            }
+            set
+            {
+                ViewState["intended_Emp"] = value;
+            }
+        }
 
         public string Planning_Consultant_Email
         {
@@ -247,7 +217,103 @@ namespace ServicesDeptTabs.ServicesRequestsAll
         #endregion Properties
 
         #region Load
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                SPSecurity.RunWithElevatedPrivileges(delegate ()
+                {
+                    divSuccess.Visible = false;
 
+                    getEmp_from_QueryString_or_currentUser();
+
+                    intended_Emp = get_Emp_Info(new Emp(), strEmpDisplayName);
+                    bind_Emp_Info();
+
+                    if (!IsPostBack)
+                    {
+                        fill_ddlCat();
+
+                        Bind_Data_To_Controls();
+
+                        ddlCat_SelectedIndexChanged(new object(), new EventArgs());
+
+                        //  Planning_Consultant_Email = Emp_DAL.get_Planning_Consultant_Email();
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+            }
+        }
+
+        public Emp get_Emp_Info(Emp pIntended_Emp, string strEmpDisplayName)
+        {
+            try
+            {
+                SPSite site = SPContext.Current.Site;
+                SPWeb web = site.OpenWeb();
+                SPPrincipalInfo pinfo = SPUtility.ResolvePrincipal(web, strEmpDisplayName, SPPrincipalType.User, SPPrincipalSource.All, null, false);
+                SPServiceContext serviceContext = SPServiceContext.GetContext(site);
+                UserProfileManager userProfileMgr = new UserProfileManager(serviceContext);
+                UserProfile cUserProfile = userProfileMgr.GetUserProfile(pinfo.LoginName);
+                pIntended_Emp.login_name_to_convert_to_SPUser = pinfo.LoginName;
+
+                pIntended_Emp.Emp_DisplayName = pinfo.DisplayName;
+                if (cUserProfile.GetProfileValueCollection("AboutMe")[0] != null)
+                {
+                    pIntended_Emp.Emp_ArabicName = cUserProfile.GetProfileValueCollection("AboutMe")[0].ToString();
+                }
+                else
+                {
+                    pIntended_Emp.Emp_ArabicName = string.Empty;
+                }
+
+                pIntended_Emp.Emp_email = pinfo.Email;
+                //lblEmpName.Text = emp.Name;
+
+                pIntended_Emp.Emp_JobTitle = pinfo.JobTitle;
+                //lblEmpJob.Text = cUserProfile.GetProfileValueCollection("Title")[0].ToString();
+
+                string dA = get_Dept_Arabic_Name(pinfo.Department);
+                pIntended_Emp.Emp_Department = string.IsNullOrEmpty(dA) ? pinfo.Department : dA;
+                //lblEmpDept.Text = cUserProfile.GetProfileValueCollection("Department")[0].ToString();
+
+                if (cUserProfile.GetProfileValueCollection("Fax")[0] != null)
+                {
+                    pIntended_Emp.Emp_Rank = cUserProfile.GetProfileValueCollection("Fax")[0].ToString();
+                }
+                else
+                {
+                    pIntended_Emp.Emp_Rank = string.Empty;
+                }
+
+                UserProfile DM_UserProfile = userProfileMgr.GetUserProfile(cUserProfile.GetProfileValueCollection("Manager")[0].ToString());
+                pIntended_Emp.Emp_DM_name = DM_UserProfile.DisplayName;
+                pIntended_Emp.Emp_DM_email = DM_UserProfile["WorkEmail"].ToString();
+            }
+            catch (Exception)
+            {
+            }
+            return pIntended_Emp;
+        }
+
+        private string get_Dept_Arabic_Name(string department)
+        {
+            string dArabic = string.Empty;
+            switch (department)
+            {
+                case "Support Services Department":
+                    dArabic = "إدارة الخدمات المساندة";
+                    break;
+
+                case "Projects Department":
+                    dArabic = "إدارة المشاريع";
+                    break;
+            }
+            return dArabic;
+        }
         private void getEmp_from_QueryString_or_currentUser()
         {
             if (Request.QueryString["empid"] != null)
@@ -447,9 +513,10 @@ namespace ServicesDeptTabs.ServicesRequestsAll
                 {
                     if (Page.IsValid)
                     {
-                        SaveToSP();
+                        string b_guid = SaveToSP();
                         Show_Success_Message("تم حفظ الطلب بنجاح");
-                        Send_Serivces_Request_Email_to_DM_To_Approve();
+                        //Send_Request_Email(ServicesRequestTypes.Stationery, b_guid);
+                        Send_Serivces_Request_Email_to_DM_To_Approve(b_guid);
                     }
                 });
             }
@@ -458,30 +525,32 @@ namespace ServicesDeptTabs.ServicesRequestsAll
             }
         }
 
-        private void SaveToSP()
+        private string SaveToSP()
         {
+            string b_guid = string.Empty;
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb oWeb = oSite.OpenWeb();
                 oWeb.AllowUnsafeUpdates = true;
-                SPList oList = oWeb.Lists["طلبات إدارة الخدمات - مخازن"];
+                SPList oList = oWeb.GetList("/Lists/PurchasingStoresRequests");
 
                 if (tbl_Requested_Items != null)
                 {
-                    string b_guid = Guid.NewGuid().ToString();
+                    b_guid = Guid.NewGuid().ToString();
 
                     foreach (DataRow row in tbl_Requested_Items.Rows)
                     {
                         SPListItem oListItem = oList.AddItem();
 
-                        //oListItem["Emp"] = SPContext.Current.Web.EnsureUser(intended_Emp.login_name_to_convert_to_SPUser);
-                        //oListItem["Dept"] = intended_Emp.Emp_Department;
+                        oListItem["Emp"] = SPContext.Current.Web.EnsureUser(intended_Emp.login_name_to_convert_to_SPUser);
+                        oListItem["EmpArabicName"] = string.IsNullOrEmpty(intended_Emp.Emp_ArabicName) ? "غير متاح" : intended_Emp.Emp_ArabicName;
+                        oListItem["Dept"] = intended_Emp.Emp_Department;
                         oListItem["ItemGeneralName"] = row["ItemGeneralName"].ToString();
                         oListItem["Quantity"] = Convert.ToInt32(row["Quantity"]);
                         oListItem["Notes"] = row["Notes"].ToString();
                         oListItem["RequestBatchGuid"] = b_guid;
-                        oListItem["Status"] = "new";
+                        oListItem["Status"] = "جديد";
 
                         oListItem.Update();
                     }
@@ -492,6 +561,7 @@ namespace ServicesDeptTabs.ServicesRequestsAll
 
                 oWeb.AllowUnsafeUpdates = false;
             });
+            return b_guid;
         }
 
         private void Show_Success_Message(string m)
@@ -504,43 +574,95 @@ namespace ServicesDeptTabs.ServicesRequestsAll
 
         #region Email
 
-        private void Send_Serivces_Request_Email_to_DM_To_Approve()
+        private void Send_Request_Email(ServicesRequestTypes pRType, string b_guid)
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
+                string layoutsPath = SPUtility.GetVersionedGenericSetupPath("TEMPLATE\\Layouts\\ServicesDeptTabs\\", 15);
+                string html = File.ReadAllText(layoutsPath + "Serivces_Request_Email.html");
+                StringBuilder bodyText = new StringBuilder(html);
 
-                string html = File.ReadAllText(@"{SharePointRoot}\Template\Layouts\ServicesDept\Serivces_Request_Email_to_DM_To_Approve.html");
+                string n = string.Empty;
+                if (intended_Emp.Emp_ArabicName != null && intended_Emp.Emp_ArabicName != string.Empty)
+                {
+                    n = intended_Emp.Emp_ArabicName;
+                }
+                else
+                {
+                    n = intended_Emp.Emp_DisplayName;
+                }
 
-                StringBuilder sb = new StringBuilder();
+                string t = ServicesRequestTypesUtils.get_Enum_Arabic(pRType);
 
+                bodyText.Replace("#EmpName#", n);
+                bodyText.Replace("#Dept#", intended_Emp.Emp_Department);
+                bodyText.Replace("#Type#", t);
 
-                //string n = string.Empty;
-                //if (intended_Emp.Emp_ArabicName != null && intended_Emp.Emp_ArabicName != string.Empty)
-                //{
-                //    n = intended_Emp.Emp_ArabicName;
-                //}
-                //else
-                //{
-                //    n = intended_Emp.Emp_DisplayName;
-                //}
+                bodyText.Replace("#RequestURL#", "<a href=" + SPContext.Current.Web.Url + "/Pages/StoresRequestView.aspx?rid=" + b_guid + " >عرض الطلب</a>");
 
-                //StringDictionary headers = new StringDictionary();
-                //headers.Add("to", intended_Emp.Emp_DM_email);
-                //headers.Add("subject", " قام " + "\"" + n + "\"" + " بوضع الأهداف الفردية لعام " + Active_Set_Goals_Year);
-                //headers.Add("content-type", "text/html");
-                //StringBuilder bodyText = new StringBuilder();
-                //bodyText.Append("<p dir=rtl >");
-                //bodyText.Append("السلام عليكم ورحمة الله"); bodyText.Append("<br />");
-                //bodyText.Append("تحية طيبة وبعد:"); bodyText.Append("<br />");
-                //bodyText.Append(" قام " + "\"" + n + "\"" + " بوضع الأهداف الفردية لعام " + Active_Set_Goals_Year);
-                //bodyText.Append("<br />");
-                //bodyText.Append("وتمت مراجعتها واعتمادها مبدئيا بواسطة مستشار التخطيط الاستراتيجى وتطوير الأداء ");
-                //bodyText.Append("<br />");
-                //bodyText.Append("الرجاء القيام بمراجعة الأهداف من خلال هذا الرابط واعتمادها نهائيا");
-                //bodyText.Append("<br />");
-                //bodyText.Append("<a href=" + SPContext.Current.Web.Url + "/Pages/SetObjectives.aspx?empid=" + HttpUtility.UrlEncode(intended_Emp.Emp_DisplayName) + "  >" + n + "</a>");
-                //bodyText.Append("</p>");
-                //SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
+                StringDictionary headers = new StringDictionary();
+                headers.Add("to", Get_Request_Receiver_Email(t));
+                headers.Add("cc", "sherif@zayed.org.ae");
+                headers.Add("subject", " قام " + "\"" + n + "\"" + " بعمل طلب جديد من قسم الخدمات ");
+                headers.Add("content-type", "text/html");
+
+                SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
+            });
+        }
+
+        private string Get_Request_Receiver_Email(string pT)
+        {
+            string email = string.Empty;
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                SPWeb spWeb = oSite.OpenWeb();
+                SPList spList = spWeb.Lists.TryGetList("مسؤولى طلبات الخدمات");
+                SPQuery qry = new SPQuery();
+                qry.Query =
+                              @"   <Where>
+                                              <Eq>
+                                                 <FieldRef Name='Title' />
+                                                 <Value Type='Text'>" + pT + @"</Value>
+                                              </Eq>
+                                           </Where>";
+                qry.ViewFieldsOnly = true;
+                qry.ViewFields = @"<FieldRef Name='Email' />";
+                SPListItemCollection listItems = spList.GetItems(qry);
+
+                email = listItems[0][0].ToString();
+            });
+            return email;
+        }
+
+        private void Send_Serivces_Request_Email_to_DM_To_Approve(string b_guid)
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                string layoutsPath = SPUtility.GetVersionedGenericSetupPath("TEMPLATE\\Layouts\\ServicesDeptTabs\\", 15);
+                string html = File.ReadAllText(layoutsPath + "Serivces_Request_Email_to_DM_To_Approve.html");
+                StringBuilder bodyText = new StringBuilder(html);
+
+                string n = string.Empty;
+                if (intended_Emp.Emp_ArabicName != null && intended_Emp.Emp_ArabicName != string.Empty)
+                {
+                    n = intended_Emp.Emp_ArabicName;
+                }
+                else
+                {
+                    n = intended_Emp.Emp_DisplayName;
+                }
+
+                bodyText.Replace("#EmpName#", n);
+                string link_to_view_request = "<a href=" + SPContext.Current.Web.Url + "/Pages/StoresRequestView.aspx?rid=" + b_guid + " > رابط الطلب </a>";
+                bodyText.Replace("#RequestURL#", link_to_view_request);
+
+                StringDictionary headers = new StringDictionary();
+                headers.Add("to", intended_Emp.Emp_DM_email);
+                headers.Add("subject", " قام " + "\"" + n + "\"" + " بعمل طلب جديد من قسم الخدمات ");
+                headers.Add("content-type", "text/html");
+
+                SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
             });
         }
 

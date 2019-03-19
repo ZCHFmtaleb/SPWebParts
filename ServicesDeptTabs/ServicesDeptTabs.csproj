@@ -40,6 +40,9 @@
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Server, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Server.UserProfiles, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SharePoint.Linq, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -52,6 +55,7 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EL\ServicesRequestTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicesRequestsAll\ServicesRequestsAll.cs" />
     <Compile Include="ServicesRequestsAll\ServicesRequestsAllUserControl.ascx.cs">
@@ -61,24 +65,47 @@
     <Compile Include="ServicesRequestsAll\ServicesRequestsAllUserControl.ascx.designer.cs">
       <DependentUpon>ServicesRequestsAllUserControl.ascx.cs</DependentUpon>
     </Compile>
+    <Compile Include="StoresRequestView\StoresRequestView.cs" />
+    <Compile Include="StoresRequestView\StoresRequestViewUserControl.ascx.cs">
+      <DependentUpon>StoresRequestViewUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StoresRequestView\StoresRequestViewUserControl.ascx.designer.cs">
+      <DependentUpon>StoresRequestViewUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ZF.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Features\ZayedServicesDeptFeature\ZayedServicesDeptFeature.feature">
       <FeatureId>{28961be3-c318-443c-8bef-970e689058f1}</FeatureId>
     </None>
     <None Include="key.snk" />
+    <None Include="Layouts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{449ceee6-8274-41bb-90be-55a5840f8193}</SharePointProjectItemId>
+    </None>
     <None Include="Package\Package.package">
       <PackageId>{9c0052f9-169d-440b-b010-13ac8c406942}</PackageId>
     </None>
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
     </None>
+    <None Include="Layouts\ServicesDeptTabs\Scripts\sprestlib-ui.bundle.js.map" />
+    <None Include="Layouts\ServicesDeptTabs\Scripts\sprestlib-ui.min.js.map" />
+    <None Include="Layouts\ServicesDeptTabs\Scripts\sprestlib.bundle.js.map" />
+    <None Include="Layouts\ServicesDeptTabs\Scripts\tsconfig.json" />
+    <None Include="Prebuild.bat" />
     <None Include="ServicesRequestsAll\ServicesRequestsAll.webpart" />
     <None Include="ServicesRequestsAll\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{7e775d33-660c-4977-9b33-f0d5ce3f5d87}</SharePointProjectItemId>
     </None>
+    <None Include="StoresRequestView\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d0ad0c9c-f1c1-478c-bfd1-b5d98d1e30af}</SharePointProjectItemId>
+    </None>
+    <None Include="StoresRequestView\StoresRequestView.webpart" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <TypeScriptCompile Include="Layouts\ServicesDeptTabs\Scripts\sprestlib.d.ts" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SPWebParts\SPWebParts.csproj">
       <Project>{d501c13e-df0c-4f94-962e-e1f98b078b07}</Project>
@@ -89,8 +116,31 @@
     <Content Include="Features\ZayedServicesDeptFeature\ZayedServicesDeptFeature.Template.xml">
       <DependentUpon>ZayedServicesDeptFeature.feature</DependentUpon>
     </Content>
+    <Content Include="Layouts\ServicesDeptTabs\JSOM.js" />
+    <Content Include="Layouts\ServicesDeptTabs\Serivces_Request_Email.html" />
+    <Content Include="Layouts\ServicesDeptTabs\Serivces_Request_Email_to_DM_To_Approve.html" />
+    <Content Include="Layouts\ServicesDeptTabs\ServicesDeptTabsStyle.css" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\breeze.debug.js" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\breeze.labs.dataservice.abstractrest.js" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\breeze.labs.dataservice.sharepoint.js" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\breeze.min.js" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\jquery.min.js" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\jquery.tablesorter.min.js" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\promise.min.js" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\q.js" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\q.min.js" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\sprestlib-ui.bundle.js" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\sprestlib-ui.css" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\sprestlib-ui.js" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\sprestlib-ui.min.js" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\sprestlib.bundle.js" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\sprestlib.js" />
+    <Content Include="Layouts\ServicesDeptTabs\Scripts\sprestlib.min.js" />
     <Content Include="ServicesRequestsAll\Elements.xml" />
     <Content Include="ServicesRequestsAll\ServicesRequestsAllUserControl.ascx" />
+    <Content Include="SPMetal.xml" />
+    <Content Include="StoresRequestView\Elements.xml" />
+    <Content Include="StoresRequestView\StoresRequestViewUserControl.ascx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -98,4 +148,8 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
 </Project>
