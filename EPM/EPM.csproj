@@ -40,6 +40,7 @@
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Server.UserProfiles, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -50,6 +51,12 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccessGrantor.cs" />
+    <Compile Include="Controllers\Emailer.cs" />
+    <Compile Include="Controllers\WFStatusUpdater.cs" />
+    <Compile Include="DAL\Emp_DAL.cs" />
+    <Compile Include="EL\Emp.cs" />
+    <Compile Include="EL\WF_States.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,9 +69,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="DAL\" />
-    <Folder Include="EL\" />
     <Folder Include="Features\" />
     <Folder Include="UI\" />
   </ItemGroup>
