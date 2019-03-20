@@ -72,14 +72,6 @@
     <Compile Include="EPM\DAL\Emp_DAL.cs" />
     <Compile Include="EPM\EL\Emp.cs" />
     <Compile Include="EPM\EL\WF_States.cs" />
-    <Compile Include="EPM\EnableYear\EnableYear.cs" />
-    <Compile Include="EPM\EnableYear\EnableYearUserControl.ascx.cs">
-      <DependentUpon>EnableYearUserControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EPM\EnableYear\EnableYearUserControl.ascx.designer.cs">
-      <DependentUpon>EnableYearUserControl.ascx.cs</DependentUpon>
-    </Compile>
     <Compile Include="EPM\RateObjectivesEmpWP\RateObjectivesEmpWP.cs" />
     <Compile Include="EPM\RateObjectivesEmpWP\RateObjectivesEmpWPUserControl.ascx.cs">
       <DependentUpon>RateObjectivesEmpWPUserControl.ascx</DependentUpon>
@@ -126,10 +118,6 @@
     <None Include="ClientInfoWP\ClientInfoWP.webpart" />
     <None Include="ClientInfoWP\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{39855e44-0235-4e5d-b156-dba123681584}</SharePointProjectItemId>
-    </None>
-    <None Include="EPM\EnableYear\EnableYear.webpart" />
-    <None Include="EPM\EnableYear\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{be2b01cb-6e9b-456b-88eb-259753977b89}</SharePointProjectItemId>
     </None>
     <None Include="EPM\RateObjectivesEmpWP\RateObjectivesEmpWP.webpart" />
     <None Include="EPM\RateObjectivesEmpWP\SharePointProjectItem.spdata">
@@ -178,8 +166,6 @@
       <LastGenOutput>ClientInfoWP.ascx.g.cs</LastGenOutput>
     </Content>
     <Content Include="ClientInfoWP\Elements.xml" />
-    <Content Include="EPM\EnableYear\Elements.xml" />
-    <Content Include="EPM\EnableYear\EnableYearUserControl.ascx" />
     <Content Include="EPM\RateObjectivesEmpWP\Elements.xml" />
     <Content Include="EPM\RateObjectivesEmpWP\RateObjectivesEmpWPUserControl.ascx" />
     <Content Include="EPM\SelectEmp\Elements.xml" />

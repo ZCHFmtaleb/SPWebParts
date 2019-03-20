@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<feature xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="f37be1fb-f9d0-481e-87bd-a198821d9984" description="WebParts of ZF EPM" featureId="f37be1fb-f9d0-481e-87bd-a198821d9984" imageUrl="" scope="Site" solutionId="00000000-0000-0000-0000-000000000000" title="ZF EPM WebParts Feature" version="" deploymentPath="$SharePoint.Project.FileNameWithoutExtension$_$SharePoint.Feature.FileNameWithoutExtension$" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/FeatureModel">
+  <projectItems>
+    <projectItemReference itemId="c2e300fc-a35e-4812-a7ce-aaec13717e19" />
+    <projectItemReference itemId="d198cc73-fa2e-452e-b1f1-2dd31e755872" />
+    <projectItemReference itemId="822d504f-02ff-430e-b453-a89fe17f3943" />
+    <projectItemReference itemId="86b1c455-24a7-4556-a6e3-e3b62c820dd9" />
+    <projectItemReference itemId="3df949bd-13b8-4acc-b112-384eb83c805f" />
+  </projectItems>
+</feature>

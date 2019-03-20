@@ -5,7 +5,7 @@
 <%@ Register Tagprefix="asp" Namespace="System.Web.UI" Assembly="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" %>
 <%@ Import Namespace="Microsoft.SharePoint" %> 
 <%@ Register Tagprefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EnableYearUserControl.ascx.cs" Inherits="SPWebParts.EPM.EnableYear.EnableYearUserControl" %>
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EnableYearUserControl.ascx.cs" Inherits="EPM.UI.EnableYear.EnableYearUserControl" %>
 
 <SharePoint:CssRegistration runat="server" Name="/_layouts/15/SPWebParts/EPMStyle.css" After="/Style%20Library/css/ShareBoot.css" />
 
@@ -85,4 +85,3 @@
 </div>
 
 </div>
-

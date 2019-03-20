@@ -2,13 +2,13 @@
 <webParts>
   <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
     <metaData>
-      <type name="SPWebParts.EPM.EnableYear.EnableYear, $SharePoint.Project.AssemblyFullName$" />
+      <type name="EPM.UI.SetProgress.SetProgress, $SharePoint.Project.AssemblyFullName$" />
       <importErrorMessage>$Resources:core,ImportErrorMessage;</importErrorMessage>
     </metaData>
     <data>
       <properties>
-        <property name="Title" type="string">SPWebParts - EnableYear</property>
-        <property name="Description" type="string">Employee Performance Management - A Grid to Enable/Disable the EPM year</property>
+        <property name="Title" type="string">EPM - SetProgress</property>
+        <property name="Description" type="string">For Emp to set the percentage of progress of his Objectives</property>
         <property name="ChromeType" type="chrometype">None</property>
       </properties>
     </data>

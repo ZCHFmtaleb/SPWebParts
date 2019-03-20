@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/" >
+  <Module Name="RateObjectivesEmpWP" List="113" Url="_catalogs/wp">
+    <File Path="RateObjectivesEmpWP\RateObjectivesEmpWP.webpart" Url="EPM_RateObjectivesEmpWP.webpart" Type="GhostableInLibrary" >
+      <Property Name="Group" Value="ZF EPM" />
+    </File>
+  </Module>
+</Elements>

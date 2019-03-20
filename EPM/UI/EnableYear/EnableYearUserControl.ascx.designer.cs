@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SPWebParts.EPM.EnableYear {
+namespace EPM.UI.EnableYear {
     
     
     public partial class EnableYearUserControl {

@@ -40,11 +40,14 @@
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Server, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Office.Server.UserProfiles, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.SharePoint" />
@@ -55,11 +58,58 @@
     <Compile Include="Controllers\Emailer.cs" />
     <Compile Include="Controllers\WFStatusUpdater.cs" />
     <Compile Include="DAL\Emp_DAL.cs" />
+    <Compile Include="DAL\EnableYear_DAL.cs" />
+    <Compile Include="DAL\Objective_DAL.cs" />
+    <Compile Include="DAL\WF_States_DAL.cs" />
     <Compile Include="EL\Emp.cs" />
+    <Compile Include="EL\Objective.cs" />
     <Compile Include="EL\WF_States.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\EnableYear\EnableYear.cs" />
+    <Compile Include="UI\EnableYear\EnableYearUserControl.ascx.cs">
+      <DependentUpon>EnableYearUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\EnableYear\EnableYearUserControl.ascx.designer.cs">
+      <DependentUpon>EnableYearUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\RateObjectivesEmpWP\RateObjectivesEmpWP.cs" />
+    <Compile Include="UI\RateObjectivesEmpWP\RateObjectivesEmpWPUserControl.ascx.cs">
+      <DependentUpon>RateObjectivesEmpWPUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\RateObjectivesEmpWP\RateObjectivesEmpWPUserControl.ascx.designer.cs">
+      <DependentUpon>RateObjectivesEmpWPUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SelectEmp\SelectEmp.cs" />
+    <Compile Include="UI\SelectEmp\SelectEmpUserControl.ascx.cs">
+      <DependentUpon>SelectEmpUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\SelectEmp\SelectEmpUserControl.ascx.designer.cs">
+      <DependentUpon>SelectEmpUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SetObjectivesWP\SetObjectivesWP.cs" />
+    <Compile Include="UI\SetObjectivesWP\SetObjectivesWPUserControl.ascx.cs">
+      <DependentUpon>SetObjectivesWPUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\SetObjectivesWP\SetObjectivesWPUserControl.ascx.designer.cs">
+      <DependentUpon>SetObjectivesWPUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SetProgress\SetProgress.cs" />
+    <Compile Include="UI\SetProgress\SetProgressUserControl.ascx.cs">
+      <DependentUpon>SetProgressUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\SetProgress\SetProgressUserControl.ascx.designer.cs">
+      <DependentUpon>SetProgressUserControl.ascx.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Features\Feature1\Feature1.feature">
+      <FeatureId>{1df282d8-a6a7-4f40-9ac1-ff51c06be0ec}</FeatureId>
+    </None>
     <None Include="key.snk" />
     <None Include="Package\Package.package">
       <PackageId>{abafaf26-da05-4343-9557-13e5733ec455}</PackageId>
@@ -67,10 +117,42 @@
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
     </None>
+    <None Include="UI\EnableYear\EnableYear.webpart" />
+    <None Include="UI\EnableYear\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{c2e300fc-a35e-4812-a7ce-aaec13717e19}</SharePointProjectItemId>
+    </None>
+    <None Include="UI\RateObjectivesEmpWP\RateObjectivesEmpWP.webpart" />
+    <None Include="UI\RateObjectivesEmpWP\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d198cc73-fa2e-452e-b1f1-2dd31e755872}</SharePointProjectItemId>
+    </None>
+    <None Include="UI\SelectEmp\SelectEmp.webpart" />
+    <None Include="UI\SelectEmp\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{822d504f-02ff-430e-b453-a89fe17f3943}</SharePointProjectItemId>
+    </None>
+    <None Include="UI\SetObjectivesWP\SetObjectivesWP.webpart" />
+    <None Include="UI\SetObjectivesWP\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{86b1c455-24a7-4556-a6e3-e3b62c820dd9}</SharePointProjectItemId>
+    </None>
+    <None Include="UI\SetProgress\SetProgress.webpart" />
+    <None Include="UI\SetProgress\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3df949bd-13b8-4acc-b112-384eb83c805f}</SharePointProjectItemId>
+    </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Features\" />
-    <Folder Include="UI\" />
+    <Content Include="Features\Feature1\Feature1.Template.xml">
+      <DependentUpon>Feature1.feature</DependentUpon>
+    </Content>
+    <Content Include="UI\EnableYear\Elements.xml" />
+    <Content Include="UI\EnableYear\EnableYearUserControl.ascx" />
+    <Content Include="UI\RateObjectivesEmpWP\Elements.xml" />
+    <Content Include="UI\RateObjectivesEmpWP\RateObjectivesEmpWPUserControl.ascx" />
+    <Content Include="UI\SelectEmp\Elements.xml" />
+    <Content Include="UI\SelectEmp\SelectEmpUserControl.ascx" />
+    <Content Include="UI\SetObjectivesWP\Elements.xml" />
+    <Content Include="UI\SetObjectivesWP\SetObjectivesWPUserControl.ascx" />
+    <Content Include="UI\SetProgress\Elements.xml" />
+    <Content Include="UI\SetProgress\SetProgressUserControl.ascx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
