@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace EPM.EL
 {
-    class Emp
+
+    [Serializable]
+    public class Emp
     {
         public string Emp_DisplayName;
         public string Emp_ArabicName;

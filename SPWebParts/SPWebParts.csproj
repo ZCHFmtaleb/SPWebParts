@@ -88,14 +88,6 @@
     <Compile Include="EPM\SelectEmp\SelectEmpUserControl.ascx.designer.cs">
       <DependentUpon>SelectEmpUserControl.ascx.cs</DependentUpon>
     </Compile>
-    <Compile Include="EPM\SetObjectivesWP\SetObjectivesWP.cs" />
-    <Compile Include="EPM\SetObjectivesWP\SetObjectivesWPUserControl.ascx.cs">
-      <DependentUpon>SetObjectivesWPUserControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EPM\SetObjectivesWP\SetObjectivesWPUserControl.ascx.designer.cs">
-      <DependentUpon>SetObjectivesWPUserControl.ascx.cs</DependentUpon>
-    </Compile>
     <Compile Include="EPM\SetProgress\SetProgress.cs" />
     <Compile Include="EPM\SetProgress\SetProgressUserControl.ascx.cs">
       <DependentUpon>SetProgressUserControl.ascx</DependentUpon>
@@ -126,10 +118,6 @@
     <None Include="EPM\SelectEmp\SelectEmp.webpart" />
     <None Include="EPM\SelectEmp\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{4e4515b4-cd7d-48c1-b703-dc82ef254f17}</SharePointProjectItemId>
-    </None>
-    <None Include="EPM\SetObjectivesWP\SetObjectivesWP.webpart" />
-    <None Include="EPM\SetObjectivesWP\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{03f23927-96b6-40eb-aade-167720141c38}</SharePointProjectItemId>
     </None>
     <None Include="EPM\SetProgress\SetProgress.webpart" />
     <None Include="EPM\SetProgress\SharePointProjectItem.spdata">
@@ -170,8 +158,6 @@
     <Content Include="EPM\RateObjectivesEmpWP\RateObjectivesEmpWPUserControl.ascx" />
     <Content Include="EPM\SelectEmp\Elements.xml" />
     <Content Include="EPM\SelectEmp\SelectEmpUserControl.ascx" />
-    <Content Include="EPM\SetObjectivesWP\Elements.xml" />
-    <Content Include="EPM\SetObjectivesWP\SetObjectivesWPUserControl.ascx" />
     <Content Include="EPM\SetProgress\Elements.xml" />
     <Content Include="EPM\SetProgress\SetProgressUserControl.ascx" />
     <Content Include="Features\Feature1\Feature1.Template.xml">
@@ -183,12 +169,9 @@
     <Content Include="Features\SetObjectivesWP Feature\SetObjectivesWP Feature.Template.xml">
       <DependentUpon>SetObjectivesWP Feature.feature</DependentUpon>
     </Content>
-    <Content Include="Layouts\SPWebParts\EPMStyle.css" />
     <Content Include="Layouts\SPWebParts\FormNumber.gif" />
     <Content Include="Layouts\SPWebParts\jQuery.print.js" />
     <Content Include="Layouts\SPWebParts\logo.jpg" />
-    <Content Include="Layouts\SPWebParts\SetObjectives.js" />
-    <Content Include="Layouts\SPWebParts\spinner.gif" />
     <Content Include="PreviousRequestsWP\Elements.xml" />
     <Content Include="PreviousRequestsWP\PreviousRequestsWP.ascx">
       <Generator>SharePointWebPartCodeGenerator</Generator>
