@@ -1,18 +1,11 @@
-﻿using Microsoft.SharePoint;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EPM.EL;
+﻿using EPM.EL;
+using Microsoft.SharePoint;
 
 namespace EPM.Controllers
 {
-    class WFStatusUpdater
+    internal class WFStatusUpdater
     {
-
-
-        private void Change_State_to(WF_States pNew_state, string strEmpDisplayName, string Active_Set_Goals_Year)
+        public static void Change_State_to(WF_States pNew_state, string strEmpDisplayName, string Active_Set_Goals_Year)
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
@@ -35,7 +28,7 @@ namespace EPM.Controllers
                                           </And>
                                        </Where>";
                 qry.ViewFieldsOnly = true;
-                qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='Status' /><FieldRef Name='Emp' /><FieldRef Name='ObjQ' /><FieldRef Name='ObjYear' /><FieldRef Name='ObjType' /><FieldRef Name='ObjWeight' />";
+                qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='Status' />";
                 SPListItemCollection listItems = oList.GetItems(qry);
 
                 foreach (SPListItem item in listItems)
@@ -48,7 +41,5 @@ namespace EPM.Controllers
                 oWeb.AllowUnsafeUpdates = false;
             });
         }
-
-
     }
 }

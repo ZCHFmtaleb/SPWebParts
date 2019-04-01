@@ -56,12 +56,21 @@
   <ItemGroup>
     <Compile Include="Controllers\Emailer.cs" />
     <Compile Include="Controllers\WFStatusUpdater.cs" />
+    <Compile Include="DAL\ApproveObjectives_DAL.cs" />
     <Compile Include="DAL\Emp_DAL.cs" />
     <Compile Include="DAL\EnableYear_DAL.cs" />
     <Compile Include="DAL\SetObjectives_DAL.cs" />
     <Compile Include="EL\Emp.cs" />
     <Compile Include="EL\WF_States.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\ApproveObjectives\ApproveObjectives.cs" />
+    <Compile Include="UI\ApproveObjectives\ApproveObjectivesUserControl.ascx.cs">
+      <DependentUpon>ApproveObjectivesUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\ApproveObjectives\ApproveObjectivesUserControl.ascx.designer.cs">
+      <DependentUpon>ApproveObjectivesUserControl.ascx.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\EnableYear\EnableYear.cs" />
     <Compile Include="UI\EnableYear\EnableYearUserControl.ascx.cs">
       <DependentUpon>EnableYearUserControl.ascx</DependentUpon>
@@ -117,6 +126,10 @@
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
     </None>
+    <None Include="UI\ApproveObjectives\ApproveObjectives.webpart" />
+    <None Include="UI\ApproveObjectives\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3af2b51d-9d88-41a0-9de3-e81842566224}</SharePointProjectItemId>
+    </None>
     <None Include="UI\EnableYear\EnableYear.webpart" />
     <None Include="UI\EnableYear\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{c2e300fc-a35e-4812-a7ce-aaec13717e19}</SharePointProjectItemId>
@@ -144,9 +157,14 @@
       <DependentUpon>Feature1.feature</DependentUpon>
     </Content>
     <Content Include="Layouts\EPM\EPMStyle.css" />
+    <Content Include="Layouts\EPM\Notify_Emp_that_Objs_finally_approved.html" />
     <Content Include="Layouts\EPM\Send_Objs_Added_Email_to_DM.html" />
+    <Content Include="Layouts\EPM\Send_Objs_Approved_Email_to_Dept_Head.html" />
+    <Content Include="Layouts\EPM\Send_Rej_Email_to_Emp.html" />
     <Content Include="Layouts\EPM\SetObjectives.js" />
     <Content Include="Layouts\EPM\spinner.gif" />
+    <Content Include="UI\ApproveObjectives\ApproveObjectivesUserControl.ascx" />
+    <Content Include="UI\ApproveObjectives\Elements.xml" />
     <Content Include="UI\EnableYear\Elements.xml" />
     <Content Include="UI\EnableYear\EnableYearUserControl.ascx" />
     <Content Include="UI\RateObjectivesEmpWP\Elements.xml" />

@@ -48,8 +48,13 @@ namespace EPM.DAL
                 }
 
                 UserProfile DM_UserProfile = userProfileMgr.GetUserProfile(cUserProfile.GetProfileValueCollection("Manager")[0].ToString());
-                intended_Emp.Emp_DM_name = DM_UserProfile.DisplayName;
-                intended_Emp.Emp_DM_email = DM_UserProfile["WorkEmail"].ToString();
+                intended_Emp.DM_name = DM_UserProfile.DisplayName;
+                intended_Emp.DM_email = DM_UserProfile["WorkEmail"].ToString();
+
+                UserProfile Dept_Head_UserProfile = userProfileMgr.GetUserProfile(DM_UserProfile.GetProfileValueCollection("Manager")[0].ToString());
+                intended_Emp.Dept_Head_name = Dept_Head_UserProfile.DisplayName;
+                intended_Emp.Dept_Head_email = Dept_Head_UserProfile["WorkEmail"].ToString();
+
             }
             catch (System.Exception)
             {

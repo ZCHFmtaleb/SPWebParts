@@ -191,7 +191,7 @@
             </ItemTemplate>
             <HeaderStyle Width="5%" />
         </asp:TemplateField>
-        <asp:TemplateField HeaderText="تاريخ تحقيق الهدف">
+        <asp:TemplateField HeaderText="الفصل">
             <EditItemTemplate>
                 <asp:DropDownList ID="ddlObjQ_gv" runat="server">
                     <asp:ListItem>Q1</asp:ListItem>

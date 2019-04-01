@@ -16,8 +16,10 @@ namespace EPM.EL
         public string Emp_JobTitle;
         public string Emp_email;
         public string Emp_Department;
-        public string Emp_DM_email;
-        public string Emp_DM_name;
+        public string DM_email;
+        public string DM_name;
+        public string Dept_Head_email;
+        public string Dept_Head_name;
         public string login_name_to_convert_to_SPUser;
     }
 }

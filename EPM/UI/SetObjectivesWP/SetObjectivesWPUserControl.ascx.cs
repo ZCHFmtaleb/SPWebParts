@@ -65,25 +65,6 @@ namespace EPM.UI.SetObjectivesWP
             }
         }
 
-        public string Planning_Consultant_Email
-        {
-            get
-            {
-                if (ViewState["Planning_Consultant_Email"] != null)
-                {
-                    return ViewState["Planning_Consultant_Email"].ToString();
-                }
-                else
-                {
-                    return string.Empty;
-                }
-            }
-            set
-            {
-                ViewState["Planning_Consultant_Email"] = value;
-            }
-        }
-
         public DataTable tblObjectives
         {
             get
@@ -338,7 +319,7 @@ namespace EPM.UI.SetObjectivesWP
             lblEmpDept.Text = intended_Emp.Emp_Department;
             lblEmpJob.Text = intended_Emp.Emp_JobTitle;
             lblEmpRank.Text = intended_Emp.Emp_Rank;
-            lblEmpDM.Text = intended_Emp.Emp_DM_name;
+            lblEmpDM.Text = intended_Emp.DM_name;
         }
 
         protected void Bind_DDLs()
