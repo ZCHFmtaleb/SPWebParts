@@ -174,7 +174,7 @@ namespace EPM.UI.ApproveObjectives
                     ApproveObjectives_DAL.Update_Status_To_Rejected_by_Dept_Head(intended_Emp.Emp_DisplayName, Active_Set_Goals_Year);
                 }
 
-                Emailer.Send_Rej_Email_to_Emp(intended_Emp);
+                Emailer.Send_Rej_Email_to_Emp(intended_Emp, txtRequired_Mods.Text);
                 Show_Success_Message("تم طلب التعديلات بنجاح");
             });
         }

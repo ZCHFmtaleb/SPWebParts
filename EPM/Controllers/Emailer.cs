@@ -2,30 +2,26 @@
 using Microsoft.SharePoint;
 using Microsoft.SharePoint.Utilities;
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace EPM.Controllers
 {
     public class Emailer
     {
+        private static string layoutsPath = SPUtility.GetVersionedGenericSetupPath("TEMPLATE\\Layouts\\EPM\\", 15);
 
-        static string layoutsPath = SPUtility.GetVersionedGenericSetupPath("TEMPLATE\\Layouts\\EPM\\", 15);
-
-        public static  void Send_Objs_Added_Email_to_DM(Emp intended_Emp, string Active_Set_Goals_Year)
+        public static void Send_Objs_Added_Email_to_DM(Emp intended_Emp, string Active_Set_Goals_Year)
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                
                 string html = File.ReadAllText(layoutsPath + "Send_Objs_Added_Email_to_DM.html");
                 StringBuilder bodyText = new StringBuilder(html);
 
                 #region If Arabic name not found, use English name
+
                 string n = string.Empty;
                 if (intended_Emp.Emp_ArabicName != null && intended_Emp.Emp_ArabicName != string.Empty)
                 {
@@ -34,8 +30,9 @@ namespace EPM.Controllers
                 else
                 {
                     n = intended_Emp.Emp_DisplayName;
-                } 
-                #endregion
+                }
+
+                #endregion If Arabic name not found, use English name
 
                 bodyText.Replace("#EmpName#", n);
                 bodyText.Replace("#Active_Set_Goals_Year#", Active_Set_Goals_Year);
@@ -43,11 +40,13 @@ namespace EPM.Controllers
                 bodyText.Replace("#Link#", "<a href=" + SPContext.Current.Web.Url + "/Pages/ApproveObjectives.aspx?empid=" + encoded_name + "  >" + n + "</a>");
 
                 #region Prepare Headers
+
                 StringDictionary headers = new StringDictionary();
                 headers.Add("to", intended_Emp.DM_email);
                 headers.Add("subject", " قام " + "\"" + n + "\"" + " بوضع الأهداف الفردية لعام " + Active_Set_Goals_Year);
-                headers.Add("content-type", "text/html"); 
-                #endregion
+                headers.Add("content-type", "text/html");
+
+                #endregion Prepare Headers
 
                 SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
             });
@@ -57,11 +56,11 @@ namespace EPM.Controllers
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-
-                string html = File.ReadAllText(layoutsPath + "Send_Objs_Added_Email_to_DM.html");
+                string html = File.ReadAllText(layoutsPath + "Send_Objs_Approved_Email_to_Dept_Head.html");
                 StringBuilder bodyText = new StringBuilder(html);
 
                 #region If Arabic name not found, use English name
+
                 string n = string.Empty;
                 if (intended_Emp.Emp_ArabicName != null && intended_Emp.Emp_ArabicName != string.Empty)
                 {
@@ -71,7 +70,8 @@ namespace EPM.Controllers
                 {
                     n = intended_Emp.Emp_DisplayName;
                 }
-                #endregion
+
+                #endregion If Arabic name not found, use English name
 
                 bodyText.Replace("#EmpName#", n);
                 bodyText.Replace("#Active_Set_Goals_Year#", Active_Set_Goals_Year);
@@ -79,39 +79,27 @@ namespace EPM.Controllers
                 bodyText.Replace("#Link#", "<a href=" + SPContext.Current.Web.Url + "/Pages/ApproveObjectives.aspx?empid=" + encoded_name + "  >" + n + "</a>");
 
                 #region Prepare Headers
+
                 StringDictionary headers = new StringDictionary();
-                headers.Add("to", intended_Emp.DM_email);
+                headers.Add("to", intended_Emp.Dept_Head_email);
                 headers.Add("subject", " قام " + "\"" + n + "\"" + " بوضع الأهداف الفردية لعام " + Active_Set_Goals_Year);
                 headers.Add("content-type", "text/html");
-                #endregion
+
+                #endregion Prepare Headers
 
                 SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
             });
         }
 
-        public static  void Send_Rej_Email_to_Emp(Emp intended_Emp)
+        public static void Notify_Emp_that_Objs_finally_approved(Emp intended_Emp, string Active_Set_Goals_Year)
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                StringDictionary headers = new StringDictionary();
-                headers.Add("to", intended_Emp.Emp_email);
-                headers.Add("subject", "طلب تعديلات على الأهداف");
-                headers.Add("content-type", "text/html");
-                StringBuilder bodyText = new StringBuilder();
-                bodyText.Append("<p dir=rtl >");
-                bodyText.Append("السلام عليكم ورحمة الله"); bodyText.Append("<br />");
-                bodyText.Append("تحية طيبة وبعد:"); bodyText.Append("<br />");
-                bodyText.Append("الرجاء القيام بإجراء التعديلات التالية على الأهداف الخاصة بك ، وإعادة ارسالها مرة أخرى:"); bodyText.Append("<br />"); bodyText.Append("<br />");
-                //bodyText.Append(txtRequired_Mods.Text.Replace(Environment.NewLine, "<br />")); bodyText.Append("<br />"); bodyText.Append("<br />");
-                bodyText.Append("</p>");
-                SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
-            });
-        }
+                string html = File.ReadAllText(layoutsPath + "Notify_Emp_that_Objs_finally_approved.html");
+                StringBuilder bodyText = new StringBuilder(html);
 
-        public static  void Notify_Emp_that_Objs_finally_approved(Emp intended_Emp, string Active_Set_Goals_Year)
-        {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
+                #region If Arabic name not found, use English name
+
                 string n = string.Empty;
                 if (intended_Emp.Emp_ArabicName != null && intended_Emp.Emp_ArabicName != string.Empty)
                 {
@@ -122,23 +110,57 @@ namespace EPM.Controllers
                     n = intended_Emp.Emp_DisplayName;
                 }
 
+                #endregion If Arabic name not found, use English name
+
+                bodyText.Replace("#Active_Set_Goals_Year#", Active_Set_Goals_Year);
+
+                #region Prepare Headers
+
                 StringDictionary headers = new StringDictionary();
                 headers.Add("to", intended_Emp.Emp_email);
-                headers.Add("subject", "تم اعتماد الأهداف الخاصة بك لعام " + Active_Set_Goals_Year);
+                headers.Add("subject", "تم اعتماد الأهداف السنوية الخاصة بك");
                 headers.Add("content-type", "text/html");
-                StringBuilder bodyText = new StringBuilder();
-                bodyText.Append("<p dir=rtl >");
-                bodyText.Append("السلام عليكم ورحمة الله"); bodyText.Append("<br />");
-                bodyText.Append("تحية طيبة وبعد:"); bodyText.Append("<br />");
-                bodyText.Append("تهانينا. لقد تم اعتماد الأهداف الخاصة بك بشكل نهائى");
-                bodyText.Append("<br />");
-                bodyText.Append("يمكنك مراجعة الأهداف الخاصة بك فى أى وقت وذلك من خلال الرابط التالى:");
-                bodyText.Append("<br />");
-                bodyText.Append("<a href=\"" + SPContext.Current.Web.Url + "/Pages/SetObjectives.aspx\" >" + "نموذج وضع الأهداف" + " </a>");
-                bodyText.Append("<br />");
-                bodyText.Append("<br />");
-                bodyText.Append("وشكرا جزيلا لحسن تعاونكم");
-                bodyText.Append("</p>");
+
+                #endregion Prepare Headers
+
+                SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
+            });
+        }
+
+        public static void Send_Rej_Email_to_Emp(Emp intended_Emp, string Required_Mods)
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                string html = File.ReadAllText(layoutsPath + "Send_Rej_Email_to_Emp.html");
+                StringBuilder bodyText = new StringBuilder(html);
+
+                #region If Arabic name not found, use English name
+
+                string n = string.Empty;
+                if (intended_Emp.Emp_ArabicName != null && intended_Emp.Emp_ArabicName != string.Empty)
+                {
+                    n = intended_Emp.Emp_ArabicName;
+                }
+                else
+                {
+                    n = intended_Emp.Emp_DisplayName;
+                }
+
+                #endregion If Arabic name not found, use English name
+
+                string lined_Required_Mods = Required_Mods.Replace(Environment.NewLine, "<br />");
+
+                bodyText.Replace("#Required_Mods#", lined_Required_Mods);
+
+                #region Prepare Headers
+
+                StringDictionary headers = new StringDictionary();
+                headers.Add("to", intended_Emp.Emp_email);
+                headers.Add("subject", "طلب تعديلات على الأهداف");
+                headers.Add("content-type", "text/html");
+
+                #endregion Prepare Headers
+
                 SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
             });
         }
