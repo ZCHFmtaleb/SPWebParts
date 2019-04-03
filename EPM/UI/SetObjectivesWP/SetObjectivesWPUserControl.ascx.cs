@@ -175,6 +175,7 @@ namespace EPM.UI.SetObjectivesWP
                     NewRow["PrimaryGoal_x003a__x0627__x0633_"] = ddlPrimaryGoal.SelectedItem.Text;
                     NewRow["PrimaryGoal"] = ddlPrimaryGoal.SelectedItem.Value;
                     NewRow["ObjYear"] = Active_Set_Goals_Year.ToString();
+                    NewRow["EmpHierLvl"] = intended_Emp.EmpHierLvl;
                     tblObjectives.Rows.Add(NewRow);
                     Refresh_Objectives_grid();
                 });
@@ -320,6 +321,7 @@ namespace EPM.UI.SetObjectivesWP
             lblEmpJob.Text = intended_Emp.Emp_JobTitle;
             lblEmpRank.Text = intended_Emp.Emp_Rank;
             lblEmpDM.Text = intended_Emp.DM_name;
+            EmpHierLvl.Text = intended_Emp.EmpHierLvl;
         }
 
         protected void Bind_DDLs()

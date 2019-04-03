@@ -1,15 +1,15 @@
-﻿using Microsoft.Office.Server.UserProfiles;
+﻿using EPM.EL;
+using Microsoft.Office.Server.UserProfiles;
 using Microsoft.SharePoint;
 using Microsoft.SharePoint.Utilities;
-using EPM.EL;
 
 namespace EPM.DAL
 {
-    class Emp_DAL
+    internal class Emp_DAL
     {
         public static Emp get_Emp_Info(Emp intended_Emp, string strEmpDisplayName)
         {
-            try
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
                 SPSite site = SPContext.Current.Site;
                 SPWeb web = site.OpenWeb();
@@ -47,42 +47,58 @@ namespace EPM.DAL
                     intended_Emp.Emp_Rank = string.Empty;
                 }
 
-                UserProfile DM_UserProfile = userProfileMgr.GetUserProfile(cUserProfile.GetProfileValueCollection("Manager")[0].ToString());
-                intended_Emp.DM_name = DM_UserProfile.DisplayName;
-                intended_Emp.DM_email = DM_UserProfile["WorkEmail"].ToString();
 
-                UserProfile Dept_Head_UserProfile = userProfileMgr.GetUserProfile(DM_UserProfile.GetProfileValueCollection("Manager")[0].ToString());
-                intended_Emp.Dept_Head_name = Dept_Head_UserProfile.DisplayName;
-                intended_Emp.Dept_Head_email = Dept_Head_UserProfile["WorkEmail"].ToString();
 
-            }
-            catch (System.Exception)
-            {
-            }
-            return intended_Emp;
-        }
-
-        public static string get_Planning_Consultant_Email()
-        {
-            string PCE = string.Empty;
-
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
-                SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.Lists.TryGetList("مستشار التخطيط");
-                if (spList != null)
+                string DM_value = string.Empty;
+                string Dept_Head_value = string.Empty;
+                if (cUserProfile.GetProfileValueCollection("Manager")[0]!= null)
                 {
-                    SPQuery qry = new SPQuery();
-                    qry.ViewFieldsOnly = true;
-                    qry.ViewFields = @"<FieldRef Name='Title' />";
-                    SPListItemCollection listItems = spList.GetItems(qry);
+                    DM_value = cUserProfile.GetProfileValueCollection("Manager")[0].ToString();
+                }
 
-                    PCE = listItems[0]["Title"].ToString();
+                
+                if (DM_value != string.Empty)
+                {
+                    UserProfile DM_UserProfile = userProfileMgr.GetUserProfile(DM_value);
+                    intended_Emp.DM_name = DM_UserProfile.DisplayName;
+                    intended_Emp.DM_email = DM_UserProfile["WorkEmail"].ToString();
+
+                    if (DM_UserProfile.GetProfileValueCollection("Manager")[0] != null)
+                    {
+                        Dept_Head_value= DM_UserProfile.GetProfileValueCollection("Manager")[0].ToString();
+                    }
+
+                    if (Dept_Head_value != string.Empty)
+                    {
+                        UserProfile Dept_Head_UserProfile = userProfileMgr.GetUserProfile(Dept_Head_value);
+                        intended_Emp.Dept_Head_name = Dept_Head_UserProfile.DisplayName;
+                        intended_Emp.Dept_Head_email = Dept_Head_UserProfile["WorkEmail"].ToString();
+
+                        //============================================
+
+                        SPGroup grp = web.SiteGroups["المدير العام"];
+                        if (intended_Emp.Dept_Head_email == grp.Users[0].Email)
+                        {
+                            intended_Emp.EmpHierLvl = "2";
+                        }
+                        else
+                        {
+                            intended_Emp.EmpHierLvl = "1";
+                        }
+
+                        //=============================================
+                    }
+                    else
+                    {
+                        intended_Emp.EmpHierLvl = "3";
+                    }
+                }
+                else
+                {
+                    intended_Emp.EmpHierLvl = "4";
                 }
             });
-
-            return PCE;
+            return intended_Emp;
         }
     }
 }

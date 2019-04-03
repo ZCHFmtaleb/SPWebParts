@@ -21,5 +21,6 @@ namespace EPM.EL
         public string Dept_Head_email;
         public string Dept_Head_name;
         public string login_name_to_convert_to_SPUser;
+        public string EmpHierLvl;
     }
 }

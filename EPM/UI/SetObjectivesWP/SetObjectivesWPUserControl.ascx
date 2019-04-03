@@ -61,7 +61,7 @@
         </tr>
     </table>
 </div>
-
+ <asp:Label ID="EmpHierLvl" runat="server" Text="EmpHierLvl"></asp:Label>
 <div class="divAddGoal" runat="server" id="div_of_AddingGoal">
 
 <div class="Form_Table_css">
