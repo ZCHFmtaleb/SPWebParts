@@ -11,7 +11,12 @@
 <SharePoint:CssRegistration runat="server" Name="/_layouts/15/EPM/EPMStyle.css" After="/Style%20Library/css/ShareBoot.css" />
 <script type="text/javascript" src="/_layouts/15/EPM/SetObjectives.js"></script>
 
-<div id="container" dir="rtl" align="right" >
+<div id="container" dir="rtl" style="text-align:right" >
+
+<div style="text-align:left;">
+    <asp:Label ID="EmpHierLvl" runat="server" Text="EmpHierLvl" Font-Size="XX-Small" ></asp:Label>
+</div>
+
 <div id="page_head">
     <h1 runat="server" id="PageTitle">نموذج وضع الأهداف الفردية لعام   <asp:Label ID="lblActiveYear" runat="server" Text=""></asp:Label></h1>
 </div>
@@ -61,7 +66,10 @@
         </tr>
     </table>
 </div>
- <asp:Label ID="EmpHierLvl" runat="server" Text="EmpHierLvl"></asp:Label>
+
+
+<div id="container_for_making_blank" runat="server">
+ 
 <div class="divAddGoal" runat="server" id="div_of_AddingGoal">
 
 <div class="Form_Table_css">
@@ -232,7 +240,6 @@
 </asp:GridView>
 </div>
 
-
 <div class="div_btnSubmit" style="margin-bottom:30px;" runat ="server" id="divButtons">
 <asp:Button ID="btnSubmit" runat="server" Text="إرسال" Font-Size="Large" Height="50px" Width="100px" OnClick="btnSubmit_Click" ValidationGroup="vg2" />
 </div>
@@ -244,6 +251,8 @@
 
 <div runat="server" id="divSuccess"  style="width:50%; background-color: rgb(0, 222, 149) !important; font-size:large; font-weight:bold;" visible ="false">
 <asp:Label ID="lblSuccess" runat="server" Text="" ></asp:Label>
+</div>
+
 </div>
 
 </div>

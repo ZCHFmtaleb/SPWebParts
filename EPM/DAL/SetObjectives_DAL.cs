@@ -217,6 +217,8 @@ namespace EPM.DAL
                         oListItem["ObjYear"] = Active_Set_Goals_Year;
                         oListItem["StrDir"] = int.Parse(row["StrDir"].ToString());
                         oListItem["PrimaryGoal"] = int.Parse(row["PrimaryGoal"].ToString());
+                        oListItem["EmpHierLvl"] = row["EmpHierLvl"].ToString();
+
                         oListItem.Update();
                     }
                 }

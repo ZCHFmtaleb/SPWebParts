@@ -71,6 +71,14 @@
     <Compile Include="UI\ApproveObjectives\ApproveObjectivesUserControl.ascx.designer.cs">
       <DependentUpon>ApproveObjectivesUserControl.ascx.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Dashboard\Dashboard.cs" />
+    <Compile Include="UI\Dashboard\DashboardUserControl.ascx.cs">
+      <DependentUpon>DashboardUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Dashboard\DashboardUserControl.ascx.designer.cs">
+      <DependentUpon>DashboardUserControl.ascx.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\EnableYear\EnableYear.cs" />
     <Compile Include="UI\EnableYear\EnableYearUserControl.ascx.cs">
       <DependentUpon>EnableYearUserControl.ascx</DependentUpon>
@@ -130,6 +138,10 @@
     <None Include="UI\ApproveObjectives\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{3af2b51d-9d88-41a0-9de3-e81842566224}</SharePointProjectItemId>
     </None>
+    <None Include="UI\Dashboard\Dashboard.webpart" />
+    <None Include="UI\Dashboard\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{25748ce7-d098-4f04-85c9-f6afd87dce99}</SharePointProjectItemId>
+    </None>
     <None Include="UI\EnableYear\EnableYear.webpart" />
     <None Include="UI\EnableYear\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{c2e300fc-a35e-4812-a7ce-aaec13717e19}</SharePointProjectItemId>
@@ -165,6 +177,8 @@
     <Content Include="Layouts\EPM\spinner.gif" />
     <Content Include="UI\ApproveObjectives\ApproveObjectivesUserControl.ascx" />
     <Content Include="UI\ApproveObjectives\Elements.xml" />
+    <Content Include="UI\Dashboard\DashboardUserControl.ascx" />
+    <Content Include="UI\Dashboard\Elements.xml" />
     <Content Include="UI\EnableYear\Elements.xml" />
     <Content Include="UI\EnableYear\EnableYearUserControl.ascx" />
     <Content Include="UI\RateObjectivesEmpWP\Elements.xml" />

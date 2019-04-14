@@ -148,7 +148,19 @@ namespace EPM.UI.ApproveObjectives
                 if (currunt_user_email == intended_Emp.DM_email)
                 {
                     ApproveObjectives_DAL.Update_Status_To_Apporoved_by_DM(intended_Emp.Emp_DisplayName, Active_Set_Goals_Year);
-                    Emailer.Send_Objs_Approved_Email_to_Dept_Head(intended_Emp, Active_Set_Goals_Year);
+
+                    if (intended_Emp.EmpHierLvl == "2" || intended_Emp.EmpHierLvl == "3")
+                    {
+                        Emailer.Notify_Emp_that_Objs_finally_approved(intended_Emp, Active_Set_Goals_Year);
+                    }
+                    else if (intended_Emp.EmpHierLvl == "1")
+                    {
+                        Emailer.Send_Objs_Approved_Email_to_Dept_Head(intended_Emp, Active_Set_Goals_Year);
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
                 else if (currunt_user_email == intended_Emp.Dept_Head_email)
                 {

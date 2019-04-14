@@ -13,6 +13,15 @@ namespace EPM.UI.SetObjectivesWP {
     public partial class SetObjectivesWPUserControl {
         
         /// <summary>
+        /// EmpHierLvl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label EmpHierLvl;
+        
+        /// <summary>
         /// PageTitle control.
         /// </summary>
         /// <remarks>
@@ -121,13 +130,13 @@ namespace EPM.UI.SetObjectivesWP {
         protected global::System.Web.UI.WebControls.Label lblEmpDM;
         
         /// <summary>
-        /// EmpHierLvl control.
+        /// container_for_making_blank control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EmpHierLvl;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl container_for_making_blank;
         
         /// <summary>
         /// div_of_AddingGoal control.

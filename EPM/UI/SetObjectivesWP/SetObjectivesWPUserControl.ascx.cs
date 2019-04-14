@@ -85,6 +85,7 @@ namespace EPM.UI.SetObjectivesWP
                     tblObjectives.Columns.Add("PrimaryGoal");
                     tblObjectives.Columns.Add("Status");
                     tblObjectives.Columns.Add("ObjYear");
+                    tblObjectives.Columns.Add("EmpHierLvl");
                     return tblObjectives;
                 }
             }
@@ -125,7 +126,14 @@ namespace EPM.UI.SetObjectivesWP
                     strEmpDisplayName = getEmp_from_QueryString_or_currentUser();
 
                     intended_Emp = Emp_DAL.get_Emp_Info(intended_Emp, strEmpDisplayName);
+
                     bind_Emp_Info();
+
+                    if (intended_Emp.EmpHierLvl == "4")
+                    {
+                        Set_Blank_Mode_For_High_Managerial_Levels();
+                        return;
+                    }
 
                     #endregion Identify Current User , get his informatiion , and Bind it
 
@@ -135,7 +143,7 @@ namespace EPM.UI.SetObjectivesWP
 
                     #region Check if goals status is not "rejected" , make ReadOnly mode
 
-                    if (tblObjectives.Rows.Count>0)
+                    if (tblObjectives.Rows.Count > 0)
                     {
                         string currunt_status = tblObjectives.Rows[0]["Status"].ToString();
                         if (currunt_status != "Objectives_rejected_by_DM" && currunt_status != "Objectives_rejected_by_Dept_Head")
@@ -144,7 +152,7 @@ namespace EPM.UI.SetObjectivesWP
                         }
                     }
 
-                    #endregion
+                    #endregion Check if goals status is not "rejected" , make ReadOnly mode
 
                     Refresh_Objectives_grid();
                 }
@@ -162,8 +170,6 @@ namespace EPM.UI.SetObjectivesWP
 
         protected void btnAddObjective_Click(object sender, EventArgs e)
         {
-            try
-            {
                 SPSecurity.RunWithElevatedPrivileges(delegate ()
                 {
                     DataRow NewRow = tblObjectives.NewRow();
@@ -179,18 +185,12 @@ namespace EPM.UI.SetObjectivesWP
                     tblObjectives.Rows.Add(NewRow);
                     Refresh_Objectives_grid();
                 });
-            }
-            catch (Exception)
-            {
-            }
         }
 
         #region Objectives_grid
 
         protected void gvwSetObjectives_RowEditing(object sender, System.Web.UI.WebControls.GridViewEditEventArgs e)
         {
-            try
-            {
                 SPSecurity.RunWithElevatedPrivileges(delegate ()
                 {
                     gvwSetObjectives.EditIndex = e.NewEditIndex;
@@ -198,31 +198,19 @@ namespace EPM.UI.SetObjectivesWP
                     GridViewRow row = (GridViewRow)gvwSetObjectives.Rows[e.NewEditIndex];
                     ((DropDownList)row.Cells[2].FindControl("ddlObjQ_gv")).SelectedValue = tblObjectives.Rows[e.NewEditIndex][2].ToString();
                 });
-            }
-            catch (Exception)
-            {
-            }
         }
 
         protected void gvwSetObjectives_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-            try
-            {
                 SPSecurity.RunWithElevatedPrivileges(delegate ()
                 {
                     gvwSetObjectives.EditIndex = -1;
                     Refresh_Objectives_grid();
                 });
-            }
-            catch (Exception)
-            {
-            }
         }
 
         protected void gvwSetObjectives_RowUpdating(object sender, System.Web.UI.WebControls.GridViewUpdateEventArgs e)
         {
-            try
-            {
                 SPSecurity.RunWithElevatedPrivileges(delegate ()
                 {
                     GridViewRow row = (GridViewRow)gvwSetObjectives.Rows[e.RowIndex];
@@ -233,49 +221,38 @@ namespace EPM.UI.SetObjectivesWP
                     gvwSetObjectives.EditIndex = -1;
                     Refresh_Objectives_grid();
                 });
-            }
-            catch (Exception)
-            {
-            }
         }
 
         protected void gvwSetObjectives_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
-            try
-            {
                 SPSecurity.RunWithElevatedPrivileges(delegate ()
                 {
                     tblObjectives.Rows.RemoveAt(e.RowIndex);
                     Refresh_Objectives_grid();
                 });
-            }
-            catch (Exception)
-            {
-            }
         }
 
         #endregion Objectives_grid
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            try
-            {
                 SPSecurity.RunWithElevatedPrivileges(delegate ()
                 {
                     if (Page.IsValid)
                     {
                         SetObjectives_DAL.SaveToSP(strEmpDisplayName, Active_Set_Goals_Year, tblObjectives, intended_Emp.login_name_to_convert_to_SPUser);
                         Show_Success_Message("تم حفظ الأهداف بنجاح");
-                        Emailer.Send_Objs_Added_Email_to_DM(intended_Emp,Active_Set_Goals_Year);
+                        Emailer.Send_Objs_Added_Email_to_DM(intended_Emp, Active_Set_Goals_Year);
                     }
                 });
-            }
-            catch (Exception)
-            {
-            }
         }
 
         #region Helpers
+
+        private void Set_Blank_Mode_For_High_Managerial_Levels()
+        {
+            container_for_making_blank.InnerHtml = "عذرا تم تحديد ان المستوى الإدارى الخاص بك لا يتطلب وضع أهداف. شكرا جزيلا.";
+        }
 
         public void Make_Read_Only_Mode()
         {
@@ -332,7 +309,6 @@ namespace EPM.UI.SetObjectivesWP
 
         protected void Refresh_Objectives_grid()
         {
-            
             gvwSetObjectives.DataSource = tblObjectives;
             gvwSetObjectives.DataBind();
             Refresh_GoalsTotal();

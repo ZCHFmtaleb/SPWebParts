@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/" >
+  <Module Name="Dashboard" List="113" Url="_catalogs/wp">
+    <File Path="Dashboard\Dashboard.webpart" Url="EPM_Dashboard.webpart" Type="GhostableInLibrary" >
+      <Property Name="Group" Value="ZF EPM" />
+    </File>
+  </Module>
+</Elements>
