@@ -55,6 +55,7 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EL\Emp.cs" />
     <Compile Include="EL\ServicesRequestTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicesRequestsAll\ServicesRequestsAll.cs" />

@@ -2,7 +2,6 @@
 using Microsoft.SharePoint;
 using Microsoft.SharePoint.Utilities;
 using ServicesDeptTabs.EL;
-using SPWebParts.EPM.EL;
 using System;
 using System.Collections.Specialized;
 using System.Data;
@@ -290,8 +289,8 @@ namespace ServicesDeptTabs.ServicesRequestsAll
                 }
 
                 UserProfile DM_UserProfile = userProfileMgr.GetUserProfile(cUserProfile.GetProfileValueCollection("Manager")[0].ToString());
-                pIntended_Emp.Emp_DM_name = DM_UserProfile.DisplayName;
-                pIntended_Emp.Emp_DM_email = DM_UserProfile["WorkEmail"].ToString();
+                pIntended_Emp.DM_name = DM_UserProfile.DisplayName;
+                pIntended_Emp.DM_email = DM_UserProfile["WorkEmail"].ToString();
             }
             catch (Exception)
             {
@@ -658,7 +657,7 @@ namespace ServicesDeptTabs.ServicesRequestsAll
                 bodyText.Replace("#RequestURL#", link_to_view_request);
 
                 StringDictionary headers = new StringDictionary();
-                headers.Add("to", intended_Emp.Emp_DM_email);
+                headers.Add("to", intended_Emp.DM_email);
                 headers.Add("subject", " قام " + "\"" + n + "\"" + " بعمل طلب جديد من قسم الخدمات ");
                 headers.Add("content-type", "text/html");
 
