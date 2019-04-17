@@ -57,6 +57,7 @@
     <Compile Include="Controllers\Emailer.cs" />
     <Compile Include="Controllers\WFStatusUpdater.cs" />
     <Compile Include="DAL\ApproveObjectives_DAL.cs" />
+    <Compile Include="DAL\Dashboard_DAL.cs" />
     <Compile Include="DAL\Emp_DAL.cs" />
     <Compile Include="DAL\EnableYear_DAL.cs" />
     <Compile Include="DAL\SetObjectives_DAL.cs" />

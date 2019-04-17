@@ -11,5 +11,23 @@ namespace EPM.UI.Dashboard {
     
     
     public partial class DashboardUserControl {
+        
+        /// <summary>
+        /// div_For_Hiding_Mode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_For_Hiding_Mode;
+        
+        /// <summary>
+        /// gvw_Dashboard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvw_Dashboard;
     }
 }
