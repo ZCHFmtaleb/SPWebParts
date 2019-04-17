@@ -128,11 +128,11 @@ namespace SPWebParts.EPM.SetProgress
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                     SPWeb oWeb = oSite.OpenWeb();
                         oWeb.AllowUnsafeUpdates = true;
-                        SPList oList = oWeb.Lists["الأهداف"];
+                        SPList oList = oWeb.GetList("/Lists/Objectives");
 
-                        #region Add the new (or updated) objectives
+                #region Add the new (or updated) objectives
 
-                        if (tblObjectives != null)
+                if (tblObjectives != null)
                         {
                             foreach (DataRow row in tblObjectives.Rows)
                             {
@@ -196,8 +196,8 @@ namespace SPWebParts.EPM.SetProgress
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                     SPWeb spWeb = oSite.OpenWeb();
-                        SPList spList = spWeb.Lists.TryGetList("الأهداف");
-                        SPQuery qry = new SPQuery();
+                        SPList spList = spWeb.GetList("/Lists/Objectives");
+                SPQuery qry = new SPQuery();
                         qry.Query =
                         @"   <Where>
                                           <Eq>

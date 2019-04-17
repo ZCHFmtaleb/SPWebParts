@@ -15,7 +15,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.Lists.TryGetList("التوجهات الاستراتيجية");
+                SPList spList = spWeb.GetList("/Lists/StrDir");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -35,14 +35,14 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.Lists.TryGetList("الأهداف الرئيسية");
+                SPList spList = spWeb.GetList("/Lists/LinesRelToStrDir");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
                     qry.Query =
                     @"   <Where>
                                         <Eq>
-                                            <FieldRef Name='_x0627__x0644__x062a__x0648__x060' />
+                                            <FieldRef Name='RelStrDir%5Fx003a%5FID' />
                                             <Value Type='Integer'>" + str_dir + @"</Value>
                                         </Eq>
                                     </Where>";
@@ -61,7 +61,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.Lists.TryGetList("سنة التقييم");
+                SPList spList = spWeb.GetList("/Lists/EPMYear");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -99,7 +99,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.Lists.TryGetList("سنة التقييم");
+                SPList spList = spWeb.GetList("/Lists/EPMYear");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -138,7 +138,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.Lists.TryGetList("الأهداف");
+                SPList spList = spWeb.GetList("/Lists/Objectives");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -172,7 +172,7 @@ namespace EPM.DAL
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb oWeb = oSite.OpenWeb();
                 oWeb.AllowUnsafeUpdates = true;
-                SPList oList = oWeb.Lists["الأهداف"];
+                SPList oList = oWeb.GetList("/Lists/Objectives");
 
                 #region Remove any previous objectives of same Emp and same year
 

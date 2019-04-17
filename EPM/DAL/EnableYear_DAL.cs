@@ -12,7 +12,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.Lists.TryGetList("سنة التقييم");
+                SPList spList = spWeb.GetList("/Lists/EPMYear");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -39,7 +39,7 @@ namespace EPM.DAL
                     SPWeb oWeb = oSite.OpenWeb();
                     oWeb.AllowUnsafeUpdates = true;
 
-                    SPList oList = oWeb.Lists["سنة التقييم"];
+                    SPList oList = oWeb.GetList("/Lists/EPMYear");
                     SPQuery qry = new SPQuery();
                     qry.Query =
                                     @"   <Where>

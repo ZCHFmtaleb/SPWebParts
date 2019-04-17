@@ -56,28 +56,5 @@ namespace SPWebParts.EPM.DAL
             }
             return intended_Emp;
         }
-
-        public static string get_Planning_Consultant_Email()
-        {
-            string PCE = string.Empty;
-
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-            SPSite oSite = new SPSite(SPContext.Current.Web.Url);
-                SPWeb spWeb = oSite.OpenWeb();
-                        SPList spList = spWeb.Lists.TryGetList("مستشار التخطيط");
-                        if (spList != null)
-                        {
-                            SPQuery qry = new SPQuery();
-                            qry.ViewFieldsOnly = true;
-                            qry.ViewFields = @"<FieldRef Name='Title' />";
-                            SPListItemCollection listItems = spList.GetItems(qry);
-
-                            PCE = listItems[0]["Title"].ToString();
-                        }
-            });
-
-            return PCE;
-        }
     }
 }

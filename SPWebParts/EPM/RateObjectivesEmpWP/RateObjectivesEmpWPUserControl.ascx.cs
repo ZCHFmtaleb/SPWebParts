@@ -276,7 +276,7 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb oWeb = oSite.OpenWeb();
-                SPList oList = oWeb.Lists["تقدير الكفاءات"];
+                SPList oList = oWeb.GetList("/Lists/SkillsRating");
 
                 #region Get any previous Ratings of same Emp and Year
 
@@ -353,7 +353,7 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.Lists.TryGetList("سنة التقييم");
+                SPList spList = spWeb.GetList("/Lists/EPMYear");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -391,7 +391,7 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.Lists.TryGetList("سنة التقييم");
+                SPList spList = spWeb.GetList("/Lists/EPMYear");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -430,7 +430,7 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP
                   {
                       SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                       SPWeb spWeb = oSite.OpenWeb();
-                      SPList spList = spWeb.Lists.TryGetList("الأهداف");
+                      SPList spList = spWeb.GetList("/Lists/Objectives");
                       if (spList != null)
                       {
                           SPQuery qry = new SPQuery();
@@ -499,7 +499,7 @@ namespace SPWebParts.EPM.RateObjectivesEmpWP
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb oWeb = oSite.OpenWeb();
                 oWeb.AllowUnsafeUpdates = true;
-                SPList oList = oWeb.Lists["تقدير الكفاءات"];
+                SPList oList = oWeb.GetList("/Lists/SkillsRating");
 
                 #region Remove any previous Ratings of same Emp and Year, by updating "deleted" to 1
 
