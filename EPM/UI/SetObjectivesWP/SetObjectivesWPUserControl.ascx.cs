@@ -170,81 +170,81 @@ namespace EPM.UI.SetObjectivesWP
 
         protected void btnAddObjective_Click(object sender, EventArgs e)
         {
-                SPSecurity.RunWithElevatedPrivileges(delegate ()
-                {
-                    DataRow NewRow = tblObjectives.NewRow();
-                    NewRow["ObjName"] = txtObjName.Text; ;
-                    NewRow["ObjWeight"] = txtObjWeight.Text;
-                    NewRow["ObjQ"] = ddlObjQ.SelectedItem.Text;
-                    NewRow["_x0645__x0639__x0631__x0641__x00"] = ddlStrDir.SelectedItem.Text;
-                    NewRow["StrDir"] = ddlStrDir.SelectedItem.Value;
-                    NewRow["PrimaryGoal_x003a__x0627__x0633_"] = ddlPrimaryGoal.SelectedItem.Text;
-                    NewRow["PrimaryGoal"] = ddlPrimaryGoal.SelectedItem.Value;
-                    NewRow["ObjYear"] = Active_Set_Goals_Year.ToString();
-                    NewRow["EmpHierLvl"] = intended_Emp.EmpHierLvl;
-                    tblObjectives.Rows.Add(NewRow);
-                    Refresh_Objectives_grid();
-                });
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                DataRow NewRow = tblObjectives.NewRow();
+                NewRow["ObjName"] = txtObjName.Text; ;
+                NewRow["ObjWeight"] = txtObjWeight.Text;
+                NewRow["ObjQ"] = ddlObjQ.SelectedItem.Text;
+                NewRow["_x0645__x0639__x0631__x0641__x00"] = ddlStrDir.SelectedItem.Text;
+                NewRow["StrDir"] = ddlStrDir.SelectedItem.Value;
+                NewRow["PrimaryGoal_x003a__x0627__x0633_"] = ddlPrimaryGoal.SelectedItem.Text;
+                NewRow["PrimaryGoal"] = ddlPrimaryGoal.SelectedItem.Value;
+                NewRow["ObjYear"] = Active_Set_Goals_Year.ToString();
+                NewRow["EmpHierLvl"] = intended_Emp.EmpHierLvl;
+                tblObjectives.Rows.Add(NewRow);
+                Refresh_Objectives_grid();
+            });
         }
 
         #region Objectives_grid
 
         protected void gvwSetObjectives_RowEditing(object sender, System.Web.UI.WebControls.GridViewEditEventArgs e)
         {
-                SPSecurity.RunWithElevatedPrivileges(delegate ()
-                {
-                    gvwSetObjectives.EditIndex = e.NewEditIndex;
-                    Refresh_Objectives_grid();
-                    GridViewRow row = (GridViewRow)gvwSetObjectives.Rows[e.NewEditIndex];
-                    ((DropDownList)row.Cells[2].FindControl("ddlObjQ_gv")).SelectedValue = tblObjectives.Rows[e.NewEditIndex][2].ToString();
-                });
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                gvwSetObjectives.EditIndex = e.NewEditIndex;
+                Refresh_Objectives_grid();
+                GridViewRow row = (GridViewRow)gvwSetObjectives.Rows[e.NewEditIndex];
+                ((DropDownList)row.Cells[2].FindControl("ddlObjQ_gv")).SelectedValue = tblObjectives.Rows[e.NewEditIndex][2].ToString();
+            });
         }
 
         protected void gvwSetObjectives_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-                SPSecurity.RunWithElevatedPrivileges(delegate ()
-                {
-                    gvwSetObjectives.EditIndex = -1;
-                    Refresh_Objectives_grid();
-                });
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                gvwSetObjectives.EditIndex = -1;
+                Refresh_Objectives_grid();
+            });
         }
 
         protected void gvwSetObjectives_RowUpdating(object sender, System.Web.UI.WebControls.GridViewUpdateEventArgs e)
         {
-                SPSecurity.RunWithElevatedPrivileges(delegate ()
-                {
-                    GridViewRow row = (GridViewRow)gvwSetObjectives.Rows[e.RowIndex];
-                    tblObjectives.Rows[e.RowIndex]["ObjName"] = e.NewValues[0].ToString();
-                    string newObjWeight = e.NewValues[1].ToString().Replace("%", "");
-                    tblObjectives.Rows[e.RowIndex]["ObjWeight"] = int.Parse(newObjWeight);
-                    tblObjectives.Rows[e.RowIndex]["ObjQ"] = ((DropDownList)row.Cells[3].FindControl("ddlObjQ_gv")).SelectedValue;
-                    gvwSetObjectives.EditIndex = -1;
-                    Refresh_Objectives_grid();
-                });
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                GridViewRow row = (GridViewRow)gvwSetObjectives.Rows[e.RowIndex];
+                tblObjectives.Rows[e.RowIndex]["ObjName"] = e.NewValues[0].ToString();
+                string newObjWeight = e.NewValues[1].ToString().Replace("%", "");
+                tblObjectives.Rows[e.RowIndex]["ObjWeight"] = int.Parse(newObjWeight);
+                tblObjectives.Rows[e.RowIndex]["ObjQ"] = ((DropDownList)row.Cells[3].FindControl("ddlObjQ_gv")).SelectedValue;
+                gvwSetObjectives.EditIndex = -1;
+                Refresh_Objectives_grid();
+            });
         }
 
         protected void gvwSetObjectives_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
-                SPSecurity.RunWithElevatedPrivileges(delegate ()
-                {
-                    tblObjectives.Rows.RemoveAt(e.RowIndex);
-                    Refresh_Objectives_grid();
-                });
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                tblObjectives.Rows.RemoveAt(e.RowIndex);
+                Refresh_Objectives_grid();
+            });
         }
 
         #endregion Objectives_grid
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-                SPSecurity.RunWithElevatedPrivileges(delegate ()
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                if (Page.IsValid)
                 {
-                    if (Page.IsValid)
-                    {
-                        SetObjectives_DAL.SaveToSP(strEmpDisplayName, Active_Set_Goals_Year, tblObjectives, intended_Emp.login_name_to_convert_to_SPUser);
-                        Show_Success_Message("تم حفظ الأهداف بنجاح");
-                        Emailer.Send_Objs_Added_Email_to_DM(intended_Emp, Active_Set_Goals_Year);
-                    }
-                });
+                    SetObjectives_DAL.SaveToSP(strEmpDisplayName, Active_Set_Goals_Year, tblObjectives, intended_Emp.login_name_to_convert_to_SPUser);
+                    Show_Success_Message("تم حفظ الأهداف بنجاح");
+                    Emailer.Send_Objs_Added_Email_to_DM(intended_Emp, Active_Set_Goals_Year);
+                }
+            });
         }
 
         #region Helpers
