@@ -15,7 +15,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/StrDir");
+                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl+"/Lists/StrDir");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -35,62 +35,19 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/LinesRelToStrDir");
+                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/LinesRelToStrDir");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
                     qry.Query =
-                    @"   <Where>
-                                        <Eq>
-                                            <FieldRef Name='RelStrDir%5Fx003a%5FID' />
-                                            <Value Type='Integer'>" + str_dir + @"</Value>
-                                        </Eq>
-                                    </Where>";
-                    qry.ViewFieldsOnly = true;
-                    qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='Title' />";
+                    "<Where><Eq><FieldRef Name='RelStrDir' /><Value Type='Lookup' >" + str_dir + "</Value></Eq></Where>";
                     listItems = spList.GetItems(qry);
                 }
             });
             return listItems;
         }
 
-        public static string get_Active_Set_Goals_Year()
-        {
-            string pActiveYear = "NoSetGoalsActiveYear";
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
-                SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/EPMYear");
-                if (spList != null)
-                {
-                    SPQuery qry = new SPQuery();
-                    qry.Query =
-                                  @"   <Where>
-                                              <Eq>
-                                                 <FieldRef Name='State' />
-                                                 <Value Type='Choice'>مفعل</Value>
-                                              </Eq>
-                                           </Where>";
-                    qry.ViewFieldsOnly = true;
-                    qry.ViewFields = @"<FieldRef Name='Title' /><FieldRef Name='Year' /><FieldRef Name='State' />";
-                    SPListItemCollection listItems = spList.GetItems(qry);
-
-                    if (listItems.Count > 0)
-                    {
-                        foreach (SPListItem item in listItems)
-                        {
-                            if (item["State"].ToString() == "مفعل" && item["Title"].ToString() == "البدء بتفعيل وضع الأهداف لسنة")
-                            {
-                                pActiveYear = item["Year"].ToString();
-                            }
-                        }
-                    }
-                }
-            });
-
-            return pActiveYear;
-        }
+        
 
         public static string get_Year_to_display_if_none_active()
         {
@@ -99,7 +56,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/EPMYear");
+                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/EPMYear");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -138,7 +95,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/Objectives");
+                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/Objectives");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -155,10 +112,8 @@ namespace EPM.DAL
                                              </Eq>
                                           </And>
                                        </Where>";
-                    qry.ViewFieldsOnly = true;
-                    qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='Status' /><FieldRef Name='Emp' /><FieldRef Name='ObjQ' /><FieldRef Name='ObjYear' /><FieldRef Name='ObjType' />
-                                                            <FieldRef Name='ObjWeight' /><FieldRef Name='StrDir' /><FieldRef Name='_x0645__x0639__x0631__x0641__x00' /><FieldRef Name='PrimaryGoal' /><FieldRef Name='PrimaryGoal_x003a__x0627__x0633_' />";
                     listItems = spList.GetItems(qry);
+                    DataTable test = listItems.GetDataTable();
                 }
             });
 
@@ -172,7 +127,7 @@ namespace EPM.DAL
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb oWeb = oSite.OpenWeb();
                 oWeb.AllowUnsafeUpdates = true;
-                SPList oList = oWeb.GetList("/Lists/Objectives");
+                SPList oList = oWeb.GetList(oWeb.ServerRelativeUrl + "/Lists/Objectives");
 
                 #region Remove any previous objectives of same Emp and same year
 
@@ -215,8 +170,8 @@ namespace EPM.DAL
                         oListItem["ObjWeight"] = row["ObjWeight"].ToString();
                         oListItem["ObjQ"] = row["ObjQ"].ToString();
                         oListItem["ObjYear"] = Active_Set_Goals_Year;
-                        oListItem["StrDir"] = int.Parse(row["StrDir"].ToString());
-                        oListItem["PrimaryGoal"] = int.Parse(row["PrimaryGoal"].ToString());
+                        oListItem["StrDirID"] = int.Parse(row["StrDirID"].ToString());
+                        oListItem["PrimaryGoalID"] = int.Parse(row["PrimaryGoalID"].ToString());
                         oListItem["EmpHierLvl"] = row["EmpHierLvl"].ToString();
 
                         oListItem.Update();

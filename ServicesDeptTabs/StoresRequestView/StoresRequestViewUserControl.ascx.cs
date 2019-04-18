@@ -95,7 +95,7 @@ namespace ServicesDeptTabs.StoresRequestView
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/PurchasingStoresRequests");
+                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/PurchasingStoresRequests");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();

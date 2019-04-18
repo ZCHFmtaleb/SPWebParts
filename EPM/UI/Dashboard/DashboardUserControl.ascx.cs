@@ -56,7 +56,7 @@ namespace EPM.UI.Dashboard
             {
                 if (!IsPostBack)
                 {
-                    Active_Set_Goals_Year = SetObjectives_DAL.get_Active_Set_Goals_Year();
+                    Active_Set_Goals_Year = EnableYear_DAL.get_Active_Set_Goals_Year();
                     tbl_Emps_App_Status = Dashboard_DAL.get_Dashboard_DT(Active_Set_Goals_Year);
                     if (Active_Set_Goals_Year != "NoSetGoalsActiveYear")
                     {

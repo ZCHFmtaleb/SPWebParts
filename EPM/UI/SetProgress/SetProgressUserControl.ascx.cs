@@ -71,6 +71,25 @@ namespace EPM.UI.SetProgress
             }
         }
 
+        public string Active_Rate_Goals_Year
+        {
+            get
+            {
+                if (ViewState["Active_Rate_Goals_Year"] != null)
+                {
+                    return ViewState["Active_Rate_Goals_Year"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                ViewState["Active_Rate_Goals_Year"] = value;
+            }
+        }
+
         #endregion Properties
 
         #region Event Handlers
@@ -90,6 +109,7 @@ namespace EPM.UI.SetProgress
 
                     if (!IsPostBack)
                     {
+                        Active_Rate_Goals_Year =EnableYear_DAL. read_Active_Rate_Goals_Year();
                         getPreviouslySavedObjectives();
 
                         Bind_Data_To_Controls();
@@ -128,7 +148,7 @@ namespace EPM.UI.SetProgress
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb oWeb = oSite.OpenWeb();
                 oWeb.AllowUnsafeUpdates = true;
-                SPList oList = oWeb.GetList("/Lists/Objectives");
+                SPList oList = oWeb.GetList(oWeb.ServerRelativeUrl + "/Lists/Objectives");
 
                 #region Add the new (or updated) objectives
 
@@ -196,14 +216,20 @@ namespace EPM.UI.SetProgress
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/Objectives");
+                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/Objectives");
                 SPQuery qry = new SPQuery();
                 qry.Query =
                 @"   <Where>
+                                          <And>
                                           <Eq>
                                              <FieldRef Name='Emp' />
                                               <Value Type='User'>" + strEmpDisplayName + @"</Value>
                                           </Eq>
+                                           <Eq>
+                                                <FieldRef Name='ObjYear' />
+                                                <Value Type='Text'>" + Active_Rate_Goals_Year + @"</Value>
+                                             </Eq>
+                                            </And>
                                        </Where>";
                 qry.ViewFieldsOnly = true;
                 qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='ObjYear' /><FieldRef Name='ObjWeight' /><FieldRef Name='AccPercent' />";

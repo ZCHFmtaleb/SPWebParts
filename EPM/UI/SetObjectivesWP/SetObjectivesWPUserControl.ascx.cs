@@ -79,10 +79,10 @@ namespace EPM.UI.SetObjectivesWP
                     tblObjectives.Columns.Add("ObjName");
                     tblObjectives.Columns.Add("ObjWeight", typeof(Int32));
                     tblObjectives.Columns.Add("ObjQ");
-                    tblObjectives.Columns.Add("_x0645__x0639__x0631__x0641__x00");
-                    tblObjectives.Columns.Add("StrDir");
-                    tblObjectives.Columns.Add("PrimaryGoal_x003a__x0627__x0633_");
-                    tblObjectives.Columns.Add("PrimaryGoal");
+                    tblObjectives.Columns.Add("StrDirID_x003a__x0627__x0644__x0");
+                    tblObjectives.Columns.Add("StrDirID");
+                    tblObjectives.Columns.Add("PrimaryGoalID_x003a__x0627__x064");
+                    tblObjectives.Columns.Add("PrimaryGoalID");
                     tblObjectives.Columns.Add("Status");
                     tblObjectives.Columns.Add("ObjYear");
                     tblObjectives.Columns.Add("EmpHierLvl");
@@ -103,7 +103,7 @@ namespace EPM.UI.SetObjectivesWP
             {
                 if (!IsPostBack)
                 {
-                    Active_Set_Goals_Year = SetObjectives_DAL.get_Active_Set_Goals_Year();
+                    Active_Set_Goals_Year = EnableYear_DAL.get_Active_Set_Goals_Year();
 
                     #region Check if setting goals period is closed, and if true, make ReadOnly mode
 
@@ -163,7 +163,7 @@ namespace EPM.UI.SetObjectivesWP
         {
             ddlPrimaryGoal.Items.Clear();
             ddlPrimaryGoal.Items.Add(new ListItem("اختر الهدف الرئيسى", "0"));
-            string str_dir = ddlStrDir.SelectedValue.ToString();
+            string str_dir = ddlStrDir.SelectedItem.Text;
             ddlPrimaryGoal.DataSource = SetObjectives_DAL.get_PrimaryGoals(str_dir).GetDataTable();
             ddlPrimaryGoal.DataBind();
         }
@@ -176,10 +176,10 @@ namespace EPM.UI.SetObjectivesWP
                 NewRow["ObjName"] = txtObjName.Text; ;
                 NewRow["ObjWeight"] = txtObjWeight.Text;
                 NewRow["ObjQ"] = ddlObjQ.SelectedItem.Text;
-                NewRow["_x0645__x0639__x0631__x0641__x00"] = ddlStrDir.SelectedItem.Text;
-                NewRow["StrDir"] = ddlStrDir.SelectedItem.Value;
-                NewRow["PrimaryGoal_x003a__x0627__x0633_"] = ddlPrimaryGoal.SelectedItem.Text;
-                NewRow["PrimaryGoal"] = ddlPrimaryGoal.SelectedItem.Value;
+                NewRow["StrDirID%5Fx003a%5F%5Fx0627%5F%5Fx0644%5F%5Fx0"] = ddlStrDir.SelectedItem.Text;
+                NewRow["StrDirID"] = ddlStrDir.SelectedItem.Value;
+                NewRow["PrimaryGoalID%5Fx003a%5F%5Fx0627%5F%5Fx064"] = ddlPrimaryGoal.SelectedItem.Text;
+                NewRow["PrimaryGoalID"] = ddlPrimaryGoal.SelectedItem.Value;
                 NewRow["ObjYear"] = Active_Set_Goals_Year.ToString();
                 NewRow["EmpHierLvl"] = intended_Emp.EmpHierLvl;
                 tblObjectives.Rows.Add(NewRow);

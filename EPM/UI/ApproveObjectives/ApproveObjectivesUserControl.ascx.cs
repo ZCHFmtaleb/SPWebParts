@@ -77,10 +77,10 @@ namespace EPM.UI.ApproveObjectives
                     tblObjectives.Columns.Add("ObjName");
                     tblObjectives.Columns.Add("ObjWeight", typeof(Int32));
                     tblObjectives.Columns.Add("ObjQ");
-                    tblObjectives.Columns.Add("_x0645__x0639__x0631__x0641__x00");
-                    tblObjectives.Columns.Add("StrDir");
-                    tblObjectives.Columns.Add("PrimaryGoal_x003a__x0627__x0633_");
-                    tblObjectives.Columns.Add("PrimaryGoal");
+                    tblObjectives.Columns.Add("StrDirID_x003a__x0627__x0644__x0");
+                    tblObjectives.Columns.Add("StrDirID");
+                    tblObjectives.Columns.Add("PrimaryGoalID_x003a__x0627__x064");
+                    tblObjectives.Columns.Add("PrimaryGoalID");
                     tblObjectives.Columns.Add("Status");
                     tblObjectives.Columns.Add("ObjYear");
                     return tblObjectives;
@@ -100,7 +100,7 @@ namespace EPM.UI.ApproveObjectives
             {
                 if (!IsPostBack)
                 {
-                    Active_Set_Goals_Year = SetObjectives_DAL.get_Active_Set_Goals_Year();
+                    Active_Set_Goals_Year = EnableYear_DAL.get_Active_Set_Goals_Year();
 
                     #region Identify to-be-evaluated-user, Get his informatiion , and Bind it
 

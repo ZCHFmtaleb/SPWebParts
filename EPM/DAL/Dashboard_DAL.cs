@@ -56,7 +56,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/Objectives");
+                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/Objectives");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();

@@ -12,7 +12,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/EPMYear");
+                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/EPMYear");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -39,7 +39,7 @@ namespace EPM.DAL
                     SPWeb oWeb = oSite.OpenWeb();
                     oWeb.AllowUnsafeUpdates = true;
 
-                    SPList oList = oWeb.GetList("/Lists/EPMYear");
+                    SPList oList = oWeb.GetList(oWeb.ServerRelativeUrl + "/Lists/EPMYear");
                     SPQuery qry = new SPQuery();
                     qry.Query =
                                     @"   <Where>
@@ -58,5 +58,82 @@ namespace EPM.DAL
                     oWeb.AllowUnsafeUpdates = false;
                 });
         }
+
+        public static string get_Active_Set_Goals_Year()
+        {
+            string pActiveYear = "NoSetGoalsActiveYear";
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                SPWeb spWeb = oSite.OpenWeb();
+                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/EPMYear");
+                if (spList != null)
+                {
+                    SPQuery qry = new SPQuery();
+                    qry.Query =
+                                  @"   <Where>
+                                              <Eq>
+                                                 <FieldRef Name='State' />
+                                                 <Value Type='Choice'>مفعل</Value>
+                                              </Eq>
+                                           </Where>";
+                    qry.ViewFieldsOnly = true;
+                    qry.ViewFields = @"<FieldRef Name='Title' /><FieldRef Name='Year' /><FieldRef Name='State' />";
+                    SPListItemCollection listItems = spList.GetItems(qry);
+
+                    if (listItems.Count > 0)
+                    {
+                        foreach (SPListItem item in listItems)
+                        {
+                            if (item["State"].ToString() == "مفعل" && item["Title"].ToString() == "البدء بتفعيل وضع الأهداف لسنة")
+                            {
+                                pActiveYear = item["Year"].ToString();
+                            }
+                        }
+                    }
+                }
+            });
+
+            return pActiveYear;
+        }
+
+        public static string read_Active_Rate_Goals_Year()
+        {
+            string pActiveYear = "NoRateGoalsActiveYear";
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                SPWeb spWeb = oSite.OpenWeb();
+                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/EPMYear");
+                if (spList != null)
+                {
+                    SPQuery qry = new SPQuery();
+                    qry.Query =
+                                  @"   <Where>
+                                              <Eq>
+                                                 <FieldRef Name='State' />
+                                                 <Value Type='Choice'>مفعل</Value>
+                                              </Eq>
+                                           </Where>";
+                    qry.ViewFieldsOnly = true;
+                    qry.ViewFields = @"<FieldRef Name='Title' /><FieldRef Name='Year' /><FieldRef Name='State' />";
+                    SPListItemCollection listItems = spList.GetItems(qry);
+
+                    if (listItems.Count > 0)
+                    {
+                        foreach (SPListItem item in listItems)
+                        {
+                            if (item["State"].ToString() == "مفعل" && item["Title"].ToString() == "البدء بتفعيل التقييم السنوى لسنة")
+                            {
+                                pActiveYear = item["Year"].ToString();
+                            }
+                        }
+                    }
+                }
+            });
+
+            return pActiveYear;
+        }
+
     }
 }

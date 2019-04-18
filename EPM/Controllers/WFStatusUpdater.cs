@@ -12,7 +12,7 @@ namespace EPM.Controllers
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb oWeb = oSite.OpenWeb();
                 oWeb.AllowUnsafeUpdates = true;
-                SPList oList = oWeb.GetList("/Lists/Objectives");
+                SPList oList = oWeb.GetList(oWeb.ServerRelativeUrl + "/Lists/Objectives");
                 SPQuery qry = new SPQuery();
                 qry.Query =
                @"   <Where>

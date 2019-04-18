@@ -162,7 +162,7 @@ namespace EPM.UI.RateObjectivesEmpWP
                     InActive_Mode = false;
                     if (!IsPostBack)
                     {
-                        Active_Rate_Goals_Year = read_Active_Rate_Goals_Year();
+                        Active_Rate_Goals_Year = EnableYear_DAL.read_Active_Rate_Goals_Year();
                         if (Active_Rate_Goals_Year == "NoRateGoalsActiveYear")
                         {
                             Active_Rate_Goals_Year = read_Year_to_display_if_none_active();
@@ -276,7 +276,7 @@ namespace EPM.UI.RateObjectivesEmpWP
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb oWeb = oSite.OpenWeb();
-                SPList oList = oWeb.GetList("/Lists/SkillsRating");
+                SPList oList = oWeb.GetList(oWeb.ServerRelativeUrl + "/Lists/SkillsRating");
 
                 #region Get any previous Ratings of same Emp and Year
 
@@ -346,43 +346,7 @@ namespace EPM.UI.RateObjectivesEmpWP
             lblEmpDM.Text = intended_Emp.DM_name;
         }
 
-        private string read_Active_Rate_Goals_Year()
-        {
-            string pActiveYear = "NoRateGoalsActiveYear";
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
-                SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/EPMYear");
-                if (spList != null)
-                {
-                    SPQuery qry = new SPQuery();
-                    qry.Query =
-                                  @"   <Where>
-                                              <Eq>
-                                                 <FieldRef Name='State' />
-                                                 <Value Type='Choice'>مفعل</Value>
-                                              </Eq>
-                                           </Where>";
-                    qry.ViewFieldsOnly = true;
-                    qry.ViewFields = @"<FieldRef Name='Title' /><FieldRef Name='Year' /><FieldRef Name='State' />";
-                    SPListItemCollection listItems = spList.GetItems(qry);
-
-                    if (listItems.Count > 0)
-                    {
-                        foreach (SPListItem item in listItems)
-                        {
-                            if (item["State"].ToString() == "مفعل" && item["Title"].ToString() == "البدء بتفعيل التقييم السنوى لسنة")
-                            {
-                                pActiveYear = item["Year"].ToString();
-                            }
-                        }
-                    }
-                }
-            });
-
-            return pActiveYear;
-        }
+        
 
         private string read_Year_to_display_if_none_active()
         {
@@ -391,7 +355,7 @@ namespace EPM.UI.RateObjectivesEmpWP
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/EPMYear");
+                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/EPMYear");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -430,7 +394,7 @@ namespace EPM.UI.RateObjectivesEmpWP
                 {
                     SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                     SPWeb spWeb = oSite.OpenWeb();
-                    SPList spList = spWeb.GetList("/Lists/Objectives");
+                    SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/Objectives");
                     if (spList != null)
                     {
                         SPQuery qry = new SPQuery();
@@ -499,7 +463,7 @@ namespace EPM.UI.RateObjectivesEmpWP
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb oWeb = oSite.OpenWeb();
                 oWeb.AllowUnsafeUpdates = true;
-                SPList oList = oWeb.GetList("/Lists/SkillsRating");
+                SPList oList = oWeb.GetList(oWeb.ServerRelativeUrl + "/Lists/SkillsRating");
 
                 #region Remove any previous Ratings of same Emp and Year, by updating "deleted" to 1
 

@@ -532,7 +532,7 @@ namespace ServicesDeptTabs.ServicesRequestsAll
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb oWeb = oSite.OpenWeb();
                 oWeb.AllowUnsafeUpdates = true;
-                SPList oList = oWeb.GetList("/Lists/PurchasingStoresRequests");
+                SPList oList = oWeb.GetList(oWeb.ServerRelativeUrl + "/Lists/PurchasingStoresRequests");
 
                 if (tbl_Requested_Items != null)
                 {
