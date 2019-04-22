@@ -106,7 +106,7 @@ namespace EPM.UI.ApproveObjectives
 
                     strEmpDisplayName = getEmp_from_QueryString_or_currentUser();
 
-                    intended_Emp = Emp_DAL.get_Emp_Info(intended_Emp, strEmpDisplayName);
+                    intended_Emp = Emp_DAL.get_Emp_Info(strEmpDisplayName);
                     bind_Emp_Info();
 
                     #endregion Identify to-be-evaluated-user, Get his informatiion , and Bind it

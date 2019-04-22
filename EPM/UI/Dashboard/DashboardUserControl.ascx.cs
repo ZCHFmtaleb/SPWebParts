@@ -41,6 +41,8 @@ namespace EPM.UI.Dashboard
                     tbl_Emps_App_Status.Columns.Add("EnglishName");
                     tbl_Emps_App_Status.Columns.Add("Status");
                     tbl_Emps_App_Status.Columns.Add("Email");
+                    tbl_Emps_App_Status.Columns.Add("ArabicName");
+                    tbl_Emps_App_Status.Columns.Add("Department");
                     return tbl_Emps_App_Status;
                 }
             }

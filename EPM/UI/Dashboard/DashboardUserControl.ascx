@@ -18,13 +18,19 @@
     <AlternatingRowStyle BackColor="White" />
     <Columns>
         <asp:BoundField DataField="EnglishName" HeaderText="الموظف" ReadOnly="True">
-        <HeaderStyle Width="34%" />
+        <HeaderStyle Width="20%" />
+        </asp:BoundField>
+        <asp:BoundField DataField="ArabicName" HeaderText="الاسم العربى" ReadOnly="True">
+        <HeaderStyle Width="20%" />
+        </asp:BoundField>
+        <asp:BoundField DataField="Department" HeaderText="الإدارة" ReadOnly="True">
+        <HeaderStyle Width="20%" />
         </asp:BoundField>
         <asp:BoundField DataField="Status" HeaderText="الحالة" ReadOnly="True" SortExpression="Status" >
-        <HeaderStyle Width="33%" />
+        <HeaderStyle Width="20%" />
         </asp:BoundField>
         <asp:BoundField HeaderText="البريد الالكترونى" ReadOnly="True" DataField="Email">
-        <HeaderStyle Width="33%" />
+        <HeaderStyle Width="20%" />
         </asp:BoundField>
     </Columns>
     <EditRowStyle BackColor="#2461BF" />

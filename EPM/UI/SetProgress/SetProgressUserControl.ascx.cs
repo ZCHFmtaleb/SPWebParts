@@ -104,7 +104,7 @@ namespace EPM.UI.SetProgress
 
                     getEmp_from_QueryString_or_currentUser();
 
-                    intended_Emp = Emp_DAL.get_Emp_Info(intended_Emp, strEmpDisplayName);
+                    intended_Emp = Emp_DAL.get_Emp_Info(strEmpDisplayName);
                     bind_Emp_Info();
 
                     if (!IsPostBack)

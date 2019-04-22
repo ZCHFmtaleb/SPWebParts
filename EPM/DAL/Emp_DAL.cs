@@ -7,8 +7,11 @@ namespace EPM.DAL
 {
     internal class Emp_DAL
     {
-        public static Emp get_Emp_Info(Emp intended_Emp, string strEmpDisplayName)
+        public static Emp get_Emp_Info(string strEmpDisplayName)
         {
+
+            Emp intended_Emp = new Emp();
+
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
                 SPSite site = SPContext.Current.Site;
@@ -35,7 +38,14 @@ namespace EPM.DAL
                 intended_Emp.Emp_JobTitle = pinfo.JobTitle;
                 //lblEmpJob.Text = cUserProfile.GetProfileValueCollection("Title")[0].ToString();
 
-                intended_Emp.Emp_Department = pinfo.Department;
+                if (pinfo.Department != null)
+                {
+                    intended_Emp.Emp_Department = pinfo.Department;
+                }
+                else
+                {
+                    intended_Emp.Emp_Department = string.Empty;
+                }
                 //lblEmpDept.Text = cUserProfile.GetProfileValueCollection("Department")[0].ToString();
 
                 if (cUserProfile.GetProfileValueCollection("Fax")[0] != null)

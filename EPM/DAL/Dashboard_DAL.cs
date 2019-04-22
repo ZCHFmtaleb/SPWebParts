@@ -1,4 +1,5 @@
-﻿using Microsoft.SharePoint;
+﻿using EPM.EL;
+using Microsoft.SharePoint;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,6 +14,8 @@ namespace EPM.DAL
             Dashboard.Columns.Add("EnglishName");
             Dashboard.Columns.Add("Status");
             Dashboard.Columns.Add("Email");
+            Dashboard.Columns.Add("ArabicName");
+            Dashboard.Columns.Add("Department");
 
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
@@ -31,18 +34,27 @@ namespace EPM.DAL
 
                 foreach (SPUser sp in web.SiteUsers)
                 {
-                    if (sl.ContainsKey(sp.Name))
+                    if (string.IsNullOrEmpty(sp.Email))
                     {
                         continue;
                     }
+                    else if (sl.ContainsKey(sp.Name))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        string status = get_Emp_Application_Status(sp, Active_Set_Goals_Year);
+                        Emp emp = Emp_DAL.get_Emp_Info(sp.Name);
+                        DataRow NewRow = Dashboard.NewRow();
+                        NewRow["EnglishName"] = sp.Name;
+                        NewRow["Status"] = status;
+                        NewRow["Email"] = sp.Email;
+                        NewRow["ArabicName"] = emp.Emp_ArabicName;
+                        NewRow["Department"] = emp.Emp_Department;
 
-
-                    string status = get_Emp_Application_Status(sp, Active_Set_Goals_Year);
-                    DataRow NewRow = Dashboard.NewRow();
-                    NewRow["EnglishName"] = sp.Name;
-                    NewRow["Status"] = status;
-                    NewRow["Email"] = sp.Email;
-                    Dashboard.Rows.Add(NewRow);
+                        Dashboard.Rows.Add(NewRow);
+                    }
                 }
             });
             return Dashboard;
