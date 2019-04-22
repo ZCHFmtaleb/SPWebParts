@@ -85,9 +85,9 @@ namespace EPM.DAL
                         intended_Emp.Dept_Head_email = Dept_Head_UserProfile["WorkEmail"].ToString();
 
                         //============================================
-
+                        // "testsp@zayed.org.ae" is the test "General Director" 
                         SPGroup grp = web.SiteGroups["المدير العام"];
-                        if (intended_Emp.Dept_Head_email == grp.Users[0].Email)
+                        if (intended_Emp.Dept_Head_email == grp.Users[0].Email || intended_Emp.Dept_Head_email == "testsp@zayed.org.ae")
                         {
                             intended_Emp.EmpHierLvl = "2";
                         }
