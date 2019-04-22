@@ -27,7 +27,7 @@ namespace EPM.DAL
             return listItems;
         }
 
-        public static SPListItemCollection get_PrimaryGoals(string str_dir)
+        public static SPListItemCollection get_PrimaryGoals(string str_dir_id)
         {
             SPListItemCollection listItems = null;
 
@@ -40,10 +40,11 @@ namespace EPM.DAL
                 {
                     SPQuery qry = new SPQuery();
                     qry.Query =
-                    "<Where><Eq><FieldRef Name='RelStrDir' /><Value Type='Lookup' >" + str_dir + "</Value></Eq></Where>";
+                    "<Where><Eq><FieldRef Name='RelStrDir_x003a__x0627__x0644__x' /><Value Type='Lookup' >" + str_dir_id + "</Value></Eq></Where>";
                     listItems = spList.GetItems(qry);
                 }
             });
+            DataTable test = listItems.GetDataTable();
             return listItems;
         }
 

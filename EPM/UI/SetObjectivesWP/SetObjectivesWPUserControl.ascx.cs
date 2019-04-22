@@ -163,8 +163,8 @@ namespace EPM.UI.SetObjectivesWP
         {
             ddlPrimaryGoal.Items.Clear();
             ddlPrimaryGoal.Items.Add(new ListItem("اختر الهدف الرئيسى", "0"));
-            string str_dir = ddlStrDir.SelectedItem.Text;
-            ddlPrimaryGoal.DataSource = SetObjectives_DAL.get_PrimaryGoals(str_dir).GetDataTable();
+            string str_dir_id = ddlStrDir.SelectedValue;
+            ddlPrimaryGoal.DataSource = SetObjectives_DAL.get_PrimaryGoals(str_dir_id).GetDataTable();
             ddlPrimaryGoal.DataBind();
         }
 
@@ -176,9 +176,9 @@ namespace EPM.UI.SetObjectivesWP
                 NewRow["ObjName"] = txtObjName.Text; ;
                 NewRow["ObjWeight"] = txtObjWeight.Text;
                 NewRow["ObjQ"] = ddlObjQ.SelectedItem.Text;
-                NewRow["StrDirID%5Fx003a%5F%5Fx0627%5F%5Fx0644%5F%5Fx0"] = ddlStrDir.SelectedItem.Text;
+                NewRow["StrDirID_x003a__x0627__x0644__x0"] = ddlStrDir.SelectedItem.Text;
                 NewRow["StrDirID"] = ddlStrDir.SelectedItem.Value;
-                NewRow["PrimaryGoalID%5Fx003a%5F%5Fx0627%5F%5Fx064"] = ddlPrimaryGoal.SelectedItem.Text;
+                NewRow["PrimaryGoalID_x003a__x0627__x064"] = ddlPrimaryGoal.SelectedItem.Text;
                 NewRow["PrimaryGoalID"] = ddlPrimaryGoal.SelectedItem.Value;
                 NewRow["ObjYear"] = Active_Set_Goals_Year.ToString();
                 NewRow["EmpHierLvl"] = intended_Emp.EmpHierLvl;
