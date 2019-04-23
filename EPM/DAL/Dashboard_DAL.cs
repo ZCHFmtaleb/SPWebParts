@@ -30,6 +30,20 @@ namespace EPM.DAL
                 sl.Add("System Account",5);
                 sl.Add("ZF eServices",6);
                 sl.Add("Administrator",7);
+                sl.Add("Training 1", 8);
+                sl.Add("Training 2", 9);
+                sl.Add("Training 3", 10);
+                sl.Add("Training 4", 11);
+                sl.Add("zf Projects", 12);
+                sl.Add("trainee ZF", 13);
+                sl.Add("Ibrahim Khalil", 14);
+                sl.Add("HR Dept", 15);
+                sl.Add("Finance Section", 16);
+
+                
+                
+                
+
 
 
                 foreach (SPUser sp in web.SiteUsers)

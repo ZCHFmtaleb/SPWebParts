@@ -47,14 +47,14 @@
                 <asp:Label ID="lblEmpDept" runat="server" Text=""></asp:Label>
             </td>
         </tr>
-        <tr>
+        <%--<tr>
             <td>
                 <asp:Label ID="slblEmpRank" runat="server" Text="الدرجة الوظيفية"></asp:Label>
             </td>
             <td>
                 <asp:Label ID="lblEmpRank" runat="server" Text=""></asp:Label>
             </td>
-        </tr>
+        </tr>--%>
 
          <tr>
             <td>
