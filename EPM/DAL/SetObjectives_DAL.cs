@@ -15,7 +15,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl+"/Lists/StrDir");
+                SPList spList = spWeb.GetList("/Lists/StrDir");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -35,7 +35,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/LinesRelToStrDir");
+                SPList spList = spWeb.GetList("/Lists/LinesRelToStrDir");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -57,7 +57,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/EPMYear");
+                SPList spList = spWeb.GetList("/Lists/EPMYear");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -96,7 +96,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/Objectives");
+                SPList spList = spWeb.GetList("/Lists/Objectives");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -128,7 +128,7 @@ namespace EPM.DAL
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb oWeb = oSite.OpenWeb();
                 oWeb.AllowUnsafeUpdates = true;
-                SPList oList = oWeb.GetList(oWeb.ServerRelativeUrl + "/Lists/Objectives");
+                SPList oList = oWeb.GetList("/Lists/Objectives");
 
                 #region Remove any previous objectives of same Emp and same year
 

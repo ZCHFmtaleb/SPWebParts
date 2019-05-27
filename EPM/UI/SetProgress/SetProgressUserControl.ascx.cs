@@ -148,7 +148,7 @@ namespace EPM.UI.SetProgress
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb oWeb = oSite.OpenWeb();
                 oWeb.AllowUnsafeUpdates = true;
-                SPList oList = oWeb.GetList(oWeb.ServerRelativeUrl + "/Lists/Objectives");
+                SPList oList = oWeb.GetList("/Lists/Objectives");
 
                 #region Add the new (or updated) objectives
 
@@ -216,7 +216,7 @@ namespace EPM.UI.SetProgress
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/Objectives");
+                SPList spList = spWeb.GetList("/Lists/Objectives");
                 SPQuery qry = new SPQuery();
                 qry.Query =
                 @"   <Where>

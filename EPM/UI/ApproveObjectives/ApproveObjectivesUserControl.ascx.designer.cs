@@ -67,24 +67,6 @@ namespace EPM.UI.ApproveObjectives {
         protected global::System.Web.UI.WebControls.Label lblEmpDept;
         
         /// <summary>
-        /// slblEmpRank control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label slblEmpRank;
-        
-        /// <summary>
-        /// lblEmpRank control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmpRank;
-        
-        /// <summary>
         /// slblEmpDM control.
         /// </summary>
         /// <remarks>

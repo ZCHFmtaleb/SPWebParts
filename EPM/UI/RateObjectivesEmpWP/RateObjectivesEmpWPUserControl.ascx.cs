@@ -276,7 +276,7 @@ namespace EPM.UI.RateObjectivesEmpWP
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb oWeb = oSite.OpenWeb();
-                SPList oList = oWeb.GetList(oWeb.ServerRelativeUrl + "/Lists/SkillsRating");
+                SPList oList = oWeb.GetList("/Lists/SkillsRating");
 
                 #region Get any previous Ratings of same Emp and Year
 
@@ -355,7 +355,7 @@ namespace EPM.UI.RateObjectivesEmpWP
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/EPMYear");
+                SPList spList = spWeb.GetList("/Lists/EPMYear");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -394,7 +394,7 @@ namespace EPM.UI.RateObjectivesEmpWP
                 {
                     SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                     SPWeb spWeb = oSite.OpenWeb();
-                    SPList spList = spWeb.GetList(spWeb.ServerRelativeUrl + "/Lists/Objectives");
+                    SPList spList = spWeb.GetList("/Lists/Objectives");
                     if (spList != null)
                     {
                         SPQuery qry = new SPQuery();
@@ -463,7 +463,7 @@ namespace EPM.UI.RateObjectivesEmpWP
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb oWeb = oSite.OpenWeb();
                 oWeb.AllowUnsafeUpdates = true;
-                SPList oList = oWeb.GetList(oWeb.ServerRelativeUrl + "/Lists/SkillsRating");
+                SPList oList = oWeb.GetList("/Lists/SkillsRating");
 
                 #region Remove any previous Ratings of same Emp and Year, by updating "deleted" to 1
 

@@ -222,7 +222,7 @@ namespace EPM.UI.ApproveObjectives
 
             lblEmpDept.Text = intended_Emp.Emp_Department;
             lblEmpJob.Text = intended_Emp.Emp_JobTitle;
-            lblEmpRank.Text = intended_Emp.Emp_Rank;
+            //lblEmpRank.Text = intended_Emp.Emp_Rank;
             lblEmpDM.Text = intended_Emp.DM_name;
         }
 
