@@ -1,5 +1,6 @@
 ﻿using EPM.EL;
 using Microsoft.SharePoint;
+using Microsoft.SharePoint.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -82,7 +83,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/Objectives");
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "Objectives")); //SPList spList = spWeb.GetList("/Lists/Objectives");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();

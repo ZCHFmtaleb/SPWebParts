@@ -1,4 +1,5 @@
 ﻿using Microsoft.SharePoint;
+using Microsoft.SharePoint.Utilities;
 
 namespace EPM.DAL
 {
@@ -12,7 +13,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/EPMYear");
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "EPMYear")); //SPList spList = spWeb.GetList("/Lists/EPMYear");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -36,10 +37,10 @@ namespace EPM.DAL
             SPSecurity.RunWithElevatedPrivileges(delegate ()
                 {
                     SPSite oSite = new SPSite(SPContext.Current.Web.Url);
-                    SPWeb oWeb = oSite.OpenWeb();
-                    oWeb.AllowUnsafeUpdates = true;
+                    SPWeb spWeb = oSite.OpenWeb();
+                    spWeb.AllowUnsafeUpdates = true;
 
-                    SPList oList = oWeb.GetList("/Lists/EPMYear");
+                    SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "EPMYear"));  //SPList oList = oWeb.GetList("/Lists/EPMYear");
                     SPQuery qry = new SPQuery();
                     qry.Query =
                                     @"   <Where>
@@ -48,14 +49,14 @@ namespace EPM.DAL
                                                         <Value Type='Text'>" + mode + @"</Value>
                                                     </Eq>
                                                 </Where>";
-                    SPListItemCollection listItems = oList.GetItems(qry);
+                    SPListItemCollection listItems = spList.GetItems(qry);
 
-                    SPListItem itemToUpdate = oList.GetItemById(listItems[0].ID);
+                    SPListItem itemToUpdate = spList.GetItemById(listItems[0].ID);
                     itemToUpdate["Year"] = year;
                     itemToUpdate["State"] = new_state;
                     itemToUpdate.Update();
 
-                    oWeb.AllowUnsafeUpdates = false;
+                    spWeb.AllowUnsafeUpdates = false;
                 });
         }
 
@@ -66,7 +67,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/EPMYear");
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "EPMYear"));   //SPList spList = spWeb.GetList("/Lists/EPMYear");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -104,7 +105,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/EPMYear");
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "EPMYear")); //SPList spList = spWeb.GetList("/Lists/EPMYear");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();

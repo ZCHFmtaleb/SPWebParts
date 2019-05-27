@@ -1,5 +1,6 @@
 ﻿using EPM.EL;
 using Microsoft.SharePoint;
+using Microsoft.SharePoint.Utilities;
 using System;
 using System.Data;
 
@@ -15,7 +16,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/StrDir");
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "StrDir"));   //SPList spList = spWeb.GetList("/Lists/StrDir");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -35,7 +36,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/LinesRelToStrDir");
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "LinesRelToStrDir"));  //SPList spList = spWeb.GetList("/Lists/LinesRelToStrDir");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -57,7 +58,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/EPMYear");
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "EPMYear"));   //SPList spList = spWeb.GetList("/Lists/EPMYear");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -96,7 +97,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/Objectives");
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "Objectives")); //SPList spList = spWeb.GetList("/Lists/Objectives");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -126,9 +127,9 @@ namespace EPM.DAL
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
-                SPWeb oWeb = oSite.OpenWeb();
-                oWeb.AllowUnsafeUpdates = true;
-                SPList oList = oWeb.GetList("/Lists/Objectives");
+                SPWeb spWeb = oSite.OpenWeb();
+                spWeb.AllowUnsafeUpdates = true;
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "Objectives"));   //SPList oList = oWeb.GetList("/Lists/Objectives");
 
                 #region Remove any previous objectives of same Emp and same year
 
@@ -149,11 +150,11 @@ namespace EPM.DAL
                 qry.ViewFieldsOnly = true;
                 qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='Status' /><FieldRef Name='Emp' />
                                                        <FieldRef Name='ObjQ' /><FieldRef Name='ObjYear' /><FieldRef Name='ObjType' /><FieldRef Name='ObjWeight' />";
-                SPListItemCollection listItems = oList.GetItems(qry);
+                SPListItemCollection listItems = spList.GetItems(qry);
 
                 foreach (SPListItem item in listItems)
                 {
-                    oList.GetItemById(item.ID).Delete();
+                    spList.GetItemById(item.ID).Delete();
                 }
 
                 #endregion Remove any previous objectives of same Emp and same year
@@ -164,7 +165,7 @@ namespace EPM.DAL
                 {
                     foreach (DataRow row in tblObjectives.Rows)
                     {
-                        SPListItem oListItem = oList.AddItem();
+                        SPListItem oListItem = spList.AddItem();
                         oListItem["ObjName"] = row["ObjName"].ToString();
                         oListItem["Status"] = WF_States.Objectives_set_by_Emp.ToString();
                         oListItem["Emp"] = SPContext.Current.Web.EnsureUser(login_name_to_convert_to_SPUser);
@@ -184,7 +185,7 @@ namespace EPM.DAL
 
                 #endregion Add the new (or updated) objectives
 
-                oWeb.AllowUnsafeUpdates = false;
+                spWeb.AllowUnsafeUpdates = false;
             });
         }
     }

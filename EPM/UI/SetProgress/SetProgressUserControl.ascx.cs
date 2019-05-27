@@ -146,9 +146,9 @@ namespace EPM.UI.SetProgress
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
-                SPWeb oWeb = oSite.OpenWeb();
-                oWeb.AllowUnsafeUpdates = true;
-                SPList oList = oWeb.GetList("/Lists/Objectives");
+                SPWeb spWeb = oSite.OpenWeb();
+                spWeb.AllowUnsafeUpdates = true;
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "Objectives")); //SPList oList = oWeb.GetList("/Lists/Objectives");
 
                 #region Add the new (or updated) objectives
 
@@ -156,7 +156,7 @@ namespace EPM.UI.SetProgress
                 {
                     foreach (DataRow row in tblObjectives.Rows)
                     {
-                        SPListItem oListItem = oList.GetItemById(int.Parse(row["ID"].ToString()));
+                        SPListItem oListItem = spList.GetItemById(int.Parse(row["ID"].ToString()));
 
                         oListItem["AccPercent"] = row["AccPercent"].ToString();
                         oListItem.Update();
@@ -168,7 +168,7 @@ namespace EPM.UI.SetProgress
                 }
                 #endregion Add the new (or updated) objectives
 
-                oWeb.AllowUnsafeUpdates = false;
+                spWeb.AllowUnsafeUpdates = false;
 
             });
         }
@@ -216,7 +216,7 @@ namespace EPM.UI.SetProgress
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/Objectives");
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "Objectives")); //SPList spList = spWeb.GetList("/Lists/Objectives");
                 SPQuery qry = new SPQuery();
                 qry.Query =
                 @"   <Where>

@@ -1,5 +1,6 @@
 ﻿using EPM.EL;
 using Microsoft.SharePoint;
+using Microsoft.SharePoint.Utilities;
 
 namespace EPM.Controllers
 {
@@ -10,9 +11,9 @@ namespace EPM.Controllers
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
-                SPWeb oWeb = oSite.OpenWeb();
-                oWeb.AllowUnsafeUpdates = true;
-                SPList oList = oWeb.GetList("/Lists/Objectives");
+                SPWeb spWeb = oSite.OpenWeb();
+                spWeb.AllowUnsafeUpdates = true;
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "Objectives")); //SPList oList = oWeb.GetList("/Lists/Objectives");
                 SPQuery qry = new SPQuery();
                 qry.Query =
                @"   <Where>
@@ -29,16 +30,16 @@ namespace EPM.Controllers
                                        </Where>";
                 qry.ViewFieldsOnly = true;
                 qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='Status' />";
-                SPListItemCollection listItems = oList.GetItems(qry);
+                SPListItemCollection listItems = spList.GetItems(qry);
 
                 foreach (SPListItem item in listItems)
                 {
-                    SPListItem itemToUpdate = oList.GetItemById(item.ID);
+                    SPListItem itemToUpdate = spList.GetItemById(item.ID);
                     itemToUpdate["Status"] = pNew_state.ToString();
                     itemToUpdate.Update();
                 }
 
-                oWeb.AllowUnsafeUpdates = false;
+                spWeb.AllowUnsafeUpdates = false;
             });
         }
     }

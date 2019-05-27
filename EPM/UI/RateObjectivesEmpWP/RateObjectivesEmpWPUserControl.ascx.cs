@@ -5,6 +5,7 @@ using System;
 using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.SharePoint.Utilities;
 
 namespace EPM.UI.RateObjectivesEmpWP
 {
@@ -225,7 +226,7 @@ namespace EPM.UI.RateObjectivesEmpWP
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.Lists.TryGetList("الكفاءات");
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "List4"));   //"الكفاءات"
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -275,8 +276,8 @@ namespace EPM.UI.RateObjectivesEmpWP
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
-                SPWeb oWeb = oSite.OpenWeb();
-                SPList oList = oWeb.GetList("/Lists/SkillsRating");
+                SPWeb spWeb = oSite.OpenWeb();
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "SkillsRating"));  //SPList oList = oWeb.GetList("/Lists/SkillsRating");
 
                 #region Get any previous Ratings of same Emp and Year
 
@@ -302,7 +303,7 @@ namespace EPM.UI.RateObjectivesEmpWP
                                </Where>";
                 qry.ViewFieldsOnly = true;
                 qry.ViewFields = @"<FieldRef Name='Title' /><FieldRef Name='Rating' />";
-                SPListItemCollection listItems = oList.GetItems(qry);
+                SPListItemCollection listItems = spList.GetItems(qry);
 
                 if (listItems.Count > 0)
                 {
@@ -355,7 +356,7 @@ namespace EPM.UI.RateObjectivesEmpWP
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList("/Lists/EPMYear");
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "EPMYear")); //SPList spList = spWeb.GetList("/Lists/EPMYear");
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -394,7 +395,7 @@ namespace EPM.UI.RateObjectivesEmpWP
                 {
                     SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                     SPWeb spWeb = oSite.OpenWeb();
-                    SPList spList = spWeb.GetList("/Lists/Objectives");
+                    SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "Objectives")); //SPList spList = spWeb.GetList("/Lists/Objectives");
                     if (spList != null)
                     {
                         SPQuery qry = new SPQuery();
@@ -461,9 +462,9 @@ namespace EPM.UI.RateObjectivesEmpWP
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
-                SPWeb oWeb = oSite.OpenWeb();
-                oWeb.AllowUnsafeUpdates = true;
-                SPList oList = oWeb.GetList("/Lists/SkillsRating");
+                SPWeb spWeb = oSite.OpenWeb();
+                spWeb.AllowUnsafeUpdates = true;
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "SkillsRating")); //SPList oList = oWeb.GetList("/Lists/SkillsRating");
 
                 #region Remove any previous Ratings of same Emp and Year, by updating "deleted" to 1
 
@@ -483,11 +484,11 @@ namespace EPM.UI.RateObjectivesEmpWP
                                        </Where>";
                 qry.ViewFieldsOnly = true;
                 qry.ViewFields = @"<FieldRef Name='ID' />";
-                SPListItemCollection listItems = oList.GetItems(qry);
+                SPListItemCollection listItems = spList.GetItems(qry);
 
                 foreach (SPListItem item in listItems)
                 {
-                    SPListItem itemToUpdate = oList.GetItemById(item.ID);
+                    SPListItem itemToUpdate = spList.GetItemById(item.ID);
                     itemToUpdate["deleted"] = 1;
                     itemToUpdate.Update();
                 }
@@ -498,7 +499,7 @@ namespace EPM.UI.RateObjectivesEmpWP
 
                 foreach (GridViewRow row in gvw_Std_Skills.Rows)
                 {
-                    SPListItem oListItem = oList.AddItem();
+                    SPListItem oListItem = spList.AddItem();
                     oListItem["Title"] = row.Cells[0].Text;
                     var dd = row.Cells[1].FindControl("ddl_Std_Skill_Rating") as DropDownList;
                     oListItem["Rating"] = int.Parse(dd.SelectedValue);
@@ -509,7 +510,7 @@ namespace EPM.UI.RateObjectivesEmpWP
 
                 #endregion Add the new Ratings
 
-                oWeb.AllowUnsafeUpdates = false;
+                spWeb.AllowUnsafeUpdates = false;
             });
         }
 
