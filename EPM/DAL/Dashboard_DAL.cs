@@ -17,6 +17,7 @@ namespace EPM.DAL
             Dashboard.Columns.Add("Email");
             Dashboard.Columns.Add("ArabicName");
             Dashboard.Columns.Add("Department");
+            Dashboard.Columns.Add("EmpHierLvl");
 
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
@@ -59,14 +60,15 @@ namespace EPM.DAL
                     }
                     else
                     {
-                        string status = get_Emp_Application_Status(sp, Active_Set_Goals_Year);
+                        string[] Status = get_Emp_Application_Status(sp, Active_Set_Goals_Year);
                         Emp emp = Emp_DAL.get_Emp_Info(sp.Name);
                         DataRow NewRow = Dashboard.NewRow();
                         NewRow["EnglishName"] = sp.Name;
-                        NewRow["Status"] = status;
+                        NewRow["Status"] = Status[0];
                         NewRow["Email"] = sp.Email;
                         NewRow["ArabicName"] = emp.Emp_ArabicName;
                         NewRow["Department"] = emp.Emp_Department;
+                        NewRow["EmpHierLvl"] = Status[1]; 
 
                         Dashboard.Rows.Add(NewRow);
                     }
@@ -75,9 +77,9 @@ namespace EPM.DAL
             return Dashboard;
         }
 
-        private static string get_Emp_Application_Status(SPUser sp, string Active_Set_Goals_Year)
+        private static string[] get_Emp_Application_Status(SPUser sp, string Active_Set_Goals_Year)
         {
-            string Status = string.Empty;
+            string[] Status = new string[2] { string.Empty, string.Empty };
 
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
@@ -101,16 +103,18 @@ namespace EPM.DAL
                                           </And>
                                        </Where>";
                     qry.ViewFieldsOnly = true;
-                    qry.ViewFields = @"<FieldRef Name='Status' />";
+                    qry.ViewFields = @"<FieldRef Name='Status' /><FieldRef Name='EmpHierLvl' />";
                     SPListItemCollection result = spList.GetItems(qry);
 
                     if (result.Count ==0)
                     {
-                        Status= "Objectives not set";
+                        Status= new string[2] { "Objectives not set", string.Empty }; 
                     }
                     else
                     {
-                        Status = result[0]["Status"].ToString();
+                        string st = result[0]["Status"].ToString();
+                        string hl = result[0]["EmpHierLvl"].ToString();
+                        Status = new string[2] { st, hl };
                     }
                 }
             });

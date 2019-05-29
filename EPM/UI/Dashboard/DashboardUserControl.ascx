@@ -14,7 +14,7 @@
 <div id="div_For_Hiding_Mode" runat="server">
 <div class="div_gvwSetObjectives" style="width:75% !important;">
  <asp:GridView ID="gvw_Dashboard" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333"
-     BorderColor="Black" BorderStyle="Solid" BorderWidth="1px"  Width="100%" OnPageIndexChanging="gvw_Dashboard_PageIndexChanging" >
+     BorderColor="Black" BorderStyle="Solid" BorderWidth="1px"  Width="100%" OnPageIndexChanging="gvw_Dashboard_PageIndexChanging" PageSize="30" OnRowDataBound="gvw_Dashboard_RowDataBound" >
     <AlternatingRowStyle BackColor="White" />
     <Columns>
         <asp:BoundField DataField="EnglishName" HeaderText="الموظف" ReadOnly="True">
@@ -26,11 +26,14 @@
         <asp:BoundField DataField="Department" HeaderText="الإدارة" ReadOnly="True">
         <HeaderStyle Width="20%" />
         </asp:BoundField>
-        <asp:BoundField DataField="Status" HeaderText="الحالة" ReadOnly="True" SortExpression="Status" >
-        <HeaderStyle Width="20%" />
-        </asp:BoundField>
         <asp:BoundField HeaderText="البريد الالكترونى" ReadOnly="True" DataField="Email">
         <HeaderStyle Width="20%" />
+        </asp:BoundField>
+        <asp:BoundField DataField="Status" HeaderText="الحالة" ReadOnly="True" SortExpression="Status" >
+        <HeaderStyle Width="10%" />
+        </asp:BoundField>
+        <asp:BoundField DataField="EmpHierLvl" HeaderText="درجة التسلسل الإدارى" ReadOnly="True">
+        <HeaderStyle Width="10%" />
         </asp:BoundField>
     </Columns>
     <EditRowStyle BackColor="#2461BF" />

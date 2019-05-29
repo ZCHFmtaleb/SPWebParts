@@ -2,7 +2,9 @@
 using Microsoft.SharePoint;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace EPM.UI.Dashboard
 {
@@ -43,6 +45,7 @@ namespace EPM.UI.Dashboard
                     tbl_Emps_App_Status.Columns.Add("Email");
                     tbl_Emps_App_Status.Columns.Add("ArabicName");
                     tbl_Emps_App_Status.Columns.Add("Department");
+                    tbl_Emps_App_Status.Columns.Add("EmpHierLvl");
                     return tbl_Emps_App_Status;
                 }
             }
@@ -83,6 +86,45 @@ namespace EPM.UI.Dashboard
             tbl_Emps_App_Status.DefaultView.Sort = "Status Asc";
             gvw_Dashboard.DataSource = tbl_Emps_App_Status;
             gvw_Dashboard.DataBind();
+        }
+
+        protected void gvw_Dashboard_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        {
+            int EmpHierLvl = 0;
+            string Status = string.Empty;
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (!string.IsNullOrWhiteSpace(e.Row.Cells[5].Text) && e.Row.Cells[5].Text!="&nbsp;")
+                {
+                    EmpHierLvl = int.Parse(e.Row.Cells[5].Text);
+
+                    Status = e.Row.Cells[4].Text;
+
+                    if (EmpHierLvl == 1)
+                    {
+                        if (Status == "Objectives_set_by_Emp" || Status == "Objectives_approved_by_DM")
+                        {
+                            e.Row.BackColor = Color.Cornsilk;
+                        }
+                        else if (Status == "Objectives_approved_by_Dept_Head")
+                        {
+                            e.Row.BackColor = Color.GreenYellow;
+                        }
+                    }
+                    else if (EmpHierLvl == 2 || EmpHierLvl == 3)
+                    {
+                        if (Status == "Objectives_set_by_Emp")
+                        {
+                            e.Row.BackColor = Color.Cornsilk;
+                        }
+                        else if (Status == "Objectives_approved_by_DM")
+                        {
+                            e.Row.BackColor = Color.GreenYellow;
+                        }
+                    }
+                }
+            }
         }
     }
 }
