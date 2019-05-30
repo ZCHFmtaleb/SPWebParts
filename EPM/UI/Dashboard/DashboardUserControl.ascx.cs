@@ -69,6 +69,7 @@ namespace EPM.UI.Dashboard
                     tbl_Emps_App_Status = Dashboard_DAL.get_Dashboard_DT(Active_Set_Goals_Year);
                     if (Active_Set_Goals_Year != "NoSetGoalsActiveYear")
                     {
+                        lblActiveYear.Text = "متابعة مرحلة وضع الأهداف لسنة " + Active_Set_Goals_Year;
                         Bind_Data_To_Grid();
                     }
                     else

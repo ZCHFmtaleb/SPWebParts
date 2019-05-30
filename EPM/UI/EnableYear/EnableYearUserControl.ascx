@@ -13,24 +13,24 @@
 
 <div id="container" dir="rtl" align="right" >
 <div id="page_head">
-    <h1>تفعيل التقييم السنوى </h1>
+    <h1>تفعيل مراحل وضع الأهداف والتقييم </h1>
 </div>
-
 <table>
     <tr>
-        <td style="padding-left:20px;"><h4>  البدء بتفعيل التقييم السنوى لسنة </h4></td>
-        <td> <asp:DropDownList ID="ddl_Eval_Year" runat="server" Font-Bold="True"></asp:DropDownList> </td>
-        <td style="padding-right:20px;" > 
-         <asp:Button ID="btnActivate_Eval_Year" runat="server" Text="تفعيل" Height="25px" Width="50px" OnClick="btnActivate_Eval_Year_Click" Style="padding:0px 0px 0px 0px; font-weight:bold;"/>&nbsp;&nbsp;&nbsp; 
+        <td style="padding-left:20px;"><h4>  البدء بتفعيل مرحلة وضع الأهداف لسنة </h4></td>
+        <td> <asp:DropDownList ID="ddl_Set_Goals_Year" runat="server" Font-Bold="True"></asp:DropDownList> </td>
+        <td style="padding-right:20px;" > <asp:Button ID="btnActivate_Set_Goals_Year" runat="server" Text="تفعيل" Height="25px" Width="50px" OnClick="btnActivate_Set_Goals_Year_Click" Style="padding:0px 0px 0px 0px; font-weight:bold;" /> &nbsp;&nbsp;&nbsp; 
          </td>
     </tr>
 </table>
+
 <br />
 <table>
     <tr>
-        <td style="padding-left:20px;"><h4>  البدء بتفعيل وضع الأهداف لسنة </h4></td>
-        <td> <asp:DropDownList ID="ddl_Set_Goals_Year" runat="server" Font-Bold="True"></asp:DropDownList> </td>
-        <td style="padding-right:20px;" > <asp:Button ID="btnActivate_Set_Goals_Year" runat="server" Text="تفعيل" Height="25px" Width="50px" OnClick="btnActivate_Set_Goals_Year_Click" Style="padding:0px 0px 0px 0px; font-weight:bold;" /> &nbsp;&nbsp;&nbsp; 
+        <td style="padding-left:20px;"><h4>  البدء بتفعيل مرحلة التقييم لسنة </h4></td>
+        <td> <asp:DropDownList ID="ddl_Eval_Year" runat="server" Font-Bold="True"></asp:DropDownList> </td>
+        <td style="padding-right:20px;" > 
+         <asp:Button ID="btnActivate_Eval_Year" runat="server" Text="تفعيل" Height="25px" Width="50px" OnClick="btnActivate_Eval_Year_Click" Style="padding:0px 0px 0px 0px; font-weight:bold;"/>&nbsp;&nbsp;&nbsp; 
          </td>
     </tr>
 </table>

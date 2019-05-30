@@ -13,6 +13,7 @@
 <div id="container" dir="rtl" style="text-align:right" >
 <div id="div_For_Hiding_Mode" runat="server">
 <div class="div_gvwSetObjectives" style="width:75% !important;">
+<h3><asp:Label ID="lblActiveYear" runat="server" Text=""></asp:Label></h3>
  <asp:GridView ID="gvw_Dashboard" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333"
      BorderColor="Black" BorderStyle="Solid" BorderWidth="1px"  Width="100%" OnPageIndexChanging="gvw_Dashboard_PageIndexChanging" PageSize="30" OnRowDataBound="gvw_Dashboard_RowDataBound" >
     <AlternatingRowStyle BackColor="White" />

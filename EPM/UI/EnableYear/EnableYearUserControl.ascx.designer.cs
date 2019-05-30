@@ -13,24 +13,6 @@ namespace EPM.UI.EnableYear {
     public partial class EnableYearUserControl {
         
         /// <summary>
-        /// ddl_Eval_Year control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_Eval_Year;
-        
-        /// <summary>
-        /// btnActivate_Eval_Year control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActivate_Eval_Year;
-        
-        /// <summary>
         /// ddl_Set_Goals_Year control.
         /// </summary>
         /// <remarks>
@@ -47,6 +29,24 @@ namespace EPM.UI.EnableYear {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnActivate_Set_Goals_Year;
+        
+        /// <summary>
+        /// ddl_Eval_Year control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Eval_Year;
+        
+        /// <summary>
+        /// btnActivate_Eval_Year control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnActivate_Eval_Year;
         
         /// <summary>
         /// ddl_Year_to_display_if_none_active control.
