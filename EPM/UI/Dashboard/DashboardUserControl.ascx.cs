@@ -10,6 +10,8 @@ namespace EPM.UI.Dashboard
 {
     public partial class DashboardUserControl : UserControl
     {
+        #region Properties
+
         public string Active_Set_Goals_Year
         {
             get
@@ -55,6 +57,8 @@ namespace EPM.UI.Dashboard
             }
         }
 
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
@@ -95,7 +99,7 @@ namespace EPM.UI.Dashboard
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                if (!string.IsNullOrWhiteSpace(e.Row.Cells[5].Text) && e.Row.Cells[5].Text!="&nbsp;")
+                if (!string.IsNullOrWhiteSpace(e.Row.Cells[5].Text) && e.Row.Cells[5].Text != "&nbsp;")
                 {
                     EmpHierLvl = int.Parse(e.Row.Cells[5].Text);
 
