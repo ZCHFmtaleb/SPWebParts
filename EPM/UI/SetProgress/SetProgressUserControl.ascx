@@ -137,7 +137,7 @@
 
 <div>
     <h2><asp:Label ID="Label6" runat="server" Text="إضافة ملاحظات أو أعمال إضافية قمت بها : (فريق أو لجنة أو مشاركات اخرى)"></asp:Label></h2>
-    <asp:TextBox ID="TextBox2" runat="server" TextMode="MultiLine" Rows="6" Width="50%"></asp:TextBox>
+    <asp:TextBox ID="txtNote1" runat="server" TextMode="MultiLine" Rows="6" Width="50%"></asp:TextBox>
 </div>
 <div class="div_btnSubmit" style="margin-bottom:30px;">
 <asp:Button ID="btnSubmit" runat="server" Text="إرسال" Font-Size="Large" Height="50px" Width="100px" OnClick="btnSubmit_Click" ValidationGroup="vg2" />

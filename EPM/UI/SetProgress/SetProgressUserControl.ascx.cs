@@ -133,6 +133,7 @@ namespace EPM.UI.SetProgress
                     if (Page.IsValid)
                     {
                         SaveToSP();
+                        SetProgress_DAL.SaveObjsNote1(intended_Emp.login_name_to_convert_to_SPUser, Active_Rate_Goals_Year, txtNote1.Text);
                         Show_Success_Message("تم حفظ الأهداف بنجاح");
                         WFStatusUpdater.Change_State_to(WF_States.Objectives_rated_by_Emp, strEmpDisplayName, Active_Rate_Goals_Year);
                         Emailer.Send_Objs_Rated_Email_to_DM(intended_Emp, Active_Rate_Goals_Year);

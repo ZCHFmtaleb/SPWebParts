@@ -61,6 +61,7 @@
     <Compile Include="DAL\Emp_DAL.cs" />
     <Compile Include="DAL\EnableYear_DAL.cs" />
     <Compile Include="DAL\SetObjectives_DAL.cs" />
+    <Compile Include="DAL\SetProgress_DAL.cs" />
     <Compile Include="EL\Emp.cs" />
     <Compile Include="EL\WF_States.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
