@@ -17,8 +17,10 @@ namespace EPM.EL
         Objectives_approved_by_Dept_Head,
 
         [Description("تم رفض الأهداف بواسطة مدير الإدارة")]
-        Objectives_rejected_by_Dept_Head
+        Objectives_rejected_by_Dept_Head,
 
+        [Description("تم وضع نسب إنجاز الأهداف بواسطة الموظف")]
+        Objectives_rated_by_Emp
 
     }
 }

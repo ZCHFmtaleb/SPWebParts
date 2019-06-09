@@ -173,6 +173,7 @@
     <Content Include="Layouts\EPM\Notify_Emp_that_Objs_finally_approved.html" />
     <Content Include="Layouts\EPM\Send_Objs_Added_Email_to_DM.html" />
     <Content Include="Layouts\EPM\Send_Objs_Approved_Email_to_Dept_Head.html" />
+    <Content Include="Layouts\EPM\Send_Objs_Rated_Email_to_DM.html" />
     <Content Include="Layouts\EPM\Send_Rej_Email_to_Emp.html" />
     <Content Include="Layouts\EPM\SetObjectives.js" />
     <Content Include="Layouts\EPM\spinner.gif" />

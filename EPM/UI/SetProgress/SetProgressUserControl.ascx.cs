@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using EPM.EL;
 using EPM.DAL;
+using EPM.Controllers;
 
 namespace EPM.UI.SetProgress
 {
@@ -96,8 +97,6 @@ namespace EPM.UI.SetProgress
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
-            {
                 SPSecurity.RunWithElevatedPrivileges(delegate ()
                 {
                     divSuccess.Visible = false;
@@ -110,15 +109,18 @@ namespace EPM.UI.SetProgress
                     if (!IsPostBack)
                     {
                         Active_Rate_Goals_Year =EnableYear_DAL. read_Active_Rate_Goals_Year();
+
+                        #region Bind Objectives Year
+
+                        lblActiveYear.Text = Active_Rate_Goals_Year;
+
+                        #endregion Bind Objectives Year
+
                         getPreviouslySavedObjectives();
 
                         Bind_Data_To_Controls();
                     }
                 });
-            }
-            catch (Exception)
-            {
-            }
         }
 
 
@@ -132,6 +134,8 @@ namespace EPM.UI.SetProgress
                     {
                         SaveToSP();
                         Show_Success_Message("تم حفظ الأهداف بنجاح");
+                        WFStatusUpdater.Change_State_to(WF_States.Objectives_rated_by_Emp, strEmpDisplayName, Active_Rate_Goals_Year);
+                        Emailer.Send_Objs_Rated_Email_to_DM(intended_Emp, Active_Rate_Goals_Year);
                     }
                 });
             }

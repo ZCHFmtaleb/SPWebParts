@@ -13,7 +13,7 @@
 
 <div id="container" dir="rtl" style="text-align:right" >
 <div id="page_head">
-    <h1>نسب إنجاز الأهداف الفردية لعام 2018  </h1>
+    <h1>نسب إنجاز الأهداف الفردية لعام <asp:Label ID="lblActiveYear" runat="server" Text=""></asp:Label>  </h1>
 </div>
 
 <div id="divEmpInfo" class="divEmpInfo">
@@ -136,7 +136,7 @@
 </div>
 
 <div>
-    <h2><asp:Label ID="Label6" runat="server" Text="أية أعمال إضافية قمت بها : (فريق أو لجنة - اية مشاركات اخرى)"></asp:Label></h2>
+    <h2><asp:Label ID="Label6" runat="server" Text="إضافة ملاحظات أو أعمال إضافية قمت بها : (فريق أو لجنة أو مشاركات اخرى)"></asp:Label></h2>
     <asp:TextBox ID="TextBox2" runat="server" TextMode="MultiLine" Rows="6" Width="50%"></asp:TextBox>
 </div>
 <div class="div_btnSubmit" style="margin-bottom:30px;">
