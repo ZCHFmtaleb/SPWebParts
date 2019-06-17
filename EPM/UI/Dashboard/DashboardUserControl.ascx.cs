@@ -12,13 +12,13 @@ namespace EPM.UI.Dashboard
     {
         #region Properties
 
-        public string Active_Set_Goals_Year
+        public string DashBoard_Year
         {
             get
             {
-                if (ViewState["Active_Set_Goals_Year"] != null)
+                if (ViewState["DashBoard_Year"] != null)
                 {
-                    return ViewState["Active_Set_Goals_Year"].ToString();
+                    return ViewState["DashBoard_Year"].ToString();
                 }
                 else
                 {
@@ -27,7 +27,7 @@ namespace EPM.UI.Dashboard
             }
             set
             {
-                ViewState["Active_Set_Goals_Year"] = value;
+                ViewState["DashBoard_Year"] = value;
             }
         }
 
@@ -65,19 +65,14 @@ namespace EPM.UI.Dashboard
             {
                 if (!IsPostBack)
                 {
-                    Active_Set_Goals_Year = EnableYear_DAL.get_Active_Set_Goals_Year();
-                    tbl_Emps_App_Status = Dashboard_DAL.get_Dashboard_DT(Active_Set_Goals_Year);
-                    if (Active_Set_Goals_Year != "NoSetGoalsActiveYear")
+                    DashBoard_Year = EnableYear_DAL.get_Active_Set_Goals_Year();
+                    if (DashBoard_Year == "NoSetGoalsActiveYear")
                     {
-                        lblActiveYear.Text = "متابعة وضع الأهداف والتقييم لسنة " + Active_Set_Goals_Year;
-                        Bind_Data_To_Grid();
+                        DashBoard_Year = DateTime.Now.Year.ToString();
                     }
-                    else
-                    {
-                        //div_For_Hiding_Mode.InnerHtml = "عذرا لايمكن عرض هذه الصفحة نظرا لإنتهاء فترة وضع الأهداف وعدم وجود عام مفعل حاليا";
-                        lblActiveYear.Text = "متابعة وضع الأهداف والتقييم لسنة " + DateTime.Now.Year.ToString();
-                        Bind_Data_To_Grid();
-                    }
+                    lblActiveYear.Text = "متابعة وضع الأهداف والتقييم لسنة " + DashBoard_Year;
+                    tbl_Emps_App_Status = Dashboard_DAL.get_Dashboard_DT(DashBoard_Year);
+                    Bind_Data_To_Grid();
                 }
             });
         }

@@ -35,7 +35,7 @@ namespace EPM.Controllers
                 #endregion If Arabic name not found, use English name
 
                 bodyText.Replace("#EmpName#", n);
-                bodyText.Replace("#Active_Set_Goals_Year#", Active_Set_Goals_Year);
+                bodyText.Replace("#DashBoard_Year#", Active_Set_Goals_Year);
                 string encoded_name = HttpUtility.UrlEncode(intended_Emp.Emp_DisplayName);
                 bodyText.Replace("#Link#", "<a href=" + SPContext.Current.Web.Url + "/Pages/ApproveObjectives.aspx?empid=" + encoded_name + "  >" + n + "</a>");
 
@@ -74,7 +74,7 @@ namespace EPM.Controllers
                 #endregion If Arabic name not found, use English name
 
                 bodyText.Replace("#EmpName#", n);
-                bodyText.Replace("#Active_Set_Goals_Year#", Active_Set_Goals_Year);
+                bodyText.Replace("#DashBoard_Year#", Active_Set_Goals_Year);
                 string encoded_name = HttpUtility.UrlEncode(intended_Emp.Emp_DisplayName);
                 bodyText.Replace("#Link#", "<a href=" + SPContext.Current.Web.Url + "/Pages/ApproveObjectives.aspx?empid=" + encoded_name + "  >" + n + "</a>");
 
@@ -150,7 +150,7 @@ namespace EPM.Controllers
 
                 #endregion If Arabic name not found, use English name
 
-                bodyText.Replace("#Active_Set_Goals_Year#", Active_Set_Goals_Year);
+                bodyText.Replace("#DashBoard_Year#", Active_Set_Goals_Year);
 
                 #region Prepare Headers
 

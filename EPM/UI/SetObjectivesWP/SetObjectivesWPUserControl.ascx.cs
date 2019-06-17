@@ -18,9 +18,9 @@ namespace EPM.UI.SetObjectivesWP
         {
             get
             {
-                if (ViewState["Active_Set_Goals_Year"] != null)
+                if (ViewState["DashBoard_Year"] != null)
                 {
-                    return ViewState["Active_Set_Goals_Year"].ToString();
+                    return ViewState["DashBoard_Year"].ToString();
                 }
                 else
                 {
@@ -29,7 +29,7 @@ namespace EPM.UI.SetObjectivesWP
             }
             set
             {
-                ViewState["Active_Set_Goals_Year"] = value;
+                ViewState["DashBoard_Year"] = value;
             }
         }
 
