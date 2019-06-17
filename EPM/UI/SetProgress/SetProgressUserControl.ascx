@@ -12,6 +12,11 @@
 <script type="text/javascript" src="/_layouts/15/EPM/SetObjectives.js"></script>
 
 <div id="container" dir="rtl" style="text-align:right" >
+
+<div style="text-align:left;">
+    <asp:Label ID="lblEmpRank" runat="server" Text="lblEmpRank" Font-Size="XX-Small" ></asp:Label>
+</div>
+
 <div id="page_head">
     <h1>نسب إنجاز الأهداف الفردية لعام <asp:Label ID="lblActiveYear" runat="server" Text=""></asp:Label>  </h1>
 </div>
@@ -42,14 +47,14 @@
                 <asp:Label ID="lblEmpDept" runat="server" Text=""></asp:Label>
             </td>
         </tr>
-        <tr>
+        <%--<tr>
             <td>
                 <asp:Label ID="slblEmpRank" runat="server" Text="الدرجة الوظيفية"></asp:Label>
             </td>
             <td>
                 <asp:Label ID="lblEmpRank" runat="server" Text=""></asp:Label>
             </td>
-        </tr>
+        </tr>--%>
          <tr>
             <td>
                 <asp:Label ID="slblEmpDM" runat="server" Text="المدير المباشر"></asp:Label>

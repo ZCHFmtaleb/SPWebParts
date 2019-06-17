@@ -113,7 +113,7 @@ namespace EPM.UI.EnableYear
             ddl_Year_to_display_if_none_active.Items.AddRange(LC);
             ddl_Year_to_display_if_none_active.Items[1].Selected = true;
             ddl_Rating_to_display_if_none_active.Items.AddRange(LC_Rating);
-            ddl_Rating_to_display_if_none_active.Items[0].Selected = true;
+            ddl_Rating_to_display_if_none_active.Items[1].Selected = true;
         }
 
         private void Refresh_Active_years_grid()

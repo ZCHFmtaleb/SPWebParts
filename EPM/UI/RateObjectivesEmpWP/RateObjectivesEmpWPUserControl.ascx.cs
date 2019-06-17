@@ -1,11 +1,12 @@
-﻿using Microsoft.SharePoint;
+﻿using EPM.Controllers;
 using EPM.DAL;
 using EPM.EL;
+using Microsoft.SharePoint;
+using Microsoft.SharePoint.Utilities;
 using System;
 using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Microsoft.SharePoint.Utilities;
 
 namespace EPM.UI.RateObjectivesEmpWP
 {
@@ -132,13 +133,13 @@ namespace EPM.UI.RateObjectivesEmpWP
             }
         }
 
-        public bool InActive_Mode
+        public bool ReadOnly_Mode
         {
             get
             {
-                if (ViewState["InActive_Mode"] != null)
+                if (ViewState["ReadOnly_Mode"] != null)
                 {
-                    return (bool)ViewState["InActive_Mode"];
+                    return (bool)ViewState["ReadOnly_Mode"];
                 }
                 else
                 {
@@ -147,7 +148,7 @@ namespace EPM.UI.RateObjectivesEmpWP
             }
             set
             {
-                ViewState["InActive_Mode"] = value;
+                ViewState["ReadOnly_Mode"] = value;
             }
         }
 
@@ -155,69 +156,109 @@ namespace EPM.UI.RateObjectivesEmpWP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                SPSecurity.RunWithElevatedPrivileges(delegate ()
+                divSuccess.Visible = false;
+
+                #region Check for year to use
+
+                Active_Rate_Goals_Year = EnableYear_DAL.read_Active_Rate_Goals_Year();
+                if (Active_Rate_Goals_Year == "NoRateGoalsActiveYear")
                 {
-                    divSuccess.Visible = false;
-                    InActive_Mode = false;
-                    if (!IsPostBack)
+                    Active_Rate_Goals_Year = read_Year_to_display_if_none_active();
+                }
+                lblActiveYear.Text = Active_Rate_Goals_Year;
+
+                #endregion Check for year to use
+
+                #region Check for Emp to use (QueryString or current logged-in user)
+
+                if (Request.QueryString["empid"] != null)
+                {
+                    strEmpDisplayName = Request.QueryString["empid"].ToString();
+                }
+                else
+                {
+                    strEmpDisplayName = SPContext.Current.Web.CurrentUser.Name;          //"Test spuser_1"; //"sherif abdellatif";
+                }
+
+                intended_Emp = Emp_DAL.get_Emp_Info(strEmpDisplayName);
+                bind_Emp_Info();
+
+                #endregion Check for Emp to use (QueryString or current logged-in user)
+
+                if (!IsPostBack)
+                {
+                    ReadOnly_Mode = false;
+
+                    #region Check current WorkFlow Status And current logged-in user To decide if ReadOnly_Mode
+
+                    tblObjectives = SetObjectives_DAL.getPreviouslySavedObjectives(strEmpDisplayName, Active_Rate_Goals_Year).GetDataTable();
+                    string st = tblObjectives.Rows[0]["Status"].ToString().Trim().ToLower();
+                    string p1 = WF_States.Objectives_ProgressSet_by_Emp.ToString().Trim().ToLower();
+                    string p2 = WF_States.ObjsAndSkills_Rated.ToString().Trim().ToLower();
+
+                    if (st == p1 || st == p2)
                     {
-                        Active_Rate_Goals_Year = EnableYear_DAL.read_Active_Rate_Goals_Year();
-                        if (Active_Rate_Goals_Year == "NoRateGoalsActiveYear")
-                        {
-                            Active_Rate_Goals_Year = read_Year_to_display_if_none_active();
-                            InActive_Mode = true;
-                        }
+                        lblProgressNotSet_Warning.Visible = false;
+                    }
+                    else
+                    {
+                        lblProgressNotSet_Warning.Visible = true;
                     }
 
-                    lblActiveYear.Text = Active_Rate_Goals_Year;
-                    lblActiveYear2.Text = Active_Rate_Goals_Year;
-
-                    getEmp_from_QueryString_or_currentUser();
-
-                    intended_Emp = Emp_DAL.get_Emp_Info(strEmpDisplayName);
-                    bind_Emp_Info();
-
-                    if (!IsPostBack)
+                    if (st == p2)
                     {
-                        getPreviouslySavedObjectives();
-
-                        if (!Check_If_Emp_and_Year_saved_before())
-                        {
-                            getStandardSkills();
-                        }
-
-                        Bind_Data_To_Controls();
+                        ReadOnly_Mode = true;
+                    }
+                    else if (strEmpDisplayName == SPContext.Current.Web.CurrentUser.Name)
+                    {
+                        ReadOnly_Mode = true;
                     }
 
-                    if (InActive_Mode == true)
+                    #endregion Check current WorkFlow Status And current logged-in user To decide if ReadOnly_Mode
+
+                    #region Data Binding To UI Controls
+
+                    txtNote1.Text = SetObjectives_DAL.getPreviouslySavedNote1(strEmpDisplayName, Active_Rate_Goals_Year);
+                    EvalNotes notes = SetObjectives_DAL.getPreviouslySavedEvalNotes(strEmpDisplayName, Active_Rate_Goals_Year);
+                    txtNote_ReasonForRating1or5.Text = notes.ReasonForRating1or5;
+                    txtNote_RecommendedCourses.Text = notes.RecommendedCourses;
+
+                    if (!Check_If_Emp_and_Year_saved_before())
                     {
-                        Make_InActive_Mode();
+                        getStandardSkills();
                     }
-                });
-            }
-            catch (Exception)
-            {
-            }
+
+                    Bind_Data_To_Controls();
+
+                    #endregion Data Binding To UI Controls
+                }
+
+                if (ReadOnly_Mode == true)
+                {
+                    Make_ReadOnly_Mode();
+                }
+            });
         }
 
-        private void Make_InActive_Mode()
+        private void Make_ReadOnly_Mode()
         {
-            PageTitle.InnerText = " عرض التقييم الخاص بعام " + Active_Rate_Goals_Year + " (للقراءة فقط)";
-            btnSubmit.Visible = false;
-            txt_Suggested_Training.ReadOnly = true;
-            txt_Reasons_for_vh_or_vl.ReadOnly = true;
             foreach (GridViewRow row in gvwRate.Rows)
             {
-                DropDownList ddlObjRating = (DropDownList)row.FindControl("ddlObjRating");
+                DropDownList ddlObjRating = row.FindControl("ddlObjRating") as DropDownList;
                 ddlObjRating.Enabled = false;
             }
             foreach (GridViewRow row in gvw_Std_Skills.Rows)
             {
-                DropDownList ddl_Std_Skill_Rating = (DropDownList)row.FindControl("ddl_Std_Skill_Rating");
+                DropDownList ddl_Std_Skill_Rating = row.FindControl("ddl_Std_Skill_Rating") as DropDownList;
                 ddl_Std_Skill_Rating.Enabled = false;
             }
+
+            txtNote1.ReadOnly = true;
+            txtNote_ReasonForRating1or5.ReadOnly = true;
+            txtNote_RecommendedCourses.ReadOnly = true;
+            btnSubmit.Visible = false;
         }
 
         private void getStandardSkills()
@@ -312,22 +353,9 @@ namespace EPM.UI.RateObjectivesEmpWP
                 }
 
                 #endregion Get any previous Ratings of same Emp and Year
-
             });
 
             return result;
-        }
-
-        private void getEmp_from_QueryString_or_currentUser()
-        {
-            if (Request.QueryString["empid"] != null)
-            {
-                strEmpDisplayName = Request.QueryString["empid"].ToString();
-            }
-            else
-            {
-                strEmpDisplayName = SPContext.Current.Web.CurrentUser.Name;          //"Test spuser_1"; //"sherif abdellatif";
-            }
         }
 
         private void bind_Emp_Info()
@@ -346,8 +374,6 @@ namespace EPM.UI.RateObjectivesEmpWP
             lblEmpRank.Text = intended_Emp.Emp_Rank;
             lblEmpDM.Text = intended_Emp.DM_name;
         }
-
-        
 
         private string read_Year_to_display_if_none_active()
         {
@@ -387,38 +413,6 @@ namespace EPM.UI.RateObjectivesEmpWP
             return pActiveYear;
         }
 
-        private void getPreviouslySavedObjectives()
-        {
-            try
-            {
-                SPSecurity.RunWithElevatedPrivileges(delegate ()
-                {
-                    SPSite oSite = new SPSite(SPContext.Current.Web.Url);
-                    SPWeb spWeb = oSite.OpenWeb();
-                    SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "Objectives")); //SPList spList = spWeb.GetList("/Lists/Objectives");
-                    if (spList != null)
-                    {
-                        SPQuery qry = new SPQuery();
-                        qry.Query =
-                        @"   <Where>
-                                        <Eq>
-                                            <FieldRef Name='Emp' />
-                                            <Value Type='User'>" + strEmpDisplayName + @"</Value>
-                                        </Eq>
-                                    </Where>";
-                        qry.ViewFieldsOnly = true;
-                        qry.ViewFields = @"<FieldRef Name='ID' /><FieldRef Name='ObjName' /><FieldRef Name='ObjWeight' /><FieldRef Name='AccPercent' />";
-                        SPListItemCollection listItems = spList.GetItems(qry);
-                        tblObjectives = listItems.GetDataTable();
-                    }
-                });
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
         protected void Bind_Data_To_Controls()
         {
             try
@@ -453,6 +447,8 @@ namespace EPM.UI.RateObjectivesEmpWP
                 {
                     SaveToSP();
                     Show_Success_Message("تم حفظ التقييم بنجاح");
+                    WFStatusUpdater.Change_State_to(WF_States.ObjsAndSkills_Rated, strEmpDisplayName, Active_Rate_Goals_Year);
+                    Emailer.Send_ObjsAndSkills_Rated_Email_to_Emp(intended_Emp, Active_Rate_Goals_Year);
                 }
             });
         }
@@ -464,7 +460,7 @@ namespace EPM.UI.RateObjectivesEmpWP
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
                 spWeb.AllowUnsafeUpdates = true;
-                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "SkillsRating")); //SPList oList = oWeb.GetList("/Lists/SkillsRating");
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "SkillsRating"));
 
                 #region Remove any previous Ratings of same Emp and Year, by updating "deleted" to 1
 
@@ -511,6 +507,20 @@ namespace EPM.UI.RateObjectivesEmpWP
                 #endregion Add the new Ratings
 
                 spWeb.AllowUnsafeUpdates = false;
+
+                foreach (GridViewRow row in gvwRate.Rows)
+                {
+                    DropDownList ddlObjRating = row.FindControl("ddlObjRating") as DropDownList;
+                    tblObjectives.Rows[row.RowIndex]["AccRating"] = ddlObjRating.SelectedItem.Text;
+                }
+
+                SetProgress_DAL.Update_Objectives("AccRating", tblObjectives);
+
+                EvalNotes evalnotes = new EvalNotes();
+                evalnotes.ReasonForRating1or5 = txtNote_ReasonForRating1or5.Text;
+                evalnotes.RecommendedCourses = txtNote_RecommendedCourses.Text;
+
+                SetProgress_DAL.Save_or_Update_Objs_EvalNotes(intended_Emp.login_name_to_convert_to_SPUser, Active_Rate_Goals_Year, evalnotes);
             });
         }
 

@@ -1,13 +1,12 @@
-﻿using Microsoft.Office.Server.UserProfiles;
+﻿using EPM.Controllers;
+using EPM.DAL;
+using EPM.EL;
 using Microsoft.SharePoint;
 using Microsoft.SharePoint.Utilities;
 using System;
 using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using EPM.EL;
-using EPM.DAL;
-using EPM.Controllers;
 
 namespace EPM.UI.SetProgress
 {
@@ -97,18 +96,18 @@ namespace EPM.UI.SetProgress
 
         protected void Page_Load(object sender, EventArgs e)
         {
-                SPSecurity.RunWithElevatedPrivileges(delegate ()
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                divSuccess.Visible = false;
+
+                getEmp_from_QueryString_or_currentUser();
+
+                intended_Emp = Emp_DAL.get_Emp_Info(strEmpDisplayName);
+                bind_Emp_Info();
+
+                if (!IsPostBack)
                 {
-                    divSuccess.Visible = false;
-
-                    getEmp_from_QueryString_or_currentUser();
-
-                    intended_Emp = Emp_DAL.get_Emp_Info(strEmpDisplayName);
-                    bind_Emp_Info();
-
-                    if (!IsPostBack)
-                    {
-                        Active_Rate_Goals_Year =EnableYear_DAL. read_Active_Rate_Goals_Year();
+                    Active_Rate_Goals_Year = EnableYear_DAL.read_Active_Rate_Goals_Year();
 
                         #region Bind Objectives Year
 
@@ -118,11 +117,10 @@ namespace EPM.UI.SetProgress
 
                         getPreviouslySavedObjectives();
 
-                        Bind_Data_To_Controls();
-                    }
-                });
+                    Bind_Data_To_Controls();
+                }
+            });
         }
-
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -132,11 +130,11 @@ namespace EPM.UI.SetProgress
                 {
                     if (Page.IsValid)
                     {
-                        SaveToSP();
-                        SetProgress_DAL.SaveObjsNote1(intended_Emp.login_name_to_convert_to_SPUser, Active_Rate_Goals_Year, txtNote1.Text);
+                        SetProgress_DAL.Update_Objectives("AccPercent", tblObjectives);
+                        SetProgress_DAL.Save_or_Update_Objs_ProgressNote(intended_Emp.login_name_to_convert_to_SPUser, Active_Rate_Goals_Year, txtNote1.Text);
                         Show_Success_Message("تم حفظ الأهداف بنجاح");
-                        WFStatusUpdater.Change_State_to(WF_States.Objectives_rated_by_Emp, strEmpDisplayName, Active_Rate_Goals_Year);
-                        Emailer.Send_Objs_Rated_Email_to_DM(intended_Emp, Active_Rate_Goals_Year);
+                        WFStatusUpdater.Change_State_to(WF_States.Objectives_ProgressSet_by_Emp, strEmpDisplayName, Active_Rate_Goals_Year);
+                        Emailer.Send_Objs_ProgressSetByEmp_Email_to_DM(intended_Emp, Active_Rate_Goals_Year);
                     }
                 });
             }
@@ -144,40 +142,6 @@ namespace EPM.UI.SetProgress
             {
             }
         }
-
-
-        private void SaveToSP()
-        {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
-                SPWeb spWeb = oSite.OpenWeb();
-                spWeb.AllowUnsafeUpdates = true;
-                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "Objectives")); //SPList oList = oWeb.GetList("/Lists/Objectives");
-
-                #region Add the new (or updated) objectives
-
-                if (tblObjectives != null)
-                {
-                    foreach (DataRow row in tblObjectives.Rows)
-                    {
-                        SPListItem oListItem = spList.GetItemById(int.Parse(row["ID"].ToString()));
-
-                        oListItem["AccPercent"] = row["AccPercent"].ToString();
-                        oListItem.Update();
-                    }
-                    divSuccess.Visible = true;
-                }
-                else
-                {
-                }
-                #endregion Add the new (or updated) objectives
-
-                spWeb.AllowUnsafeUpdates = false;
-
-            });
-        }
-
 
         #endregion Event Handlers
 
@@ -199,7 +163,6 @@ namespace EPM.UI.SetProgress
 
         private void bind_Emp_Info()
         {
-
             if (intended_Emp.Emp_ArabicName != null && intended_Emp.Emp_ArabicName != string.Empty)
             {
                 lblEmpName.Text = intended_Emp.Emp_ArabicName;

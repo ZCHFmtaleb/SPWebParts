@@ -20,7 +20,10 @@ namespace EPM.EL
         Objectives_rejected_by_Dept_Head,
 
         [Description("تم وضع نسب إنجاز الأهداف بواسطة الموظف")]
-        Objectives_rated_by_Emp
+        Objectives_ProgressSet_by_Emp,
+
+        [Description("تم وضع تقييم الأهداف والكفاءات")]
+        ObjsAndSkills_Rated
 
     }
 }

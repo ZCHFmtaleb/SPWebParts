@@ -13,6 +13,15 @@ namespace EPM.UI.RateObjectivesEmpWP {
     public partial class RateObjectivesEmpWPUserControl {
         
         /// <summary>
+        /// lblEmpRank control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmpRank;
+        
+        /// <summary>
         /// PageTitle control.
         /// </summary>
         /// <remarks>
@@ -85,24 +94,6 @@ namespace EPM.UI.RateObjectivesEmpWP {
         protected global::System.Web.UI.WebControls.Label lblEmpDept;
         
         /// <summary>
-        /// slblEmpRank control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label slblEmpRank;
-        
-        /// <summary>
-        /// lblEmpRank control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmpRank;
-        
-        /// <summary>
         /// slblEmpDM control.
         /// </summary>
         /// <remarks>
@@ -121,22 +112,13 @@ namespace EPM.UI.RateObjectivesEmpWP {
         protected global::System.Web.UI.WebControls.Label lblEmpDM;
         
         /// <summary>
-        /// slblYear control.
+        /// lblProgressNotSet_Warning control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label slblYear;
-        
-        /// <summary>
-        /// lblActiveYear2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblActiveYear2;
+        protected global::System.Web.UI.WebControls.Label lblProgressNotSet_Warning;
         
         /// <summary>
         /// gvwRate control.
@@ -146,6 +128,15 @@ namespace EPM.UI.RateObjectivesEmpWP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvwRate;
+        
+        /// <summary>
+        /// txtNote1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNote1;
         
         /// <summary>
         /// lbl_invalid_rank control.
@@ -166,22 +157,22 @@ namespace EPM.UI.RateObjectivesEmpWP {
         protected global::System.Web.UI.WebControls.GridView gvw_Std_Skills;
         
         /// <summary>
-        /// txt_Reasons_for_vh_or_vl control.
+        /// txtNote_ReasonForRating1or5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_Reasons_for_vh_or_vl;
+        protected global::System.Web.UI.WebControls.TextBox txtNote_ReasonForRating1or5;
         
         /// <summary>
-        /// txt_Suggested_Training control.
+        /// txtNote_RecommendedCourses control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_Suggested_Training;
+        protected global::System.Web.UI.WebControls.TextBox txtNote_RecommendedCourses;
         
         /// <summary>
         /// btnSubmit control.

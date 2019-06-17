@@ -91,11 +91,11 @@ namespace EPM.Controllers
             });
         }
 
-        internal static void Send_Objs_Rated_Email_to_DM(Emp intended_Emp, string Active_Rate_Goals_Year)
+        public static void Send_Rej_Email_to_Emp(Emp intended_Emp, string Required_Mods)
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                string html = File.ReadAllText(layoutsPath + "Send_Objs_Rated_Email_to_DM.html");
+                string html = File.ReadAllText(layoutsPath + "Send_Rej_Email_to_Emp.html");
                 StringBuilder bodyText = new StringBuilder(html);
 
                 #region If Arabic name not found, use English name
@@ -112,16 +112,15 @@ namespace EPM.Controllers
 
                 #endregion If Arabic name not found, use English name
 
-                bodyText.Replace("#EmpName#", n);
-                bodyText.Replace("#Active_Rate_Goals_Year#", Active_Rate_Goals_Year);
-                string encoded_name = HttpUtility.UrlEncode(intended_Emp.Emp_DisplayName);
-                bodyText.Replace("#Link#", "<a href=" + SPContext.Current.Web.Url + "/Pages/RateObjectivesEmp.aspx?empid=" + encoded_name + "  >" + n + "</a>");
+                string lined_Required_Mods = Required_Mods.Replace(Environment.NewLine, "<br />");
+
+                bodyText.Replace("#Required_Mods#", lined_Required_Mods);
 
                 #region Prepare Headers
 
                 StringDictionary headers = new StringDictionary();
-                headers.Add("to", intended_Emp.DM_email);
-                headers.Add("subject", " قام " + "\"" + n + "\"" + " بوضع نسب إنجاز الأهداف الفردية لعام " + Active_Rate_Goals_Year);
+                headers.Add("to", intended_Emp.Emp_email);
+                headers.Add("subject", "طلب تعديلات على الأهداف");
                 headers.Add("content-type", "text/html");
 
                 #endregion Prepare Headers
@@ -166,11 +165,11 @@ namespace EPM.Controllers
             });
         }
 
-        public static void Send_Rej_Email_to_Emp(Emp intended_Emp, string Required_Mods)
+        public static void Send_Objs_ProgressSetByEmp_Email_to_DM(Emp intended_Emp, string Active_Rate_Goals_Year)
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                string html = File.ReadAllText(layoutsPath + "Send_Rej_Email_to_Emp.html");
+                string html = File.ReadAllText(layoutsPath + "Send_Objs_ProgressSetByEmp_Email_to_DM.html");
                 StringBuilder bodyText = new StringBuilder(html);
 
                 #region If Arabic name not found, use English name
@@ -187,15 +186,55 @@ namespace EPM.Controllers
 
                 #endregion If Arabic name not found, use English name
 
-                string lined_Required_Mods = Required_Mods.Replace(Environment.NewLine, "<br />");
+                bodyText.Replace("#EmpName#", n);
+                bodyText.Replace("#Active_Rate_Goals_Year#", Active_Rate_Goals_Year);
+                string encoded_name = HttpUtility.UrlEncode(intended_Emp.Emp_DisplayName);
+                bodyText.Replace("#Link#", "<a href=" + SPContext.Current.Web.Url + "/Pages/RateObjectivesEmp.aspx?empid=" + encoded_name + "  >" + n + "</a>");
 
-                bodyText.Replace("#Required_Mods#", lined_Required_Mods);
+                #region Prepare Headers
+
+                StringDictionary headers = new StringDictionary();
+                headers.Add("to", intended_Emp.DM_email);
+                headers.Add("subject", " قام " + "\"" + n + "\"" + " بوضع نسب إنجاز الأهداف الفردية لعام " + Active_Rate_Goals_Year);
+                headers.Add("content-type", "text/html");
+
+                #endregion Prepare Headers
+
+                SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
+            });
+        }
+
+        public static void Send_ObjsAndSkills_Rated_Email_to_Emp(Emp intended_Emp, string Active_Rate_Goals_Year)
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                string html = File.ReadAllText(layoutsPath + "Send_ObjsAndSkills_Rated_Email_to_Emp.html");
+                StringBuilder bodyText = new StringBuilder(html);
+
+                #region If Arabic name not found, use English name
+
+                string n = string.Empty;
+                if (intended_Emp.Emp_ArabicName != null && intended_Emp.Emp_ArabicName != string.Empty)
+                {
+                    n = intended_Emp.Emp_ArabicName;
+                }
+                else
+                {
+                    n = intended_Emp.Emp_DisplayName;
+                }
+
+                #endregion If Arabic name not found, use English name
+
+                bodyText.Replace("#Active_Rate_Goals_Year#", Active_Rate_Goals_Year);
+                string encoded_name = HttpUtility.UrlEncode(intended_Emp.Emp_DisplayName);
+             // bodyText.Replace("#Link#", "<a href=" + SPContext.Current.Web.Url + "/Pages/RateObjectivesEmp.aspx?empid=" + encoded_name + "  >" + n + "</a>");
+                bodyText.Replace("#Link#", "<a href=" + SPContext.Current.Web.Url + "/Pages/RateObjectivesEmp.aspx" + "  >" + n + "</a>");
 
                 #region Prepare Headers
 
                 StringDictionary headers = new StringDictionary();
                 headers.Add("to", intended_Emp.Emp_email);
-                headers.Add("subject", "طلب تعديلات على الأهداف");
+                headers.Add("subject", " تم وضع تقييم الأهداف والكفاءات الخاصة بكم لسنة " + Active_Rate_Goals_Year);
                 headers.Add("content-type", "text/html");
 
                 #endregion Prepare Headers

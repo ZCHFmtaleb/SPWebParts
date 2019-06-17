@@ -69,12 +69,14 @@ namespace EPM.UI.Dashboard
                     tbl_Emps_App_Status = Dashboard_DAL.get_Dashboard_DT(Active_Set_Goals_Year);
                     if (Active_Set_Goals_Year != "NoSetGoalsActiveYear")
                     {
-                        lblActiveYear.Text = "متابعة مرحلة وضع الأهداف لسنة " + Active_Set_Goals_Year;
+                        lblActiveYear.Text = "متابعة وضع الأهداف والتقييم لسنة " + Active_Set_Goals_Year;
                         Bind_Data_To_Grid();
                     }
                     else
                     {
-                        div_For_Hiding_Mode.InnerHtml = "عذرا لايمكن عرض هذه الصفحة نظرا لإنتهاء فترة وضع الأهداف وعدم وجود عام مفعل حاليا";
+                        //div_For_Hiding_Mode.InnerHtml = "عذرا لايمكن عرض هذه الصفحة نظرا لإنتهاء فترة وضع الأهداف وعدم وجود عام مفعل حاليا";
+                        lblActiveYear.Text = "متابعة وضع الأهداف والتقييم لسنة " + DateTime.Now.Year.ToString();
+                        Bind_Data_To_Grid();
                     }
                 }
             });

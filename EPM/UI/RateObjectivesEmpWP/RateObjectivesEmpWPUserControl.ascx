@@ -11,8 +11,12 @@
 
 <div id="container" dir="rtl" style="text-align:right" >
 
+<div style="text-align:left;">
+    <asp:Label ID="lblEmpRank" runat="server" Text="lblEmpRank" Font-Size="XX-Small" ></asp:Label>
+</div>
+
 <div id="page_head">
-<h1 runat="server" id="PageTitle">نموذج وضع الأهداف الفردية لعام   <asp:Label ID="lblActiveYear" runat="server" Text=""></asp:Label></h1>
+<h1 runat="server" id="PageTitle">تقييم الأهداف والكفاءات لعام <asp:Label ID="lblActiveYear" runat="server" Text=""></asp:Label></h1>
 </div>
 
 <div id="divEmpInfo" class="divEmpInfo">
@@ -41,14 +45,14 @@
 			<asp:Label ID="lblEmpDept" runat="server" Text=""></asp:Label>
 		</td>
 	</tr>
-	<tr>
+	<%--<tr>
 		<td>
 			<asp:Label ID="slblEmpRank" runat="server" Text="الدرجة الوظيفية"></asp:Label>
 		</td>
 		<td>
 			<asp:Label ID="lblEmpRank" runat="server" Text=""></asp:Label>
 		</td>
-	</tr>
+	</tr>--%>
 	<tr>
 		<td>
 			<asp:Label ID="slblEmpDM" runat="server" Text="المدير المباشر"></asp:Label>
@@ -58,16 +62,11 @@
 		</td>
 	</tr>
 
-	<tr>
-			<td>
-				<asp:Label ID="slblYear" runat="server" Text="العام"></asp:Label>
-			</td>
-			<td>
-				<asp:Label ID="lblActiveYear2" runat="server" Text=""></asp:Label>
-			</td>
-		</tr>
+	
 </table>
 </div>
+
+<asp:Label ID="lblProgressNotSet_Warning" runat="server" Text="تنبيه : لم يقم الموظف بوضع نسب إنجاز الأهداف بعد. يرجى التواصل معه قبل إجراء التقييم" BackColor="#FFFFCC" Visible="False"></asp:Label>
 
 <div class="div_gvwSetObjectives" style="width:80% !important;">
 <asp:GridView ID="gvwRate" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False" ShowHeaderWhenEmpty="True" 
@@ -120,11 +119,11 @@
 				<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
 			</EditItemTemplate>
 			<ItemTemplate>
-				<asp:DropDownList ID="ddlObjRating" runat="server" Width="60px" CssClass="ObjRate">
+				<asp:DropDownList ID="ddlObjRating" runat="server" Width="60px" CssClass="ObjRate" SelectedValue='<%# String.IsNullOrEmpty(Eval("AccRating").ToString()) ? "4" : Eval("AccRating") %>' >
 					<asp:ListItem>1</asp:ListItem>
 					<asp:ListItem>2</asp:ListItem>
 					<asp:ListItem>3</asp:ListItem>
-					<asp:ListItem Selected="True">4</asp:ListItem>
+					<asp:ListItem>4</asp:ListItem>
 					<asp:ListItem>5</asp:ListItem>
 				</asp:DropDownList>
 			</ItemTemplate>
@@ -148,7 +147,8 @@
 	<SortedDescendingHeaderStyle BackColor="#4870BE" />
 </asp:GridView>
 </div>
-
+<h4>ملاحظات أو أعمال إضافية</h4>
+<asp:TextBox ID="txtNote1" runat="server" TextMode="MultiLine" Rows="6" Width="50%"></asp:TextBox>   
 
 <h2>الكفاءات </h2>
 <div class="div_gvwSetObjectives" style="width:60% !important;">
@@ -187,11 +187,10 @@
 </div>
 
 <h2 style="color:blue !important;text-decoration:underline;">نتيجة التقييم :</h2>
-<h4>	استناداً إلى متطلبات الوظيفة، يرجى الإشارة إلى درجة التقييم المناسب لأداء الموظف خلال الفترة المشمولة بالتقرير:</h4>
+<h5>	استناداً إلى متطلبات الوظيفة، يرجى الإشارة إلى درجة التقييم المناسب لأداء الموظف خلال الفترة المشمولة بالتقرير:</h5>
 
 <div class="div_gvwSetObjectives" style="width:50% !important;">
-<h2>
-<table class="BorderedTable" style="border-style: solid; border-width: thin; text-align:center;" width="100%">
+<table class="BorderedTable" style="border-style: solid; border-width: thin; text-align:center;width:100%" >
 		<tr style="background-color:#507CD1; Color:White;">
 			<th style="border:1px solid black !important;">متوسط تقدير الاهداف</th>
 			<th style="border:1px solid black !important;">متوسط تقدير الكفاءات</th>
@@ -205,18 +204,17 @@
 			<td style="border:1px solid black !important;" id="Commentary" >أداء عالي الكفــاءة / يفوق التوقعات</td>
 		</tr>
  </table>
-</h2>
 </div>
 
 
-<h4>
+<h5>
 إذا كانت النتيجة النهائية  (1) أو (5) أعلاه، يرجى توضيح الأسباب:
-</h4>
-<asp:TextBox ID="txt_Reasons_for_vh_or_vl" runat="server" TextMode="MultiLine" Rows="6" Width="50%"></asp:TextBox>
-<h4>
+</h5>
+<asp:TextBox ID="txtNote_ReasonForRating1or5" runat="server" TextMode="MultiLine" Rows="6" Width="50%"></asp:TextBox>
+<h5>
 	التوصيات والبرامج التدريبية الضرورية لزيادة الإنتاجية وتطوير الأداء ( اختياري ) :
-</h4>
-<asp:TextBox ID="txt_Suggested_Training" runat="server" TextMode="MultiLine" Rows="6" Width="50%"></asp:TextBox>
+</h5>
+<asp:TextBox ID="txtNote_RecommendedCourses" runat="server" TextMode="MultiLine" Rows="6" Width="50%"></asp:TextBox>
 
 
 <div class="div_btnSubmit"  style="margin-bottom:30px;">

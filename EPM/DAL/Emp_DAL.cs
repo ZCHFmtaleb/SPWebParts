@@ -48,13 +48,15 @@ namespace EPM.DAL
                 }
                 //lblEmpDept.Text = cUserProfile.GetProfileValueCollection("Department")[0].ToString();
 
-                if (cUserProfile.GetProfileValueCollection("Fax")[0] != null)
+                /*I used the "Fax" field to store the "Emp_Rank" becuase there is no "Emp_Rank" field in SharePoint profile fields */
+                string rank = cUserProfile.GetProfileValueCollection("Fax")[0].ToString();
+                if (rank != null && rank != string.Empty)
                 {
                     intended_Emp.Emp_Rank = cUserProfile.GetProfileValueCollection("Fax")[0].ToString();
                 }
                 else
                 {
-                    intended_Emp.Emp_Rank = string.Empty;
+                    intended_Emp.Emp_Rank = "4";  
                 }
 
 

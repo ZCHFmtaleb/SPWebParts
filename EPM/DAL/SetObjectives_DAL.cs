@@ -49,8 +49,6 @@ namespace EPM.DAL
             return listItems;
         }
 
-        
-
         public static string get_Year_to_display_if_none_active()
         {
             string pActiveYear = DateTime.Today.Year.ToString();
@@ -97,7 +95,7 @@ namespace EPM.DAL
             {
                 SPSite oSite = new SPSite(SPContext.Current.Web.Url);
                 SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "Objectives")); //SPList spList = spWeb.GetList("/Lists/Objectives");
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "Objectives")); 
                 if (spList != null)
                 {
                     SPQuery qry = new SPQuery();
@@ -120,6 +118,79 @@ namespace EPM.DAL
             });
 
             return listItems;
+        }
+
+        public static string getPreviouslySavedNote1(string strEmpDisplayName, string Active_Rate_Goals_Year)
+        {
+            string Note1 = string.Empty;
+
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                SPWeb spWeb = oSite.OpenWeb();
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "ObjsRatingNotesByEmp"));
+                if (spList != null)
+                {
+                    SPQuery qry = new SPQuery();
+                    qry.Query =
+                    @"   <Where>
+                                          <And>
+                                             <Eq>
+                                                <FieldRef Name='Emp' />
+                                                <Value Type='User'>" + strEmpDisplayName + @"</Value>
+                                             </Eq>
+                                             <Eq>
+                                                <FieldRef Name='ObjsYear' />
+                                                <Value Type='Text'>" + Active_Rate_Goals_Year + @"</Value>
+                                             </Eq>
+                                          </And>
+                                       </Where>";
+                    SPListItemCollection  results = spList.GetItems(qry);
+                    if (results.Count > 0)
+                    {
+                        Note1 = results[0]["Note1"].ToString();
+                    }
+                }
+            });
+
+            return Note1;
+        }
+
+        public static EvalNotes getPreviouslySavedEvalNotes(string strEmpDisplayName, string Active_Rate_Goals_Year)
+        {
+            EvalNotes notes = new EvalNotes();
+
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                SPWeb spWeb = oSite.OpenWeb();
+                SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "ObjsEvalNotes"));
+                if (spList != null)
+                {
+                    SPQuery qry = new SPQuery();
+                    qry.Query =
+                    @"   <Where>
+                                          <And>
+                                             <Eq>
+                                                <FieldRef Name='Emp' />
+                                                <Value Type='User'>" + strEmpDisplayName + @"</Value>
+                                             </Eq>
+                                             <Eq>
+                                                <FieldRef Name='ObjsYear' />
+                                                <Value Type='Text'>" + Active_Rate_Goals_Year + @"</Value>
+                                             </Eq>
+                                          </And>
+                                       </Where>";
+                    SPListItemCollection results = spList.GetItems(qry);
+                    if (results.Count > 0)
+                    {
+                        notes.ReasonForRating1or5 = results[0]["Note_ReasonForRating1or5"].ToString();
+                        notes.RecommendedCourses = results[0]["Note_RecommendedCourses"].ToString();
+                    }
+                }
+            });
+
+            return notes;
         }
 
         public static void SaveToSP(string strEmpDisplayName, string Active_Set_Goals_Year, DataTable tblObjectives, string login_name_to_convert_to_SPUser)
