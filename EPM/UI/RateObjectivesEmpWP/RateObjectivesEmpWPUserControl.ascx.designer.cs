@@ -112,6 +112,15 @@ namespace EPM.UI.RateObjectivesEmpWP {
         protected global::System.Web.UI.WebControls.Label lblEmpDM;
         
         /// <summary>
+        /// lblNoObjectivesFound_Warning control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNoObjectivesFound_Warning;
+        
+        /// <summary>
         /// lblProgressNotSet_Warning control.
         /// </summary>
         /// <remarks>
@@ -130,6 +139,15 @@ namespace EPM.UI.RateObjectivesEmpWP {
         protected global::System.Web.UI.WebControls.GridView gvwRate;
         
         /// <summary>
+        /// header1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl header1;
+        
+        /// <summary>
         /// txtNote1 control.
         /// </summary>
         /// <remarks>
@@ -137,6 +155,15 @@ namespace EPM.UI.RateObjectivesEmpWP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNote1;
+        
+        /// <summary>
+        /// header2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl header2;
         
         /// <summary>
         /// lbl_invalid_rank control.

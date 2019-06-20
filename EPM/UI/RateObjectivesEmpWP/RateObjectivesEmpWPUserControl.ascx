@@ -66,6 +66,7 @@
 </table>
 </div>
 
+<h3 runat="server" visible="false" id="lblNoObjectivesFound_Warning"> عذرا لم يتم العثور على أية أهداف خاصة بالموظف للسنة المذكورة  </h3>
 <asp:Label ID="lblProgressNotSet_Warning" runat="server" Text="تنبيه : لم يقم الموظف بوضع نسب إنجاز الأهداف بعد. يرجى التواصل معه قبل إجراء التقييم" BackColor="#FFFFCC" Visible="False"></asp:Label>
 
 <div class="div_gvwSetObjectives" style="width:80% !important;">
@@ -114,7 +115,7 @@
 			<HeaderStyle Width="15%" />
 			<ItemStyle HorizontalAlign="Center" />
 		</asp:TemplateField>
-		<asp:TemplateField HeaderText="التقدير">
+		<asp:TemplateField HeaderText="تقييم المدير المباشر">
 			<EditItemTemplate>
 				<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
 			</EditItemTemplate>
@@ -128,7 +129,7 @@
 				</asp:DropDownList>
 			</ItemTemplate>
 			<HeaderStyle Width="15%" />
-			<ItemStyle Width="15%" />
+			<ItemStyle Width="15%"  HorizontalAlign="Center"/>
 		</asp:TemplateField>
 		<asp:CommandField ButtonType="Button" CancelText="تراجع" EditText="تعديل" ShowEditButton="True" ShowHeader="True" UpdateText="تحديث" HeaderStyle-Width="10%" Visible="False" >
 <HeaderStyle Width="11%"></HeaderStyle>
@@ -147,20 +148,20 @@
 	<SortedDescendingHeaderStyle BackColor="#4870BE" />
 </asp:GridView>
 </div>
-<h4>ملاحظات أو أعمال إضافية</h4>
+<h4 runat="server" id="header1">ملاحظات أو أعمال إضافية</h4>
 <asp:TextBox ID="txtNote1" runat="server" TextMode="MultiLine" Rows="6" Width="50%"></asp:TextBox>   
 
-<h2>الكفاءات </h2>
-<div class="div_gvwSetObjectives" style="width:60% !important;">
+<h2 runat="server" id="header2">الكفاءات </h2>
+<div class="div_gvwSetObjectives" style="width:50% !important;">
 <asp:Label ID="lbl_invalid_rank" runat="server" Text="تعذر تحميل الكفاءات المناسبة نظرا لعدم وجود الدرجة الوظيفية فى سجل الموظف" Visible="False"></asp:Label>
-<asp:GridView ID="gvw_Std_Skills" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False"  BorderStyle="Solid" BorderWidth="1px" OnRowDataBound="gvw_Std_Skills_RowDataBound"   >
+<asp:GridView ID="gvw_Std_Skills" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False"  BorderStyle="Solid" BorderWidth="1px" OnRowDataBound="gvw_Std_Skills_RowDataBound" Width="50%"   >
 		<AlternatingRowStyle BackColor="White" />
 		<Columns>
 			<asp:BoundField DataField="Title" HeaderText="مسمى الكفاءة">
-			<HeaderStyle Width="88%" />
-			<ItemStyle Width="88%" />
+			<HeaderStyle Width="65%" />
+			<ItemStyle Width="65%" />
 			</asp:BoundField>
-			<asp:TemplateField HeaderText="التقدير">
+			<asp:TemplateField HeaderText="تقييم المدير المباشر">
 				<EditItemTemplate>
 				</EditItemTemplate>
 				<ItemTemplate>
@@ -171,6 +172,7 @@
 					<asp:ListItem>4</asp:ListItem>
 				</asp:DropDownList>
 				</ItemTemplate>
+                <ItemStyle HorizontalAlign="Center"/>
 			</asp:TemplateField>
 		</Columns>
 		<EditRowStyle BackColor="#2461BF" />

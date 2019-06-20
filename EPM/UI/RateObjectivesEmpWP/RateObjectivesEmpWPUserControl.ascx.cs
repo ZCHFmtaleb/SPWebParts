@@ -156,90 +156,120 @@ namespace EPM.UI.RateObjectivesEmpWP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            try
             {
-                divSuccess.Visible = false;
+                SPSecurity.RunWithElevatedPrivileges(delegate ()
+                   {
+                       divSuccess.Visible = false;
 
                 #region Check for year to use
 
                 Active_Rate_Goals_Year = EnableYear_DAL.read_Active_Rate_Goals_Year();
-                if (Active_Rate_Goals_Year == "NoRateGoalsActiveYear")
-                {
-                    Active_Rate_Goals_Year = read_Year_to_display_if_none_active();
-                }
-                lblActiveYear.Text = Active_Rate_Goals_Year;
+                       if (Active_Rate_Goals_Year == "NoRateGoalsActiveYear")
+                       {
+                           Active_Rate_Goals_Year = read_Year_to_display_if_none_active();
+                       }
+                       lblActiveYear.Text = Active_Rate_Goals_Year;
 
                 #endregion Check for year to use
 
                 #region Check for Emp to use (QueryString or current logged-in user)
 
                 if (Request.QueryString["empid"] != null)
-                {
-                    strEmpDisplayName = Request.QueryString["empid"].ToString();
-                }
-                else
-                {
-                    strEmpDisplayName = SPContext.Current.Web.CurrentUser.Name;          //"Test spuser_1"; //"sherif abdellatif";
+                       {
+                           strEmpDisplayName = Request.QueryString["empid"].ToString();
+                       }
+                       else
+                       {
+                           strEmpDisplayName = SPContext.Current.Web.CurrentUser.Name;          //"Test spuser_1"; //"sherif abdellatif";
                 }
 
-                intended_Emp = Emp_DAL.get_Emp_Info(strEmpDisplayName);
-                bind_Emp_Info();
+                       intended_Emp = Emp_DAL.get_Emp_Info(strEmpDisplayName);
+                       bind_Emp_Info();
 
                 #endregion Check for Emp to use (QueryString or current logged-in user)
 
                 if (!IsPostBack)
-                {
-                    ReadOnly_Mode = false;
+                       {
+                           ReadOnly_Mode = false;
 
                     #region Check current WorkFlow Status And current logged-in user To decide if ReadOnly_Mode
 
                     tblObjectives = SetObjectives_DAL.getPreviouslySavedObjectives(strEmpDisplayName, Active_Rate_Goals_Year).GetDataTable();
+
+                    #region If no Objectives found, display a warning regarding that and stop proceeding
+                    if (tblObjectives == null || tblObjectives.Rows.Count == 0)
+                           {
+                               Make_NoObjectivesFound_Mode();
+                               return;
+                           }
+                    #endregion
+
                     string st = tblObjectives.Rows[0]["Status"].ToString().Trim().ToLower();
-                    string p1 = WF_States.Objectives_ProgressSet_by_Emp.ToString().Trim().ToLower();
-                    string p2 = WF_States.ObjsAndSkills_Rated.ToString().Trim().ToLower();
+                           string p1 = WF_States.Objectives_ProgressSet_by_Emp.ToString().Trim().ToLower();
+                           string p2 = WF_States.ObjsAndSkills_Rated.ToString().Trim().ToLower();
 
-                    if (st == p1 || st == p2)
-                    {
-                        lblProgressNotSet_Warning.Visible = false;
-                    }
-                    else
-                    {
-                        lblProgressNotSet_Warning.Visible = true;
-                    }
+                           if (st == p1 || st == p2)
+                           {
+                               lblProgressNotSet_Warning.Visible = false;
+                           }
+                           else
+                           {
+                               lblProgressNotSet_Warning.Visible = true;
+                           }
 
-                    if (st == p2)
-                    {
-                        ReadOnly_Mode = true;
-                    }
-                    else if (strEmpDisplayName == SPContext.Current.Web.CurrentUser.Name)
-                    {
-                        ReadOnly_Mode = true;
-                    }
+                           if (st == p2)
+                           {
+                               ReadOnly_Mode = true;
+                           }
+                           else if (strEmpDisplayName == SPContext.Current.Web.CurrentUser.Name)
+                           {
+                               ReadOnly_Mode = true;
+                           }
 
                     #endregion Check current WorkFlow Status And current logged-in user To decide if ReadOnly_Mode
 
                     #region Data Binding To UI Controls
 
                     txtNote1.Text = SetObjectives_DAL.getPreviouslySavedNote1(strEmpDisplayName, Active_Rate_Goals_Year);
-                    EvalNotes notes = SetObjectives_DAL.getPreviouslySavedEvalNotes(strEmpDisplayName, Active_Rate_Goals_Year);
-                    txtNote_ReasonForRating1or5.Text = notes.ReasonForRating1or5;
-                    txtNote_RecommendedCourses.Text = notes.RecommendedCourses;
+                           EvalNotes notes = SetObjectives_DAL.getPreviouslySavedEvalNotes(strEmpDisplayName, Active_Rate_Goals_Year);
+                           txtNote_ReasonForRating1or5.Text = notes.ReasonForRating1or5;
+                           txtNote_RecommendedCourses.Text = notes.RecommendedCourses;
 
-                    if (!Check_If_Emp_and_Year_saved_before())
-                    {
-                        getStandardSkills();
-                    }
+                           if (!Check_If_Emp_and_Year_saved_before())
+                           {
+                               getStandardSkills();
+                           }
 
-                    Bind_Data_To_Controls();
+                           Bind_Data_To_Controls();
 
                     #endregion Data Binding To UI Controls
                 }
 
-                if (ReadOnly_Mode == true)
-                {
-                    Make_ReadOnly_Mode();
-                }
-            });
+                       if (ReadOnly_Mode == true)
+                       {
+                           Make_ReadOnly_Mode();
+                       }
+                   });
+            }
+            catch (Exception ex)
+            {
+                Send_Exception_Email(ex.Message);
+            }
+        }
+
+        private void Make_NoObjectivesFound_Mode()
+        {
+            lblNoObjectivesFound_Warning.Visible = true;
+
+            gvwRate.Visible = false;
+            gvw_Std_Skills.Visible = false;
+            txtNote1.Visible = false;
+            txtNote_ReasonForRating1or5.Visible = false;
+            txtNote_RecommendedCourses.Visible = false;
+            header1.Visible = false;
+            header2.Visible = false;
+            btnSubmit.Visible = false;
         }
 
         private void Make_ReadOnly_Mode()
@@ -441,16 +471,23 @@ namespace EPM.UI.RateObjectivesEmpWP
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            try
             {
-                if (Page.IsValid)
-                {
-                    SaveToSP();
-                    Show_Success_Message("تم حفظ التقييم بنجاح");
-                    WFStatusUpdater.Change_State_to(WF_States.ObjsAndSkills_Rated, strEmpDisplayName, Active_Rate_Goals_Year);
-                    Emailer.Send_ObjsAndSkills_Rated_Email_to_Emp(intended_Emp, Active_Rate_Goals_Year);
-                }
-            });
+                SPSecurity.RunWithElevatedPrivileges(delegate ()
+                    {
+                        if (Page.IsValid)
+                        {
+                            SaveToSP();
+                            Show_Success_Message("تم حفظ التقييم بنجاح");
+                            WFStatusUpdater.Change_State_to(WF_States.ObjsAndSkills_Rated, strEmpDisplayName, Active_Rate_Goals_Year);
+                            Emailer.Send_ObjsAndSkills_Rated_Email_to_Emp(intended_Emp, Active_Rate_Goals_Year);
+                        }
+                    });
+            }
+            catch (Exception ex)
+            {
+                Send_Exception_Email(ex.Message);
+            }
         }
 
         private void SaveToSP()
@@ -526,20 +563,27 @@ namespace EPM.UI.RateObjectivesEmpWP
 
         protected void gvw_Std_Skills_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            try
             {
-                var dd = e.Row.Cells[1].FindControl("ddl_Std_Skill_Rating") as DropDownList;
-                if (null != dd)
+                if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    if (tbl_Rated_Skills.Rows.Count > 0)
+                    var dd = e.Row.Cells[1].FindControl("ddl_Std_Skill_Rating") as DropDownList;
+                    if (null != dd)
                     {
-                        dd.SelectedValue = tbl_Rated_Skills.Rows[e.Row.RowIndex]["Rating"].ToString();
-                    }
-                    else
-                    {
-                        dd.SelectedValue = "3";
+                        if (tbl_Rated_Skills.Rows.Count > 0)
+                        {
+                            dd.SelectedValue = tbl_Rated_Skills.Rows[e.Row.RowIndex]["Rating"].ToString();
+                        }
+                        else
+                        {
+                            dd.SelectedValue = "3";
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                Send_Exception_Email(ex.Message);
             }
         }
 
@@ -547,6 +591,11 @@ namespace EPM.UI.RateObjectivesEmpWP
         {
             divSuccess.Visible = true;
             lblSuccess.Text = m;
+        }
+
+        public void Send_Exception_Email(string errorMessage)
+        {
+            SPUtility.SendEmail(SPContext.Current.Web, true, true, "sherif@zayed.org.ae", "Exception happened in EPM", errorMessage);
         }
     }
 }

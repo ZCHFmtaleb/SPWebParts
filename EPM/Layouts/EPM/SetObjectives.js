@@ -64,19 +64,19 @@ function Calc_Final_Result() {
 function Refresh_Commentary(r) {
     switch (Number(r)) {
         case 1:
-            $("#Commentary").html("بحاجة إلى التحسين العاجل/ ضعيف");
+            $("#Commentary").html("ضعيف");
             break;
         case 2:
-            $("#Commentary").html("أقل من المتوقع/ مقبول");
+            $("#Commentary").html("مقبول");
             break;
         case 3:
-            $("#Commentary").html("حسب المتوقع/ جيد");
+            $("#Commentary").html("جيد");
             break;
         case 4:
-            $("#Commentary").html("فوق المتوقع/ جيد جداً");
+            $("#Commentary").html("جيد جداً");
             break;
         case 5:
-            $("#Commentary").html("متميز/ممتاز");
+            $("#Commentary").html("ممتاز");
             break;
         default:
             $("#Commentary").html("");

@@ -148,7 +148,7 @@ namespace EPM.DAL
                     SPListItemCollection  results = spList.GetItems(qry);
                     if (results.Count > 0)
                     {
-                        Note1 = results[0]["Note1"].ToString();
+                        Note1 = results[0]["Note1"]?.ToString() ?? "";
                     }
                 }
             });
@@ -184,8 +184,8 @@ namespace EPM.DAL
                     SPListItemCollection results = spList.GetItems(qry);
                     if (results.Count > 0)
                     {
-                        notes.ReasonForRating1or5 = results[0]["Note_ReasonForRating1or5"].ToString();
-                        notes.RecommendedCourses = results[0]["Note_RecommendedCourses"].ToString();
+                        notes.ReasonForRating1or5 = (results[0]["Note_ReasonForRating1or5"])?.ToString() ?? "";
+                        notes.RecommendedCourses = results[0]["Note_RecommendedCourses"]?.ToString() ?? "";
                     }
                 }
             });
