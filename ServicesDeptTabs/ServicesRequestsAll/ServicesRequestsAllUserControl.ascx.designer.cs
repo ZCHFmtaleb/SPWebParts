@@ -67,15 +67,6 @@ namespace ServicesDeptTabs.ServicesRequestsAll {
         protected global::System.Web.UI.WebControls.DropDownList ddlPrimaryGoal;
         
         /// <summary>
-        /// rfv_ddlPrimaryGoal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_ddlPrimaryGoal;
-        
-        /// <summary>
         /// txtQuantity control.
         /// </summary>
         /// <remarks>
@@ -83,24 +74,6 @@ namespace ServicesDeptTabs.ServicesRequestsAll {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtQuantity;
-        
-        /// <summary>
-        /// rfv_txtQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_txtQuantity;
-        
-        /// <summary>
-        /// rgv_txtQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rgv_txtQuantity;
         
         /// <summary>
         /// txtNotes control.

@@ -8,6 +8,7 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ServicesRequestsAllUserControl.ascx.cs" Inherits="ServicesDeptTabs.ServicesRequestsAll.ServicesRequestsAllUserControl" %>
 
 
+
 <SharePoint:CssRegistration runat="server" Name="/_layouts/15/SPWebParts/EPMStyle.css" After="/Style%20Library/css/ShareBoot.css" />
   <link rel="stylesheet" href="/Style%20Library/jQueryUI/base/jquery-ui.css">
   <script type="text/javascript" src="/Style%20Library/jQueryUI/base/jquery-ui.js"></script>
@@ -27,8 +28,7 @@
 
 
 
-
-<div id="container" dir="rtl" align="right"  style="border:none !important;">
+<div id="container" dir="rtl" style="border:none !important;text-align:right ">
 
 <div id="page_head">
     <h1 runat="server" id="PageTitle">طلبات إدارة الخدمات </h1>
@@ -59,7 +59,7 @@
         <td colspan="3">
             <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1" DisplayAfter="100" DynamicLayout="False">
                 <ProgressTemplate>
-                    <img src="../_layouts/15/SPWebParts/spinner.gif" alt="جارى التحميل" width="40" height="40" />
+                    <img src="../_layouts/15/ServicesDeptTabs/spinner.gif" alt="جارى التحميل" width="40" height="40" />
                 </ProgressTemplate>
             </asp:UpdateProgress>
         </td>
@@ -70,8 +70,8 @@
             <asp:DropDownList ID="ddlPrimaryGoal" runat="server" Width="300px" AppendDataBoundItems="True" ValidationGroup="vg1">
                 <asp:ListItem Selected="True" Value="0">اختر الصنف المطلوب</asp:ListItem>
             </asp:DropDownList>
-            <asp:RequiredFieldValidator ID="rfv_ddlPrimaryGoal" runat="server" Display="Dynamic" ErrorMessage="الرجاء اختيار الصنف المطلوب" ControlToValidate="ddlPrimaryGoal" ForeColor="Red" ValidationGroup="vg1"
-            InitialValue="0">*</asp:RequiredFieldValidator>
+            <%--<asp:RequiredFieldValidator ID="rfv_ddlPrimaryGoal" runat="server" Display="Dynamic" ErrorMessage="الرجاء اختيار الصنف المطلوب" ControlToValidate="ddlPrimaryGoal" ForeColor="Red" ValidationGroup="vg1"
+            InitialValue="0">*</asp:RequiredFieldValidator>--%>
         </td>
     </tr>
 </table>
@@ -88,8 +88,8 @@
             الكمية</td>
         <td>
             <asp:TextBox ID="txtQuantity" runat="server" MaxLength="3" Width="50px" ValidationGroup="vg1" Text="1"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="rfv_txtQuantity" runat="server" ControlToValidate="txtQuantity" Display="Dynamic" ErrorMessage="الرجاء ادخال الكمية المطلوبة" ForeColor="Red" ValidationGroup="vg1">*</asp:RequiredFieldValidator>
-            <asp:RangeValidator ID="rgv_txtQuantity" runat="server" ControlToValidate="txtQuantity" Display="Dynamic" ErrorMessage="لابد ان تكون القيمة المدخلة رقما صحيحا من 1 إلى 999" ForeColor="Red" ValidationGroup="vg1" MaximumValue="999" MinimumValue="1" Type="Integer">*</asp:RangeValidator>
+            <%--<asp:RequiredFieldValidator ID="rfv_txtQuantity" runat="server" ControlToValidate="txtQuantity" Display="Dynamic" ErrorMessage="الرجاء ادخال الكمية المطلوبة" ForeColor="Red" ValidationGroup="vg1">*</asp:RequiredFieldValidator>--%>
+            <%--<asp:RangeValidator ID="rgv_txtQuantity" runat="server" ControlToValidate="txtQuantity" Display="Dynamic" ErrorMessage="لابد ان تكون القيمة المدخلة رقما صحيحا من 1 إلى 999" ForeColor="Red" ValidationGroup="vg1" MaximumValue="999" MinimumValue="1" Type="Integer">*</asp:RangeValidator>--%>
         </td>
     </tr>
     <tr>
@@ -117,8 +117,8 @@
         <asp:TemplateField HeaderText="الكمية">
             <EditItemTemplate>
                  <asp:TextBox ID="txt_gv_Quantity" runat="server" Text='<%# Bind("Quantity") %>' ValidationGroup="vg3" MaxLength="3" Width="50px"></asp:TextBox>
-                 <asp:RequiredFieldValidator ID="rfv_txtQuantity" runat="server" ControlToValidate="txt_gv_Quantity" Display="Dynamic" ErrorMessage="الكمية" ForeColor="Red" ValidationGroup="vg3">*</asp:RequiredFieldValidator>
-                 <asp:RangeValidator ID="rgv_txtQuantity" runat="server" ControlToValidate="txt_gv_Quantity" Display="Dynamic" ErrorMessage="رقم من 1 إلى 999" ForeColor="Red" ValidationGroup="vg3" MaximumValue="999" MinimumValue="1" Type="Integer">*</asp:RangeValidator>
+                 <%--<asp:RequiredFieldValidator ID="rfv_txtQuantity" runat="server" ControlToValidate="txt_gv_Quantity" Display="Dynamic" ErrorMessage="الكمية" ForeColor="Red" ValidationGroup="vg3">*</asp:RequiredFieldValidator>--%>
+                 <%--<asp:RangeValidator ID="rgv_txtQuantity" runat="server" ControlToValidate="txt_gv_Quantity" Display="Dynamic" ErrorMessage="رقم من 1 إلى 999" ForeColor="Red" ValidationGroup="vg3" MaximumValue="999" MinimumValue="1" Type="Integer">*</asp:RangeValidator>--%>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label5" runat="server" Text='<%# Bind("Quantity") %>'></asp:Label>

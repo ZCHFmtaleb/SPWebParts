@@ -81,9 +81,6 @@
       <FeatureId>{28961be3-c318-443c-8bef-970e689058f1}</FeatureId>
     </None>
     <None Include="key.snk" />
-    <None Include="Layouts\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{449ceee6-8274-41bb-90be-55a5840f8193}</SharePointProjectItemId>
-    </None>
     <None Include="Package\Package.package">
       <PackageId>{9c0052f9-169d-440b-b010-13ac8c406942}</PackageId>
     </None>
@@ -110,9 +107,6 @@
     <Content Include="Features\ZayedServicesDeptFeature\ZayedServicesDeptFeature.Template.xml">
       <DependentUpon>ZayedServicesDeptFeature.feature</DependentUpon>
     </Content>
-    <Content Include="Layouts\ServicesDeptTabs\Serivces_Request_Email.html" />
-    <Content Include="Layouts\ServicesDeptTabs\Serivces_Request_Email_to_DM_To_Approve.html" />
-    <Content Include="Layouts\ServicesDeptTabs\ServicesDeptTabsStyle.css" />
     <Content Include="ServicesRequestsAll\Elements.xml" />
     <Content Include="ServicesRequestsAll\ServicesRequestsAllUserControl.ascx" />
     <Content Include="SPMetal.xml" />
