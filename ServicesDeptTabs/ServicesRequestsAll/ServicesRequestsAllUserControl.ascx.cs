@@ -318,7 +318,7 @@ namespace ServicesDeptTabs.ServicesRequestsAll
             if (Request.QueryString["empid"] != null)
             {
                 strEmpDisplayName = Request.QueryString["empid"].ToString();
-                btnSubmit.Visible = false;
+                //btnSubmit.Visible = false;
             }
             else
             {
