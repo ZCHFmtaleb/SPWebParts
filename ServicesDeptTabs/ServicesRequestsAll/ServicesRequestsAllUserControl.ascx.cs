@@ -222,7 +222,7 @@ namespace ServicesDeptTabs.ServicesRequestsAll
             {
                 SPSecurity.RunWithElevatedPrivileges(delegate ()
                 {
-                    divSuccess.Visible = false;
+                    //divSuccess.Visible = false;
 
                     getEmp_from_QueryString_or_currentUser();
 
@@ -231,11 +231,11 @@ namespace ServicesDeptTabs.ServicesRequestsAll
 
                     if (!IsPostBack)
                     {
-                        fill_ddlCat();
+                        //  fill_ddlCat();
 
                         Bind_Data_To_Controls();
 
-                        ddlCat_SelectedIndexChanged(new object(), new EventArgs());
+                        //  ddlCat_SelectedIndexChanged(new object(), new EventArgs());
 
                         //  Planning_Consultant_Email = Emp_DAL.get_Planning_Consultant_Email();
                     }
@@ -343,70 +343,70 @@ namespace ServicesDeptTabs.ServicesRequestsAll
             //lblEmpDM.Text = intended_Emp.Emp_DM_name;
         }
 
-        private void fill_ddlCat()
-        {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
-                SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.Lists.TryGetList("أصناف المخازن");
+        //private void fill_ddlCat()
+        //{
+        //    SPSecurity.RunWithElevatedPrivileges(delegate ()
+        //    {
+        //        SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+        //        SPWeb spWeb = oSite.OpenWeb();
+        //        SPList spList = spWeb.Lists.TryGetList("أصناف المخازن");
 
-                SPFieldChoice CatChoice = (SPFieldChoice)spList.Fields["المجموعة"];
-                for (int i = 0; i < CatChoice.Choices.Count; i++)
-                {
-                    ddlCat.Items.Add(CatChoice.Choices[i].ToString());
-                }
-            });
-        }
+        //        SPFieldChoice CatChoice = (SPFieldChoice)spList.Fields["المجموعة"];
+        //        for (int i = 0; i < CatChoice.Choices.Count; i++)
+        //        {
+        //            ddlCat.Items.Add(CatChoice.Choices[i].ToString());
+        //        }
+        //    });
+        //}
 
-        protected void ddlCat_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                ddlPrimaryGoal.Items.Clear();
-                ddlPrimaryGoal.Items.Add(new ListItem("اختر الصنف المطلوب", "0"));
-                fill_ddlPrimaryGoal();
-                ddlPrimaryGoal.DataSource = tblPrimaryGoal;
-                ddlPrimaryGoal.DataValueField = "Title";
-                ddlPrimaryGoal.DataTextField = "Title";
-                ddlPrimaryGoal.DataBind();
-            }
-            catch (Exception)
-            {
-            }
-        }
+        //protected void ddlCat_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        ddlPrimaryGoal.Items.Clear();
+        //        ddlPrimaryGoal.Items.Add(new ListItem("اختر الصنف المطلوب", "0"));
+        //        // fill_ddlPrimaryGoal();
+        //        ddlPrimaryGoal.DataSource = tblPrimaryGoal;
+        //        ddlPrimaryGoal.DataValueField = "Title";
+        //        ddlPrimaryGoal.DataTextField = "Title";
+        //        ddlPrimaryGoal.DataBind();
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+        //}
 
-        private void fill_ddlPrimaryGoal()
-        {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-                SPSite oSite = new SPSite(SPContext.Current.Web.Url);
-                SPWeb spWeb = oSite.OpenWeb();
-                SPList spList = spWeb.Lists.TryGetList("أصناف المخازن");
-                if (spList != null)
-                {
-                    SPQuery qry = new SPQuery();
-                    qry.Query =
-                    @"   <Where>
-                                    <Eq>
-                                        <FieldRef Name='Category' />
-                                        <Value Type='Choice'>" + ddlCat.SelectedItem.Text + @"</Value>
-                                    </Eq>
-                                </Where>";
-                    qry.ViewFieldsOnly = true;
-                    qry.ViewFields = @"<FieldRef Name='Title' />";
-                    SPListItemCollection listItems = spList.GetItems(qry);
-                    tblPrimaryGoal = listItems.GetDataTable();
-                }
-            });
-        }
+        //private void fill_ddlPrimaryGoal()
+        //{
+        //    SPSecurity.RunWithElevatedPrivileges(delegate ()
+        //    {
+        //        SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+        //        SPWeb spWeb = oSite.OpenWeb();
+        //        SPList spList = spWeb.Lists.TryGetList("أصناف المخازن");
+        //        if (spList != null)
+        //        {
+        //            SPQuery qry = new SPQuery();
+        //            qry.Query =
+        //            @"   <Where>
+        //                            <Eq>
+        //                                <FieldRef Name='Category' />
+        //                                <Value Type='Choice'>" + ddlCat.SelectedItem.Text + @"</Value>
+        //                            </Eq>
+        //                        </Where>";
+        //            qry.ViewFieldsOnly = true;
+        //            qry.ViewFields = @"<FieldRef Name='Title' />";
+        //            SPListItemCollection listItems = spList.GetItems(qry);
+        //            tblPrimaryGoal = listItems.GetDataTable();
+        //        }
+        //    });
+        //}
 
         protected void Bind_Data_To_Controls()
         {
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
-                gvw_Requested_Items.DataSource = tbl_Requested_Items;
-                gvw_Requested_Items.DataBind();
+                //gvw_Requested_Items.DataSource = tbl_Requested_Items;
+                //gvw_Requested_Items.DataBind();
             });
         }
 
@@ -422,8 +422,8 @@ namespace ServicesDeptTabs.ServicesRequestsAll
                 {
                     DataRow NewRow = tbl_Requested_Items.NewRow();
 
-                    NewRow["ItemGeneralName"] = ddlPrimaryGoal.SelectedItem.Text;
-                    NewRow["Quantity"] = int.Parse(txtQuantity.Text);
+                    //NewRow["ItemGeneralName"] = ddlPrimaryGoal.SelectedItem.Text;
+                    //NewRow["Quantity"] = int.Parse(txtQuantity.Text);
                     NewRow["Notes"] = txtNotes.Text;
 
                     tbl_Requested_Items.Rows.Add(NewRow);
@@ -435,70 +435,70 @@ namespace ServicesDeptTabs.ServicesRequestsAll
             }
         }
 
-        protected void gvw_Requested_Items_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            try
-            {
-                SPSecurity.RunWithElevatedPrivileges(delegate ()
-                {
-                    gvw_Requested_Items.EditIndex = e.NewEditIndex;
-                    Bind_Data_To_Controls();
-                    // GridViewRow row = (GridViewRow)gvw_Requested_Items.Rows[e.NewEditIndex];
-                    // ((DropDownList)row.Cells[2].FindControl("ddlObjQ_gv")).SelectedValue = tblObjectives.Rows[e.NewEditIndex][2].ToString();
-                });
-            }
-            catch (Exception)
-            {
-            }
-        }
+        //protected void gvw_Requested_Items_RowEditing(object sender, GridViewEditEventArgs e)
+        //{
+        //    try
+        //    {
+        //        SPSecurity.RunWithElevatedPrivileges(delegate ()
+        //        {
+        //            gvw_Requested_Items.EditIndex = e.NewEditIndex;
+        //            Bind_Data_To_Controls();
+        //            // GridViewRow row = (GridViewRow)gvw_Requested_Items.Rows[e.NewEditIndex];
+        //            // ((DropDownList)row.Cells[2].FindControl("ddlObjQ_gv")).SelectedValue = tblObjectives.Rows[e.NewEditIndex][2].ToString();
+        //        });
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+        //}
 
-        protected void gvw_Requested_Items_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-            try
-            {
-                SPSecurity.RunWithElevatedPrivileges(delegate ()
-                {
-                    GridViewRow row = (GridViewRow)gvw_Requested_Items.Rows[e.RowIndex];
-                    tbl_Requested_Items.Rows[e.RowIndex]["Quantity"] = int.Parse(e.NewValues[0].ToString());
-                    tbl_Requested_Items.Rows[e.RowIndex]["Notes"] = Convert.ToString(e.NewValues[1]);
-                    gvw_Requested_Items.EditIndex = -1;
-                    Bind_Data_To_Controls();
-                });
-            }
-            catch (Exception)
-            {
-            }
-        }
+        //protected void gvw_Requested_Items_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        //{
+        //    try
+        //    {
+        //        SPSecurity.RunWithElevatedPrivileges(delegate ()
+        //        {
+        //            GridViewRow row = (GridViewRow)gvw_Requested_Items.Rows[e.RowIndex];
+        //            tbl_Requested_Items.Rows[e.RowIndex]["Quantity"] = int.Parse(e.NewValues[0].ToString());
+        //            tbl_Requested_Items.Rows[e.RowIndex]["Notes"] = Convert.ToString(e.NewValues[1]);
+        //            gvw_Requested_Items.EditIndex = -1;
+        //            Bind_Data_To_Controls();
+        //        });
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+        //}
 
-        protected void gvw_Requested_Items_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        {
-            try
-            {
-                SPSecurity.RunWithElevatedPrivileges(delegate ()
-                {
-                    gvw_Requested_Items.EditIndex = -1;
-                    Bind_Data_To_Controls();
-                });
-            }
-            catch (Exception)
-            {
-            }
-        }
+        //protected void gvw_Requested_Items_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        //{
+        //    try
+        //    {
+        //        SPSecurity.RunWithElevatedPrivileges(delegate ()
+        //        {
+        //            gvw_Requested_Items.EditIndex = -1;
+        //            Bind_Data_To_Controls();
+        //        });
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+        //}
 
-        protected void gvw_Requested_Items_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            try
-            {
-                SPSecurity.RunWithElevatedPrivileges(delegate ()
-                {
-                    tbl_Requested_Items.Rows.RemoveAt(e.RowIndex);
-                    Bind_Data_To_Controls();
-                });
-            }
-            catch (Exception)
-            {
-            }
-        }
+        //protected void gvw_Requested_Items_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        //{
+        //    try
+        //    {
+        //        SPSecurity.RunWithElevatedPrivileges(delegate ()
+        //        {
+        //            tbl_Requested_Items.Rows.RemoveAt(e.RowIndex);
+        //            Bind_Data_To_Controls();
+        //        });
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+        //}
 
         #endregion Grid
 
@@ -513,7 +513,7 @@ namespace ServicesDeptTabs.ServicesRequestsAll
                     if (Page.IsValid)
                     {
                         string b_guid = SaveToSP();
-                        Show_Success_Message("تم حفظ الطلب بنجاح");
+                        //Show_Success_Message("تم حفظ الطلب بنجاح");
                         //Send_Request_Email(ServicesRequestTypes.Stationery, b_guid);
                         Send_Serivces_Request_Email_to_DM_To_Approve(b_guid);
                     }
@@ -563,11 +563,11 @@ namespace ServicesDeptTabs.ServicesRequestsAll
             return b_guid;
         }
 
-        private void Show_Success_Message(string m)
-        {
-            divSuccess.Visible = true;
-            lblSuccess.Text = m;
-        }
+        //private void Show_Success_Message(string m)
+        //{
+        //    divSuccess.Visible = true;
+        //    lblSuccess.Text = m;
+        //}
 
         #endregion Save
 

@@ -15,47 +15,41 @@
     </div>
     <div class="divAddGoal" runat="server" id="div_of_AddingGoal">
         <div class="Form_Table_css">
-
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-                <ContentTemplate>
                     <table>
                         <tr>
                             <td style="width: 36% !important;">مجموعة الصنف</td>
                             <td>
-                                <asp:DropDownList ID="ddlCat" runat="server" AutoPostBack="True" Width="300px" OnSelectedIndexChanged="ddlCat_SelectedIndexChanged">
-                                </asp:DropDownList>
+                                <select id="ddlCat" style="width:200px" onchange="GetItemsOfSelectedCat(this.value)">
+                                    <option  value="اختر مجموعة الصنف">اختر مجموعة الصنف</option>
+                                </select>
                             </td>
                             <td colspan="3">
-                                <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1" DisplayAfter="100" DynamicLayout="False">
-                                    <ProgressTemplate>
-                                        <img src="../_layouts/15/ServicesDeptTabs/spinner.gif" alt="جارى التحميل" width="40" height="40" />
-                                    </ProgressTemplate>
-                                </asp:UpdateProgress>
+                                
                             </td>
                         </tr>
                         <tr>
                             <td>الصنف المطلوب</td>
                             <td>
-                                <asp:DropDownList ID="ddlPrimaryGoal" runat="server" Width="300px" AppendDataBoundItems="True" ValidationGroup="vg1">
+                                <%--<asp:DropDownList ID="ddlPrimaryGoal" runat="server" Width="300px" AppendDataBoundItems="True" ValidationGroup="vg1">
                                     <asp:ListItem Selected="True" Value="0">اختر الصنف المطلوب</asp:ListItem>
-                                </asp:DropDownList>
+                                </asp:DropDownList>--%>
+                                 <select id="ddlItem" style="width:350px" >
+                                    <option  value="اختر الصنف المطلوب">اختر الصنف المطلوب</option>
+                                </select>
                                 <%--<asp:RequiredFieldValidator ID="rfv_ddlPrimaryGoal" runat="server" Display="Dynamic" ErrorMessage="الرجاء اختيار الصنف المطلوب" ControlToValidate="ddlPrimaryGoal" ForeColor="Red" ValidationGroup="vg1"
             InitialValue="0">*</asp:RequiredFieldValidator>--%>
                             </td>
                         </tr>
                     </table>
 
-                </ContentTemplate>
-                <Triggers>
-                    <asp:AsyncPostBackTrigger ControlID="ddlCat" EventName="SelectedIndexChanged" />
-                </Triggers>
-            </asp:UpdatePanel>
+             
             <table class="Form_Table_css">
 
                 <tr>
                     <td>الكمية</td>
                     <td>
-                        <asp:TextBox ID="txtQuantity" runat="server" MaxLength="3" Width="50px" ValidationGroup="vg1" Text="1"></asp:TextBox>
+                        <div id="txtQuantity"></div>
+                        <%--<asp:TextBox ID="txtQuantity" runat="server" MaxLength="3" Width="50px" ValidationGroup="vg1" Text="1"></asp:TextBox>--%>
                         <%--<asp:RequiredFieldValidator ID="rfv_txtQuantity" runat="server" ControlToValidate="txtQuantity" Display="Dynamic" ErrorMessage="الرجاء ادخال الكمية المطلوبة" ForeColor="Red" ValidationGroup="vg1">*</asp:RequiredFieldValidator>--%>
                         <%--<asp:RangeValidator ID="rgv_txtQuantity" runat="server" ControlToValidate="txtQuantity" Display="Dynamic" ErrorMessage="لابد ان تكون القيمة المدخلة رقما صحيحا من 1 إلى 999" ForeColor="Red" ValidationGroup="vg1" MaximumValue="999" MinimumValue="1" Type="Integer">*</asp:RangeValidator>--%>
                     </td>
@@ -77,7 +71,7 @@
         </div>
     </div>
     <div id='jqxWidget'>
-        <div id="grid"></div>
+        <div id="jqxgrid" style="width:800px;"></div>
         <div style="font-size: 12px; font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif; margin-top: 30px;">
             <div id="cellbegineditevent"></div>
             <div style="margin-top: 10px;" id="cellendeditevent"></div>
@@ -120,6 +114,8 @@
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxdatetimeinput.js"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/globalization/globalize.js"></script>
 
+<script src="/_layouts/15/ServicesDeptTabs/RESTCalls/GetCategories.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/Form.js"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/Grid.js"></script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">

@@ -125,6 +125,7 @@
     <Content Include="Features\ZayedServicesDeptFeature\ZayedServicesDeptFeature.Template.xml">
       <DependentUpon>ZayedServicesDeptFeature.feature</DependentUpon>
     </Content>
+    <Content Include="Layouts\ServicesDeptTabs\Form.js" />
     <Content Include="Layouts\ServicesDeptTabs\Grid.js" />
     <Content Include="Layouts\ServicesDeptTabs\jqscripts\angular-sanitize.min.js" />
     <Content Include="Layouts\ServicesDeptTabs\jqscripts\angular-ui-router.min.js" />
@@ -613,6 +614,7 @@
     <Content Include="Layouts\ServicesDeptTabs\jqwidgets\styles\jqx.ui-sunny.css" />
     <Content Include="Layouts\ServicesDeptTabs\jqwidgets\styles\jqx.web.css" />
     <Content Include="Layouts\ServicesDeptTabs\jqwidgets\styles\jqx.windowsphone.css" />
+    <Content Include="Layouts\ServicesDeptTabs\RESTCalls\GetCategories.js" />
     <Content Include="Layouts\ServicesDeptTabs\RESTCalls\StationeryRequests.js" />
     <Content Include="Layouts\ServicesDeptTabs\Serivces_Request_Email.html" />
     <Content Include="Layouts\ServicesDeptTabs\Serivces_Request_Email_to_DM_To_Approve.html" />

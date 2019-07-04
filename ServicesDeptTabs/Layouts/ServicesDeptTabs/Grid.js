@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     // prepare the data
-    var data = generatedata(200);
+    var data = "";
 
     var source =
     {
@@ -27,9 +27,9 @@
     var dataAdapter = new $.jqx.dataAdapter(source);
 
     // initialize jqxGrid
-    $("#grid").jqxGrid(
+    $("#jqxgrid").jqxGrid(
         {
-            width: getWidth('Grid'),
+            width:800,
             source: dataAdapter,
             editable: true,
             enabletooltips: true,
@@ -42,7 +42,7 @@
                 {
                     text: 'Ship Date', datafield: 'date', columntype: 'datetimeinput', width: 110, align: 'right', cellsalign: 'right', cellsformat: 'd',
                     validation: function (cell, value) {
-                        if (value == "")
+                        if (value === "")
                             return true;
 
                         var year = value.getFullYear();
@@ -80,13 +80,15 @@
             ]
         });
 
+    $("#jqxgrid").jqxGrid('addrow', null, {});
+
     // events
-    $("#grid").on('cellbeginedit', function (event) {
+    $("#jqxgrid").on('cellbeginedit', function (event) {
         var args = event.args;
         $("#cellbegineditevent").text("Event Type: cellbeginedit, Column: " + args.datafield + ", Row: " + (1 + args.rowindex) + ", Value: " + args.value);
     });
 
-    $("#grid").on('cellendedit', function (event) {
+    $("#jqxgrid").on('cellendedit', function (event) {
         var args = event.args;
         $("#cellendeditevent").text("Event Type: cellendedit, Column: " + args.datafield + ", Row: " + (1 + args.rowindex) + ", Value: " + args.value);
     });
