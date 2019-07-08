@@ -19,7 +19,7 @@
                         <tr>
                             <td style="width: 36% !important;">مجموعة الصنف</td>
                             <td>
-                                <select id="ddlCat" style="width:200px" onchange="GetItemsOfSelectedCat(this.value)">
+                                <select id="ddlCat" style="width:200px" onchange="GetItemsOfSelectedCat()" >
                                     <option  value="اختر مجموعة الصنف">اختر مجموعة الصنف</option>
                                 </select>
                             </td>
@@ -62,26 +62,20 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <asp:Button ID="btnAddItem" runat="server" Text="إضافة" OnClick="btnAddItem_Click" ValidationGroup="vg1" Font-Size="Large" Height="50px" Width="100px" Style="margin-top: 20px;" />
-                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ValidationGroup="vg1" />
+                        <input id="btnAddStationeryItemToGrid" type="Button" value="إضافة" />
+                        <%--<asp:Button ID="btnAddItem" runat="server" Text="إضافة" OnClick="btnAddItem_Click" ValidationGroup="vg1" Font-Size="Large" Height="50px" Width="100px" Style="margin-top: 20px;" />
+                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ValidationGroup="vg1" />--%>
                     </td>
                 </tr>
             </table>
 
         </div>
     </div>
-    <div id='jqxWidget'>
-        <div id="jqxgrid" style="width:800px;"></div>
-        <div style="font-size: 12px; font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif; margin-top: 30px;">
-            <div id="cellbegineditevent"></div>
-            <div style="margin-top: 10px;" id="cellendeditevent"></div>
-        </div>
+    <div id="jqxgrid">
     </div>
-    <input id="Submit1" type="Button" value="submit" onclick="createListItem()" />
-
 </div>
 
-<%--======================================================================================================== --%>
+<!-- ===========================Ref=============================================================================== -->
 
 <SharePoint:CssRegistration runat="server" Name="/_layouts/15/SPWebParts/EPMStyle.css" After="/Style%20Library/css/ShareBoot.css" />
 <link rel="stylesheet" href="/Style%20Library/jQueryUI/base/jquery-ui.css">
@@ -113,11 +107,13 @@
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxnumberinput.js"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxdatetimeinput.js"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/globalization/globalize.js"></script>
-
-<script src="/_layouts/15/ServicesDeptTabs/RESTCalls/GetCategories.js"></script>
-<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/Form.js"></script>
-<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/Grid.js"></script>
-
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/generatedata.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-<script src="/_layouts/15/ServicesDeptTabs/RESTCalls/StationeryRequests.js"></script>
+
+<!-- ===========================MyJS=============================================================================== -->
+
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/ReadCategories.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/PageLoad.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/AddStationeryItemToGrid.js"></script>
+
