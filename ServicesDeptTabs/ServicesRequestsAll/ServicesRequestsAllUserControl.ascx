@@ -73,6 +73,11 @@
     </div>
     <div id="jqxgrid">
     </div>
+    <input id="deleterowbutton" type="button" value="حذف صنف" />
+
+    <div style="width:50%; text-align:center">
+          <input id="btnSaveAllRowsToServer" type="button" value="إرسال"  style="font-size:x-large;"/>
+    </div>
 </div>
 
 <!-- ===========================Ref=============================================================================== -->
@@ -108,8 +113,9 @@
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxdatetimeinput.js"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/globalization/globalize.js"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/generatedata.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 
 <!-- ===========================MyJS=============================================================================== -->
 
