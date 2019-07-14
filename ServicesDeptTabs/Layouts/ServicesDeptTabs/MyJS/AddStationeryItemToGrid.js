@@ -1,10 +1,8 @@
 ﻿function AddStationeryItemToGrid() {
+    var row = {};
+    row["Title"] = $('#ddlItem').val();
+    row["Quantity"] = $('#txtQuantity').val();
+    row["Notes"] = $('#txtNotes').val();
 
-    var row2 = {};
-    row2["firstname"] = $('#ddlCat').val();
-    row2["lastname"] = $('#ddlItem').val();
-    row2["productname"] = $('#txtQuantity').val();
-
-    var commit = $("#jqxgrid").jqxGrid('addrow', null, row2);
-
+    var commit = $("#jqxgrid").jqxGrid('addrow', null, row);
 }

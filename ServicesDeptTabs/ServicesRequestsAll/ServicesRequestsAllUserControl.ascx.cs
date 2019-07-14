@@ -424,7 +424,7 @@ namespace ServicesDeptTabs.ServicesRequestsAll
 
                     //NewRow["ItemGeneralName"] = ddlPrimaryGoal.SelectedItem.Text;
                     //NewRow["Quantity"] = int.Parse(txtQuantity.Text);
-                    NewRow["Notes"] = txtNotes.Text;
+                    //NewRow["Notes"] = txtNotes.Text;
 
                     tbl_Requested_Items.Rows.Add(NewRow);
                     Bind_Data_To_Controls();

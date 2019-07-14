@@ -57,7 +57,7 @@
                 <tr>
                     <td>ملاحظات</td>
                     <td>
-                        <asp:TextBox ID="txtNotes" runat="server" MaxLength="255" Width="500px"></asp:TextBox>
+                        <input id="txtNotes" type="text" style="width:500px;" maxlength="255" />
                     </td>
                 </tr>
                 <tr>
@@ -83,6 +83,13 @@
 <!-- ===========================Ref=============================================================================== -->
 
 <SharePoint:CssRegistration runat="server" Name="/_layouts/15/SPWebParts/EPMStyle.css" After="/Style%20Library/css/ShareBoot.css" />
+
+<style>
+    .GridCellStyle{
+        direction:rtl;
+    }
+</style>
+
 <link rel="stylesheet" href="/Style%20Library/jQueryUI/base/jquery-ui.css">
 <script type="text/javascript" src="/Style%20Library/jQueryUI/base/jquery-ui.js"></script>
 
@@ -114,11 +121,18 @@
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/globalization/globalize.js"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/generatedata.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="/_layouts/MicrosoftAjax.js" type="text/javascript"></script>
+<script src="/_layouts/sp.core.js" type="text/javascript"></script>
+<script src="/_layouts/sp.runtime.js" type="text/javascript"></script>
+<script src="/_layouts/sp.js" type="text/javascript"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
 
 <!-- ===========================MyJS=============================================================================== -->
 
+<script src="http://wzrd.in/standalone/uuid%2Fv1@latest"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/ReadCategories.js"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/PageLoad.js"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/AddStationeryItemToGrid.js"></script>

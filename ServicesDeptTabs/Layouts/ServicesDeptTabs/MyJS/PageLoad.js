@@ -1,6 +1,8 @@
-﻿$(document).ready(function () {
-
+﻿var user = null;var userTitle = "";var userId = "";var loginName="";var userEmail="";
+$(document).ready(function () {
+    ExecuteOrDelayUntilScriptLoaded(GetCurrentUser, "sp.js");    GetCurrentUser();
     ReadCategories();
+    
 
     $("#txtQuantity").jqxNumberInput({
         width: '60px',
@@ -22,19 +24,20 @@
     var source = {
         localdata: row,
         datafields: [{
-            name: 'firstname',
+            name: 'Title',
             type: 'string'
         }, {
-            name: 'lastname',
+                name: 'Quantity',
             type: 'string'
         }, {
-            name: 'productname',
+                name: 'Notes',
             type: 'string'
         }],
         datatype: "array"
     };
     var adapter = new $.jqx.dataAdapter(source);
     $("#jqxgrid").jqxGrid({
+        rtl: true,
         width: 600,
         height: 200,
         source: adapter,
@@ -43,19 +46,21 @@
         editmode: 'dblclick',
         columns: [
             {
-                text: 'First Name',
-                datafield: 'firstname',
+                text: 'اسم الصنف',
+                datafield: 'Title',
                 width: 200,
-                editable: false
+                editable: false,
+                align: 'right',
+                cellsalign: 'right',
+                cellclassname: 'GridCellStyle'
             }, {
-                text: 'Last Name',
-                datafield: 'lastname',
-                width: 200
-            }, {
-                text: 'Product',
-                datafield: 'productname',
+                text: 'الكمية',
+                datafield: 'Quantity',
                 width: 200,
                 columntype: 'numberinput',
+                align: 'right',
+                cellsalign: 'right',
+                cellclassname: 'GridCellStyle',
                 validation: function (cell, value) {
                     if (value < 1 ) {
                         return { result: false, message: "لابد أن تكون الكمية من 1 إلى 99" };
@@ -65,10 +70,26 @@
                 createeditor: function (row, cellvalue, editor) {
                     editor.jqxNumberInput({ width: '60px', height: '30px', spinButtons: true, decimal: 1, digits: 2, decimalDigits: 0, min: 1, max: 99, promptChar: '' });
                 }
+            },{
+                text: 'ملاحظات',
+                datafield: 'Notes',
+                width: 200,
+                align: 'right',
+                cellsalign: 'right',
+                cellclassname: 'GridCellStyle'
             }
         ]  // end of columns
     });
 }); // end of document.ready
+
+
+function GetCurrentUser() {
+    var context = new SP.ClientContext.get_current();
+    var web = context.get_web();
+    user = web.get_currentUser(); //must load this to access info.
+    context.load(user);
+    context.executeQueryAsync(onGetCurrentUserSucceeded, onGetCurrentUserFailed);}
+function onGetCurrentUserSucceeded() {    userTitle = user.get_title();    userId = user.get_id();    loginName = user.get_loginName();    userEmail = user.get_email();    console.log("current user data are:  " + userTitle + "," + userId + "," + loginName + "," + userEmail);}function onGetCurrentUserFailed(sender, args) {    console.log('request failed ' + args.get_message() + '\n' + args.get_stackTrace());}
 
 function GetItemsOfSelectedCat() {
 
@@ -115,10 +136,10 @@ $("#btnSaveAllRowsToServer").on('click', function () {
 
     var webURL = _spPageContextInfo.webAbsoluteUrl;
     var api = "/_api/web/lists/";
-    var query = "GetByTitle('إختبار')/items";
+    var query = "GetByTitle('StationeryRequests')/items";
     var fullURL = webURL + api + query;
     var encfullURL = encodeURI(fullURL);
-
+    var guid = uuidv1();
 
     for (var i = 0; i < rowscount; i++) {
         var data = $('#jqxgrid').jqxGrid('getrowdata', i); 
@@ -127,10 +148,13 @@ $("#btnSaveAllRowsToServer").on('click', function () {
             url: encfullURL,
             type: "POST",
             data: JSON.stringify({
-                '__metadata': { 'type': 'SP.Data.ListListItem' },
-                'Title': data.firstname,
-                'LastName': data.lastname,
-                'Product': data.productname.toString()
+                '__metadata': { 'type': 'SP.Data.StationeryRequestsListItem' },
+                'Title': data.Title,
+                'Quantity': data.Quantity.toString(),
+                'Notes': data.Notes,
+                'EmpId': userId,
+                'Status': 'New_StationeryRequest_Started',
+                'RequestBatchGuid': guid
             }),
             headers: {
                 "accept": "application/json;odata=verbose",
