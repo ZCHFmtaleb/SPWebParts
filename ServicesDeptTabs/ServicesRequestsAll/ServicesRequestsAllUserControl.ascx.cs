@@ -515,7 +515,7 @@ namespace ServicesDeptTabs.ServicesRequestsAll
                         string b_guid = SaveToSP();
                         //Show_Success_Message("تم حفظ الطلب بنجاح");
                         //Send_Request_Email(ServicesRequestTypes.Stationery, b_guid);
-                        Send_Serivces_Request_Email_to_DM_To_Approve(b_guid);
+                        //Send_Serivces_Request_Email_to_DM_To_Approve(b_guid);
                     }
                 });
             }
@@ -632,37 +632,6 @@ namespace ServicesDeptTabs.ServicesRequestsAll
                 email = listItems[0][0].ToString();
             });
             return email;
-        }
-
-        private void Send_Serivces_Request_Email_to_DM_To_Approve(string b_guid)
-        {
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
-            {
-                string layoutsPath = SPUtility.GetVersionedGenericSetupPath("TEMPLATE\\Layouts\\ServicesDeptTabs\\", 15);
-                string html = File.ReadAllText(layoutsPath + "Serivces_Request_Email_to_DM_To_Approve.html");
-                StringBuilder bodyText = new StringBuilder(html);
-
-                string n = string.Empty;
-                if (intended_Emp.Emp_ArabicName != null && intended_Emp.Emp_ArabicName != string.Empty)
-                {
-                    n = intended_Emp.Emp_ArabicName;
-                }
-                else
-                {
-                    n = intended_Emp.Emp_DisplayName;
-                }
-
-                bodyText.Replace("#EmpName#", n);
-                string link_to_view_request = "<a href=" + SPContext.Current.Web.Url + "/Pages/StoresRequestView.aspx?rid=" + b_guid + " > رابط الطلب </a>";
-                bodyText.Replace("#RequestURL#", link_to_view_request);
-
-                StringDictionary headers = new StringDictionary();
-                headers.Add("to", intended_Emp.DM_email);
-                headers.Add("subject", " قام " + "\"" + n + "\"" + " بعمل طلب جديد من قسم الخدمات ");
-                headers.Add("content-type", "text/html");
-
-                SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
-            });
         }
 
         #endregion Email

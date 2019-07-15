@@ -1,7 +1,7 @@
-﻿var user = null;var userTitle = "";var userId = "";var loginName="";var userEmail="";
+﻿var user = null;var userTitle = "";var userId = "";var loginName="";var userEmail = "";var EmpArabicName = "";var DM = "";var DM_Email = "";
 $(document).ready(function () {
-    ExecuteOrDelayUntilScriptLoaded(GetCurrentUser, "sp.js");    GetCurrentUser();
-    ReadCategories();
+    ExecuteOrDelayUntilScriptLoaded(GetCurrentUser, "sp.js");    ReadCategories();
+  
     
 
     $("#txtQuantity").jqxNumberInput({
@@ -48,7 +48,7 @@ $(document).ready(function () {
             {
                 text: 'اسم الصنف',
                 datafield: 'Title',
-                width: 200,
+                width: 400,
                 editable: false,
                 align: 'right',
                 cellsalign: 'right',
@@ -56,7 +56,7 @@ $(document).ready(function () {
             }, {
                 text: 'الكمية',
                 datafield: 'Quantity',
-                width: 200,
+                width: 100,
                 columntype: 'numberinput',
                 align: 'right',
                 cellsalign: 'right',
@@ -129,6 +129,78 @@ $("#deleterowbutton").on('click', function () {
     }
 });
 
+function GetEmpArabicName() {
+
+    var domainAccount =  loginName.split('|')[1];
+
+    var webURL = _spPageContextInfo.webAbsoluteUrl;
+    var api = "/_api/SP.UserProfiles.PeopleManager/";
+    var query = "GetUserProfilePropertyFor(accountName=@v,propertyName='AboutMe')?@v=" + "'"+domainAccount+"'";
+    var fullURL = webURL + api + query;
+    var encfullURL = encodeURI(fullURL);
+
+    $.ajax({
+        url: encfullURL,
+        method: "GET",
+        headers: { "Accept": "application/json; odata=verbose" },
+        success: function (data) {
+            console.log(data.d.GetUserProfilePropertyFor);
+        },
+        error: function (data) {
+            console.log("Error: " + data);
+        }
+    });
+}
+
+function GetDM() {
+
+    var domainAccount = loginName.split('|')[1];
+
+    var webURL = _spPageContextInfo.webAbsoluteUrl;
+    var api = "/_api/SP.UserProfiles.PeopleManager/";
+    var query = "GetUserProfilePropertyFor(accountName=@v,propertyName='Manager')?@v=" + "'" + domainAccount + "'";
+    var fullURL = webURL + api + query;
+    var encfullURL = encodeURI(fullURL);
+
+    $.ajax({
+        url: encfullURL,
+        method: "GET",
+        headers: { "Accept": "application/json; odata=verbose" },
+        success: function (data) {
+            console.log(data.d.GetUserProfilePropertyFor);
+            DM = data.d.GetUserProfilePropertyFor;
+        },
+        error: function (data) {
+            console.log("Error: " + data);
+        }
+    });
+}
+
+function GetDM_Email() {
+
+    var webURL = _spPageContextInfo.webAbsoluteUrl;
+    var api = "/_api/SP.UserProfiles.PeopleManager/";
+    var query = "GetPropertiesFor(accountName=@v)?@v=" + "'" + DM + "'";
+    var fullURL = webURL + api + query;
+    var encfullURL = encodeURI(fullURL);
+
+    $.ajax({
+        url: encfullURL,
+        method: "GET",
+        headers: { "Accept": "application/json; odata=verbose" },
+        success: function (data) {
+            DM_Email = data.d.Email;
+            console.log("DM_Email is : " + DM_Email);
+        },
+        error: function (data) {
+            console.log("Error: " + data);
+        }
+    });
+}
+
+
+
+
 
 // Save All Rows To Server
 $("#btnSaveAllRowsToServer").on('click', function () {
@@ -143,7 +215,6 @@ $("#btnSaveAllRowsToServer").on('click', function () {
 
     for (var i = 0; i < rowscount; i++) {
         var data = $('#jqxgrid').jqxGrid('getrowdata', i); 
-
         $.ajax({
             url: encfullURL,
             type: "POST",
@@ -164,15 +235,23 @@ $("#btnSaveAllRowsToServer").on('click', function () {
             success: onSaveAllRowsToServerSucceeded,
             error: onSaveAllRowsToServerFailed
         });
-    }
-});
+    } // End of for loop
 
-function onSaveAllRowsToServerSucceeded(sender, args) {
+
+    // no errors happened means success
     Swal.fire({
         text: 'تم إرسال الطلب بنجاح',
         type: 'success',
         confirmButtonText: 'تم'
     });
+
+    var to = "test_spuser_1@zayed.org.ae";
+    var body = 'ايميل اختبارى خاص بقسم الخدمات' + "<br> guid is : " + guid + "<br> الرجاء مراجعة الطلب واعتماده من خلال الرابط التالى";
+    var subject = 'ايميل اختبارى';
+    sendEmail(to, body, subject);
+});
+
+function onSaveAllRowsToServerSucceeded(sender, args) {
 }
 function onSaveAllRowsToServerFailed(error) {
     console.log(JSON.stringify(error));
@@ -181,8 +260,48 @@ function onSaveAllRowsToServerFailed(error) {
         type: 'error',
         confirmButtonText: 'تم'
     });
+    throw new Error("Something went wrong");
 }
 
 
 
 
+
+
+function sendEmail(to, body, subject) {
+
+    GetEmpArabicName();
+    GetDM();
+    GetDM_Email();
+
+    var siteurl = _spPageContextInfo.webServerRelativeUrl;
+    var urlTemplate = siteurl + "/_api/SP.Utilities.Utility.SendEmail";
+    $.ajax({
+        contentType: 'application/json',
+        url: urlTemplate,
+        type: "POST",
+        data: JSON.stringify({
+            'properties': {
+                '__metadata': {
+                    'type': 'SP.Utilities.EmailProperties'
+                },
+                'To': {
+                    'results': [to]
+                },
+                'Body': body,
+                'Subject': subject
+            }
+        }),
+        headers: {
+            "Accept": "application/json;odata=verbose",
+            "content-type": "application/json;odata=verbose",
+            "X-RequestDigest": jQuery("#__REQUESTDIGEST").val()
+        },
+        success: function (data) {
+            console.log('Email Sent Successfully');
+        },
+        error: function (err) {
+            console.log('Error in sending Email: ' + JSON.stringify(err));
+        }
+    });
+}
