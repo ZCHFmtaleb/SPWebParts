@@ -58,7 +58,6 @@
     <Compile Include="DAL\Emp_DAL.cs" />
     <Compile Include="EL\Emp.cs" />
     <Compile Include="EL\ServicesRequestTypes.cs" />
-    <Compile Include="NewItemAddedToStationeryRequestsER\NewItemAddedToStationeryRequestsER.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicesRequestsAll\ServicesRequestsAll.cs" />
     <Compile Include="ServicesRequestsAll\ServicesRequestsAllUserControl.ascx.cs">
@@ -101,9 +100,6 @@
     <None Include="Layouts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{99602b42-90a8-40a8-b17d-48da6b288c78}</SharePointProjectItemId>
     </None>
-    <None Include="NewItemAddedToStationeryRequestsER\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{88baea3d-bae0-4fdc-aa2d-a0d31ac680b5}</SharePointProjectItemId>
-    </None>
     <None Include="Package\Package.package">
       <PackageId>{9c0052f9-169d-440b-b010-13ac8c406942}</PackageId>
     </None>
@@ -131,6 +127,7 @@
       <DependentUpon>ZayedServicesDeptFeature.feature</DependentUpon>
     </Content>
     <Content Include="Layouts\ServicesDeptTabs\jqwidgets\generatedata.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\DeleteGridRow.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\PageLoad.js" />
     <Content Include="Layouts\ServicesDeptTabs\jqscripts\angular-sanitize.min.js" />
     <Content Include="Layouts\ServicesDeptTabs\jqscripts\angular-ui-router.min.js" />
@@ -621,11 +618,13 @@
     <Content Include="Layouts\ServicesDeptTabs\jqwidgets\styles\jqx.windowsphone.css" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\ReadCategories.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\AddStationeryItemToGrid.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\SaveAllRowsToServer.js" />
+    <Content Include="Layouts\ServicesDeptTabs\polyfill.min.js" />
     <Content Include="Layouts\ServicesDeptTabs\Serivces_Request_Email.html" />
     <Content Include="Layouts\ServicesDeptTabs\Serivces_Request_Email_to_DM_To_Approve.html" />
     <Content Include="Layouts\ServicesDeptTabs\ServicesDeptTabsStyle.css" />
     <Content Include="Layouts\ServicesDeptTabs\spinner.gif" />
-    <Content Include="NewItemAddedToStationeryRequestsER\Elements.xml" />
+    <Content Include="Layouts\ServicesDeptTabs\sweetalert2.all.min.js" />
     <Content Include="ServicesRequestsAll\Elements.xml" />
     <Content Include="ServicesRequestsAll\ServicesRequestsAllUserControl.ascx" />
     <Content Include="SPMetal.xml" />

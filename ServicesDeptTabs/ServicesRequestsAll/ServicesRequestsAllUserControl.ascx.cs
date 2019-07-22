@@ -8,6 +8,7 @@ using System.Data;
 using System.IO;
 using System.Text;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace ServicesDeptTabs.ServicesRequestsAll
@@ -218,6 +219,12 @@ namespace ServicesDeptTabs.ServicesRequestsAll
         #region Load
         protected void Page_Load(object sender, EventArgs e)
         {
+            HtmlMeta metaEdgeIE = new HtmlMeta();
+            metaEdgeIE.HttpEquiv = "X-UA-Compatible";
+            metaEdgeIE.Content = "IE=EDGE";
+            Page.Header.Controls.AddAt(0, metaEdgeIE);
+
+
             try
             {
                 SPSecurity.RunWithElevatedPrivileges(delegate ()

@@ -81,9 +81,6 @@
 </div>
 
 <!-- ===========================Ref=============================================================================== -->
-
-<SharePoint:CssRegistration runat="server" Name="/_layouts/15/SPWebParts/EPMStyle.css" After="/Style%20Library/css/ShareBoot.css" />
-
 <style>
     .GridCellStyle{
         direction:rtl;
@@ -92,7 +89,6 @@
 
 <link rel="stylesheet" href="/Style%20Library/jQueryUI/base/jquery-ui.css">
 <script type="text/javascript" src="/Style%20Library/jQueryUI/base/jquery-ui.js"></script>
-
 <link rel="stylesheet" href="/_layouts/15/ServicesDeptTabs/jqwidgets/styles/jqx.base.css" type="text/css" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
@@ -126,14 +122,19 @@
 <script src="/_layouts/sp.runtime.js" type="text/javascript"></script>
 <script src="/_layouts/sp.js" type="text/javascript"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-
+<script src="/_layouts/15/ServicesDeptTabs/sweetalert2.all.min.js"></script>
 
 <!-- ===========================MyJS=============================================================================== -->
 
-<script src="http://wzrd.in/standalone/uuid%2Fv1@latest"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/ReadCategories.js"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/PageLoad.js"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/AddStationeryItemToGrid.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/SaveAllRowsToServer.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/DeleteGridRow.js"></script>
+
+<!-- ===========================End of MyJS=============================================================================== -->
+
+<script src="/_layouts/15/ServicesDeptTabs/polyfill.min.js"></script>
+
+
 
