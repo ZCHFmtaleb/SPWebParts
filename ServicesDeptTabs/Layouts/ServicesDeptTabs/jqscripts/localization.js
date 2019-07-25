@@ -1,5 +1,7 @@
-﻿export let getLocalization = (culture) => {
-    let localization = null;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getLocalization = function (culture) {
+    var localization = null;
     switch (culture) {
         case 'de':
             localization =
@@ -18,7 +20,6 @@
                         // shortest day names
                         namesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa']
                     },
-
                     months: {
                         // full month names (13 months for lunar calendards -- 13th month should be '' if not lunar)
                         names: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember', ''],
@@ -40,8 +41,7 @@
                         { 'name': 'A.D.', 'start': null, 'offset': 0 }
                     ],
                     twoDigitYearMax: 2029,
-                    patterns:
-                    {
+                    patterns: {
                         d: 'dd.MM.yyyy',
                         D: 'dddd, d. MMMM yyyy',
                         t: 'HH:mm',
@@ -50,7 +50,6 @@
                         F: 'dddd, d. MMMM yyyy HH:mm:ss',
                         M: 'dd MMMM',
                         Y: 'MMMM yyyy'
-
                     },
                     percentsymbol: '%',
                     currencysymbol: '€',
@@ -89,7 +88,7 @@
                     loadtext: 'Loading...',
                     clearstring: 'Löschen',
                     todaystring: 'Heute'
-                }
+                };
             break;
         case 'en':
         default:
@@ -201,8 +200,9 @@
                     loadtext: 'Loading...',
                     clearstring: 'Clear',
                     todaystring: 'Today'
-                }
+                };
             break;
     }
     return localization;
-}
+};
+//# sourceMappingURL=localization.js.map

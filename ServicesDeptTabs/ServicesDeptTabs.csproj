@@ -126,8 +126,11 @@
     <Content Include="Features\ZayedServicesDeptFeature\ZayedServicesDeptFeature.Template.xml">
       <DependentUpon>ZayedServicesDeptFeature.feature</DependentUpon>
     </Content>
+    <Content Include="Layouts\ServicesDeptTabs\CheckMark.png" />
     <Content Include="Layouts\ServicesDeptTabs\jqwidgets\generatedata.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\DeleteGridRow.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\OnDMapprove.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\PageLoad2.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\PageLoad.js" />
     <Content Include="Layouts\ServicesDeptTabs\jqscripts\angular-sanitize.min.js" />
     <Content Include="Layouts\ServicesDeptTabs\jqscripts\angular-ui-router.min.js" />
@@ -619,6 +622,8 @@
     <Content Include="Layouts\ServicesDeptTabs\MyJS\ReadCategories.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\AddStationeryItemToGrid.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\SaveAllRowsToServer.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\sendEmail.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\sprestlib.bundle.js" />
     <Content Include="Layouts\ServicesDeptTabs\polyfill.min.js" />
     <Content Include="Layouts\ServicesDeptTabs\Serivces_Request_Email.html" />
     <Content Include="Layouts\ServicesDeptTabs\Serivces_Request_Email_to_DM_To_Approve.html" />

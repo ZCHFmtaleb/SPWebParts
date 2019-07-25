@@ -7,17 +7,9 @@
 <%@ Register Tagprefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="StoresRequestViewUserControl.ascx.cs" Inherits="ServicesDeptTabs.StoresRequestView.StoresRequestViewUserControl" %>
 
-<style type="text/css">
-    .auto-style1 {
-        text-align: center;
-    }
-</style>
 
-<SharePoint:CssRegistration runat="server" Name="/_layouts/15/ServicesDeptTabs/ServicesDeptTabsStyle.css" After="/Style%20Library/css/ShareBoot.css" />
-<script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
-<script type="text/javascript" src="/_layouts/15/sp.js"></script>
-<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/JSOM.js"></script>
-<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/Scripts/sprestlib-ui.bundle.js"></script>
+
+
 
 <div id="container" dir="rtl"  runat="server">
 
@@ -25,9 +17,6 @@
         <tr>
             <td class="c1">مقدم الطلب :</td>
             <td><asp:Label ID="lblEmpName" runat="server" Text="lblEmpName"></asp:Label></td>
-            <td class="c3" rowspan="3">حالة الطلب :</td>
-            <td class="c4" rowspan="3">
-                &nbsp;</td>
         </tr>
         <tr>
             <td class="c1">الإدارة :</td>
@@ -39,7 +28,7 @@
         </tr>
     </table>
 
-    <asp:GridView ID="gvw_Items" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" ShowHeaderWhenEmpty="True" BorderColor="Black" BorderStyle="Solid" CssClass="gvw_Items">
+    <%--<asp:GridView ID="gvw_Items" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" ShowHeaderWhenEmpty="True" BorderColor="Black" BorderStyle="Solid" CssClass="gvw_Items">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="ItemGeneralName" HeaderText="اسم الصنف ">
@@ -62,23 +51,66 @@
         <SortedAscendingHeaderStyle BackColor="#6D95E1" />
         <SortedDescendingCellStyle BackColor="#E9EBEF" />
         <SortedDescendingHeaderStyle BackColor="#4870BE" />
-    </asp:GridView>
+    </asp:GridView>--%>
    
+
+<div id="txtQuantity"></div>
+
+
+ <div id="jqxgrid">
+ </div>
+
+
+<div style="text-align:center; margin-bottom:10%;">
+    <input id="btnDMapprove" type="button" value="موافقة"  style="font-size:x-large;position:absolute;right:30%;"/>
+    <img src="/_layouts/15/ServicesDeptTabs/CheckMark.png" alt="" style="display:none;width:100px;height:100px;position: absolute;right:30%; z-index:-1" id="CheckMark"/><br />
+    <div id="successText" style="display:none;position:absolute;right:30%;">تم إعتماد الطلب بنجاح</div>
 </div>
+</div>
+<!-- ========================================Ref==================================-->
+<link rel="stylesheet" href="/Style%20Library/jQueryUI/base/jquery-ui.css">
+<script type="text/javascript" src="/Style%20Library/jQueryUI/base/jquery-ui.js"></script>
+<link rel="stylesheet" href="/_layouts/15/ServicesDeptTabs/jqwidgets/styles/jqx.base.css" type="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqscripts/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxcore.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxdata.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxbuttons.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxscrollbar.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxmenu.js"></script>
+
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxgrid.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxgrid.edit.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxgrid.selection.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxgrid.columnsresize.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxgrid.filter.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxgrid.sort.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxgrid.pager.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxgrid.grouping.js"></script>
+
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxlistbox.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxdropdownlist.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxcheckbox.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxcalendar.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxnumberinput.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/jqxdatetimeinput.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/globalization/globalize.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/jqwidgets/generatedata.js"></script>
+
+<script src="/_layouts/MicrosoftAjax.js" type="text/javascript"></script>
+<script src="/_layouts/sp.core.js" type="text/javascript"></script>
+<script src="/_layouts/sp.runtime.js" type="text/javascript"></script>
+<script src="/_layouts/sp.js" type="text/javascript"></script>
 
 
+<!-- ============================================================================-->
 
+<script src="/_layouts/15/ServicesDeptTabs/MyJS/sprestlib.bundle.js"></script>
+<script src="/_layouts/15/ServicesDeptTabs/MyJS/sendEmail.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/PageLoad2.js"></script>
 
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/OnDMapprove.js"></script>
 
-
-<p class="auto-style1">
-                <asp:Button ID="btnDMapprove" runat="server" Text="موافقة" OnClick="btnDMapprove_Click" />
-                <asp:Button ID="btn_SD_approve" runat="server" Text="موافقة إدارة الخدمات" OnClick="btn_SD_approve_Click"  />
-                </p>
-
-
-
-
-
-
+<%--<script src="/_layouts/15/ServicesDeptTabs/polyfill.min.js"></script>--%>
 

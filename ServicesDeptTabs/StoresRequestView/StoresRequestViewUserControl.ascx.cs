@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 
 namespace ServicesDeptTabs.StoresRequestView
 {
@@ -40,42 +41,49 @@ namespace ServicesDeptTabs.StoresRequestView
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
-            {
-                string rid = get_Request_ID_from_QueryString();
 
-                if (rid != string.Empty)
-                {
-                    get_Request_Data_by_id(rid);
-                }
-                else
-                {
-                    container.InnerHtml = "لم يتم العثور على الطلب المحدد ، برجاء التحقق من معرف الطلب";
-                    return;
-                }
-            }
+            HtmlMeta metaEdgeIE = new HtmlMeta();
+            metaEdgeIE.HttpEquiv = "X-UA-Compatible";
+            metaEdgeIE.Content = "IE=EDGE";
+            Page.Header.Controls.AddAt(0, metaEdgeIE);
+
+
+            //if (!Page.IsPostBack)
+            //{
+            //    string rid = get_Request_ID_from_QueryString();
+
+            //    if (rid != string.Empty)
+            //    {
+            //        get_Request_Data_by_id(rid);
+            //    }
+            //    else
+            //    {
+            //        container.InnerHtml = "لم يتم العثور على الطلب المحدد ، برجاء التحقق من معرف الطلب";
+            //        return;
+            //    }
+            //}
         }
 
-        private void Hide_Approve_Buttons_According_To_Status(string status)
-        {
-            switch (status)
-            {
-                case "جديد":
-                    btnDMapprove.Visible = true;
-                    btn_SD_approve.Visible = false;
-                    break;
+        //private void Hide_Approve_Buttons_According_To_Status(string status)
+        //{
+        //    switch (status)
+        //    {
+        //        case "جديد":
+        //            btnDMapprove.Visible = true;
+        //            btn_SD_approve.Visible = false;
+        //            break;
 
-                case "تم اعتماد المدير المباشر":
-                    btnDMapprove.Visible = false;
-                    btn_SD_approve.Visible = true;
-                    break;
+        //        case "تم اعتماد المدير المباشر":
+        //            btnDMapprove.Visible = false;
+        //            btn_SD_approve.Visible = true;
+        //            break;
 
-                case "تم اعتماد إدارة الخدمات":
-                    btnDMapprove.Visible = false;
-                    btn_SD_approve.Visible = false;
-                    break;
-            }
-        }
+        //        case "تم اعتماد إدارة الخدمات":
+        //            btnDMapprove.Visible = false;
+        //            btn_SD_approve.Visible = false;
+        //            break;
+        //    }
+        //}
 
         private string get_Request_ID_from_QueryString()
         {
@@ -116,11 +124,11 @@ namespace ServicesDeptTabs.StoresRequestView
                         lblEmpName.Text = string.IsNullOrEmpty(listItems[0]["EmpArabicName"].ToString()) ? listItems[0]["Emp"].ToString() : listItems[0]["EmpArabicName"].ToString();
                         lblDept.Text = listItems[0]["Dept"].ToString();
                         lbl_ReqDate.Text = DateTime.Parse(listItems[0]["Created"].ToString()).Date.ToString("yyyy-MM-dd");
-                        gvw_Items.DataSource = listItems.GetDataTable();
-                        gvw_Items.DataBind();
+                        //gvw_Items.DataSource = listItems.GetDataTable();
+                        //gvw_Items.DataBind();
 
                         string status = listItems[0]["Status"].ToString();
-                        Hide_Approve_Buttons_According_To_Status(status);
+                        //Hide_Approve_Buttons_According_To_Status(status);
                     }
                     else
                     {
