@@ -125,6 +125,7 @@
 <script src="/_layouts/15/ServicesDeptTabs/sweetalert2.all.min.js"></script>
 
 <!-- ===========================MyJS=============================================================================== -->
+<script src="/_layouts/15/ServicesDeptTabs/MyJS/sprestlib.bundle.js"></script>
 <script src="/_layouts/15/ServicesDeptTabs/MyJS/sendEmail.js"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/ReadCategories.js"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/PageLoad.js"></script>

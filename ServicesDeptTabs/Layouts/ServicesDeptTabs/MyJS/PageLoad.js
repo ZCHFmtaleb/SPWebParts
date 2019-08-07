@@ -1,7 +1,28 @@
-﻿var user = null;var userTitle = "";var userId = "";var loginName = "";var userEmail = "";var EmpArabicName = "";var DM;var DM_Email = "";
+﻿var user = null;var userDisplayName = "";var userId = "";var loginName = "";var userEmail = "";var EmpArabicName = "";var Department;var DM;var DM_Email = "";var UserInfo;
 $(document).ready(function () {
-    ExecuteOrDelayUntilScriptLoaded(GetCurrentUser, "sp.js");    ReadCategories();
-    GetEmpArabicName();    $("#txtQuantity").jqxNumberInput({
+    ReadCategories();
+    GetUserInfo();    function GetUserInfo() {        sprLib.user().info()
+            .then(function (objUser) {                userId = objUser.Id;                console.log('userId is ' + userId);
+            });        sprLib.user().profile()
+            .then(function (objProps) {                UserInfo = objProps;
+
+                userDisplayName = UserInfo.DisplayName;
+                console.log('userDisplayName is ' + userDisplayName);
+
+                userEmail = UserInfo.Email;
+                console.log('userEmail is ' + userEmail);
+
+                EmpArabicName = UserInfo.UserProfileProperties.AboutMe;
+                console.log('EmpArabicName is ' + EmpArabicName);
+
+                Department = UserInfo.UserProfileProperties.Department;
+                console.log('Department is ' + Department);
+
+                DM = UserInfo.UserProfileProperties.Manager;
+                console.log('DM is ' + DM);
+
+                var webURL = _spPageContextInfo.webAbsoluteUrl;                var api = "/_api/SP.UserProfiles.PeopleManager/";                var query = "GetPropertiesFor(accountName=@v)?@v=" + "'" + DM + "'";                var fullURL = webURL + api + query;                var encfullURL = encodeURI(fullURL);                $.ajax({                    async: false,                    url: encfullURL,                    method: "GET",                    headers: { "Accept": "application/json; odata=verbose" },                    success: function (data) {                        DM_Email = data.d.Email;                        console.log("DM_Email is : " + DM_Email);                    },                    error: function (data) {                        console.log("Error: " + data);                    }                });
+            });    }    $("#txtQuantity").jqxNumberInput({
         width: '60px',
         height: '30px',
         spinButtons: true,
@@ -77,13 +98,7 @@ $(document).ready(function () {
             }
         ]  // end of columns
     });
-}); // end of document.readyfunction GetCurrentUser() {
-    var context = new SP.ClientContext.get_current();
-    var web = context.get_web();
-    user = web.get_currentUser(); //must load this to access info.
-    context.load(user);
-    context.executeQueryAsync(onGetCurrentUserSucceeded, onGetCurrentUserFailed);}
-function onGetCurrentUserSucceeded() {    userTitle = user.get_title();    userId = user.get_id();    loginName = user.get_loginName();    userEmail = user.get_email();    console.log("current user data are:  " + userTitle + "," + userId + "," + loginName + "," + userEmail);    GetEmpArabicName();    GetDM();    GetDM_Email();}function onGetCurrentUserFailed(sender, args) {    console.log('request failed ' + args.get_message() + '\n' + args.get_stackTrace());}
+}); // end of document.ready
 function GetItemsOfSelectedCat() {    var selected_cat = $("#ddlCat").val();
     var webURL = _spPageContextInfo.webAbsoluteUrl;
     var api = "/_api/web/lists/";
@@ -106,70 +121,6 @@ function GetItemsOfSelectedCat() {    var selected_cat = $("#ddlCat").val();
         },
         error: function (data) {
             alert("Error: " + data);
-        }
-    });
-}
-function GetEmpArabicName() {    var domainAccount = loginName.split('|')[1];
-
-    var webURL = _spPageContextInfo.webAbsoluteUrl;
-    var api = "/_api/SP.UserProfiles.PeopleManager/";
-    var query = "GetUserProfilePropertyFor(accountName=@v,propertyName='AboutMe')?@v=" + "'" + domainAccount + "'";
-    var fullURL = webURL + api + query;
-    var encfullURL = encodeURI(fullURL);
-
-    $.ajax({
-        async: false,
-        url: encfullURL,
-        method: "GET",
-        headers: { "Accept": "application/json; odata=verbose" },
-        success: function (data) {
-            console.log(data.d.GetUserProfilePropertyFor);
-            EmpArabicName = data.d.GetUserProfilePropertyFor;
-        },
-        error: function (data) {
-            console.log("Error: " + data);
-        }
-    });
-}
-function GetDM() {    var domainAccount = loginName.split('|')[1];
-
-    var webURL = _spPageContextInfo.webAbsoluteUrl;
-    var api = "/_api/SP.UserProfiles.PeopleManager/";
-    var query = "GetUserProfilePropertyFor(accountName=@v,propertyName='Manager')?@v=" + "'" + domainAccount + "'";
-    var fullURL = webURL + api + query;
-    var encfullURL = encodeURI(fullURL);
-
-    $.ajax({
-        async: false,
-        url: encfullURL,
-        method: "GET",
-        headers: { "Accept": "application/json; odata=verbose" },
-        success: function (data) {
-            console.log(data.d.GetUserProfilePropertyFor);
-            DM= data.d.GetUserProfilePropertyFor;
-        },
-        error: function (data) {
-            console.log("Error: " + data);
-        }
-    });
-}
-function GetDM_Email() {    var webURL = _spPageContextInfo.webAbsoluteUrl;
-    var api = "/_api/SP.UserProfiles.PeopleManager/";
-    var query = "GetPropertiesFor(accountName=@v)?@v=" + "'" + DM + "'";
-    var fullURL = webURL + api + query;
-    var encfullURL = encodeURI(fullURL);
-
-    $.ajax({
-        async: false,
-        url: encfullURL,
-        method: "GET",
-        headers: { "Accept": "application/json; odata=verbose" },
-        success: function (data) {
-            DM_Email = data.d.Email;
-            console.log("DM_Email is : " + DM_Email);
-        },
-        error: function (data) {
-            console.log("Error: " + data);
         }
     });
 }

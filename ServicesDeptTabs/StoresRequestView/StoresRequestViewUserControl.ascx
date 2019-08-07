@@ -7,26 +7,39 @@
 <%@ Register Tagprefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="StoresRequestViewUserControl.ascx.cs" Inherits="ServicesDeptTabs.StoresRequestView.StoresRequestViewUserControl" %>
 
-
-
-
+<style type="text/css">
+    .tblRequesterInfo{
+        font-weight:bold;
+        width:25%;
+    }
+    .tblRequesterInfo td{
+        padding-left:10%;
+    }
+</style>
 
 <div id="container" dir="rtl"  runat="server">
-
-    <table class="tbl_EmpInfo">
+    <div style="padding-bottom:1%">
+    <table class="tblRequesterInfo">
         <tr>
             <td class="c1">مقدم الطلب :</td>
-            <td><asp:Label ID="lblEmpName" runat="server" Text="lblEmpName"></asp:Label></td>
+            <td>
+                <span ID="lblEmpName" ></span>
+            </td>
         </tr>
         <tr>
             <td class="c1">الإدارة :</td>
-            <td><asp:Label ID="lblDept" runat="server" Text="lblDept"></asp:Label></td>
+            <td>
+                <span ID="lblDept" ></span>
+            </td>
         </tr>
         <tr>
             <td class="c1">تاريخ الطلب :</td>
-            <td><asp:Label ID="lbl_ReqDate" runat="server" Text="lbl_ReqDate"></asp:Label></td>
+            <td>
+                <span ID="lbl_ReqDate" ></span>
+            </td>
         </tr>
     </table>
+    </div>
 
     <%--<asp:GridView ID="gvw_Items" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" ShowHeaderWhenEmpty="True" BorderColor="Black" BorderStyle="Solid" CssClass="gvw_Items">
         <AlternatingRowStyle BackColor="White" />
@@ -52,20 +65,47 @@
         <SortedDescendingCellStyle BackColor="#E9EBEF" />
         <SortedDescendingHeaderStyle BackColor="#4870BE" />
     </asp:GridView>--%>
-   
-
-<div id="txtQuantity"></div>
-
 
  <div id="jqxgrid">
  </div>
 
 
-<div style="text-align:center; margin-bottom:10%;">
+<style>
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.rowZF:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+</style>
+
+<div class="rowZF" style="padding-top:3%; padding-bottom:3%;">
+   <div class="column">
+     <input id="btnDMReject" type="button" value="رفض"  style="font-size:x-large;"/>
+  </div>
+  <div class="column">
     <input id="btnDMapprove" type="button" value="موافقة"  style="font-size:x-large;position:absolute;right:30%;"/>
-    <img src="/_layouts/15/ServicesDeptTabs/CheckMark.png" alt="" style="display:none;width:100px;height:100px;position: absolute;right:30%; z-index:-1" id="CheckMark"/><br />
+    <img src="/_layouts/15/ServicesDeptTabs/CheckMark.png" alt="" style="display:none;width:113px;height:93px;position: absolute;right:30%; z-index:-1" id="CheckMark"/><br />
     <div id="successText" style="display:none;position:absolute;right:30%;">تم إعتماد الطلب بنجاح</div>
+  </div>
+  
 </div>
+<div id="divRejectReasons" style="display:none;">
+<div><h4>الرجاء ذكر أسباب رفض الطلب (سيتم إرسال تنويه بها لمقدم الطلب) </h4></div>
+<textarea id="txtRejectReasons" rows="6" style="width:50%" ></textarea> <span id="reqStar" style="color:red">*</span>
+<input id="btnDMRejectSubmit" type="button" value="إرسال"  style="font-size:x-large;" disabled />
+</div>
+
+
+
 </div>
 <!-- ========================================Ref==================================-->
 <link rel="stylesheet" href="/Style%20Library/jQueryUI/base/jquery-ui.css">
@@ -111,6 +151,7 @@
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/PageLoad2.js"></script>
 
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/OnDMapprove.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/OnDMReject.js"></script>
 
 <%--<script src="/_layouts/15/ServicesDeptTabs/polyfill.min.js"></script>--%>
 

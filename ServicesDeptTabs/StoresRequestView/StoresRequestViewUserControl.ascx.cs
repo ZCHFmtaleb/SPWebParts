@@ -121,9 +121,9 @@ namespace ServicesDeptTabs.StoresRequestView
 
                     if (listItems.Count > 0)
                     {
-                        lblEmpName.Text = string.IsNullOrEmpty(listItems[0]["EmpArabicName"].ToString()) ? listItems[0]["Emp"].ToString() : listItems[0]["EmpArabicName"].ToString();
-                        lblDept.Text = listItems[0]["Dept"].ToString();
-                        lbl_ReqDate.Text = DateTime.Parse(listItems[0]["Created"].ToString()).Date.ToString("yyyy-MM-dd");
+                        //lblEmpName.Text = string.IsNullOrEmpty(listItems[0]["EmpArabicName"].ToString()) ? listItems[0]["Emp"].ToString() : listItems[0]["EmpArabicName"].ToString();
+                        //lblDept.Text = listItems[0]["Dept"].ToString();
+                        //lbl_ReqDate.Text = DateTime.Parse(listItems[0]["Created"].ToString()).Date.ToString("yyyy-MM-dd");
                         //gvw_Items.DataSource = listItems.GetDataTable();
                         //gvw_Items.DataBind();
 
@@ -187,14 +187,14 @@ namespace ServicesDeptTabs.StoresRequestView
                 string html = File.ReadAllText(layoutsPath + "Serivces_Request_Email.html");
                 StringBuilder bodyText = new StringBuilder(html);
 
-                bodyText.Replace("#EmpName#", lblEmpName.Text);
-                bodyText.Replace("#Dept#", lblDept.Text);
-                bodyText.Replace("#RequestURL#", "<a href=" + SPContext.Current.Web.Url + "/Pages/StoresRequestView.aspx?rid=" + b_guid + " > رابط الطلب </a>");
+               // bodyText.Replace("#EmpName#", lblEmpName.Text);
+               // bodyText.Replace("#Dept#", lblDept.Text);
+               // bodyText.Replace("#RequestURL#", "<a href=" + SPContext.Current.Web.Url + "/Pages/StoresRequestView.aspx?rid=" + b_guid + " > رابط الطلب </a>");
 
                 StringDictionary headers = new StringDictionary();
                 headers.Add("to", "zfes@zayed.org.ae");
                 headers.Add("cc", "sherif@zayed.org.ae");
-                headers.Add("subject", " قام " + "\"" + lblEmpName.Text + "\"" + " بعمل طلب جديد من قسم الخدمات ");
+                //headers.Add("subject", " قام " + "\"" + lblEmpName.Text + "\"" + " بعمل طلب جديد من قسم الخدمات ");
                 headers.Add("content-type", "text/html");
 
                 SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());

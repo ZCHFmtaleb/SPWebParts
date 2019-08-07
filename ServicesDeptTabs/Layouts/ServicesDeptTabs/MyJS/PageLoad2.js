@@ -17,6 +17,24 @@ $(document).ready(function () {
 
     requestID = $.urlParam('id');
 
+    //==============================================================
+
+    sprLib.list('StationeryRequests').items({
+        listCols: ['Created', 'Department', 'EmpArabicName'],
+        queryFilter: 'ID eq ' + requestID
+    })
+        .then(function (arrData) {
+
+            var date = new Date(arrData[0].Created);
+            var formatDate = date.toLocaleString('en-GB', { year: "numeric", month: "numeric", day: "numeric" });
+            $('#lbl_ReqDate').text(formatDate);
+            $('#lblEmpName').text(arrData[0].EmpArabicName);
+            $('#lblDept').text(arrData[0].Department);
+        })
+        .catch(function (errMsg) { console.error(errMsg); });
+
+    //==============================================================
+
     sprLib.list('StationeryRequestDetails').items({
         listCols: ['ID', 'MasterRecordId', 'Title', 'Quantity', 'Notes'],
         queryFilter: 'MasterRecordId eq ' + requestID,

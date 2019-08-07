@@ -130,6 +130,7 @@
     <Content Include="Layouts\ServicesDeptTabs\jqwidgets\generatedata.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\DeleteGridRow.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\OnDMapprove.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\OnDMReject.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\PageLoad2.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\PageLoad.js" />
     <Content Include="Layouts\ServicesDeptTabs\jqscripts\angular-sanitize.min.js" />

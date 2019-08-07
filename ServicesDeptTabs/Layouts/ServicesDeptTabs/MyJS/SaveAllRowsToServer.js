@@ -16,7 +16,9 @@ $("#btnSaveAllRowsToServer").on('click', function () {
         data: JSON.stringify({
             '__metadata': { 'type': 'SP.Data.StationeryRequestsListItem' },
             'EmpId': userId,
-            'Status': 'New_StationeryRequest_Started'
+            'Status': 'New_StationeryRequest_Started',
+            'EmpArabicName': EmpArabicName,
+            'Department': Department
         }),
         headers: {
             "accept": "application/json;odata=verbose",
@@ -79,7 +81,7 @@ $("#btnSaveAllRowsToServer").on('click', function () {
     var to = DM_Email;
 
     if (EmpArabicName === "") {
-        EmpArabicName = userTitle;
+        EmpArabicName = userDisplayName;
     }
 
     var body = '<p dir=rtl>' +

@@ -6,6 +6,7 @@
         })
         .then(function (objItem) {
             $("#btnDMapprove").fadeOut("slow");
+            $("#btnDMReject").fadeOut("slow");
             $("#CheckMark").fadeIn("slow");
             $("#successText").fadeIn("slow");
 
