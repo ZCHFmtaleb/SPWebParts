@@ -44,10 +44,12 @@
     <Reference Include="Microsoft.Office.Server.UserProfiles, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.SharePoint.Linq, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -66,6 +68,14 @@
     </Compile>
     <Compile Include="ServicesRequestsAll\ServicesRequestsAllUserControl.ascx.designer.cs">
       <DependentUpon>ServicesRequestsAllUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StoresEmployeeRequestFulfillingScreen\StoresEmployeeRequestFulfillingScreen.ascx.cs">
+      <DependentUpon>StoresEmployeeRequestFulfillingScreen.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="StoresEmployeeRequestFulfillingScreen\StoresEmployeeRequestFulfillingScreen.ascx.g.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoresEmployeeRequestFulfillingScreen.ascx</DependentUpon>
     </Compile>
     <Compile Include="StoresRequestView\StoresRequestView.cs" />
     <Compile Include="StoresRequestView\StoresRequestViewUserControl.ascx.cs">
@@ -111,6 +121,10 @@
     <None Include="ServicesRequestsAll\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{7e775d33-660c-4977-9b33-f0d5ce3f5d87}</SharePointProjectItemId>
     </None>
+    <None Include="StoresEmployeeRequestFulfillingScreen\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{0fdf14b9-d1cc-4923-a7cf-db9ac3fbb4e4}</SharePointProjectItemId>
+    </None>
+    <None Include="StoresEmployeeRequestFulfillingScreen\StoresEmployeeRequestFulfillingScreen.webpart" />
     <None Include="StoresRequestView\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{d0ad0c9c-f1c1-478c-bfd1-b5d98d1e30af}</SharePointProjectItemId>
     </None>
@@ -128,9 +142,12 @@
     </Content>
     <Content Include="Layouts\ServicesDeptTabs\CheckMark.png" />
     <Content Include="Layouts\ServicesDeptTabs\jqwidgets\generatedata.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\CheckRequestStatusAndShowHideControlsAccordingly.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\DeleteGridRow.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\OnDMapprove.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\OnDMReject.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\OnServicesDivisionHeadApprove.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\OnServicesDivisionHeadReject.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\PageLoad2.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\PageLoad.js" />
     <Content Include="Layouts\ServicesDeptTabs\jqscripts\angular-sanitize.min.js" />
@@ -634,6 +651,11 @@
     <Content Include="ServicesRequestsAll\Elements.xml" />
     <Content Include="ServicesRequestsAll\ServicesRequestsAllUserControl.ascx" />
     <Content Include="SPMetal.xml" />
+    <Content Include="StoresEmployeeRequestFulfillingScreen\Elements.xml" />
+    <Content Include="StoresEmployeeRequestFulfillingScreen\StoresEmployeeRequestFulfillingScreen.ascx">
+      <Generator>SharePointWebPartCodeGenerator</Generator>
+      <LastGenOutput>StoresEmployeeRequestFulfillingScreen.ascx.g.cs</LastGenOutput>
+    </Content>
     <Content Include="StoresRequestView\Elements.xml" />
     <Content Include="StoresRequestView\StoresRequestViewUserControl.ascx" />
   </ItemGroup>

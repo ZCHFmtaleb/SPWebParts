@@ -15,25 +15,25 @@ namespace ServicesDeptTabs.StoresRequestView
     {
         #region Properties
 
-        public Emp intended_Emp
-        {
-            get
-            {
-                if (ViewState["intended_Emp"] != null)
-                {
-                    return (Emp)ViewState["intended_Emp"];
-                }
-                else
-                {
-                    intended_Emp = new Emp();
-                    return intended_Emp;
-                }
-            }
-            set
-            {
-                ViewState["intended_Emp"] = value;
-            }
-        }
+        //public Emp intended_Emp
+        //{
+        //    get
+        //    {
+        //        if (ViewState["intended_Emp"] != null)
+        //        {
+        //            return (Emp)ViewState["intended_Emp"];
+        //        }
+        //        else
+        //        {
+        //            intended_Emp = new Emp();
+        //            return intended_Emp;
+        //        }
+        //    }
+        //    set
+        //    {
+        //        ViewState["intended_Emp"] = value;
+        //    }
+        //}
 
         #endregion Properties
 

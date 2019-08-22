@@ -11,7 +11,7 @@
 <div id="container" dir="rtl" style="border: none !important; text-align: right">
 
     <div id="page_head">
-        <h1 runat="server" id="PageTitle">طلبات إدارة الخدمات </h1>
+        <h1 runat="server" id="PageTitle">طلبات قسم الخدمات العامة </h1>
     </div>
     <div class="divAddGoal" runat="server" id="div_of_AddingGoal">
         <div class="Form_Table_css">

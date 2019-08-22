@@ -18,7 +18,9 @@ $("#btnSaveAllRowsToServer").on('click', function () {
             'EmpId': userId,
             'Status': 'New_StationeryRequest_Started',
             'EmpArabicName': EmpArabicName,
-            'Department': Department
+            'Department': Department,
+            'EmpEmail': userEmail,
+            'DM': DM
         }),
         headers: {
             "accept": "application/json;odata=verbose",
@@ -59,7 +61,7 @@ $("#btnSaveAllRowsToServer").on('click', function () {
                 'Quantity': data.Quantity.toString(),
                 'Notes': data.Notes,
                 'MasterRecordId': parseInt(MasterRecordId),
-                'Fulfilled' : 'false'
+                'Fulfilled': 'false'
             }),
             headers: {
                 "accept": "application/json;odata=verbose",
@@ -87,11 +89,11 @@ $("#btnSaveAllRowsToServer").on('click', function () {
     var body = '<p dir=rtl>' +
         'السلام عليكم ورحمة الله وبركاته <br />' +
         ' تحية طيبة وبعد <br />' +
-        'قام "' + EmpArabicName + '" بعمل طلب جديد من قسم الخدمات <br />' +
+        'قام "' + EmpArabicName + '" بعمل طلب جديد من قسم الخدمات العامة <br />' +
         'الرجاء القيام بمراجعة الطلب واعتماده من خلال الرابط التالى: <br />' +
         '<a href='+webURL+'/Pages/StoresRequestView.aspx?id=' + MasterRecordId+'>رابط الطلب</a>' +
         '</p >';
-    var subject = 'تم عمل طلب جديد من قسم الخدمات';
+    var subject = 'تم عمل طلب جديد من قسم الخدمات العامة';
     sendEmail(to, body, subject);
 });
 function onSaveAllRowsToServerSucceeded(sender, args) {

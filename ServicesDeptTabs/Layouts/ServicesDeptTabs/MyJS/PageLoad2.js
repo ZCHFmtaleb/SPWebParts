@@ -2,6 +2,9 @@
 var source;
 var adapter;
 var EmpArabicName = "موظف اختبارى 1";
+var EmpEmail;
+var Status;
+var DM;
 
 $.urlParam = function (name) {
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -20,7 +23,7 @@ $(document).ready(function () {
     //==============================================================
 
     sprLib.list('StationeryRequests').items({
-        listCols: ['Created', 'Department', 'EmpArabicName'],
+        listCols: ['Created', 'Department', 'EmpArabicName', 'EmpEmail','Status','DM'],
         queryFilter: 'ID eq ' + requestID
     })
         .then(function (arrData) {
@@ -30,6 +33,13 @@ $(document).ready(function () {
             $('#lbl_ReqDate').text(formatDate);
             $('#lblEmpName').text(arrData[0].EmpArabicName);
             $('#lblDept').text(arrData[0].Department);
+            EmpEmail = arrData[0].EmpEmail;
+            Status = arrData[0].Status;
+            DM = arrData[0].DM;
+
+            //==Checking the Request Status and Show/Hide Controls accordingly
+            CheckRequestStatusAndShowHideControlsAccordingly();
+
         })
         .catch(function (errMsg) { console.error(errMsg); });
 

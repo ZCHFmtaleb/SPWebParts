@@ -87,12 +87,14 @@
 
 </style>
 
-<div class="rowZF" style="padding-top:3%; padding-bottom:3%;">
+<div class="rowZF" style="padding-top:3%; padding-bottom:3%;" id="decision_div">
    <div class="column">
-     <input id="btnDMReject" type="button" value="رفض"  style="font-size:x-large;"/>
+     <input id="btnDMReject" type="button" value="رفض"  style="font-size:x-large;display:none"/>
+     <input id="btnServicesDivisionHeadReject" type="button" value="رفض القسم"  style="font-size:x-large;display:none"/>
   </div>
   <div class="column">
-    <input id="btnDMapprove" type="button" value="موافقة"  style="font-size:x-large;position:absolute;right:30%;"/>
+    <input id="btnDMapprove" type="button" value="موافقة"  style="font-size:x-large;position:absolute;right:30%;display:none"/>
+    <input id="btnServicesDivisionHeadApprove" type="button" value="موافقة القسم"  style="font-size:x-large;position:absolute;right:30%;display:none"/>
     <img src="/_layouts/15/ServicesDeptTabs/CheckMark.png" alt="" style="display:none;width:113px;height:93px;position: absolute;right:30%; z-index:-1" id="CheckMark"/><br />
     <div id="successText" style="display:none;position:absolute;right:30%;">تم إعتماد الطلب بنجاح</div>
   </div>
@@ -102,6 +104,7 @@
 <div><h4>الرجاء ذكر أسباب رفض الطلب (سيتم إرسال تنويه بها لمقدم الطلب) </h4></div>
 <textarea id="txtRejectReasons" rows="6" style="width:50%" ></textarea> <span id="reqStar" style="color:red">*</span>
 <input id="btnDMRejectSubmit" type="button" value="إرسال"  style="font-size:x-large;" disabled />
+<input id="btnServicesDivisionHeadRejectSubmit" type="button" value="إرسال"  style="font-size:x-large;" disabled />
 </div>
 
 
@@ -143,15 +146,18 @@
 <script src="/_layouts/sp.runtime.js" type="text/javascript"></script>
 <script src="/_layouts/sp.js" type="text/javascript"></script>
 
+<script src="/_layouts/15/ServicesDeptTabs/sweetalert2.all.min.js"></script>
 
-<!-- ============================================================================-->
-
+<!-- ===========================MyJS=============================================================================== -->
 <script src="/_layouts/15/ServicesDeptTabs/MyJS/sprestlib.bundle.js"></script>
 <script src="/_layouts/15/ServicesDeptTabs/MyJS/sendEmail.js"></script>
-<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/PageLoad2.js"></script>
+<script src="/_layouts/15/ServicesDeptTabs/MyJS/CheckRequestStatusAndShowHideControlsAccordingly.js"></script>
+<script  src="/_layouts/15/ServicesDeptTabs/MyJS/PageLoad2.js"></script>
+<script  src="/_layouts/15/ServicesDeptTabs/MyJS/OnDMapprove.js"></script>
+<script  src="/_layouts/15/ServicesDeptTabs/MyJS/OnDMReject.js"></script>
+<script src="/_layouts/15/ServicesDeptTabs/MyJS/OnServicesDivisionHeadApprove.js"></script>
+<script src="/_layouts/15/ServicesDeptTabs/MyJS/OnServicesDivisionHeadReject.js"></script>
+<!-- ===========================End of MyJS=============================================================================== -->
 
-<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/OnDMapprove.js"></script>
-<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/OnDMReject.js"></script>
-
-<%--<script src="/_layouts/15/ServicesDeptTabs/polyfill.min.js"></script>--%>
+<script src="/_layouts/15/ServicesDeptTabs/polyfill.min.js"></script>
 
