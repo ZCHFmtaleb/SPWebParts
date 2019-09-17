@@ -69,13 +69,13 @@
     <Compile Include="ServicesRequestsAll\ServicesRequestsAllUserControl.ascx.designer.cs">
       <DependentUpon>ServicesRequestsAllUserControl.ascx.cs</DependentUpon>
     </Compile>
-    <Compile Include="StoresEmployeeRequestFulfillingScreen\StoresEmployeeRequestFulfillingScreen.ascx.cs">
-      <DependentUpon>StoresEmployeeRequestFulfillingScreen.ascx</DependentUpon>
+    <Compile Include="StoresEmployeeRequestFulfillingScreen2\StoresEmployeeRequestFulfillingScreen2.cs" />
+    <Compile Include="StoresEmployeeRequestFulfillingScreen2\StoresEmployeeRequestFulfillingScreen2UserControl.ascx.cs">
+      <DependentUpon>StoresEmployeeRequestFulfillingScreen2UserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="StoresEmployeeRequestFulfillingScreen\StoresEmployeeRequestFulfillingScreen.ascx.g.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StoresEmployeeRequestFulfillingScreen.ascx</DependentUpon>
+    <Compile Include="StoresEmployeeRequestFulfillingScreen2\StoresEmployeeRequestFulfillingScreen2UserControl.ascx.designer.cs">
+      <DependentUpon>StoresEmployeeRequestFulfillingScreen2UserControl.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="StoresRequestView\StoresRequestView.cs" />
     <Compile Include="StoresRequestView\StoresRequestViewUserControl.ascx.cs">
@@ -121,10 +121,10 @@
     <None Include="ServicesRequestsAll\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{7e775d33-660c-4977-9b33-f0d5ce3f5d87}</SharePointProjectItemId>
     </None>
-    <None Include="StoresEmployeeRequestFulfillingScreen\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{0fdf14b9-d1cc-4923-a7cf-db9ac3fbb4e4}</SharePointProjectItemId>
+    <None Include="StoresEmployeeRequestFulfillingScreen2\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a9d81182-6c39-4c1e-b6dc-3950822d6ce3}</SharePointProjectItemId>
     </None>
-    <None Include="StoresEmployeeRequestFulfillingScreen\StoresEmployeeRequestFulfillingScreen.webpart" />
+    <None Include="StoresEmployeeRequestFulfillingScreen2\StoresEmployeeRequestFulfillingScreen2.webpart" />
     <None Include="StoresRequestView\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{d0ad0c9c-f1c1-478c-bfd1-b5d98d1e30af}</SharePointProjectItemId>
     </None>
@@ -148,8 +148,9 @@
     <Content Include="Layouts\ServicesDeptTabs\MyJS\OnDMReject.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\OnServicesDivisionHeadApprove.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\OnServicesDivisionHeadReject.js" />
-    <Content Include="Layouts\ServicesDeptTabs\MyJS\PageLoad2.js" />
-    <Content Include="Layouts\ServicesDeptTabs\MyJS\PageLoad.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\PageLoad_StoresEmployeeFulfillingScreen2.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\PageLoad_StoresRequestView.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\PageLoad_ServicesRequestsAll.js" />
     <Content Include="Layouts\ServicesDeptTabs\jqscripts\angular-sanitize.min.js" />
     <Content Include="Layouts\ServicesDeptTabs\jqscripts\angular-ui-router.min.js" />
     <Content Include="Layouts\ServicesDeptTabs\jqscripts\angular.min.js" />
@@ -639,9 +640,12 @@
     <Content Include="Layouts\ServicesDeptTabs\jqwidgets\styles\jqx.windowsphone.css" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\ReadCategories.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\AddStationeryItemToGrid.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\Read_ItemSpecificNames.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\Read_ItemSpecificName_Categories.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\SaveAllRowsToServer.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\sendEmail.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\sprestlib.bundle.js" />
+    <Content Include="Layouts\ServicesDeptTabs\newCSS\StoresEmployeeRequestFulfillingScreen.css" />
     <Content Include="Layouts\ServicesDeptTabs\polyfill.min.js" />
     <Content Include="Layouts\ServicesDeptTabs\Serivces_Request_Email.html" />
     <Content Include="Layouts\ServicesDeptTabs\Serivces_Request_Email_to_DM_To_Approve.html" />
@@ -651,11 +655,8 @@
     <Content Include="ServicesRequestsAll\Elements.xml" />
     <Content Include="ServicesRequestsAll\ServicesRequestsAllUserControl.ascx" />
     <Content Include="SPMetal.xml" />
-    <Content Include="StoresEmployeeRequestFulfillingScreen\Elements.xml" />
-    <Content Include="StoresEmployeeRequestFulfillingScreen\StoresEmployeeRequestFulfillingScreen.ascx">
-      <Generator>SharePointWebPartCodeGenerator</Generator>
-      <LastGenOutput>StoresEmployeeRequestFulfillingScreen.ascx.g.cs</LastGenOutput>
-    </Content>
+    <Content Include="StoresEmployeeRequestFulfillingScreen2\Elements.xml" />
+    <Content Include="StoresEmployeeRequestFulfillingScreen2\StoresEmployeeRequestFulfillingScreen2UserControl.ascx" />
     <Content Include="StoresRequestView\Elements.xml" />
     <Content Include="StoresRequestView\StoresRequestViewUserControl.ascx" />
   </ItemGroup>

@@ -41,31 +41,6 @@
     </table>
     </div>
 
-    <%--<asp:GridView ID="gvw_Items" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" ShowHeaderWhenEmpty="True" BorderColor="Black" BorderStyle="Solid" CssClass="gvw_Items">
-        <AlternatingRowStyle BackColor="White" />
-        <Columns>
-            <asp:BoundField DataField="ItemGeneralName" HeaderText="اسم الصنف ">
-            <HeaderStyle Width="50%" />
-            </asp:BoundField>
-            <asp:BoundField DataField="Quantity" HeaderText="الكمية">
-            <HeaderStyle Width="10%" />
-            </asp:BoundField>
-            <asp:BoundField DataField="Notes" HeaderText="ملاحظات">
-            <HeaderStyle Width="40%" />
-            </asp:BoundField>
-        </Columns>
-        <EditRowStyle BackColor="#2461BF" />
-        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#EFF3FB" Font-Bold="True" Height="30px" />
-        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-        <SortedAscendingCellStyle BackColor="#F5F7FB" />
-        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-        <SortedDescendingCellStyle BackColor="#E9EBEF" />
-        <SortedDescendingHeaderStyle BackColor="#4870BE" />
-    </asp:GridView>--%>
-
  <div id="jqxgrid">
  </div>
 
@@ -152,7 +127,7 @@
 <script src="/_layouts/15/ServicesDeptTabs/MyJS/sprestlib.bundle.js"></script>
 <script src="/_layouts/15/ServicesDeptTabs/MyJS/sendEmail.js"></script>
 <script src="/_layouts/15/ServicesDeptTabs/MyJS/CheckRequestStatusAndShowHideControlsAccordingly.js"></script>
-<script  src="/_layouts/15/ServicesDeptTabs/MyJS/PageLoad2.js"></script>
+<script  src="/_layouts/15/ServicesDeptTabs/MyJS/PageLoad_StoresRequestView.js"></script>
 <script  src="/_layouts/15/ServicesDeptTabs/MyJS/OnDMapprove.js"></script>
 <script  src="/_layouts/15/ServicesDeptTabs/MyJS/OnDMReject.js"></script>
 <script src="/_layouts/15/ServicesDeptTabs/MyJS/OnServicesDivisionHeadApprove.js"></script>

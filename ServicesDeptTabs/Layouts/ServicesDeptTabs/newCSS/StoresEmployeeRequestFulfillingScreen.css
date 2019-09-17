@@ -1,0 +1,44 @@
+﻿#header {
+    padding-bottom: 1%
+}
+
+#footer {
+    clear: both;
+}
+
+#content {
+    float: left;
+    width: 100%;
+    padding-right: 200px;
+}
+
+.tblRequesterInfo {
+    font-weight: bold;
+    width: 25%;
+}
+
+    .tblRequesterInfo td {
+        padding-left: 10%;
+    }
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.rowZF:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#btnAsif_Mark_as_Fulfilled {
+    font-size: large;
+    position: absolute;
+    right: 30%;
+}
+#btnAsif_Mark_as_Failed {
+    font-size: large;
+}

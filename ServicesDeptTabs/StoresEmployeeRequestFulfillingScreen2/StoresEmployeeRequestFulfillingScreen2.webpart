@@ -2,12 +2,12 @@
 <webParts>
   <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
     <metaData>
-      <type name="ServicesDeptTabs.StoresEmployeeRequestFulfillingScreen.StoresEmployeeRequestFulfillingScreen, $SharePoint.Project.AssemblyFullName$" />
+      <type name="ServicesDeptTabs.StoresEmployeeRequestFulfillingScreen2.StoresEmployeeRequestFulfillingScreen2, $SharePoint.Project.AssemblyFullName$" />
       <importErrorMessage>$Resources:core,ImportErrorMessage;</importErrorMessage>
     </metaData>
     <data>
       <properties>
-        <property name="Title" type="string">ServicesDeptTabs - StoresEmployeeRequestFulfillingScreen</property>
+        <property name="Title" type="string">ServicesDeptTabs - StoresEmployeeRequestFulfillingScreen 2</property>
         <property name="Description" type="string">A screen for Stores Employee to Fulfill Request</property>
         <property name="ChromeType" type="chrometype">None</property>
       </properties>

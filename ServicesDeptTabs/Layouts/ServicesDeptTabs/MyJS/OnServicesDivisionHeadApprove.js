@@ -6,6 +6,7 @@
         })
         .then(function (objItem) {
             $("#btnServicesDivisionHeadApprove").fadeOut("slow");
+            $("#btnServicesDivisionHeadReject").fadeOut("slow");
             $("#btnDMapprove").fadeOut("slow");
             $("#btnDMReject").fadeOut("slow");
             $("#CheckMark").fadeIn("slow");

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/" >
+  <Module Name="StoresEmployeeRequestFulfillingScreen2" List="113" Url="_catalogs/wp">
+    <File Path="StoresEmployeeRequestFulfillingScreen2\StoresEmployeeRequestFulfillingScreen2.webpart" Url="ServicesDeptTabs_StoresEmployeeRequestFulfillingScreen2.webpart" Type="GhostableInLibrary" >
+      <Property Name="Group" Value="Zayed Services Dept" />
+    </File>
+  </Module>
+</Elements>
