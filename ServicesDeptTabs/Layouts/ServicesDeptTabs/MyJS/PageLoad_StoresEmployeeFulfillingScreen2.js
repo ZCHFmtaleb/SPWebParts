@@ -74,7 +74,7 @@ $(document).ready(function () {
     adapter = new $.jqx.dataAdapter(source);
     $("#jqxgrid").jqxGrid({
         rtl: true,
-        width: 1000,
+        width: 1100,
         height: 200,
         source: adapter,
         editable: true,
@@ -108,6 +108,7 @@ $(document).ready(function () {
                 editable: false
             }, {
                 text: 'fullfilled - تم توفيره',
+                datafield: 'Fulfilled',
                 width: 150,
                 columntype: 'checkbox',
                 align: 'center',
@@ -119,7 +120,14 @@ $(document).ready(function () {
                 }
             }, {
                 text: 'ItemSpecificName',
+                datafield: 'ItemSpecificName',
                 width: 250,
+                align: 'center',
+                cellsalign: 'center',
+                editable: false
+            }, {
+                text: 'Select Item',
+                width: 100,
                 align: 'center',
                 cellsalign: 'center',
                 columntype: 'button',
@@ -131,6 +139,12 @@ $(document).ready(function () {
                     editrow = row;
                     var offset = $("#jqxgrid").offset();
                     $("#popupWindow").jqxWindow({ isModal: true, modalOpacity: 0.5, position: { x: parseInt(offset.left) + 60, y: parseInt(offset.top) + 60 } });
+
+                    // get the clicked row's data and initialize the input fields.
+                    var dataRecord = $("#jqxgrid").jqxGrid('getrowdata', editrow);
+                    $("#hidden_Title").text(dataRecord.Title);
+                    $("#hidden_Quantity").text(dataRecord.Quantity);
+                    $("#hidden_Notes").text(dataRecord.Notes);
 
                     // show the popup window.
                     $("#popupWindow").jqxWindow('open');
@@ -148,16 +162,23 @@ $(document).ready(function () {
 
     // update the edited row when the user clicks the 'Save' button.
     $("#Save").click(function () {
+        if ($("#ddlItem option:selected").text() === "(Please select category first)") {
+            $("#item_not_selected_error").text("Please Select Item");
+            return;
+        } else {
+            $("#item_not_selected_error").empty();
+        }
         if (editrow >= 0) {
-            //var row = {
-            //    firstname: $("#firstName").val(), lastname: $("#lastName").val(), productname: $("#product").val(),
-            //    quantity: parseInt($("#quantity").jqxNumberInput('decimal')), price: parseFloat($("#price").jqxNumberInput('decimal'))
-            //};
+            var row = {
+                Title: $("#hidden_Title").text(),
+                Quantity: $("#hidden_Quantity").text(),
+                Notes: $("#hidden_Notes").text(),
+                ItemSpecificName: $("#ddlItem option:selected").text()
+            };
             var rowID = $('#jqxgrid').jqxGrid('getrowid', editrow);
             $('#jqxgrid').jqxGrid('updaterow', rowID, row);
             $("#popupWindow").jqxWindow('hide');
         }
     });
-
 
 }

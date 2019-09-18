@@ -30,7 +30,7 @@ $(document).ready(function () {
         digits: 2,
         decimalDigits: 0,
         min: 1,
-        max: 99,
+        max: 10,
         promptChar: ''
     });
 
@@ -80,13 +80,13 @@ $(document).ready(function () {
                 cellsalign: 'right',
                 cellclassname: 'GridCellStyle',
                 validation: function (cell, value) {
-                    if (value < 1) {
-                        return { result: false, message: "لابد أن تكون الكمية من 1 إلى 99" };
+                    if (value < 1 || value > 10) {
+                        return { result: false, message: "لابد أن تكون الكمية من 1 إلى 10" };
                     }
                     return true;
                 },
                 createeditor: function (row, cellvalue, editor) {
-                    editor.jqxNumberInput({ width: '60px', height: '30px', spinButtons: true, decimal: 1, digits: 2, decimalDigits: 0, min: 1, max: 99, promptChar: '' });
+                    editor.jqxNumberInput({ width: '60px', height: '30px', spinButtons: true, decimal: 1, digits: 2, decimalDigits: 0, min: 1, max: 10, promptChar: '' });
                 }
             }, {
                 text: 'ملاحظات',
