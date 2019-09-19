@@ -42,6 +42,7 @@
     <span style="display:none" id="hidden_Title"></span>
     <span style="display:none" id="hidden_Quantity"></span>
     <span style="display:none" id="hidden_Notes"></span>
+    <span style="display:none" id="hidden_ID"></span>
 <div id="popupWindow" role="dialog" class="jqx-rc-all jqx-rc-all-light jqx-window jqx-window-light jqx-popup jqx-popup-light jqx-widget jqx-widget-light jqx-widget-content jqx-widget-content-light" tabindex="0" hidefocus="true" style="outline: none; width: 250px; height: 218px; min-height: 50px; max-height: 1200px; min-width: 100px; max-width: 1200px; top: 101px; left: 68px; z-index: 1801; display: none;">
             <div class="jqx-window-header jqx-window-header-light jqx-widget-header jqx-widget-header-light jqx-disableselect jqx-disableselect-light jqx-rc-t jqx-rc-t-light" tabindex="0" style="position: relative; width: 236px; cursor: move;"><div style="float: left; direction: ltr; margin-top: 0px;">Edit</div><div class="jqx-window-close-button-background jqx-window-close-button-background-light" style="visibility: visible; width: 16px; height: 16px; margin-right: 7px; margin-left: 0px; position: absolute; right: 0px;"><div class="jqx-window-close-button jqx-window-close-button-light jqx-icon-close jqx-icon-close-light" style="width: 100%; height: 100%;"></div></div><div class="jqx-window-collapse-button-background jqx-window-collapse-button-background-light" style="visibility: hidden; width: 16px; height: 16px; margin-right: 7px; margin-left: 0px; position: absolute; right: 16px;"><div class="jqx-window-collapse-button jqx-window-collapse-button-light jqx-icon-arrow-up jqx-icon-arrow-up-light" style="width: 100%; height: 100%; top: 0px;"></div></div></div>
            <div style="overflow: hidden; width: 250px; height: 186px;" class="jqx-window-content jqx-window-content-light jqx-widget-content jqx-widget-content-light jqx-rc-b jqx-rc-b-light" tabindex="0">
@@ -130,7 +131,8 @@
 <script src="/_layouts/15/ServicesDeptTabs/MyJS/sendEmail.js"></script>
 <script src="/_layouts/15/ServicesDeptTabs/MyJS/Read_ItemSpecificName_Categories.js"></script>
 <script src="/_layouts/15/ServicesDeptTabs/MyJS/Read_ItemSpecificNames.js"></script>
-<script  src="/_layouts/15/ServicesDeptTabs/MyJS/PageLoad_StoresEmployeeFulfillingScreen2.js"></script>
+<script src="/_layouts/15/ServicesDeptTabs/MyJS/Mark_as_Fulfilled.js"></script>
+<script src="/_layouts/15/ServicesDeptTabs/MyJS/PageLoad_StoresEmployeeFulfillingScreen2.js"></script>
 <!-- ===========================End of MyJS=============================================================================== -->
 
 <script src="/_layouts/15/ServicesDeptTabs/polyfill.min.js"></script>

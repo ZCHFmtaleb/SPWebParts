@@ -43,7 +43,7 @@ $(document).ready(function () {
     //==============================================================
 
     sprLib.list('StationeryRequestDetails').items({
-        listCols: ['ID', 'MasterRecordId', 'Title', 'Quantity', 'Notes'],
+        listCols: ['ID', 'MasterRecordId', 'Title', 'Quantity', 'Notes', 'Fulfilled'],
         queryFilter: 'MasterRecordId eq ' + requestID,
         queryOrderby: 'ID'
     })
@@ -56,10 +56,14 @@ $(document).ready(function () {
 
     Read_ItemSpecificName_Categories();
 
-}); // end of document.ready$("#ddlCat").on("change", Read_ItemSpecificNames);function BindArrayToGrid(data) {
+}); // end of document.ready$("#ddlCat").on("change", Read_ItemSpecificNames);$("#btnAsif_Mark_as_Fulfilled").on("click", Mark_as_Fulfilled);function BindArrayToGrid(data) {
     source = {
         localdata: data,
-        datafields: [{
+        datafields: [
+         {
+            name: 'ID',
+            type: 'string'
+         }, {
             name: 'Title',
             type: 'string'
         }, {
@@ -68,13 +72,17 @@ $(document).ready(function () {
         }, {
             name: 'Notes',
             type: 'string'
-        }],
+            }, {
+                name: 'Fulfilled',
+                type: 'bool'
+            }
+        ],
         datatype: "array"
     };
     adapter = new $.jqx.dataAdapter(source);
     $("#jqxgrid").jqxGrid({
         rtl: true,
-        width: 1100,
+        width: 1150,
         height: 200,
         source: adapter,
         editable: true,
@@ -82,6 +90,11 @@ $(document).ready(function () {
         editmode: 'dblclick',
         columns: [
             {
+                text: 'ID',
+                datafield: 'ID',
+                width: 50,
+                editable: false
+            }, {
                 text: 'اسم الصنف',
                 datafield: 'Title',
                 width: 200,
@@ -142,6 +155,7 @@ $(document).ready(function () {
 
                     // get the clicked row's data and initialize the input fields.
                     var dataRecord = $("#jqxgrid").jqxGrid('getrowdata', editrow);
+                    $("#hidden_ID").text(dataRecord.ID);
                     $("#hidden_Title").text(dataRecord.Title);
                     $("#hidden_Quantity").text(dataRecord.Quantity);
                     $("#hidden_Notes").text(dataRecord.Notes);
@@ -170,10 +184,12 @@ $(document).ready(function () {
         }
         if (editrow >= 0) {
             var row = {
+                ID: $("#hidden_ID").text(),
                 Title: $("#hidden_Title").text(),
                 Quantity: $("#hidden_Quantity").text(),
                 Notes: $("#hidden_Notes").text(),
-                ItemSpecificName: $("#ddlItem option:selected").text()
+                ItemSpecificName: $("#ddlItem option:selected").text(),
+                Fulfilled:true
             };
             var rowID = $('#jqxgrid').jqxGrid('getrowid', editrow);
             $('#jqxgrid').jqxGrid('updaterow', rowID, row);
