@@ -144,6 +144,7 @@
     <Content Include="Layouts\ServicesDeptTabs\jqwidgets\generatedata.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\CheckRequestStatusAndShowHideControlsAccordingly.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\DeleteGridRow.js" />
+    <Content Include="Layouts\ServicesDeptTabs\MyJS\Mark_as_Failed.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\Mark_as_Fulfilled.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\OnDMapprove.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\OnDMReject.js" />

@@ -9,7 +9,6 @@
 #content {
     float: left;
     width: 100%;
-    padding-right: 200px;
 }
 
 .tblRequesterInfo {
@@ -41,4 +40,13 @@
 }
 #btnAsif_Mark_as_Failed {
     font-size: large;
+}
+
+#results_summary {
+    list-style: none;
+}
+
+.bb {
+    color:blue;
+    font-weight:bold;
 }

@@ -77,7 +77,7 @@
 
 
     <div id="footer">
-        <div class="rowZF" style="padding-top: 3%; padding-bottom: 3%;" id="decision_div">
+        <div class="rowZF" style="padding-top: 3%; padding-bottom: 1%;" id="decision_div">
             <div class="column">
                 <button id="btnAsif_Mark_as_Failed" type="button">لم يتم توفير الطلب <br /> Can't be Fulfilled</button>
             </div>
@@ -89,9 +89,18 @@
             </div>
 
         </div>
-    </div>
+        
+        <div id="divRejectReasons" style="display:none;">
+            <div><h4>الرجاء ذكر أسباب عدم إمكانية توفير الطلب (سيتم إرسال تنويه بها لمقدم الطلب) </h4></div>
+            <textarea id="txtRejectReasons" rows="6" style="width:50%" ></textarea> <span id="reqStar" style="color:red">*</span>
+            <input id="btnAsif_submit_fail_reasons" type="button" value="إرسال"  style="font-size:x-large;" disabled />
+            </div>
+        </div>
 </div>
-
+<div style="direction:rtl; text-align:right;">
+<ul id="results_summary">
+</ul>  
+</div>
 
 <!-- ========================================Ref==================================-->
 <link rel="stylesheet" href="/Style%20Library/jQueryUI/base/jquery-ui.css">
@@ -132,6 +141,7 @@
 <script src="/_layouts/15/ServicesDeptTabs/MyJS/Read_ItemSpecificName_Categories.js"></script>
 <script src="/_layouts/15/ServicesDeptTabs/MyJS/Read_ItemSpecificNames.js"></script>
 <script src="/_layouts/15/ServicesDeptTabs/MyJS/Mark_as_Fulfilled.js"></script>
+<script src="/_layouts/15/ServicesDeptTabs/MyJS/Mark_as_Failed.js"></script>
 <script src="/_layouts/15/ServicesDeptTabs/MyJS/PageLoad_StoresEmployeeFulfillingScreen2.js"></script>
 <!-- ===========================End of MyJS=============================================================================== -->
 

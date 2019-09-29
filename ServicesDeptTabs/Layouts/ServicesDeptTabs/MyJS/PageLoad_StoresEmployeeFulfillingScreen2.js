@@ -37,6 +37,8 @@ $(document).ready(function () {
             Status = arrData[0].Status;
             DM = arrData[0].DM;
 
+            hide_buttons_if_already_done_before();
+
         })
         .catch(function (errMsg) { console.error(errMsg); });
 
@@ -56,14 +58,22 @@ $(document).ready(function () {
 
     Read_ItemSpecificName_Categories();
 
-}); // end of document.ready$("#ddlCat").on("change", Read_ItemSpecificNames);$("#btnAsif_Mark_as_Fulfilled").on("click", Mark_as_Fulfilled);function BindArrayToGrid(data) {
+}); // end of document.readyfunction hide_buttons_if_already_done_before() {    if (Status.toLowerCase() === "fulfilled".toLowerCase() || Status.toLowerCase() === "failed".toLowerCase()) {
+        $("#btnAsif_Mark_as_Fulfilled").hide();
+        $("#btnAsif_Mark_as_Failed").hide();
+        $('#decision_div').text("عذرا تم إنهاء هذا الطلب سابقا بالفعل - This request has been processed before").css({ "text-align": "center", "font-size": "large" });
+    }
+}$("#ddlCat").on("change", Read_ItemSpecificNames);$("#btnAsif_Mark_as_Fulfilled").on("click", Mark_as_Fulfilled);$("#btnAsif_Mark_as_Failed").on("click", Mark_as_Failed);function BindArrayToGrid(data) {
     source = {
         localdata: data,
         datafields: [
          {
             name: 'ID',
             type: 'string'
-         }, {
+            }, {
+            name: 'InventoryID',
+            type: 'string'
+            }, {
             name: 'Title',
             type: 'string'
         }, {
@@ -82,7 +92,7 @@ $(document).ready(function () {
     adapter = new $.jqx.dataAdapter(source);
     $("#jqxgrid").jqxGrid({
         rtl: true,
-        width: 1150,
+        width: 1200,
         height: 200,
         source: adapter,
         editable: true,
@@ -94,7 +104,14 @@ $(document).ready(function () {
                 datafield: 'ID',
                 width: 50,
                 editable: false
-            }, {
+            },
+            {
+                text: 'InvID',
+                datafield: 'InventoryID',
+                width: 50,
+                editable: false
+            },
+            {
                 text: 'اسم الصنف',
                 datafield: 'Title',
                 width: 200,
@@ -189,6 +206,7 @@ $(document).ready(function () {
                 Quantity: $("#hidden_Quantity").text(),
                 Notes: $("#hidden_Notes").text(),
                 ItemSpecificName: $("#ddlItem option:selected").text(),
+                InventoryID: $("#ddlItem option:selected").val(),
                 Fulfilled:true
             };
             var rowID = $('#jqxgrid').jqxGrid('getrowid', editrow);

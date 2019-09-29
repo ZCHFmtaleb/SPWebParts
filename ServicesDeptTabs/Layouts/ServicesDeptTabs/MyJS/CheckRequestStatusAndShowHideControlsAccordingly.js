@@ -60,6 +60,24 @@
                    $('#btnServicesDivisionHeadReject').hide();
                    $('#decision_div').text("عذرا تم تقديم هذا الطلب سابقا - حالة الطلب : جارى تنفيذ الطلب").css({ "text-align": "center", "font-size": "large" });
            }
+
+
+           else if (Status.toLowerCase() === "fulfilled".toLowerCase()) {
+               $('#btnDMapprove').hide();
+               $('#btnDMReject').hide();
+               $('#btnServicesDivisionHeadApprove').hide();
+               $('#btnServicesDivisionHeadReject').hide();
+               $('#decision_div').text("عذرا تم تقديم هذا الطلب سابقا - حالة الطلب : تم توفير الطلب").css({ "text-align": "center", "font-size": "large" });
+           }
+           else if (Status.toLowerCase() === "failed".toLowerCase()) {
+               $('#btnDMapprove').hide();
+               $('#btnDMReject').hide();
+               $('#btnServicesDivisionHeadApprove').hide();
+               $('#btnServicesDivisionHeadReject').hide();
+               $('#decision_div').text("عذرا تم تقديم هذا الطلب سابقا - حالة الطلب : لا توجد إمكانية لتوفير الطلب").css({ "text-align": "center", "font-size": "large" });
+           }
+
+
            else if (Status.toLowerCase() === "rejected_by_DM".toLowerCase()) {
                $('#btnDMapprove').hide();
                $('#btnDMReject').hide();
