@@ -131,12 +131,6 @@
     <None Include="StoresRequestView\StoresRequestView.webpart" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SPWebParts\SPWebParts.csproj">
-      <Project>{d501c13e-df0c-4f94-962e-e1f98b078b07}</Project>
-      <Name>SPWebParts</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Features\ZayedServicesDeptFeature\ZayedServicesDeptFeature.Template.xml">
       <DependentUpon>ZayedServicesDeptFeature.feature</DependentUpon>
     </Content>
