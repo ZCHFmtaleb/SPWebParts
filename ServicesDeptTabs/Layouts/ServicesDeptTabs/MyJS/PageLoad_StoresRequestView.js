@@ -1,10 +1,12 @@
 ﻿var requestID;
 var source;
 var adapter;
-var EmpArabicName = "موظف اختبارى 1";
+var EmpArabicName;
 var EmpEmail;
 var Status;
 var DM;
+var ServicesDivisionHead_email;
+var EmpFor_StoresRequests_email;
 
 $.urlParam = function (name) {
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -22,6 +24,26 @@ $(document).ready(function () {
 
     //==============================================================
 
+    sprLib.list('RequestReceiverEmail').items({
+        listCols: ['Email'],
+        queryFilter: 'Title eq "ServicesDivisionHead_email"'  
+    })
+        .then(function (arrData) {
+            ServicesDivisionHead_email = arrData[0].Email;
+        })
+        .catch(function (errMsg) { console.error(errMsg); });
+
+    sprLib.list('RequestReceiverEmail').items({
+        listCols: ['Email'],
+        queryFilter: 'Title eq "EmpFor_StoresRequests_email"'
+    })
+        .then(function (arrData) {
+            EmpFor_StoresRequests_email = arrData[0].Email;
+        })
+        .catch(function (errMsg) { console.error(errMsg); }); 
+
+    //==============================================================
+
     sprLib.list('StationeryRequests').items({
         listCols: ['Created', 'Department', 'EmpArabicName', 'EmpEmail','Status','DM'],
         queryFilter: 'ID eq ' + requestID
@@ -33,6 +55,7 @@ $(document).ready(function () {
             $('#lbl_ReqDate').text(formatDate);
             $('#lblEmpName').text(arrData[0].EmpArabicName);
             $('#lblDept').text(arrData[0].Department);
+            EmpArabicName = arrData[0].EmpArabicName;
             EmpEmail = arrData[0].EmpEmail;
             Status = arrData[0].Status;
             DM = arrData[0].DM;

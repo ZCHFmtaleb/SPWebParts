@@ -57,9 +57,6 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\Emp_DAL.cs" />
-    <Compile Include="EL\Emp.cs" />
-    <Compile Include="EL\ServicesRequestTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicesRequestsAll\ServicesRequestsAll.cs" />
     <Compile Include="ServicesRequestsAll\ServicesRequestsAllUserControl.ascx.cs">
@@ -85,7 +82,6 @@
     <Compile Include="StoresRequestView\StoresRequestViewUserControl.ascx.designer.cs">
       <DependentUpon>StoresRequestViewUserControl.ascx.cs</DependentUpon>
     </Compile>
-    <Compile Include="ZF.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Features\ZayedServicesDeptFeature\ZayedServicesDeptFeature.feature">
@@ -116,7 +112,6 @@
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
     </None>
-    <None Include="Prebuild.bat" />
     <None Include="ServicesRequestsAll\ServicesRequestsAll.webpart" />
     <None Include="ServicesRequestsAll\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{7e775d33-660c-4977-9b33-f0d5ce3f5d87}</SharePointProjectItemId>
@@ -643,14 +638,10 @@
     <Content Include="Layouts\ServicesDeptTabs\MyJS\sprestlib.bundle.js" />
     <Content Include="Layouts\ServicesDeptTabs\newCSS\StoresEmployeeRequestFulfillingScreen.css" />
     <Content Include="Layouts\ServicesDeptTabs\polyfill.min.js" />
-    <Content Include="Layouts\ServicesDeptTabs\Serivces_Request_Email.html" />
-    <Content Include="Layouts\ServicesDeptTabs\Serivces_Request_Email_to_DM_To_Approve.html" />
-    <Content Include="Layouts\ServicesDeptTabs\ServicesDeptTabsStyle.css" />
     <Content Include="Layouts\ServicesDeptTabs\spinner.gif" />
     <Content Include="Layouts\ServicesDeptTabs\sweetalert2.all.min.js" />
     <Content Include="ServicesRequestsAll\Elements.xml" />
     <Content Include="ServicesRequestsAll\ServicesRequestsAllUserControl.ascx" />
-    <Content Include="SPMetal.xml" />
     <Content Include="StoresEmployeeRequestFulfillingScreen2\Elements.xml" />
     <Content Include="StoresEmployeeRequestFulfillingScreen2\StoresEmployeeRequestFulfillingScreen2UserControl.ascx" />
     <Content Include="StoresRequestView\Elements.xml" />

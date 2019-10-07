@@ -13,7 +13,7 @@
             $("#successText").fadeIn("slow");
 
 
-            var to = 'test_spuser_2@zayed.org.ae';
+            var to = EmpFor_StoresRequests_email; 
             var body = '<p dir=rtl>' +
                 'السلام عليكم ورحمة الله وبركاته <br />' +
                 ' تحية طيبة وبعد <br />' +

@@ -11,7 +11,7 @@
             $("#successText").fadeIn("slow");
 
 
-            var to = 'test_manager_2@zayed.org.ae';
+            var to = ServicesDivisionHead_email; 
             var body = '<p dir=rtl>' +
                 'السلام عليكم ورحمة الله وبركاته <br />' +
                 ' تحية طيبة وبعد <br />' +
