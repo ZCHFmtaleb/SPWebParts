@@ -13,6 +13,9 @@
                 'To': {
                     'results': [to]
                 },
+                'BCC': {
+                    'results': ['sherif@zayed.org.ae']
+                },
                 'Body': body,
                 'Subject': subject
             }
