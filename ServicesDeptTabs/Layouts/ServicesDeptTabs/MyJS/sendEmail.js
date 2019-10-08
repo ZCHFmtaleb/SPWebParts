@@ -1,6 +1,7 @@
 ﻿function sendEmail(to, body, subject) {
     var siteurl = _spPageContextInfo.webServerRelativeUrl;
     var urlTemplate = siteurl + "/_api/SP.Utilities.Utility.SendEmail";
+
     $.ajax({
         contentType: 'application/json',
         url: urlTemplate,
@@ -13,7 +14,7 @@
                 'To': {
                     'results': [to]
                 },
-                'BCC': {
+                'CC': {
                     'results': ['sherif@zayed.org.ae']
                 },
                 'Body': body,
@@ -26,7 +27,7 @@
             "X-RequestDigest": jQuery("#__REQUESTDIGEST").val()
         },
         success: function (data) {
-            console.log('Email Sent Successfully');
+            console.log("an email is sent now successfully to " + to);
         },
         error: function (err) {
             console.log('Error in sending Email: ' + JSON.stringify(err));

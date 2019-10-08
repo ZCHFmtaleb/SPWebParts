@@ -91,7 +91,7 @@ $("#btnSaveAllRowsToServer").on('click', function () {
         ' تحية طيبة وبعد <br />' +
         'قام "' + EmpArabicName + '" بعمل طلب جديد من قسم الخدمات العامة <br />' +
         'الرجاء القيام بمراجعة الطلب واعتماده من خلال الرابط التالى: <br />' +
-        '<a href='+webURL+'/Pages/StoresRequestView.aspx?id=' + MasterRecordId+'>رابط الطلب</a>' +
+        '<a href='+webURL+'/Pages/StoresRequestView.aspx?srid=' + MasterRecordId+'>رابط الطلب</a>' +
         '</p >';
     var subject = 'تم عمل طلب جديد من قسم الخدمات العامة';
     sendEmail(to, body, subject);

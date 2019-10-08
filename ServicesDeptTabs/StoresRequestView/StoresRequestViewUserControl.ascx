@@ -8,16 +8,27 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="StoresRequestViewUserControl.ascx.cs" Inherits="ServicesDeptTabs.StoresRequestView.StoresRequestViewUserControl" %>
 
 <style type="text/css">
-    .tblRequesterInfo{
-        font-weight:bold;
-        width:25%;
-    }
-    .tblRequesterInfo td{
-        padding-left:10%;
-    }
+.tblRequesterInfo {
+    font-weight:bold;
+    width:25%;
+}
+.tblRequesterInfo td {
+    padding-left:10%;
+}
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+}
+/* Clear floats after the columns */
+.rowZF:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 </style>
 
-<div id="container" dir="rtl"  runat="server">
+<div id="container" dir="rtl" >
     <div style="padding-bottom:1%">
     <table class="tblRequesterInfo">
         <tr>
@@ -43,24 +54,6 @@
 
  <div id="jqxgrid">
  </div>
-
-
-<style>
-
-/* Create two equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 50%;
-}
-
-/* Clear floats after the columns */
-.rowZF:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-</style>
 
 <div class="rowZF" style="padding-top:3%; padding-bottom:3%;" id="decision_div">
    <div class="column">
