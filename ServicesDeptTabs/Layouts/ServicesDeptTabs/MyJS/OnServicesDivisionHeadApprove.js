@@ -20,7 +20,7 @@
                 'قام "' + EmpArabicName + '" بعمل طلب جديد من قسم الخدمات <br />' +
                 'وتم إعتماد الطلب بواسطة المدير المباشر ورئيس قسم الخدمات العامة <br />' +
                 'الرجاء القيام بمراجعة الطلب والبدء بتوفيره من خلال الرابط التالى: <br />' +
-                '<a href=' + _spPageContextInfo.webAbsoluteUrl + '/Pages/StoresEmployeeRequestFulfillingScreen.aspx?id=' + requestID + '>رابط الطلب</a>' +
+                '<a href=' + _spPageContextInfo.webAbsoluteUrl + '/Pages/StoresEmployeeRequestFulfillingScreen.aspx?srid=' + requestID + '>رابط الطلب</a>' +
                 '</p >';
             var subject = 'تم إعتماد طلب جديد من قسم الخدمات';
             sendEmail(to, body, subject);

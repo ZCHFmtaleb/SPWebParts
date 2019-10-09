@@ -18,7 +18,7 @@ $.urlParam = function (name) {
 
 $(document).ready(function () {
 
-    requestID = $.urlParam('id');
+    requestID = $.urlParam('srid');
 
     //==============================================================
 

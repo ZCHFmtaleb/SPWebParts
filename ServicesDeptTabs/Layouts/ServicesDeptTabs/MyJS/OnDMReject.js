@@ -47,7 +47,7 @@ $("#btnDMRejectSubmit").on('click', function () {
                 'نظرا لعدم إعتماده من قبل المدير المباشر <br />' +
                 'وذلك نظرا للأسباب التالية : <br />' +
                 '<i>"'+$.trim($("#txtRejectReasons").val()) + '"</i>' + '<br />' +
-                '<a href=' + _spPageContextInfo.webAbsoluteUrl + '/Pages/StoresRequestView.aspx?id=' + requestID + '>رابط الطلب</a>' +
+                '<a href=' + _spPageContextInfo.webAbsoluteUrl + '/Pages/StoresRequestView.aspx?srid=' + requestID + '>رابط الطلب</a>' +
                 '</p >';
             var subject = 'نعتذر عن عدم قبول طلب قسم الخدمات العامة الخاص بك';
             sendEmail(to, body, subject);

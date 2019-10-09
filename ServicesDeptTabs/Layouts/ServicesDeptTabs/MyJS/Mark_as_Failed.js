@@ -44,7 +44,7 @@ $("#btnAsif_submit_fail_reasons").on('click', function () {
                 ' نعتذر عن عدم إمكانية توفير طلب قسم الخدمات العامة الخاص بك (قرطاسية ومخازن) رقم "' + requestID + '" <br />' +
                 'وذلك نظرا للأسباب التالية : <br />' +
                 '<i>"' + $.trim($("#txtRejectReasons").val()) + '"</i>' + '<br />' +
-                '<a href=' + _spPageContextInfo.webAbsoluteUrl + '/Pages/StoresRequestView.aspx?id=' + requestID + '>رابط الطلب</a>' +
+                '<a href=' + _spPageContextInfo.webAbsoluteUrl + '/Pages/StoresRequestView.aspx?srid=' + requestID + '>رابط الطلب</a>' +
                 '</p >';
             var subject = 'نعتذر عن عدم إمكانية توفير طلب قسم الخدمات العامة الخاص بك (قرطاسية ومخازن)';
             sendEmail(to, body, subject);

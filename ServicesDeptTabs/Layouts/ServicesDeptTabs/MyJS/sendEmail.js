@@ -11,11 +11,11 @@
                 '__metadata': {
                     'type': 'SP.Utilities.EmailProperties'
                 },
-                'To': {
+               'To': {
                     'results': [to]
                 },
                 'CC': {
-                    'results': ['sherif@zayed.org.ae']
+                    'results': ['test@zayed.org.ae']
                 },
                 'Body': body,
                 'Subject': subject

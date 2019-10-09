@@ -18,7 +18,7 @@
                 'قام "' + EmpArabicName + '" بعمل طلب جديد من قسم الخدمات العامة <br />' +
                 'وتم إعتماد الطلب بواسطة المدير المباشر <br />' +
                 'الرجاء القيام بمراجعة الطلب واعتماده من خلال الرابط التالى: <br />' +
-                '<a href=' + _spPageContextInfo.webAbsoluteUrl + '/Pages/StoresRequestView.aspx?id=' + requestID + '>رابط الطلب</a>' +
+                '<a href=' + _spPageContextInfo.webAbsoluteUrl + '/Pages/StoresRequestView.aspx?srid=' + requestID + '>رابط الطلب</a>' +
                 '</p >';
             var subject = 'تم عمل طلب جديد من قسم الخدمات العامة';
             sendEmail(to, body, subject);

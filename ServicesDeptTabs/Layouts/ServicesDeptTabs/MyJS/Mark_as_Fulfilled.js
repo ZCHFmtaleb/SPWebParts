@@ -43,7 +43,7 @@ function Mark_as_Fulfilled() {
                     'السلام عليكم ورحمة الله وبركاته <br />' +
                     ' تحية طيبة وبعد <br />' +
                     ' تم بنجاح تنفيذ الطلب الخاص بكم من قسم الخدمات العامة (قرطاسية ومخازن) رقم "' + requestID + '" <br />' +
-                    '<a href=' + _spPageContextInfo.webAbsoluteUrl + '/Pages/StoresRequestView.aspx?id=' + requestID + '>رابط الطلب</a><br /><br />' +
+                    '<a href=' + _spPageContextInfo.webAbsoluteUrl + '/Pages/StoresRequestView.aspx?srid=' + requestID + '>رابط الطلب</a><br /><br />' +
                     'فى حالة وجود خطأ يرجى التواصل مع قسم الخدمات العامة<br />' +
                     'وشكرا جزيلا لحسن تعاونكم<br />' +
                     '</p >';
