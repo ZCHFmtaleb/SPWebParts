@@ -1,0 +1,22 @@
+﻿#page_head {
+    margin-bottom: 2%;
+}
+
+.GridCellStyle {
+    direction: rtl;
+}
+
+#btnAddStationeryItemToGrid {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: lightgreen;
+}
+
+#deleterowbutton {
+    background-color: pink;
+}
+
+.TableRightColumn {
+    padding-left: 3%;
+    width: 20%;
+}

@@ -8,71 +8,61 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ServicesRequestsAllUserControl.ascx.cs" Inherits="ServicesDeptTabs.ServicesRequestsAll.ServicesRequestsAllUserControl" %>
 
 
+<SharePoint:CssRegistration runat="server" Name="/_layouts/15/ServicesDeptTabs/newCSS/ServicesRequestsAll.css" After="/Style%20Library/css/ShareBoot.css" />
+
 <div id="container" dir="rtl" style="border: none !important; text-align: right">
 
-    <div id="page_head">
-        <h1 runat="server" id="PageTitle">طلبات قسم الخدمات العامة </h1>
-    </div>
-    <div class="divAddGoal" runat="server" id="div_of_AddingGoal">
-        <div class="Form_Table_css">
-                    <table>
-                        <tr>
-                            <td style="width: 36% !important;">مجموعة الصنف</td>
-                            <td>
-                                <select id="ddlCat" style="width:200px" onchange="GetItemsOfSelectedCat()" >
-                                    <option  value="اختر مجموعة الصنف">اختر مجموعة الصنف</option>
-                                </select>
-                            </td>
-                            <td colspan="3">
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>الصنف المطلوب</td>
-                            <td>
-                                <%--<asp:DropDownList ID="ddlPrimaryGoal" runat="server" Width="300px" AppendDataBoundItems="True" ValidationGroup="vg1">
-                                    <asp:ListItem Selected="True" Value="0">اختر الصنف المطلوب</asp:ListItem>
-                                </asp:DropDownList>--%>
-                                 <select id="ddlItem" style="width:350px" >
-                                    <option  value="اختر الصنف المطلوب">اختر الصنف المطلوب</option>
-                                </select>
-                                <%--<asp:RequiredFieldValidator ID="rfv_ddlPrimaryGoal" runat="server" Display="Dynamic" ErrorMessage="الرجاء اختيار الصنف المطلوب" ControlToValidate="ddlPrimaryGoal" ForeColor="Red" ValidationGroup="vg1"
-            InitialValue="0">*</asp:RequiredFieldValidator>--%>
-                            </td>
-                        </tr>
-                    </table>
+<div id="page_head">
+    <h1 runat="server" id="PageTitle">طلب قرطاسية ومخازن </h1>
+</div>
+<div class="divAddGoal" runat="server" id="div_of_AddingGoal">
+        <table>
+            <tr>
+                <td class="TableRightColumn">مجموعة الصنف</td>
+                <td>
+                    <select id="ddlCat" style="width: 200px" onchange="GetItemsOfSelectedCat()">
+                        <option value="-1">اختر مجموعة الصنف</option>
+                    </select>
+                </td>
+                <td colspan="3"></td>
+            </tr>
+            <tr>
+                <td>الصنف المطلوب</td>
+                <td>
+                    <select id="ddlItem" style="width: 350px">
+                        <option value="-1">اختر الصنف المطلوب</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>الكمية</td>
+                <td>
+                    <div id="txtQuantity"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>ملاحظات</td>
+                <td>
+                    <input id="txtNotes" type="text" style="width: 500px;" maxlength="255" />
+                </td>
+            </tr>
+        </table>
 
-             
-            <table class="Form_Table_css">
+        <table>
+            <tr>
+                <td>
+                    <input id="btnAddStationeryItemToGrid" type="Button" value="إضافة صنف" />
+                </td>
+            </tr>
+        </table>
+</div>
 
-                <tr>
-                    <td>الكمية</td>
-                    <td>
-                        <div id="txtQuantity"></div>
-                        <%--<asp:TextBox ID="txtQuantity" runat="server" MaxLength="3" Width="50px" ValidationGroup="vg1" Text="1"></asp:TextBox>--%>
-                        <%--<asp:RequiredFieldValidator ID="rfv_txtQuantity" runat="server" ControlToValidate="txtQuantity" Display="Dynamic" ErrorMessage="الرجاء ادخال الكمية المطلوبة" ForeColor="Red" ValidationGroup="vg1">*</asp:RequiredFieldValidator>--%>
-                        <%--<asp:RangeValidator ID="rgv_txtQuantity" runat="server" ControlToValidate="txtQuantity" Display="Dynamic" ErrorMessage="لابد ان تكون القيمة المدخلة رقما صحيحا من 1 إلى 999" ForeColor="Red" ValidationGroup="vg1" MaximumValue="999" MinimumValue="1" Type="Integer">*</asp:RangeValidator>--%>
-                    </td>
-                </tr>
-                <tr>
-                    <td>ملاحظات</td>
-                    <td>
-                        <input id="txtNotes" type="text" style="width:500px;" maxlength="255" />
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input id="btnAddStationeryItemToGrid" type="Button" value="إضافة" />
-                        <%--<asp:Button ID="btnAddItem" runat="server" Text="إضافة" OnClick="btnAddItem_Click" ValidationGroup="vg1" Font-Size="Large" Height="50px" Width="100px" Style="margin-top: 20px;" />
-                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ValidationGroup="vg1" />--%>
-                    </td>
-                </tr>
-            </table>
+<!-- ===================The Grid==================================== -->
 
-        </div>
-    </div>
-    <div id="jqxgrid">
-    </div>
+<div id="jqxgrid"></div>
+
+<!-- ====================end of The Grid==================================== -->
+
     <input id="deleterowbutton" type="button" value="حذف صنف" />
 
     <div style="width:50%; text-align:center">
@@ -81,12 +71,6 @@
 </div>
 
 <!-- ===========================Ref=============================================================================== -->
-<style>
-    .GridCellStyle{
-        direction:rtl;
-    }
-</style>
-
 <link rel="stylesheet" href="/Style%20Library/jQueryUI/base/jquery-ui.css">
 <script type="text/javascript" src="/Style%20Library/jQueryUI/base/jquery-ui.js"></script>
 <link rel="stylesheet" href="/_layouts/15/ServicesDeptTabs/jqwidgets/styles/jqx.base.css" type="text/css" />

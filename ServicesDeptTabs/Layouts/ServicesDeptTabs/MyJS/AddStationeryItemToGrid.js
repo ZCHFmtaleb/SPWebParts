@@ -4,5 +4,9 @@
     row["Quantity"] = $('#txtQuantity').val();
     row["Notes"] = $('#txtNotes').val();
 
-    var commit = $("#jqxgrid").jqxGrid('addrow', null, row);
+    if ($('#ddlItem').val()==="-1") {
+        return;
+    } else {
+        var commit = $("#jqxgrid").jqxGrid('addrow', null, row);
+    }
 }

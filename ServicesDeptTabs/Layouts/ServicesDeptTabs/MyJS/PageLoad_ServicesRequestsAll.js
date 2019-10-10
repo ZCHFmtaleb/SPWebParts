@@ -100,6 +100,16 @@ $(document).ready(function () {
     });
 }); // end of document.ready
 function GetItemsOfSelectedCat() {    var selected_cat = $("#ddlCat").val();
+
+    if (selected_cat === "-1") {
+        $("#ddlItem").empty();
+        $("#ddlItem").append(
+            $('<option></option>').val('-1').html('اختر الصنف المطلوب')
+        );
+        return;
+    }
+
+
     var webURL = _spPageContextInfo.webAbsoluteUrl;
     var api = "/_api/web/lists/";
     var query = "GetByTitle('أصناف المخازن')/items?$filter=Category eq '" + selected_cat + "'&$select=Title";

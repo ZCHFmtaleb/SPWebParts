@@ -636,6 +636,7 @@
     <Content Include="Layouts\ServicesDeptTabs\MyJS\SaveAllRowsToServer.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\sendEmail.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\sprestlib.bundle.js" />
+    <Content Include="Layouts\ServicesDeptTabs\newCSS\ServicesRequestsAll.css" />
     <Content Include="Layouts\ServicesDeptTabs\newCSS\StoresEmployeeRequestFulfillingScreen.css" />
     <Content Include="Layouts\ServicesDeptTabs\polyfill.min.js" />
     <Content Include="Layouts\ServicesDeptTabs\spinner.gif" />
