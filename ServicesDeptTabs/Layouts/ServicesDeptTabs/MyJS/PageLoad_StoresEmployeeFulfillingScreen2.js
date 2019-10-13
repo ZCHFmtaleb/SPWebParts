@@ -1,7 +1,7 @@
 ﻿var requestID;
 var source;
 var adapter;
-var EmpArabicName = "موظف اختبارى 1";
+var EmpArabicName;
 var EmpEmail;
 var Status;
 var DM;

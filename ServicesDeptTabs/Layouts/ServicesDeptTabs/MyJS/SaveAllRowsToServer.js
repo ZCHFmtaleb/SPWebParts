@@ -8,6 +8,10 @@ $("#btnSaveAllRowsToServer").on('click', function () {
     var encfullURL = encodeURI(fullURL);
     var MasterRecordId;
 
+    if (rowscount == 0) {
+        return;
+    }
+
     // Create MasterRecord and return the Id
     $.ajax({
         async: false,

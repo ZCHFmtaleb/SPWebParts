@@ -1,11 +1,11 @@
 ﻿function CheckRequestStatusAndShowHideControlsAccordingly() {
 
    var CurrentUserAccountName;
-
+   var CurrentUserAccountEmail;
     
         
    sprLib.user().profile()
-       .then(function (objProps) {           CurrentUserAccountName = objProps.AccountName;
+       .then(function (objProps) {           CurrentUserAccountName = objProps.AccountName;           CurrentUserAccountEmail = objProps.Email;
            if (Status.toLowerCase() === "New_StationeryRequest_Started".toLowerCase()) {
                 if (CurrentUserAccountName.toLowerCase() === DM.toLowerCase()) {
 
@@ -27,18 +27,17 @@
 
                     $('#decision_div').text("عذرا تم تقديم هذا الطلب سابقا - حالة الطلب : بإنتظار إعتماد المدير المباشر").css({ "text-align": "center", "font-size": "large" });
 
-                }
+               }
+               return;
            }
            else if (Status.toLowerCase() === "approved_by_DM".toLowerCase()) {
-               if (CurrentUserAccountName.toLowerCase() === "ZAYED\\test_manager_2".toLowerCase()) {
+               if (CurrentUserAccountEmail === ServicesDivisionHead_email) {
 
                     $('#btnDMapprove').hide();
                     $('#btnDMReject').hide();
 
                     $('#btnServicesDivisionHeadApprove').show();
                     $('#btnServicesDivisionHeadReject').show();
-
-
                 }
                 else {
 
@@ -49,9 +48,8 @@
                     $('#btnServicesDivisionHeadReject').hide();
 
                     $('#decision_div').text("عذرا تم تقديم هذا الطلب سابقا - حالة الطلب : بإنتظار إعتماد قسم الخدمات العامة").css({ "text-align": "center", "font-size": "large" });
-
-                }
-
+               }
+               return;
             }
            else if (Status.toLowerCase() === "approved_by_ServicesDivisionHead".toLowerCase()) {
                    $('#btnDMapprove').hide();
