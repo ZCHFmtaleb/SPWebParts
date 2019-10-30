@@ -14,6 +14,8 @@
 
                     $('#btnServicesDivisionHeadApprove').hide();
                     $('#btnServicesDivisionHeadReject').hide();
+                    $('#btnServicesDivisionHeadRejectSubmit').remove();
+                    
                     
 
                 }
@@ -33,8 +35,10 @@
            else if (Status.toLowerCase() === "approved_by_DM".toLowerCase()) {
                if (CurrentUserAccountEmail === ServicesDivisionHead_email) {
 
-                    $('#btnDMapprove').hide();
-                    $('#btnDMReject').hide();
+                   $('#btnDMapprove').hide();
+                   $('#btnDMReject').hide();
+                   $('#btnDMRejectSubmit').remove();
+                   
 
                     $('#btnServicesDivisionHeadApprove').show();
                     $('#btnServicesDivisionHeadReject').show();

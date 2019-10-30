@@ -1,74 +1,49 @@
 ﻿<%@ Assembly Name="$SharePoint.Project.AssemblyFullName$" %>
-<%@ Assembly Name="Microsoft.Web.CommandUI, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
-<%@ Register TagPrefix="SharePoint" Namespace="Microsoft.SharePoint.WebControls" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
-<%@ Register TagPrefix="Utilities" Namespace="Microsoft.SharePoint.Utilities" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
-<%@ Register TagPrefix="asp" Namespace="System.Web.UI" Assembly="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" %>
-<%@ Import Namespace="Microsoft.SharePoint" %>
-<%@ Register TagPrefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ServicesRequestsAllUserControl.ascx.cs" Inherits="ServicesDeptTabs.ServicesRequestsAll.ServicesRequestsAllUserControl" %>
+<%@ Assembly Name="Microsoft.Web.CommandUI, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %> 
+<%@ Register Tagprefix="SharePoint" Namespace="Microsoft.SharePoint.WebControls" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %> 
+<%@ Register Tagprefix="Utilities" Namespace="Microsoft.SharePoint.Utilities" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+<%@ Register Tagprefix="asp" Namespace="System.Web.UI" Assembly="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" %>
+<%@ Import Namespace="Microsoft.SharePoint" %> 
+<%@ Register Tagprefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="StoresEmployeeAddToStockUserControl.ascx.cs" Inherits="ServicesDeptTabs.StoresEmployeeAddToStock.StoresEmployeeAddToStockUserControl" %>
 
-
-<SharePoint:CssRegistration runat="server" Name="/_layouts/15/ServicesDeptTabs/newCSS/ServicesRequestsAll.css" After="/Style%20Library/css/ShareBoot.css" />
+<SharePoint:CssRegistration runat="server" Name="/_layouts/15/ServicesDeptTabs/newCSS/StoresEmployeeAddToStock.css" After="/Style%20Library/css/ShareBoot.css" />
 
 <div id="container" dir="rtl" style="border: none !important; text-align: right">
 
-<div id="page_head">
-    <h1 id="PageTitle">طلب قرطاسية ومخازن </h1>
-</div>
-<div class="divAddGoal" id="div_of_AddingGoal">
-        <table>
+<div>
+        <table id="AddTable">
             <tr>
                 <td class="TableRightColumn">مجموعة الصنف</td>
                 <td>
-                    <select id="ddlCat" style="width: 200px" onchange="GetItemsOfSelectedCat('أصناف المخازن')">
+                    <select id="ddlCat" style="width: 200px" onchange="GetItemsOfSelectedCat('Inventory')">
                         <option value="-1">اختر مجموعة الصنف</option>
                     </select>
                 </td>
-                <td colspan="3"></td>
             </tr>
             <tr>
-                <td>الصنف المطلوب</td>
+                <td class="TableRightColumn">الصنف </td>
                 <td>
                     <select id="ddlItem" style="width: 350px">
-                        <option value="-1">اختر الصنف المطلوب</option>
+                        <option value="-1">اختر الصنف </option>
                     </select>
                 </td>
             </tr>
             <tr>
-                <td>الكمية</td>
+                <td class="TableRightColumn">الكمية</td>
                 <td>
                     <div id="txtQuantity"></div>
                 </td>
             </tr>
-            <tr>
-                <td>ملاحظات</td>
-                <td>
-                    <input id="txtNotes" type="text" style="width: 500px;" maxlength="255" />
-                </td>
-            </tr>
-        </table>
-
-        <table>
-            <tr>
-                <td>
-                    <input id="btnAddStationeryItemToGrid" type="Button" value="إضافة صنف" />
-                </td>
-            </tr>
         </table>
 </div>
 
-<!-- ===================The Grid==================================== -->
-
-<div id="jqxgrid"></div>
-
-<!-- ====================end of The Grid==================================== -->
-
-    <input id="deleterowbutton" type="button" value="حذف صنف" />
-
-    <div style="width:50%; text-align:center">
-          <input id="btnSaveAllRowsToServer" type="button" value="إرسال"  style="font-size:x-large;"/>
-    </div>
+<div style="width:50%; text-align:center">
+          <input id="btnAddToStock" type="button" value="أضف إلى المخزون"  style="font-size:x-large;"/>
 </div>
+
+</div><!-- end of container -->
+
 
 <!-- ===========================Ref=============================================================================== -->
 <link rel="stylesheet" href="/Style%20Library/jQueryUI/base/jquery-ui.css">
@@ -110,17 +85,10 @@
 
 <!-- ===========================MyJS=============================================================================== -->
 <script src="/_layouts/15/ServicesDeptTabs/MyJS/sprestlib.bundle.js"></script>
-<script src="/_layouts/15/ServicesDeptTabs/MyJS/sendEmail.js"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/ReadCategories.js"></script>
 <script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/GetItemsOfSelectedCat.js"></script>
-<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/PageLoad_ServicesRequestsAll.js"></script>
-<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/AddStationeryItemToGrid.js"></script>
-<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/SaveAllRowsToServer.js"></script>
-<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/DeleteGridRow.js"></script>
-
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/AddToStock.js"></script>
+<script type="text/javascript" src="/_layouts/15/ServicesDeptTabs/MyJS/PageLoad_StoresEmployeeAddToStock.js"></script>
 <!-- ===========================End of MyJS=============================================================================== -->
 
 <script src="/_layouts/15/ServicesDeptTabs/polyfill.min.js"></script>
-
-
-

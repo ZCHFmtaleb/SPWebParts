@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ServicesDeptTabs.ServicesRequestsAll {
+namespace ServicesDeptTabs.StoresEmployeeAddToStock {
     
     
-    public partial class ServicesRequestsAllUserControl {
+    public partial class StoresEmployeeAddToStockUserControl {
     }
 }

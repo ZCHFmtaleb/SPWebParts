@@ -1,0 +1,13 @@
+﻿#container {
+    padding-right: 2%;
+}
+
+#AddTable td
+{
+    padding-bottom: 5px;
+}
+
+.TableRightColumn {
+    padding-left: 3%;
+    width: 25%;
+}

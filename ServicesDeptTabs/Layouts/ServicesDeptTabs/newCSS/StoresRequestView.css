@@ -1,0 +1,23 @@
+﻿#container{
+padding-right: 2%;
+}
+
+.tblRequesterInfo {
+    font-weight: bold;
+    width: 25%;
+}
+
+.tblRequesterInfo td {
+    padding-left: 10%;
+}
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+}
+/* Clear floats after the columns */
+.rowZF:after {
+    content: "";
+    display: table;
+    clear: both;
+}

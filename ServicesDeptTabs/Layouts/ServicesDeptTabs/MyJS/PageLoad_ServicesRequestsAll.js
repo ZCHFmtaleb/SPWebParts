@@ -1,4 +1,4 @@
-﻿var user = null;var userDisplayName = "";var userId = "";var loginName = "";var userEmail = "";var EmpArabicName = "";var Department;var DM;var DM_Email = "";var UserInfo;
+﻿var user = null;var userDisplayName = "";var userId = "";var loginName = "";var userEmail = "";var EmpArabicName = "";var Department;var DM;var DM_Email = "";var UserInfo;var ExtendedManagersLength;
 $(document).ready(function () {
     ReadCategories();
     GetUserInfo();    function GetUserInfo() {        sprLib.user().info()
@@ -20,6 +20,10 @@ $(document).ready(function () {
 
                 DM = UserInfo.UserProfileProperties.Manager;
                 console.log('DM is ' + DM);
+
+                ExtendedManagersLength = UserInfo.ExtendedManagers.length;
+                console.log('ExtendedManagersLength is ' + ExtendedManagersLength);
+                
 
                 var webURL = _spPageContextInfo.webAbsoluteUrl;                var api = "/_api/SP.UserProfiles.PeopleManager/";                var query = "GetPropertiesFor(accountName=@v)?@v=" + "'" + DM + "'";                var fullURL = webURL + api + query;                var encfullURL = encodeURI(fullURL);                $.ajax({                    async: false,                    url: encfullURL,                    method: "GET",                    headers: { "Accept": "application/json; odata=verbose" },                    success: function (data) {                        DM_Email = data.d.Email;                        console.log("DM_Email is : " + DM_Email);                    },                    error: function (data) {                        console.log("Error: " + data);                    }                });
             });    }    $("#txtQuantity").jqxNumberInput({
@@ -99,38 +103,4 @@ $(document).ready(function () {
         ]  // end of columns
     });
 }); // end of document.ready
-function GetItemsOfSelectedCat() {    var selected_cat = $("#ddlCat").val();
 
-    if (selected_cat === "-1") {
-        $("#ddlItem").empty();
-        $("#ddlItem").append(
-            $('<option></option>').val('-1').html('اختر الصنف المطلوب')
-        );
-        return;
-    }
-
-
-    var webURL = _spPageContextInfo.webAbsoluteUrl;
-    var api = "/_api/web/lists/";
-    var query = "GetByTitle('أصناف المخازن')/items?$filter=Category eq '" + selected_cat + "'&$select=Title";
-    var fullURL = webURL + api + query;
-    var encfullURL = encodeURI(fullURL);
-
-    $.ajax({
-        url: encfullURL,
-        method: "GET",
-        headers: { "Accept": "application/json; odata=verbose" },
-        success: function (data) {
-            $("#ddlItem").empty();
-            for (var i = 0; i < data.d.results.length; i++) {
-                var item = data.d.results[i];
-                $("#ddlItem").append(
-                    $('<option></option>').val(item.Title).html(item.Title)
-                );
-            }
-        },
-        error: function (data) {
-            alert("Error: " + data);
-        }
-    });
-}

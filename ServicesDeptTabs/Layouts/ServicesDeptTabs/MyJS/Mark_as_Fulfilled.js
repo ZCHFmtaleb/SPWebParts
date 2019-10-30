@@ -101,12 +101,21 @@ function get_Inventory_amounts_then_update_it(kData) {
         method: "GET",
         headers: { "Accept": "application/json; odata=verbose" },
         success: function (T) {
+             /*  CS Current Stock
+             *  q    Quantity
+             *  NS New Stock
+             * */
             var CS = T.d.results[0].CurrentStock;
             var MS = T.d.results[0].MinStock;
             var q = kData.Quantity;
             var NS = CS - q;
-            console.log(kData.InventoryID + "  " + CS + " and " + MS);
-            console.log(kData.Fulfilled);
+            if (NS < 0) {
+                var Ar_message = 'لم يتم خصم الكمية المذكورة للصنف "' + kData.ItemSpecificName + '" حيث أن المخزون سيصبح قيمة سالبة. الرجاء التحقق من صحة البيانات ';
+                var En_message = '<p dir=ltr> Quantity is not deducted for item "' + kData.ItemSpecificName + '" because the stock will be a negative value. Please verify if data correct</p>';
+                $("#results_summary").append('<li><span style="color:Red;font-weight:bold;">&#x2716; </span>' + Ar_message + En_message+ '</li>');
+                resultsArray.push(false);
+                return;
+            }
             update_to_new_stock(kData.InventoryID, NS, MS, kData.ItemSpecificName);
         },
         error: function (errorData) {

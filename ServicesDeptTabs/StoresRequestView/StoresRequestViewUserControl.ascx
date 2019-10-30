@@ -7,26 +7,7 @@
 <%@ Register Tagprefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="StoresRequestViewUserControl.ascx.cs" Inherits="ServicesDeptTabs.StoresRequestView.StoresRequestViewUserControl" %>
 
-<style type="text/css">
-.tblRequesterInfo {
-    font-weight:bold;
-    width:25%;
-}
-.tblRequesterInfo td {
-    padding-left:10%;
-}
-/* Create two equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 50%;
-}
-/* Clear floats after the columns */
-.rowZF:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-</style>
+<SharePoint:CssRegistration runat="server" Name="/_layouts/15/ServicesDeptTabs/newCSS/StoresRequestView.css" After="/Style%20Library/css/ShareBoot.css" />
 
 <div id="container" dir="rtl" >
     <div style="padding-bottom:1%">

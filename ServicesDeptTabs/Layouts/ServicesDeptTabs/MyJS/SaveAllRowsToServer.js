@@ -8,7 +8,7 @@ $("#btnSaveAllRowsToServer").on('click', function () {
     var encfullURL = encodeURI(fullURL);
     var MasterRecordId;
 
-    if (rowscount == 0) {
+    if (rowscount === 0) {
         return;
     }
 
