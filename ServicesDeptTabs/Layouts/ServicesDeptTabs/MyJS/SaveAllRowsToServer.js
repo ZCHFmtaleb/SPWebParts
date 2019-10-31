@@ -1,5 +1,8 @@
 ﻿// Save All Rows To Server
 $("#btnSaveAllRowsToServer").on('click', function () {
+
+    // #region var declarations
+
     var rowscount = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
     var webURL = _spPageContextInfo.webAbsoluteUrl;
     var api = "/_api/web/lists/";
@@ -7,12 +10,22 @@ $("#btnSaveAllRowsToServer").on('click', function () {
     var fullURL = webURL + api + query;
     var encfullURL = encodeURI(fullURL);
     var MasterRecordId;
+    var query2 = "GetByTitle('StationeryRequestDetails')/items";
+    var fullURL2 = webURL + api + query2;
+    var encfullURL2 = encodeURI(fullURL2);
+
+    // #endregion
+
+    // #region check : if no items in the grid
 
     if (rowscount === 0) {
         return;
     }
 
-    // Create MasterRecord and return the Id
+    // #endregion
+
+    // #region Step 1 of 4 : Create MasterRecord and return the Id
+
     $.ajax({
         async: false,
         url: encfullURL,
@@ -34,24 +47,11 @@ $("#btnSaveAllRowsToServer").on('click', function () {
         success: onCreateMasterRecordSucceeded,
         error: onCreateMasterRecordFailed
     });
+  
 
-    function onCreateMasterRecordSucceeded(data) {
-        MasterRecordId = data.d.Id;
-        console.log("MasterRecordId is " + MasterRecordId);
-    }
-    function onCreateMasterRecordFailed(error) {
-        console.log(JSON.stringify(error));
-        Swal.fire({
-            text: 'حدث خطأ اثناء محاولة إرسال الطلب',
-            type: 'error',
-            confirmButtonText: 'تم'
-        });
-        throw new Error("Something went wrong");
-    }
+    // #endregion
 
-    var query2 = "GetByTitle('StationeryRequestDetails')/items";
-    var fullURL2 = webURL + api + query2;
-    var encfullURL2 = encodeURI(fullURL2);
+    // #region Step 2 of 4 : Create a record for each item in "StationeryRequestDetails" list
 
     for (var i = 0; i < rowscount; i++) {
         var data = $('#jqxgrid').jqxGrid('getrowdata', i);
@@ -77,19 +77,38 @@ $("#btnSaveAllRowsToServer").on('click', function () {
         });
     } // End of for loop
 
-    // no errors happened means success
-    Swal.fire({
-        text: 'تم إرسال الطلب بنجاح',
-        type: 'success',
-        confirmButtonText: 'تم'
-    });
+    // #endregion
 
-    var to = DM_Email;
+    // #region Step 3 of 4 : Show Success Popup
 
+    ShowSuccessPopup();
+
+    // #endregion
+
+    // #region check : if ExtendedManagersLength is 0 or 1, skip DM approval 
+    // send email directly to ServicesDivisionHead
+    // then update Status to 'approved_by_DM'
+
+    var to;
+    if (ExtendedManagersLength <= 1) {
+        to = ServicesDivisionHead_email;
+        sprLib.list('StationeryRequests')
+            .update({
+                ID: requestID,
+                Status: 'approved_by_DM'
+            });
+    }
+    else {
+        to = DM_Email;
+    }
+
+    // #endregion
+
+    // #region Step 4 of 4 : Send email
+   
     if (EmpArabicName === "") {
         EmpArabicName = userDisplayName;
     }
-
     var body = '<p dir=rtl>' +
         'السلام عليكم ورحمة الله وبركاته <br />' +
         ' تحية طيبة وبعد <br />' +
@@ -99,7 +118,24 @@ $("#btnSaveAllRowsToServer").on('click', function () {
         '</p >';
     var subject = 'تم عمل طلب جديد من قسم الخدمات العامة';
     sendEmail(to, body, subject);
+    // #endregion
 });
+
+
+// #region Helper Methods
+
+function onCreateMasterRecordSucceeded(data) {
+    MasterRecordId = data.d.Id;
+}
+function onCreateMasterRecordFailed(error) {
+    console.log(JSON.stringify(error));
+    Swal.fire({
+        text: 'حدث خطأ اثناء محاولة إرسال الطلب',
+        type: 'error',
+        confirmButtonText: 'تم'
+    });
+    throw new Error("Something went wrong");
+}
 function onSaveAllRowsToServerSucceeded(sender, args) {
 }
 function onSaveAllRowsToServerFailed(error) {
@@ -111,3 +147,13 @@ function onSaveAllRowsToServerFailed(error) {
     });
     throw new Error("Something went wrong");
 }
+function ShowSuccessPopup(){
+    // no errors happened means success
+    Swal.fire({
+        text: 'تم إرسال الطلب بنجاح',
+        type: 'success',
+        confirmButtonText: 'تم'
+    });
+}
+
+// #endregion

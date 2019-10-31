@@ -1,7 +1,15 @@
-﻿var user = null;var userDisplayName = "";var userId = "";var loginName = "";var userEmail = "";var EmpArabicName = "";var Department;var DM;var DM_Email = "";var UserInfo;var ExtendedManagersLength;
+﻿var user = null;var userDisplayName = "";var userId = "";var loginName = "";var userEmail = "";var EmpArabicName = "";var Department;var DM;var DM_Email = "";var UserInfo;var ExtendedManagersLength;var ServicesDivisionHead_email;
 $(document).ready(function () {
     ReadCategories();
-    GetUserInfo();    function GetUserInfo() {        sprLib.user().info()
+    GetUserInfo();    sprLib.list('RequestReceiverEmail').items({
+        listCols: ['Email'],
+        queryFilter: 'Title eq "ServicesDivisionHead_email"'
+    })
+        .then(function (arrData) {
+            ServicesDivisionHead_email = arrData[0].Email;
+        })
+        .catch(function (errMsg) { console.error(errMsg); });
+    function GetUserInfo() {        sprLib.user().info()
             .then(function (objUser) {                userId = objUser.Id;                console.log('userId is ' + userId);
             });        sprLib.user().profile()
             .then(function (objProps) {                UserInfo = objProps;
