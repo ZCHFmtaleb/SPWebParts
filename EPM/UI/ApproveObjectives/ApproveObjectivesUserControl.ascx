@@ -85,7 +85,7 @@
             </ItemTemplate>
             <HeaderStyle Width="15%" />
         </asp:TemplateField>
-        <asp:TemplateField HeaderText="اسم الهدف">
+        <asp:TemplateField HeaderText="الهدف الفرعى">
             <EditItemTemplate>
                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("ObjName") %>' Width="400px"></asp:TextBox>
             </EditItemTemplate>
@@ -139,13 +139,13 @@
 
 <div runat="server" id ="div_Mods"> 
 <div id="div_Required_Mods">
-<asp:Label ID="lblRequired_Mods" runat="server" Text="فى حالة عدم الموافقة على الأهداف المذكورة (طلب تعديلات) ، يرجى ذكر الملاحظات/التعديلات المطلوبة :" ></asp:Label>
+<asp:Label ID="lblRequired_Mods" runat="server" Text="فى حالة عدم الموافقة على الأهداف الفرعية أعلاه ، يرجى ذكر التعديلات المطلوبة :" ></asp:Label>
 </div>
 <div>
     <asp:TextBox ID="txtRequired_Mods" runat="server" Rows="8" TextMode="MultiLine" Width="50%" ValidationGroup="vgMod" ></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfv_txtRequired_Mods" runat="server" ControlToValidate="txtRequired_Mods" Display="Dynamic" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgMod">الرجاء ذكر التعديلات المطلوبة</asp:RequiredFieldValidator>
 </div>
-<asp:Button ID="btnApprove" runat="server" Text="اعتماد" Font-Size="Large" Height="50px" Width="100px" OnClick="btnApprove_Click"  />
+<asp:Button ID="btnApprove" runat="server" Text="موافقة" Font-Size="Large" Height="50px" Width="100px" OnClick="btnApprove_Click"  />
 <asp:Button ID="btnReject" runat="server" Text="طلب تعديلات" Height="50px" Width="100px"  ValidationGroup="vgMod" style="margin-right:75px !important;font-size:small !important;" Font-Bold="True" OnClick="btnReject_Click"/>
 <asp:ValidationSummary ID="ValidationSummary3" runat="server" ForeColor="Red" ValidationGroup="vgMod" />
 </div>

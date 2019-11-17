@@ -86,7 +86,7 @@
 			<HeaderStyle HorizontalAlign="Center" Width="5%" />
 			<ItemStyle HorizontalAlign="Center" Width="5%" />
 		</asp:TemplateField>
-		<asp:TemplateField HeaderText="اسم الهدف">
+		<asp:TemplateField HeaderText="الهدف الفرعى">
 			<EditItemTemplate>
 				<asp:Label ID="Label4" runat="server" Text='<%# Bind("ObjName") %>'></asp:Label>
 			</EditItemTemplate>

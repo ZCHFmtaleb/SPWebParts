@@ -19,6 +19,9 @@ function ReadCategories() {
 
 function onQuerySucceeded(data) {
     $.each(data.d.results, function (key, value) {
+        if (value.Title === 'discontinued') {
+            return;
+        }
         $("#ddlCat").append(
             $('<option></option>').val(value.Title).html(value.Title)
         );

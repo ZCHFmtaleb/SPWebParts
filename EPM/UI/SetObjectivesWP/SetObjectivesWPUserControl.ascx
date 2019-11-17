@@ -179,7 +179,7 @@
             </ItemTemplate>
             <HeaderStyle Width="15%" />
         </asp:TemplateField>
-        <asp:TemplateField HeaderText="اسم الهدف">
+        <asp:TemplateField HeaderText="الهدف الفرعى">
             <EditItemTemplate>
                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("ObjName") %>' Width="400px"></asp:TextBox>
             </EditItemTemplate>
