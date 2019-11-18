@@ -1,6 +1,7 @@
 ﻿function AddStationeryItemToGrid() {
     var row = {};
-    row["Title"] = $('#ddlItem').html();
+
+    row["Title"] = $("#ddlItem option:selected").text();
     row["Quantity"] = $('#txtQuantity').val();
     row["Notes"] = $('#txtNotes').val();
 
