@@ -14,8 +14,8 @@
                'To': {
                     'results': [to]
                 },
-                'CC': {
-                    'results': ['test@zayed.org.ae']
+                'BCC': {
+                    'results': ['testsp@zayedchf.gov.ae']
                 },
                 'Body': body,
                 'Subject': subject

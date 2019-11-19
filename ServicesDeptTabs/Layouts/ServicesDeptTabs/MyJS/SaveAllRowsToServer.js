@@ -44,8 +44,18 @@ $("#btnSaveAllRowsToServer").on('click', function () {
             "content-type": "application/json;odata=verbose",
             "X-RequestDigest": $("#__REQUESTDIGEST").val()
         },
-        success: onCreateMasterRecordSucceeded,
-        error: onCreateMasterRecordFailed
+        success: function (MRresult_s) {
+            MasterRecordId = MRresult_s.d.Id;
+        },
+        error: function (MRresult_e) {
+            console.log(JSON.stringify(MRresult_e));
+            Swal.fire({
+                text: 'حدث خطأ اثناء محاولة إرسال الطلب',
+                type: 'error',
+                confirmButtonText: 'تم'
+            });
+            throw new Error("Something went wrong");
+        }
     });
   
 
@@ -82,6 +92,7 @@ $("#btnSaveAllRowsToServer").on('click', function () {
     // #region Step 3 of 4 : Show Success Popup
 
     ShowSuccessPopup();
+    $("#btnSaveAllRowsToServer").fadeOut();
 
     // #endregion
 
@@ -123,19 +134,6 @@ $("#btnSaveAllRowsToServer").on('click', function () {
 
 
 // #region Helper Methods
-
-function onCreateMasterRecordSucceeded(data) {
-    MasterRecordId = data.d.Id;
-}
-function onCreateMasterRecordFailed(error) {
-    console.log(JSON.stringify(error));
-    Swal.fire({
-        text: 'حدث خطأ اثناء محاولة إرسال الطلب',
-        type: 'error',
-        confirmButtonText: 'تم'
-    });
-    throw new Error("Something went wrong");
-}
 function onSaveAllRowsToServerSucceeded(sender, args) {
 }
 function onSaveAllRowsToServerFailed(error) {
