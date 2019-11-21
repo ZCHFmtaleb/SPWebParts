@@ -16,8 +16,11 @@
             queryOrderby: 'ID'
         })
             .then(function (arrData) {
-                for (var i = 0; i < arrData.length; i++) {
-                    var item = arrData[i];
+                var SortedItems = arrData.sort(function (a, b) {
+                    return a.Title.localeCompare(b.Title);
+                });
+                for (var i = 0; i < SortedItems.length; i++) {
+                    var item = SortedItems[i];
                     $("#ddlItem").append(
                         $('<option></option>').val(item.ID).html(item.Title)
                     );

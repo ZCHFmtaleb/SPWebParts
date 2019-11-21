@@ -68,7 +68,7 @@ $(document).ready(function () {
     var adapter = new $.jqx.dataAdapter(source);
     $("#jqxgrid").jqxGrid({
         rtl: true,
-        width: 600,
+        width: 800,
         height: 200,
         source: adapter,
         editable: true,
@@ -78,7 +78,7 @@ $(document).ready(function () {
             {
                 text: 'اسم الصنف',
                 datafield: 'Title',
-                width: 200,
+                width: 400,
                 editable: false,
                 align: 'right',
                 cellsalign: 'right',

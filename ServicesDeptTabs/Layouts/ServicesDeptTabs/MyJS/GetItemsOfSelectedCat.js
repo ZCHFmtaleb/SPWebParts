@@ -21,8 +21,11 @@
         headers: { "Accept": "application/json; odata=verbose" },
         success: function (data) {
             $("#ddlItem").empty();
-            for (var i = 0; i < data.d.results.length; i++) {
-                var item = data.d.results[i];
+            var SortedItems = data.d.results.sort(function (a, b) {
+                return a.Title.localeCompare(b.Title);
+            });
+            for (var i = 0; i < SortedItems.length; i++) {
+                var item = SortedItems[i];
                 $("#ddlItem").append(
                     $('<option></option>').val(item.ID).html(item.Title)
                 );
