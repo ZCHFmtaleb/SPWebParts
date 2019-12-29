@@ -57,6 +57,14 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiafaRequestStart\DiafaRequestStart.cs" />
+    <Compile Include="DiafaRequestStart\DiafaRequestStartUserControl.ascx.cs">
+      <DependentUpon>DiafaRequestStartUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DiafaRequestStart\DiafaRequestStartUserControl.ascx.designer.cs">
+      <DependentUpon>DiafaRequestStartUserControl.ascx.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicesRequestsAll\ServicesRequestsAll.cs" />
     <Compile Include="ServicesRequestsAll\ServicesRequestsAllUserControl.ascx.cs">
@@ -92,6 +100,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DiafaRequestStart\DiafaRequestStart.webpart" />
+    <None Include="DiafaRequestStart\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d806cb9b-b881-45ea-a467-d2b189c5bdb5}</SharePointProjectItemId>
+    </None>
     <None Include="Features\ZayedServicesDeptFeature\ZayedServicesDeptFeature.feature">
       <FeatureId>{28961be3-c318-443c-8bef-970e689058f1}</FeatureId>
     </None>
@@ -138,6 +150,8 @@
     <None Include="StoresRequestView\StoresRequestView.webpart" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DiafaRequestStart\DiafaRequestStartUserControl.ascx" />
+    <Content Include="DiafaRequestStart\Elements.xml" />
     <Content Include="Features\ZayedServicesDeptFeature\ZayedServicesDeptFeature.Template.xml">
       <DependentUpon>ZayedServicesDeptFeature.feature</DependentUpon>
     </Content>
