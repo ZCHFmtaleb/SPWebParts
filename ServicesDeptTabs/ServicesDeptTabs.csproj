@@ -108,6 +108,11 @@
       <FeatureId>{28961be3-c318-443c-8bef-970e689058f1}</FeatureId>
     </None>
     <None Include="key.snk" />
+    <None Include="Layouts\DiafaRequestStart\asset-manifest.json" />
+    <None Include="Layouts\DiafaRequestStart\static\css\main.638c7769.chunk.css.map" />
+    <None Include="Layouts\DiafaRequestStart\static\js\2.86e9986a.chunk.js.map" />
+    <None Include="Layouts\DiafaRequestStart\static\js\main.78432235.chunk.js.map" />
+    <None Include="Layouts\DiafaRequestStart\static\js\runtimemain.a8a9905a.js.map" />
     <None Include="Layouts\ServicesDeptTabs\jqscripts\angular-sanitize.min.js.map" />
     <None Include="Layouts\ServicesDeptTabs\jqscripts\angular.min.js.map" />
     <None Include="Layouts\ServicesDeptTabs\jqscripts\jquery-1.11.1.min.map" />
@@ -155,6 +160,12 @@
     <Content Include="Features\ZayedServicesDeptFeature\ZayedServicesDeptFeature.Template.xml">
       <DependentUpon>ZayedServicesDeptFeature.feature</DependentUpon>
     </Content>
+    <Content Include="Layouts\DiafaRequestStart\precache-manifest.a4e7b5675be6af10b330e9965a24e731.js" />
+    <Content Include="Layouts\DiafaRequestStart\service-worker.js" />
+    <Content Include="Layouts\DiafaRequestStart\static\css\main.638c7769.chunk.css" />
+    <Content Include="Layouts\DiafaRequestStart\static\js\2.86e9986a.chunk.js" />
+    <Content Include="Layouts\DiafaRequestStart\static\js\main.78432235.chunk.js" />
+    <Content Include="Layouts\DiafaRequestStart\static\js\runtimemain.a8a9905a.js" />
     <Content Include="Layouts\ServicesDeptTabs\CheckMark.png" />
     <Content Include="Layouts\ServicesDeptTabs\jqwidgets\generatedata.js" />
     <Content Include="Layouts\ServicesDeptTabs\MyJS\AddToStock.js" />
@@ -684,6 +695,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Layouts\ServicesDeptTabs\jqscripts\localization.ts" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
