@@ -43,7 +43,7 @@
             <tr>
                 <td>ملاحظات</td>
                 <td>
-                    <input id="txtNotes" type="text" style="width: 500px;" maxlength="255" />
+                    <input id="txtNotes" type="text" style="width: 400px;" maxlength="50" />
                 </td>
             </tr>
         </table>

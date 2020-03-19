@@ -18,14 +18,14 @@
 </div>
 
 <div id="page_head">
-    <h1 runat="server" id="PageTitle">نموذج وضع الأهداف الفردية لعام   <asp:Label ID="lblActiveYear" runat="server" Text=""></asp:Label></h1>
+    <h1 runat="server" id="PageTitle">نموذج وضع الأهداف الفردية لعام   <asp:Label ID="lblActiveYear" runat="server" Text=""></asp:Label> Setting Objectives for </h1>
 </div>
 
 <div id="divEmpInfo" class="divEmpInfo">
     <table class="tbl_EmpInfo">
         <tr>
             <td>
-            <asp:Label ID="slblEmpName" runat="server" Text="اسم الموظف"></asp:Label>
+            <asp:Label ID="slblEmpName" runat="server" Text="اسم الموظف - Name"></asp:Label>
             </td>
             <td>
                 <asp:Label ID="lblEmpName" runat="server" Text=""></asp:Label>
@@ -33,7 +33,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Label ID="slblEmpJob" runat="server" Text="الوظيفة"></asp:Label>
+                <asp:Label ID="slblEmpJob" runat="server" Text="الوظيفة - Title"></asp:Label>
             </td>
             <td>
                 <asp:Label ID="lblEmpJob" runat="server" Text=""></asp:Label>
@@ -41,7 +41,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Label ID="slblEmpDept" runat="server" Text="الإدارة"></asp:Label>
+                <asp:Label ID="slblEmpDept" runat="server" Text="الإدارة - Department"></asp:Label>
             </td>
             <td>
                 <asp:Label ID="lblEmpDept" runat="server" Text=""></asp:Label>
@@ -58,7 +58,7 @@
 
          <tr>
             <td>
-                <asp:Label ID="slblEmpDM" runat="server" Text="المدير المباشر"></asp:Label>
+                <asp:Label ID="slblEmpDM" runat="server" Text="المدير المباشر - Manager"></asp:Label>
             </td>
             <td>
                 <asp:Label ID="lblEmpDM" runat="server" Text=""></asp:Label>
@@ -78,7 +78,7 @@
     <ContentTemplate >
 <table>
     <tr>
-    <td style="width:36% !important;">التوجه الاستراتيجى</td>
+    <td style="width:41% !important;">التوجه الاستراتيجى Strategic Direction</td>
     <td>
         <asp:DropDownList ID="ddlStrDir" runat="server" OnSelectedIndexChanged="ddlStrDir_SelectedIndexChanged" AutoPostBack="True" Width="300px" AppendDataBoundItems="True" DataValueField="ID" DataTextField="Title">
             <asp:ListItem Selected="True" Value="0">اختر التوجه الاستراتيجى</asp:ListItem>
@@ -95,7 +95,7 @@
         </td>
     </tr>
     <tr>
-        <td>الهدف الرئيسى</td>
+        <td>الهدف الرئيسى - Main Goal</td>
         <td>
             <asp:DropDownList ID="ddlPrimaryGoal" runat="server" Width="300px" AppendDataBoundItems="True" DataTextField="Title" DataValueField="ID">
                 <asp:ListItem Selected="True" Value="0">اختر الهدف الرئيسى</asp:ListItem>
@@ -113,14 +113,14 @@
 </div>
 <table class="Form_Table_css">
     <tr>
-        <td >اسم الهدف الفرعى</td>
+        <td style="width: 18.5% !important;">اسم الهدف الفرعى - Subgoal</td>
         <td ><asp:TextBox ID="txtObjName" runat="server" MaxLength="255" Width="500px" ValidationGroup="vg1"></asp:TextBox>
             <asp:RequiredFieldValidator ID="rfv_txtObjName" runat="server" ControlToValidate="txtObjName" Display="Dynamic" ErrorMessage="اسم الهدف مطلوب" ForeColor="Red" ValidationGroup="vg1">*</asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
         <td>
-            وزن الهدف</td>
+            وزن الهدف - Weight</td>
         <td>
             <asp:TextBox ID="txtObjWeight" runat="server" MaxLength="3" Width="50px" ValidationGroup="vg1"></asp:TextBox>
             % 
@@ -129,7 +129,7 @@
         </td>
     </tr>
     <tr>
-        <td>تاريخ تحقيق الهدف</td>
+        <td>تاريخ تحقيق الهدف - Expected on</td>
         <td>
             <asp:DropDownList ID="ddlObjQ" runat="server" Width="55px">
                 <asp:ListItem Selected="True">Q1</asp:ListItem>
@@ -138,7 +138,7 @@
                 <asp:ListItem>Q4</asp:ListItem>
             </asp:DropDownList>
 
-<asp:Button ID="btnAddObjective" runat="server" Text="إضافة هدف" OnClick="btnAddObjective_Click" CssClass="btnAddObjective_css" ValidationGroup="vg1" />
+<asp:Button ID="btnAddObjective" runat="server" Text="إضافة هدف" OnClick="btnAddObjective_Click" CssClass="btnAddObjective_css" ValidationGroup="vg1" BackColor="#F9FFF9" />
 
         </td>
     </tr>
@@ -241,7 +241,7 @@
 </div>
 
 <div class="div_btnSubmit" style="margin-bottom:30px;" runat ="server" id="divButtons">
-<asp:Button ID="btnSubmit" runat="server" Text="إرسال" Font-Size="Large" Height="50px" Width="100px" OnClick="btnSubmit_Click" ValidationGroup="vg2" />
+<asp:Button ID="btnSubmit" runat="server" Text="إرسال Submit" Font-Size="Large" Height="50px" Width="130px" OnClick="btnSubmit_Click" ValidationGroup="vg2" />
 </div>
 
 <div class="div_val">

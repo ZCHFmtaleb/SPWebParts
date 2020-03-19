@@ -7,6 +7,7 @@ var Status;
 var DM;
 var ServicesDivisionHead_email;
 var EmpFor_StoresRequests_email;
+var DMemail;
 
 $.urlParam = function (name) {
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -45,7 +46,7 @@ $(document).ready(function () {
     //==============================================================
 
     sprLib.list('StationeryRequests').items({
-        listCols: ['Created', 'Department', 'EmpArabicName', 'EmpEmail','Status','DM'],
+        listCols: ['Created', 'Department', 'EmpArabicName', 'EmpEmail', 'Status', 'DM','DMemail'],
         queryFilter: 'ID eq ' + requestID
     })
         .then(function (arrData) {
@@ -59,7 +60,7 @@ $(document).ready(function () {
             EmpEmail = arrData[0].EmpEmail;
             Status = arrData[0].Status;
             DM = arrData[0].DM;
-
+            DMemail = arrData[0].DMemail;
             //==Checking the Request Status and Show/Hide Controls accordingly
             CheckRequestStatusAndShowHideControlsAccordingly();
 
@@ -96,14 +97,14 @@ $(document).ready(function () {
     adapter = new $.jqx.dataAdapter(source);
     $("#jqxgrid").jqxGrid({
         rtl: true,
-        width: 600,
+        width: 900,
         height: 200,
         source: adapter,
         columns: [
             {
                 text: 'اسم الصنف',
                 datafield: 'Title',
-                width: 200,
+                width: 400,
                 editable: false,
                 align: 'right',
                 cellsalign: 'right',
@@ -111,24 +112,15 @@ $(document).ready(function () {
             }, {
                 text: 'الكمية',
                 datafield: 'Quantity',
-                width: 200,
+                width: 100,
                 columntype: 'numberinput',
                 align: 'right',
                 cellsalign: 'right',
-                cellclassname: 'GridCellStyle',
-                validation: function (cell, value) {
-                    if (value < 1) {
-                        return { result: false, message: "لابد أن تكون الكمية من 1 إلى 99" };
-                    }
-                    return true;
-                },
-                createeditor: function (row, cellvalue, editor) {
-                    editor.jqxNumberInput({ width: '60px', height: '30px', spinButtons: true, decimal: 1, digits: 2, decimalDigits: 0, min: 1, max: 99, promptChar: '' });
-                }
+                cellclassname: 'GridCellStyle'
             }, {
                 text: 'ملاحظات',
                 datafield: 'Notes',
-                width: 200,
+                width: 400,
                 align: 'right',
                 cellsalign: 'right',
                 cellclassname: 'GridCellStyle'

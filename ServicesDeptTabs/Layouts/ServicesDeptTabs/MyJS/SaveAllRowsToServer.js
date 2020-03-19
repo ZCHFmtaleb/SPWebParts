@@ -37,7 +37,8 @@ $("#btnSaveAllRowsToServer").on('click', function () {
             'EmpArabicName': EmpArabicName,
             'Department': Department,
             'EmpEmail': userEmail,
-            'DM': DM
+            'DM': DM,
+            'DMemail': DM_Email
         }),
         headers: {
             "accept": "application/json;odata=verbose",
@@ -96,22 +97,51 @@ $("#btnSaveAllRowsToServer").on('click', function () {
 
     // #endregion
 
-    // #region check : if ExtendedManagersLength is 0 or 1, skip DM approval 
-    // send email directly to ServicesDivisionHead
-    // then update Status to 'approved_by_DM'
+    // #region check : 
+    // if Employee has a "SpecialRouting", then send email to approver as mentioned in SharePoint's "SpecialRouting" list
+    // if ExtendedManagersLength is 0 or 1, skip DM approval , then send email directly to ServicesDivisionHead , and update Status to 'approved_by_DM'
 
     var to;
-    if (ExtendedManagersLength <= 1) {
-        to = ServicesDivisionHead_email;
-        sprLib.list('StationeryRequests')
-            .update({
-                ID: requestID,
-                Status: 'approved_by_DM'
-            });
+    var ToApproverEmail = 'none';
+    var webURL = _spPageContextInfo.webAbsoluteUrl;
+    var api = "/_api/web/lists/";
+    var query = "GetByTitle('SpecialRouting')/items?$filter=EmployeeEmail eq '" + userEmail + "'&$select=ApproverEmail";
+    var fullURL = webURL + api + query;
+    var encfullURL = encodeURI(fullURL);
+
+    $.ajax({
+        async: false,
+        url: encfullURL,
+        method: "GET",
+        headers: { "Accept": "application/json; odata=verbose" },
+        success: function (T) {
+            if (T === undefined || T.d.results.length == 0) {
+            } else {
+                ToApproverEmail = T.d.results[0].ApproverEmail;
+            }
+        },
+        error: function (errorData) {
+            alert("Error: " + errorData);
+        }
+    });
+
+    if (ToApproverEmail !='none') {
+        to = ToApproverEmail;
     }
     else {
-        to = DM_Email;
+        if (ExtendedManagersLength <= 1) {
+            to = ServicesDivisionHead_email;
+            sprLib.list('StationeryRequests')
+                .update({
+                    ID: MasterRecordId,
+                    Status: 'approved_by_DM'
+                });
+        }
+        else {
+            to = DM_Email;
+        }
     }
+   
 
     // #endregion
 

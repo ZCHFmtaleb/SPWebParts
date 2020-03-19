@@ -92,7 +92,7 @@ $(document).ready(function () {
     adapter = new $.jqx.dataAdapter(source);
     $("#jqxgrid").jqxGrid({
         rtl: true,
-        width: 1200,
+        width: 1500,
         height: 200,
         source: adapter,
         editable: true,
@@ -114,7 +114,7 @@ $(document).ready(function () {
             {
                 text: 'اسم الصنف',
                 datafield: 'Title',
-                width: 200,
+                width: 400,
                 editable: false,
                 align: 'right',
                 cellsalign: 'right',
@@ -122,7 +122,7 @@ $(document).ready(function () {
             }, {
                 text: 'الكمية',
                 datafield: 'Quantity',
-                width: 200,
+                width: 100,
                 columntype: 'numberinput',
                 align: 'right',
                 cellsalign: 'right',
@@ -131,7 +131,7 @@ $(document).ready(function () {
             }, {
                 text: 'ملاحظات',
                 datafield: 'Notes',
-                width: 200,
+                width: 400,
                 align: 'right',
                 cellsalign: 'right',
                 cellclassname: 'GridCellStyle',

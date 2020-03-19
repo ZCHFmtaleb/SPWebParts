@@ -39,10 +39,10 @@ $(document).ready(function () {
         height: '30px',
         spinButtons: true,
         decimal: 1,
-        digits: 2,
+        digits: 3,
         decimalDigits: 0,
         min: 1,
-        max: 10,
+        max: 999,
         promptChar: ''
     });
 
@@ -68,7 +68,7 @@ $(document).ready(function () {
     var adapter = new $.jqx.dataAdapter(source);
     $("#jqxgrid").jqxGrid({
         rtl: true,
-        width: 800,
+        width: 900,
         height: 200,
         source: adapter,
         editable: true,
@@ -86,24 +86,24 @@ $(document).ready(function () {
             }, {
                 text: 'الكمية',
                 datafield: 'Quantity',
-                width: 200,
+                width: 100,
                 columntype: 'numberinput',
                 align: 'right',
                 cellsalign: 'right',
                 cellclassname: 'GridCellStyle',
                 validation: function (cell, value) {
-                    if (value < 1 || value > 10) {
-                        return { result: false, message: "لابد أن تكون الكمية من 1 إلى 10" };
+                    if (value < 1 || value > 999) {
+                        return { result: false, message: "لابد أن تكون الكمية من 1 إلى 999" };
                     }
                     return true;
                 },
                 createeditor: function (row, cellvalue, editor) {
-                    editor.jqxNumberInput({ width: '60px', height: '30px', spinButtons: true, decimal: 1, digits: 2, decimalDigits: 0, min: 1, max: 10, promptChar: '' });
+                    editor.jqxNumberInput({ width: '60px', height: '30px', spinButtons: true, decimal: 1, digits: 3, decimalDigits: 0, min: 1, max: 999, promptChar: '' });
                 }
             }, {
                 text: 'ملاحظات',
                 datafield: 'Notes',
-                width: 200,
+                width: 400,
                 align: 'right',
                 cellsalign: 'right',
                 cellclassname: 'GridCellStyle'

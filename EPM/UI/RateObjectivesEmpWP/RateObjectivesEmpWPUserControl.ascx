@@ -69,8 +69,8 @@
 <h3 runat="server" visible="false" id="lblNoObjectivesFound_Warning"> عذرا لم يتم العثور على أية أهداف خاصة بالموظف للسنة المذكورة  </h3>
 <asp:Label ID="lblProgressNotSet_Warning" runat="server" Text="تنبيه : لم يقم الموظف بوضع نسب إنجاز الأهداف بعد. يرجى التواصل معه قبل إجراء التقييم" BackColor="#FFFFCC" Visible="False"></asp:Label>
 
-<div class="div_gvwSetObjectives" style="width:80% !important;">
-<asp:GridView ID="gvwRate" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False" ShowHeaderWhenEmpty="True" 
+<div class="div_gvwSetObjectives" style="width:50% !important;">
+<asp:GridView ID="gvwRate" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False" ShowHeaderWhenEmpty="True" Width="100%"
 	BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" 
 	ValidateRequestMode="Disabled" >
 	<AlternatingRowStyle BackColor="White" />
@@ -149,17 +149,17 @@
 </asp:GridView>
 </div>
 <h4 runat="server" id="header1">ملاحظات أو أعمال إضافية</h4>
-<asp:TextBox ID="txtNote1" runat="server" TextMode="MultiLine" Rows="6" Width="50%"></asp:TextBox>   
+<asp:TextBox ID="txtNote1" runat="server" TextMode="MultiLine" Rows="6" Width="50%" ReadOnly="True"></asp:TextBox>   
 
 <h2 runat="server" id="header2">الكفاءات </h2>
 <div class="div_gvwSetObjectives" style="width:50% !important;">
 <asp:Label ID="lbl_invalid_rank" runat="server" Text="تعذر تحميل الكفاءات المناسبة نظرا لعدم وجود الدرجة الوظيفية فى سجل الموظف" Visible="False"></asp:Label>
-<asp:GridView ID="gvw_Std_Skills" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False"  BorderStyle="Solid" BorderWidth="1px" OnRowDataBound="gvw_Std_Skills_RowDataBound" Width="50%"   >
+<asp:GridView ID="gvw_Std_Skills" runat="server" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False"  BorderStyle="Solid" BorderWidth="1px" OnRowDataBound="gvw_Std_Skills_RowDataBound" Width="100%"   >
 		<AlternatingRowStyle BackColor="White" />
 		<Columns>
 			<asp:BoundField DataField="Title" HeaderText="مسمى الكفاءة">
-			<HeaderStyle Width="65%" />
-			<ItemStyle Width="65%" />
+			<HeaderStyle Width="50%" />
+			<ItemStyle Width="50%" />
 			</asp:BoundField>
 			<asp:TemplateField HeaderText="تقييم المدير المباشر">
 				<EditItemTemplate>
