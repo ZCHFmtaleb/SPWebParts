@@ -41,38 +41,45 @@ namespace EPM.DAL
                 sl.Add("Ibrahim Khalil", 14);
                 sl.Add("HR Dept", 15);
                 sl.Add("Finance Section", 16);
+                sl.Add("Mail Admin", 17);
+                sl.Add("Reception ZF", 18);
+                sl.Add("rfax", 19);
+                sl.Add("Test Manager 1", 20);
+                sl.Add("test sp", 21);
+                sl.Add("Test SPUser 2", 22);
 
-                
-                
-                
 
-
-
-                foreach (SPUser sp in web.SiteUsers)
-                {
-                    if (string.IsNullOrEmpty(sp.Email))
+                    foreach (SPUser sp in web.SiteUsers)
                     {
-                        continue;
-                    }
-                    else if (sl.ContainsKey(sp.Name))
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        string[] Status = get_Emp_Application_Status(sp, Active_Set_Goals_Year);
-                        Emp emp = Emp_DAL.get_Emp_Info(sp.Name);
-                        DataRow NewRow = Dashboard.NewRow();
-                        NewRow["EnglishName"] = sp.Name;
-                        NewRow["Status"] = Status[0];
-                        NewRow["Email"] = sp.Email;
-                        NewRow["ArabicName"] = emp.Emp_ArabicName;
-                        NewRow["Department"] = emp.Emp_Department;
-                        NewRow["EmpHierLvl"] = Status[1]; 
+                        if (string.IsNullOrEmpty(sp.Email))
+                        {
+                            continue;
+                        }
+                        else if (sl.ContainsKey(sp.Name))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                        try
+                        {
+                            string[] Status = get_Emp_Application_Status(sp, Active_Set_Goals_Year);
+                            Emp emp = Emp_DAL.get_Emp_Info(sp.Name);
+                            DataRow NewRow = Dashboard.NewRow();
+                            NewRow["EnglishName"] = sp.Name;
+                            NewRow["Status"] = Status[0];
+                            NewRow["Email"] = sp.Email;
+                            NewRow["ArabicName"] = emp.Emp_ArabicName;
+                            NewRow["Department"] = emp.Emp_Department;
+                            NewRow["EmpHierLvl"] = Status[1];
 
-                        Dashboard.Rows.Add(NewRow);
+                            Dashboard.Rows.Add(NewRow);
+                        }
+                        catch (Exception)
+                        {
+                        }
+                        }
                     }
-                }
             });
             return Dashboard;
         }
