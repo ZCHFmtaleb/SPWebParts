@@ -84,7 +84,7 @@ namespace EPM.DAL
             return Dashboard;
         }
 
-        private static string[] get_Emp_Application_Status(SPUser sp, string Active_Set_Goals_Year)
+        public static string[] get_Emp_Application_Status(SPUser sp, string Active_Set_Goals_Year)
         {
             string[] Status = new string[2] { string.Empty, string.Empty };
 

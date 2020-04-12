@@ -98,6 +98,14 @@
     <Compile Include="UI\RateObjectivesEmpWP\RateObjectivesEmpWPUserControl.ascx.designer.cs">
       <DependentUpon>RateObjectivesEmpWPUserControl.ascx.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SelectEmpForGoalsApproval\SelectEmpForGoalsApproval.cs" />
+    <Compile Include="UI\SelectEmpForGoalsApproval\SelectEmpForGoalsApprovalUserControl.ascx.cs">
+      <DependentUpon>SelectEmpForGoalsApprovalUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\SelectEmpForGoalsApproval\SelectEmpForGoalsApprovalUserControl.ascx.designer.cs">
+      <DependentUpon>SelectEmpForGoalsApprovalUserControl.ascx.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SelectEmp\SelectEmp.cs" />
     <Compile Include="UI\SelectEmp\SelectEmpUserControl.ascx.cs">
       <DependentUpon>SelectEmpUserControl.ascx</DependentUpon>
@@ -153,6 +161,10 @@
     <None Include="UI\RateObjectivesEmpWP\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{d198cc73-fa2e-452e-b1f1-2dd31e755872}</SharePointProjectItemId>
     </None>
+    <None Include="UI\SelectEmpForGoalsApproval\SelectEmpForGoalsApproval.webpart" />
+    <None Include="UI\SelectEmpForGoalsApproval\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{5227b1b5-6c01-4e0e-b0a8-3b7a6a83e08c}</SharePointProjectItemId>
+    </None>
     <None Include="UI\SelectEmp\SelectEmp.webpart" />
     <None Include="UI\SelectEmp\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{822d504f-02ff-430e-b453-a89fe17f3943}</SharePointProjectItemId>
@@ -173,6 +185,7 @@
     </Content>
     <Content Include="Layouts\EPM\EPMStyle.css" />
     <Content Include="Layouts\EPM\Notify_Emp_that_Objs_finally_approved.html" />
+    <Content Include="Layouts\EPM\SelectEmpForGoalsApproval.css" />
     <Content Include="Layouts\EPM\Send_ObjsAndSkills_Rated_Email_to_Emp.html" />
     <Content Include="Layouts\EPM\Send_Objs_Added_Email_to_DM.html" />
     <Content Include="Layouts\EPM\Send_Objs_Approved_Email_to_Dept_Head.html" />
@@ -188,6 +201,8 @@
     <Content Include="UI\EnableYear\EnableYearUserControl.ascx" />
     <Content Include="UI\RateObjectivesEmpWP\Elements.xml" />
     <Content Include="UI\RateObjectivesEmpWP\RateObjectivesEmpWPUserControl.ascx" />
+    <Content Include="UI\SelectEmpForGoalsApproval\Elements.xml" />
+    <Content Include="UI\SelectEmpForGoalsApproval\SelectEmpForGoalsApprovalUserControl.ascx" />
     <Content Include="UI\SelectEmp\Elements.xml" />
     <Content Include="UI\SelectEmp\SelectEmpUserControl.ascx" />
     <Content Include="UI\SetObjectivesWP\Elements.xml" />

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.VisualWebPart" DefaultFile="SelectEmpForGoalsApprovalUserControl.ascx" SupportedTrustLevels="FullTrust" SupportedDeploymentScopes="Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="SelectEmpForGoalsApproval\" Type="ElementManifest" />
+    <ProjectItemFile Source="SelectEmpForGoalsApproval.webpart" Target="SelectEmpForGoalsApproval\" Type="ElementFile" />
+    <ProjectItemFile Source="SelectEmpForGoalsApprovalUserControl.ascx" Target="CONTROLTEMPLATES\EPM.UI\SelectEmpForGoalsApproval\" Type="TemplateFile" />
+  </Files>
+  <SafeControls>
+    <SafeControl Name="SafeControlEntry1" Assembly="$SharePoint.Project.AssemblyFullName$" Namespace="EPM.UI.SelectEmpForGoalsApproval" TypeName="*" IsSafe="true" IsSafeAgainstScript="false" />
+  </SafeControls>
+</ProjectItem>
