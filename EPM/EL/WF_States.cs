@@ -23,7 +23,10 @@ namespace EPM.EL
         Objectives_ProgressSet_by_Emp,
 
         [Description("تم وضع تقييم الأهداف والكفاءات")]
-        ObjsAndSkills_Rated
+        ObjsAndSkills_Rated,
+
+        [Description("تم اعتماد لجنة الموارد البشرية")]
+        ApprovedBy_HRCommittee
 
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.SharePoint;
 using Microsoft.SharePoint.Utilities;
 using System;
 using System.Collections.Specialized;
+using System.Data;
 using System.IO;
 using System.Text;
 using System.Web;
@@ -235,6 +236,62 @@ namespace EPM.Controllers
                 StringDictionary headers = new StringDictionary();
                 headers.Add("to", intended_Emp.Emp_email);
                 headers.Add("subject", " تم وضع تقييم الأهداف والكفاءات الخاصة بكم لسنة " + Active_Rate_Goals_Year);
+                headers.Add("content-type", "text/html");
+
+                #endregion Prepare Headers
+
+                SPUtility.SendEmail(SPContext.Current.Web, headers, bodyText.ToString());
+            });
+        }
+
+        public static void Send_ObjsAndSkills_Rated_Email_to_HRCommittee(Emp intended_Emp, string Active_Rate_Goals_Year)
+        {
+            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            {
+                string html = File.ReadAllText(layoutsPath + "Send_ObjsAndSkills_Rated_Email_to_HRCommittee.html");
+                StringBuilder bodyText = new StringBuilder(html);
+
+                #region If Arabic name not found, use English name
+
+                string n = string.Empty;
+                if (intended_Emp.Emp_ArabicName != null && intended_Emp.Emp_ArabicName != string.Empty)
+                {
+                    n = intended_Emp.Emp_ArabicName;
+                }
+                else
+                {
+                    n = intended_Emp.Emp_DisplayName;
+                }
+
+                #endregion If Arabic name not found, use English name
+                
+                bodyText.Replace("#EmpName#", n);
+                bodyText.Replace("#Active_Rate_Goals_Year#", Active_Rate_Goals_Year);
+                string encoded_name = HttpUtility.UrlEncode(intended_Emp.Emp_DisplayName);
+                bodyText.Replace("#Link#", "<a href=" + SPContext.Current.Web.Url + "/Pages/RateObjectivesEmp.aspx?mode=hr&empid=" + encoded_name + "  >" + n + "</a>");
+
+
+                #region Prepare Headers
+                //get email of HRCommittee
+                string HRCommittee_email = string.Empty;
+                SPSecurity.RunWithElevatedPrivileges(delegate ()
+                {
+                    SPSite oSite = new SPSite(SPContext.Current.Web.Url);
+                    SPWeb spWeb = oSite.OpenWeb();
+                    SPList spList = spWeb.GetList(SPUrlUtility.CombineUrl(spWeb.ServerRelativeUrl, "lists/" + "HRCommittee"));
+                    if (spList != null)
+                    {
+                        SPQuery qry = new SPQuery();
+                        qry.ViewFieldsOnly = true;
+                        qry.ViewFields = @"<FieldRef Name='Title' />";
+                        SPListItemCollection  listItems = spList.GetItems(qry);
+                        HRCommittee_email = listItems[0]["Title"].ToString();
+                    }
+                });
+
+                StringDictionary headers = new StringDictionary();
+                headers.Add("to", HRCommittee_email);
+                headers.Add("subject", " تم وضع تقييم الأهداف والكفاءات للموظف/الموظفة  " + n );
                 headers.Add("content-type", "text/html");
 
                 #endregion Prepare Headers

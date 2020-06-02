@@ -187,9 +187,15 @@ namespace EPM.UI.RateObjectivesEmpWP
                        intended_Emp = Emp_DAL.get_Emp_Info(strEmpDisplayName);
                        bind_Emp_Info();
 
-                #endregion Check for Emp to use (QueryString or current logged-in user)
+                       #endregion Check for Emp to use (QueryString or current logged-in user)
 
-                if (!IsPostBack)
+                       if (Request.QueryString["mode"] != null  && Request.QueryString["mode"] =="hr")
+                       {
+                           btnHRApprove.Visible = true;
+                           btnSubmit.Visible = false;
+                       }
+
+                       if (!IsPostBack)
                        {
                            ReadOnly_Mode = false;
 
@@ -208,8 +214,9 @@ namespace EPM.UI.RateObjectivesEmpWP
                     string st = tblObjectives.Rows[0]["Status"].ToString().Trim().ToLower();
                            string p1 = WF_States.Objectives_ProgressSet_by_Emp.ToString().Trim().ToLower();
                            string p2 = WF_States.ObjsAndSkills_Rated.ToString().Trim().ToLower();
+                           string p3 = WF_States.ApprovedBy_HRCommittee.ToString().Trim().ToLower();
 
-                           if (st == p1 || st == p2)
+                           if (st == p1 || st == p2 || st == p3)
                            {
                                lblProgressNotSet_Warning.Visible = false;
                            }
@@ -218,7 +225,7 @@ namespace EPM.UI.RateObjectivesEmpWP
                                lblProgressNotSet_Warning.Visible = true;
                            }
 
-                           if (st == p2)
+                           if (st == p2 || st == p3)
                            {
                                ReadOnly_Mode = true;
                            }
@@ -480,7 +487,8 @@ namespace EPM.UI.RateObjectivesEmpWP
                             SaveToSP();
                             Show_Success_Message("تم حفظ التقييم بنجاح");
                             WFStatusUpdater.Change_State_to(WF_States.ObjsAndSkills_Rated, strEmpDisplayName, Active_Rate_Goals_Year);
-                            Emailer.Send_ObjsAndSkills_Rated_Email_to_Emp(intended_Emp, Active_Rate_Goals_Year);
+
+                            Emailer.Send_ObjsAndSkills_Rated_Email_to_HRCommittee(intended_Emp, Active_Rate_Goals_Year);
                         }
                     });
             }
@@ -596,6 +604,13 @@ namespace EPM.UI.RateObjectivesEmpWP
         public void Send_Exception_Email(string errorMessage)
         {
             SPUtility.SendEmail(SPContext.Current.Web, true, true, "sherif@zayed.org.ae", "Exception happened in EPM", errorMessage);
+        }
+
+        protected void btnHRApprove_Click(object sender, EventArgs e)
+        {
+            WFStatusUpdater.Change_State_to(WF_States.ApprovedBy_HRCommittee, strEmpDisplayName, Active_Rate_Goals_Year);
+            Show_Success_Message("تم إعتماد التقييم بنجاح");
+            Emailer.Send_ObjsAndSkills_Rated_Email_to_Emp(intended_Emp, Active_Rate_Goals_Year);
         }
     }
 }

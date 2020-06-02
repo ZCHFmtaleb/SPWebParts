@@ -221,6 +221,7 @@
 
 <div class="div_btnSubmit"  style="margin-bottom:30px;">
 <asp:Button ID="btnSubmit" runat="server" Text="إرسال" Font-Size="Large" Height="50px" Width="100px" OnClick="btnSubmit_Click"  />
+<asp:Button ID="btnHRApprove" runat="server" Text="إعتماد لجنة الموارد البشرية" Font-Size="Medium" Height="50px" Width="200px" visible="false" OnClick="btnHRApprove_Click" BackColor="#C1FFC1"  />
 </div>
 
 <div runat="server" id="divSuccess"  style="width:50%; background-color: rgb(0, 222, 149) !important; font-size:large; font-weight:bold;" visible ="false">
